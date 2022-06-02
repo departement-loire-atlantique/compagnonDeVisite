@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JAngularService, JcmsInterceptor } from 'j-angular';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,7 @@ import { environment } from '../environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable
@@ -20,7 +23,24 @@ import { environment } from '../environments/environment';
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
-  providers: [],
+  providers: [
+    JcmsInterceptor,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useFactory: (interceptor: JcmsInterceptor) => {
+        interceptor.token = environment.token;
+        return interceptor;
+      },
+      deps: [JcmsInterceptor],
+      multi: true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private _jcms: JAngularService) {
+    this._jcms.url = environment.jcms;
+  }
+
+}
