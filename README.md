@@ -36,7 +36,11 @@ Cf. https://angular.io/guide/setup-local#install-the-angular-cli
 ```bash
 git clone https://nantes.trsb.net/gitlab/cd44/GP/CompagnonDeVisite.git
 git checkout <br>
+```
+Get a `j-angular-1.0.0.tgz` file here : https://nantes.trsb.net/gitlab/digiwin/angular/JAngular/tags  
+Add file in the `libs` folder
 
+```bash
 npm install # Make sure to do it first
 
 # Usefull commands
