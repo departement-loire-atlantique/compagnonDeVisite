@@ -71,7 +71,7 @@ Doc components: `npm run storybook`
 
 (https://angular.io/guide/service-worker-getting-started#service-worker-in-action-a-tour)  
 Run `ng build`  
-Run `http-server -p 8080 -c-1 dist/zelli`
+Run `http-server -p 8080 -c-1 dist/compagnon-de-visite`
 
 
 ## 6. Angular informations
