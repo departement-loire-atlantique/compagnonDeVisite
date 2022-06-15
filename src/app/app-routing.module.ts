@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
+    path: 'themes',
+    loadChildren: () => import('./pages/parcours-themes/parcours-themes.module').then(m => m.ParcoursThemesModule)
+  },
+  {
     path: 'error',
     loadChildren: () => import('./pages/errors/errors.module').then(m => m.ErrorsModule)
   },
@@ -14,6 +18,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'error/404'
   }
+
 ];
 
 @NgModule({

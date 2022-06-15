@@ -4,8 +4,10 @@
 
 export const environment = {
   production: false,
-  jcms: 'http://localhost:8080/jcms/',
-  token: 'TODO'
+  jcms: 'http://localhost:8080/GPLA/',
+  token: 'djI7al8yOzE2ODY4Mzc5OTEwNjA7R0VULFBVVCxQT1NULERFTEVURSw7OzIyOyQyYSQwNCR1TjcyVWY0Wk9weWl2OG93eUNQeVlPb3J2NjVubTQxNnpDRUZNUVM3Ui9JYzRHSDMyVjZoVw==',
+
+  catHome: 'c_5007',
 };
 
 /*
