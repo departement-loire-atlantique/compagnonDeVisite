@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 // import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { BackComponent } from './back/back.component';
-// import { CollapserComponent } from '@/app/components/collapser/collapser.component';
+import { CollapserComponent } from './collapser/collapser.component';
 // import { ContactDetailsComponent } from '@/app/components/contact/contact-details/contact-details.component';
 // import { ContactComponent } from '@/app/components/contact/contact.component';
 // import { CarouselComponent } from '@/app/components/contents/carousel/carousel.component';
@@ -25,7 +25,8 @@ import { BackComponent } from './back/back.component';
 
 import { ListComponent } from './list/list.component';
 import { ListBGComponent } from './list-bg/list-bg.component';
-import { TuileComponent } from './tuile/tuile.component';
+import { TuileHComponent } from './tuile-h/tuile-h.component';
+import { TuileVComponent } from './tuile-v/tuile-v.component';
 import { ImageTextComponent } from './image-text/image-text.component';
 import { MenuComponent } from './menu/menu.component';
 import { MenuGpComponent } from './menu-gp/menu-gp.component';
@@ -41,12 +42,13 @@ import { MenuGpComponent } from './menu-gp/menu-gp.component';
     // HasHelpedComponent,
     // CarouselComponent,
     // VideoComponent,
-    // CollapserComponent,
+    CollapserComponent,
     // AlertComponent,
     // HiddenTextComponent,
     ListComponent,
     ListBGComponent,
-    TuileComponent,
+    TuileHComponent,
+    TuileVComponent,
     ImageTextComponent,
     MenuComponent,
     MenuGpComponent,
@@ -69,11 +71,12 @@ import { MenuGpComponent } from './menu-gp/menu-gp.component';
     // HasHelpedComponent,
     // CarouselComponent,
     // VideoComponent,
-    // CollapserComponent,
+    CollapserComponent,
     // AlertComponent,
     ListComponent,
     ListBGComponent,
-    TuileComponent,
+    TuileHComponent,
+    TuileVComponent,
     ImageTextComponent,
     MenuComponent,
     MenuGpComponent,

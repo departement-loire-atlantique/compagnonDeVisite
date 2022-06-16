@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TuileComponent } from './tuile.component';
+import { TuileVComponent } from './tuile-v.component';
 
-describe('TuileComponent', () => {
-  let component: TuileComponent;
-  let fixture: ComponentFixture<TuileComponent>;
+describe('TuileVComponent', () => {
+  let component: TuileVComponent;
+  let fixture: ComponentFixture<TuileVComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TuileComponent ]
+      declarations: [ TuileVComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TuileComponent);
+    fixture = TestBed.createComponent(TuileVComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

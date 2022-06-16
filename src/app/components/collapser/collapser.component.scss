@@ -1,0 +1,30 @@
+@import '/src/theme/importDep.scss';
+
+UL {
+  color: black;
+  border: none;
+
+  LI {
+    border-bottom-color: $pink;
+
+    BUTTON {
+      color: black;
+      padding-left: 0;
+
+      I {
+        color: black;
+        &::before {
+          line-height: 0.25;
+        }
+      }
+    }
+
+    .ds44-collapser_content {
+      background-color: transparent;
+
+      & > DIV {
+        margin: 0 0 30px 20px;
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { JAngularService } from 'j-angular';
 import { Category } from 'src/app/models/jcms/category';
-import { Parcours } from 'src/app/models/jcms/parcours';
+import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { Item } from 'src/app/models/item'
 import { CatsMngService } from 'src/app/services/cats-mng.service';
 
@@ -17,6 +17,8 @@ export class ThematiqueComponent implements OnInit {
   currentCat: Category | undefined;
   listParcours: Item[] | undefined
   cssClass="bg-color";
+
+  mapParcours: ParcoursMap = new ParcoursMap();
 
   constructor(
     private _catMng: CatsMngService,
@@ -45,7 +47,7 @@ export class ThematiqueComponent implements OnInit {
       }
     }).pipe(
       map((rep: any) =>
-        rep.dataSet.map((itData: any): Parcours => this.mapToParcours(itData))
+        rep.dataSet.map((itData: any): Parcours => this.mapParcours.mapToParcours(itData))
       )
     ).subscribe((parcours: Parcours[]) => {
       for(let p of parcours) {
@@ -63,16 +65,5 @@ export class ThematiqueComponent implements OnInit {
 
   public getCurrentCat() {
     return this.currentCat;
-  }
-
-  private mapToParcours(dataRep: any): Parcours {
-    return {
-      id: dataRep.id,
-      title: dataRep.title,
-      class: dataRep.class,
-      categories: dataRep.categories,
-      duree: dataRep.duree,
-      public1: dataRep.public1,
-    };
   }
 }

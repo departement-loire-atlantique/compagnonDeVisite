@@ -1,0 +1,24 @@
+@import '/src/theme/importDep.scss';
+
+main {
+  padding: 0 25px;
+  margin-bottom: 60px;
+}
+
+H1 {
+  padding: 10px 0;
+  text-align: left;
+  font-size: 34px;
+  margin-top: 15px;
+}
+
+.ds44-posBot {
+  padding: 15px 0;
+}
+
+.block {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: $pink;
+  text-align: center;
+}

@@ -13,7 +13,7 @@
 
     <ng-container *ngIf="itItem.url">
       <ng-template #externLink>
-        <a *ngIf="itItem.url" [href]="itItem.url" target="_blank">
+        <a *ngIf="itItem.url" [href]="itItem.url" >
           <ng-container *ngIf="false; else content"></ng-container>
           <span class="icon icon-long-arrow-right" aria-hidden="true"></span>
         </a>
