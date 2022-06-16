@@ -4,7 +4,15 @@
   padding: 0;
 }
 UL {
-  padding: 0rem 2rem;
+  padding: 1rem 2rem;
+
+  .bg-color {
+    background-color: $pink;
+    padding: 15px 20px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: bold;
+  }
 
   LI {
     display: inline-block;

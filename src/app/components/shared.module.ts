@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 // import { AlertComponent } from 'src/app/components/alert/alert.component';
-// import { BackComponent } from '@/app/components/back/back.component';
+import { BackComponent } from './back/back.component';
 // import { CollapserComponent } from '@/app/components/collapser/collapser.component';
 // import { ContactDetailsComponent } from '@/app/components/contact/contact-details/contact-details.component';
 // import { ContactComponent } from '@/app/components/contact/contact.component';
@@ -21,9 +21,14 @@ import { RouterModule } from '@angular/router';
 // import { ThemeHeaderComponent } from '@/app/components/theme-header/theme-header.component';
 
 // import { HiddenTextComponent } from './hidden-text/hidden-text.component';
-import { ListComponent } from './list/list.component';
-import { TuileComponent } from './tuile/tuile.component';
 // import { ResearchBtnComponent } from './research-btn/research-btn.component';
+
+import { ListComponent } from './list/list.component';
+import { ListBGComponent } from './list-bg/list-bg.component';
+import { TuileComponent } from './tuile/tuile.component';
+import { ImageTextComponent } from './image-text/image-text.component';
+import { MenuComponent } from './menu/menu.component';
+import { MenuGpComponent } from './menu-gp/menu-gp.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +36,7 @@ import { TuileComponent } from './tuile/tuile.component';
     // LoaderComponent,
     // PageTitleComponent,
     // PageTitleCustomComponent,
-    // BackComponent,
+    BackComponent,
     // ThemeHeaderComponent,
     // HasHelpedComponent,
     // CarouselComponent,
@@ -40,7 +45,11 @@ import { TuileComponent } from './tuile/tuile.component';
     // AlertComponent,
     // HiddenTextComponent,
     ListComponent,
+    ListBGComponent,
     TuileComponent,
+    ImageTextComponent,
+    MenuComponent,
+    MenuGpComponent,
     // PaginationComponent,
     // HeadingComponent,
     // ContactComponent,
@@ -55,7 +64,7 @@ import { TuileComponent } from './tuile/tuile.component';
     // LoaderComponent,
     // PageTitleComponent,
     // PageTitleCustomComponent,
-    // BackComponent,
+    BackComponent,
     // ThemeHeaderComponent,
     // HasHelpedComponent,
     // CarouselComponent,
@@ -63,7 +72,11 @@ import { TuileComponent } from './tuile/tuile.component';
     // CollapserComponent,
     // AlertComponent,
     ListComponent,
+    ListBGComponent,
     TuileComponent,
+    ImageTextComponent,
+    MenuComponent,
+    MenuGpComponent,
     // HiddenTextComponent,
     // PaginationComponent,
     // ContactComponent,
