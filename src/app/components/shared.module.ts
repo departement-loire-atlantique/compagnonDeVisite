@@ -22,6 +22,7 @@ import { RouterModule } from '@angular/router';
 
 // import { HiddenTextComponent } from './hidden-text/hidden-text.component';
 import { ListComponent } from './list/list.component';
+import { TuileComponent } from './tuile/tuile.component';
 // import { ResearchBtnComponent } from './research-btn/research-btn.component';
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ListComponent } from './list/list.component';
     // AlertComponent,
     // HiddenTextComponent,
     ListComponent,
+    TuileComponent,
     // PaginationComponent,
     // HeadingComponent,
     // ContactComponent,
@@ -61,6 +63,7 @@ import { ListComponent } from './list/list.component';
     // CollapserComponent,
     // AlertComponent,
     ListComponent,
+    TuileComponent,
     // HiddenTextComponent,
     // PaginationComponent,
     // ContactComponent,

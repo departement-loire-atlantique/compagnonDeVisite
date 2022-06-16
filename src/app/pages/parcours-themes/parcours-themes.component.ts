@@ -3,7 +3,7 @@ import { JAngularService } from 'j-angular';
 import { Observable, map } from 'rxjs';
 import { Category } from 'src/app/models/jcms/category';
 import { environment } from 'src/environments/environment';
-import { Item } from 'src/app/components/list/list.component';
+import { Item } from 'src/app/models/item'
 
 @Component({
   selector: 'app-parcours-themes',
@@ -39,7 +39,7 @@ export class ParcoursThemesComponent implements OnInit {
           this.listCat.splice(ind, 0 , {
             img: c.image,
             lbl: c.title,
-            url: c.url,
+            url: "/parcours/" + c.id,
           })
         }
 

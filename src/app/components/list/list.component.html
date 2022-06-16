@@ -20,8 +20,7 @@
       </ng-template>
 
       <ng-container *ngIf="isInternLink(itItem.url); else externLink">
-        <a *ngIf="itItem.url" >
-          <!-- [routerLink]="itItem.url" -->
+        <a *ngIf="itItem.url" [routerLink]="itItem.url">
           <ng-container *ngIf="false; else content"></ng-container>
           <span class="icon icon-arrow-right" aria-hidden="true"></span>
         </a>

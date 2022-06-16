@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Item } from 'src/app/models/item'
 
 @Component({
   selector: 'app-list',
@@ -25,11 +26,4 @@ export class ListComponent {
   public isInternLink(url: string): boolean {
     return ListComponent.regInternLink.test(url);
   }
-}
-
-export interface Item {
-  lbl: string;
-  url?: string;
-  prefix?: string;
-  img?: string;
 }

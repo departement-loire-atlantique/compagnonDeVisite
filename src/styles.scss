@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import '/src/theme/importDep.scss';
+
+H1 {
+  font-family: Muli;
+  font-size: 28px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: underline $pink;
+}
