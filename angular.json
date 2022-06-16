@@ -21,11 +21,11 @@
         "locales": {
           "en": {
             "translation": "src/locale/messages.en.xlf",
-            "baseHref": ""
+            "baseHref": "/en/"
           },
-          "fr-lsf": {
+          "fr-LSF": {
             "translation": "src/locale/messages.xlf",
-            "baseHref": ""
+            "baseHref": "/fr-LSF/"
           }
         }
       },
@@ -82,7 +82,7 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "localize": false
+              "localize": ["fr"]
             }
           },
           "defaultConfiguration": "production"
