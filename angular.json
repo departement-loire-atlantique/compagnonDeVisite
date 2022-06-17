@@ -83,6 +83,12 @@
               "sourceMap": true,
               "namedChunks": true,
               "localize": ["fr"]
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "fr-lsf": {
+              "localize": ["fr-LSF"]
             }
           },
           "defaultConfiguration": "production"
@@ -95,6 +101,12 @@
             },
             "development": {
               "browserTarget": "CompagnonDeVisite:build:development"
+            },
+            "en": {
+              "browserTarget": "CompagnonDeVisite:build:en"
+            },
+            "fr-lsf": {
+              "browserTarget": "CompagnonDeVisite:build:fr-lsf"
             }
           },
           "defaultConfiguration": "development"
