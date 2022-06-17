@@ -1,6 +1,10 @@
-<p i18n>Texte en FR</p>
+<h1 i18n="home page title@@home-title">Bienvenue sur le compagnon de visite.</h1>
+
+<p i18n="home page sub title@@home-sub-title">Sélectionnez votre langue</p>
+
+ TODO component list
 <ul>
-  <li><a href="/fr">FR</a></li>
-  <li><a href="/en">EN</a></li>
-  <li><a href="/lsf">JSF</a></li>
+  <li *ngFor="let lang of languages">
+    <a [href]="lang.url">{{lang.lbl}}</a>
+  </li>
 </ul>
