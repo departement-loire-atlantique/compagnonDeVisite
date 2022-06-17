@@ -16,6 +16,7 @@ export class TuileVComponent {
 export interface Tuile {
   title:string,
   img:string,
+  titleUrl?:string,
   champ1?:string,
   champ2?:string,
   icone1?:string,

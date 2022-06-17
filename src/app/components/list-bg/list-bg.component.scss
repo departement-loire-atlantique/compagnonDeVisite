@@ -9,8 +9,9 @@ UL {
   .bg-color {
     background-color: $pink;
     padding: 15px 20px;
+    margin: 5px 0;
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: bold;
   }
 
@@ -27,7 +28,7 @@ UL {
     .lbl-link-wrapper {
       display: flex;
       align-items: flex-start;
-      font-size: 1.3em;
+      //font-size: 1.3em;
       line-height: 1.2em;
 
       .is--bold {

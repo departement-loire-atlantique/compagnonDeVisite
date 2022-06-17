@@ -4,3 +4,9 @@
 .ds44-card__section {
   background-color: $pink;
 }
+
+.ds44-card {
+  &:hover, &:active, &:focus {
+    box-shadow: none;
+  }
+}

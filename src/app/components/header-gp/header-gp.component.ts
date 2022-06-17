@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-menu-gp',
-  templateUrl: './menu-gp.component.html',
-  styleUrls: ['./menu-gp.component.scss']
+  selector: 'app-header-gp',
+  templateUrl: './header-gp.component.html',
+  styleUrls: ['./header-gp.component.scss']
 })
-export class MenuGpComponent  {
+export class HeaderGpComponent  {
 
   @Input()
   urlLanguage: string | undefined;

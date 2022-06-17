@@ -1,0 +1,24 @@
+@import '/src/theme/importDep.scss';
+
+
+H3 {
+  font-family: Muli;
+  font-size: 19px;
+  text-align: left;
+  background: transparent;
+  font-weight: bold;
+}
+
+.btn-full-width {
+  width: 100%;
+
+  &:hover, &:active, &:focus {
+    box-shadow: none;
+  }
+}
+
+.ds44-modal-gab {
+  margin-top: 0 !important;
+}
+
+

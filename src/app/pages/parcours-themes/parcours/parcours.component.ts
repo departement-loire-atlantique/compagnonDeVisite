@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map } from 'rxjs';
 import { JAngularService } from 'j-angular';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { Tuile } from 'src/app/components/tuile-v/tuile-v.component';
 import { environment } from 'src/environments/environment';
-import { Item } from 'src/app/models/item';
 
 @Component({
   selector: 'app-parcours',
@@ -86,9 +84,9 @@ export class ParcoursComponent implements OnInit {
     return this.convertTime(this.leParcours.duree);
   }
 
-  private convertTime(duree: number) {
+  private convertTime(duree: number) { //améliorer pour faire XXh xxmin
     let heure = duree / 3600; //temps en heure
-    if(heure < 0)
+    if(heure < 1)
       return duree/60 + " min"; //temps en min
     return heure + " h";
   }

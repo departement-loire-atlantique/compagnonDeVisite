@@ -1,5 +1,5 @@
 <ul *ngIf="dataTitle" class="ds44-collapser">
-  <li *ngFor="let itKey of dataTitle; index as i" class="ds44-collapser_element">
+  <li *ngFor="let itKey of dataTitle; index as i" class="ds44-collapser_element " [class.first-elem]="i === 0">
     <p role="heading" aria-level="3">
       <button type="button" class="ds44-collapser_button">
         {{ itKey }}
