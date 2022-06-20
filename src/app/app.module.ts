@@ -7,10 +7,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JAngularService, JcmsInterceptor } from 'j-angular';
+import { CarrouselComponent } from './components/carrousel/carrousel.component';
+import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CarrouselComponent,
+    LecteurAudioComponent,
   ],
   imports: [
     BrowserModule,
@@ -21,7 +25,7 @@ import { JAngularService, JcmsInterceptor } from 'j-angular';
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
   ],
   providers: [
     JcmsInterceptor,
