@@ -1,0 +1,27 @@
+<header>
+  <span class="left">
+  <button class="ds44-btnStd">
+    <i class="icon icon-long-arrow-left" aria-hidden="true"></i>
+    <span class="ds44-btnInnerText">Retour</span>
+  </button>
+</span>
+  <span class="right">
+    <a href="#">
+      <i class="icon icon-info" aria-hidden="true"></i>
+      <p class="i-name">TUTORIEL</p>
+    </a>
+    <a href="#">
+      <i class="icon icon-map" aria-hidden="true"></i>
+      <p class="i-name">CARTE</p>
+    </a>
+  </span>
+</header>
+
+<main>
+  <section *ngIf="oeuvre?.diaporama">
+    <app-carrousel [id]="oeuvre?.diaporama?.id"></app-carrousel>
+  </section>
+  <section class="mainAudio" *ngIf="oeuvre?.fichierSon">
+    <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)"></app-lecteur-audio>
+  </section>
+</main>

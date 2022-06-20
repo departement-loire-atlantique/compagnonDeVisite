@@ -1,0 +1,60 @@
+@import '/src/theme/importDep.scss';
+
+header {
+  .left{
+    display: inline-block;
+    margin: 6px 9.43px;
+
+    button {
+      left: 10px;
+      text-align: left;
+      font: normal normal bold 14px/16px Muli;
+      letter-spacing: 0px;
+      color: $black;
+      opacity: 1;
+    }
+  }
+
+  .right {
+    float: right;
+
+    a {
+      padding: 13.85px 15.5px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      font: normal normal bold 8px/18px Muli;
+      letter-spacing: 0px;
+      color: $black;
+      text-transform: uppercase;
+      opacity: 1;
+
+      .icon::before {
+        font-size: 20px;
+      }
+    }
+  }
+}
+main {
+  padding-top: 0;
+
+  .etape {
+    background-color: $saumon;
+    text-align: right
+  }
+
+  .mainAudio {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 27px;
+    background-color: $saumon;
+  }
+
+  .helpAudio {
+    position: absolute;
+    top: 0;
+  }
+
+}

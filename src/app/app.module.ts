@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JAngularService, JcmsInterceptor } from 'j-angular';
+import { OeuvreComponent } from './pages/explore/oeuvre/oeuvre.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    OeuvreComponent,
     CarrouselComponent,
     LecteurAudioComponent,
   ],

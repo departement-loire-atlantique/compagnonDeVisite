@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { OeuvreComponent } from './pages/explore/oeuvre/oeuvre.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,9 @@ const routes: Routes = [
   {
     path: 'error',
     loadChildren: () => import('./pages/errors/errors.module').then(m => m.ErrorsModule)
+  },
+  {
+    path: 'explore/:id', component: OeuvreComponent
   },
   {
     path: '**',
