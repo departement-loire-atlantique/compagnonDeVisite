@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Item } from 'src/app/models/item';
 
 @Component({
   selector: 'app-etapes',
@@ -10,12 +11,14 @@ export class EtapesComponent {
   @Input()
   etapes: Etape[] | undefined;
 
+  inactive:State = State.inactive;
+
   constructor() { }
 
 }
 
 export interface Etape {
-  url: string,
+  item: Item,
   state: State,
 }
 

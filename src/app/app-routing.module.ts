@@ -19,6 +19,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/parcours-themes/parcours/parcours.module').then(m => m.ParcoursModule)
   },
   {
+    path: 'oeuvre/:index/:id',
+    loadChildren: () => import('./pages/oeuvre/oeuvre.module').then(m => m.OeuvreModule)
+  },
+  {
     path: 'error',
     loadChildren: () => import('./pages/errors/errors.module').then(m => m.ErrorsModule)
   },

@@ -3,7 +3,14 @@
 
       <li *ngFor="let etape of etapes; index as i" class="ds44-nav-step">
           <div [class]="etape.state">
-              <a [href]="etape.url"><span class="number" aria-hidden="true"> {{ i+1 }}</span></a>
+              <!-- <a [href]="etape.item.url"><span class="number" aria-hidden="true"> {{ i+1 }}</span></a> -->
+              <div *ngIf="etape.state===inactive;else clickable">
+                <p><span class="number" aria-hidden="true"> {{ i+1 }}</span></p>
+              </div>
+
+              <ng-template #clickable>
+                  <a [href]="etape.item.url"><span class="number" aria-hidden="true"> {{ i+1 }}</span></a>
+              </ng-template>
           </div>
       </li>
   </ol>

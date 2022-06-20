@@ -26,6 +26,9 @@ export class ThematiqueComponent implements OnInit {
     private _jcms: JAngularService) { }
 
   ngOnInit(): void {
+    localStorage.removeItem('etape');
+
+
     let catThematique = this._route.snapshot.paramMap.get('id');
 
     if (!catThematique) {
