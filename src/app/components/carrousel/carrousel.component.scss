@@ -1,0 +1,17 @@
+@import '/src/theme/importDep.scss';
+
+.swiper-container {
+  overflow: inherit;
+  ul {
+    margin-bottom: 0;
+  }
+}
+picture.ds44-container-imgRatio {
+  padding-top: 0;
+  height: auto;
+
+  .ds44-imgRatio {
+    position: relative;
+    height: inherit;
+  }
+}
