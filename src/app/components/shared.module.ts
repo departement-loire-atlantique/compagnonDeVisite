@@ -13,6 +13,8 @@ import { HeaderComponent } from './header/header.component';
 import { HeaderGpComponent } from './header-gp/header-gp.component';
 import { MenuComponent } from './menu/menu.component';
 import { OverlayTutoComponent } from './overlay-tuto/overlay-tuto.component';
+import { HeaderParcoursComponent } from './header-parcours/header-parcours.component';
+import { EtapesComponent } from './etapes/etapes.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { OverlayTutoComponent } from './overlay-tuto/overlay-tuto.component';
     HeaderGpComponent,
     OverlayTutoComponent,
     MenuComponent,
+    HeaderParcoursComponent,
+    EtapesComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -41,6 +45,8 @@ import { OverlayTutoComponent } from './overlay-tuto/overlay-tuto.component';
     HeaderGpComponent,
     OverlayTutoComponent,
     MenuComponent,
+    HeaderParcoursComponent,
+    EtapesComponent,
   ],
 })
 export class SharedModule {}

@@ -1,0 +1,19 @@
+@import '/src/theme/importDep.scss';
+
+.ds44-flex-container {
+  flex-direction: row;
+  margin: 0;
+}
+
+.ds44-nav-step {
+  width: auto;
+  min-width: 0;
+  display: table;
+  margin-right: 10px;
+}
+
+.passed {
+  .number {
+    background-color: $pink  !important;
+  }
+}

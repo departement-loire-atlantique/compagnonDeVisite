@@ -1,16 +1,18 @@
+import { Category } from './category'
+import { Content } from './content'
+import { ListeDeContenus } from './listeDeContenus';
+
 /**
  * Contenu JCMS Parcours
  */
-import { Category } from './category'
-import { Content } from './content'
 export interface Parcours extends Content {
   title: string,
   categories: Category,
   description: string,
   duree: number,
   public1: string
-  visuel: string
-
+  visuel: string,
+  etapes: ListeDeContenus,
 }
 
 export class ParcoursMap {
@@ -25,8 +27,8 @@ export class ParcoursMap {
       duree: dataRep.duree,
       public1: dataRep.public1,
       visuel: dataRep.visuel,
+      etapes: dataRep.etapes
     };
   }
-
 }
 

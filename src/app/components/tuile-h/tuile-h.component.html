@@ -7,13 +7,17 @@
       </picture>
     </div>
     <div class="ds44-card__section--horizontal">
-      <p role="heading" aria-level=" 2" class="ds44-card__title">
-        <a *ngIf="itItem.url" [href]="itItem.url" class="ds44-card__globalLink"> {{ itItem.lbl }}</a>
-      </p>
+      <div role="heading" aria-level=" 2" class="ds44-card__title">
+        <div *ngIf="itItem.url;else noUrl">
+          <a [href]="itItem.url" class="ds44-card__globalLink"> {{ itItem.lbl }}</a>
+        </div>
 
+        <ng-template #noUrl>
+          <p> {{ itItem.lbl }} </p>
+        </ng-template>
+      </div>
 
       <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
-
   </div>
 </section>

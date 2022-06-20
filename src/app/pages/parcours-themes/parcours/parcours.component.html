@@ -1,19 +1,23 @@
-<app-header></app-header>
+<app-header-parcours></app-header-parcours>
 
 <main>
   <h1> {{ getTitle() }}</h1>
-  <app-tuile-v class="parcours" [tuile]="getTuile()"></app-tuile-v>
-  <app-collapser [dataTitle]="getDescriptionTitle()" [dataVal]="getDescription()"></app-collapser>
 
-  <app-overlay-tuto [isIcon]="false"></app-overlay-tuto>
+  <div class="ds44-container-large">
+    <div class="ds44-flex-container ds44-flex-valign-center">
+      <div class="ds44-colLeft">
+        <h3> {{ getDuree() }}</h3>
+      </div>
 
-  <div class="block">
-    <h2> A vos écouteurs !</h2>
-    <p>Munissez-vous de vos écouteurs ou rendez-vous à l’accueil pour obtenir du matériel de prêt.</p>
+      <div class="ds44-colRight">
+        <p><a> En savoir plus</a></p>
+      </div>
+    </div>
   </div>
 
-  <button type="button" class="ds44-fullWBtn ds44-btn--invert ds44-container-fixed ds44-posBot"><span
-      class="ds44-btnInnerText">Démarrer ma visite</span><i class="icon icon-long-arrow-right"
-      aria-hidden="true"></i></button>
+  <app-etapes [etapes]="getEtapes()"></app-etapes>
+
+  <app-tuile-h [items]="getItems()"></app-tuile-h>
+
 
 </main>
