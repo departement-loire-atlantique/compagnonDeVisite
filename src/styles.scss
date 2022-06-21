@@ -6,26 +6,33 @@ main {
   padding-top: 0;
 }
 
+H1, H2, H3, H4, H5, H6, p, a {
+  font-family: Muli;
+  color: black;
+}
+
 
 H1 {
-  font-family: Muli;
-  font-size: 28px;
-  color: black;
+  font-size: 34px;
+  font-weight: bold;
+  text-align: left;
+}
+
+H1.underline {
+  font-size: 34px;
   font-weight: bold;
   text-align: center;
+  text-decoration: underline 2px $pink;
 }
 
 H2 {
-  font-family: Muli;
   font-size: 21px;
   text-align: center;
   background: transparent;
 }
 
 H3 {
-  font-family: Muli;
   font-size: 19px;
   text-align: left;
   background: transparent;
 }
-
