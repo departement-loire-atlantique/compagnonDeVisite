@@ -40,9 +40,11 @@ export class ParcoursComponent implements OnInit {
       return;
     }
 
+    //get les infos du parcours en paramètre
     this._jcms.get<Parcours>('data/' + parcoursId).subscribe((parcours: Parcours) => {
       this.leParcours = this.mapParcours.mapToParcours(parcours);
 
+      //recup les info dans le localStorage
       let etapeStore = localStorage.getItem(this.key);
       if (etapeStore) {
         this.etapes = JSON.parse(etapeStore);
@@ -52,35 +54,51 @@ export class ParcoursComponent implements OnInit {
     });
   }
 
+  /**
+   * initialise les étapes du parcours
+   * @param etapeId l'id de la liste de contenus avec les étapes du parcours
+   */
   private initEtape(etapeId: string) {
 
     this._jcms.get<ListeDeContenus>('data/' + etapeId).subscribe((listeDeContenus: ListeDeContenus) => {
       this.getListContenus(listeDeContenus.contenu).subscribe(dataArray => {
+
         if (!this.items) {
           this.items = [];
         }
         if (!this.etapes) {
           this.etapes = [];
         }
+
         for (let ind in dataArray) {
           let c = dataArray[ind];
+
+          //ajoute les items (tuile horizontale)
           this.items.push({
             lbl: c.title,
             img: environment.jcms + c.visuel,
             url: "/oeuvre/" + ind + "/" + c.id,
           });
 
+          //ajoute les étapes (menu étapes)
           let item = this.items[ind];
           this.etapes.push({
             item: item,
             state: Number(ind) == 0 ? State.active : State.inactive,
           })
         }
+
+        //store les étapes dans le localStorage
         this.storeEtapes();
       });
     });
   }
 
+  /**
+   * Get la liste d'observable de toutes les étapes
+   * @param contenus la liste de contenus du parcours
+   * @returns la liste d'observable
+   */
   private getListContenus(contenus: Jexplore[]) {
     let observables: Observable<Jexplore>[] = [];
     for (let contenu of contenus) {
@@ -89,6 +107,9 @@ export class ParcoursComponent implements OnInit {
     return forkJoin(observables);
   }
 
+  /**
+   * Store les étapes au format json dans le localStorage
+   */
   public storeEtapes() {
     if (this.etapes) {
       let str = JSON.stringify(this.etapes);
@@ -96,6 +117,10 @@ export class ParcoursComponent implements OnInit {
     }
   }
 
+  /**
+   * Get le title du parcours
+   * @returns le title du parcours
+   */
   public getTitle() {
     if (!this.leParcours)
       return "";
@@ -103,6 +128,10 @@ export class ParcoursComponent implements OnInit {
     return this.leParcours.title;
   }
 
+  /**
+   * Get la durée du parcours
+   * @returns la durée du parcours convertit
+   */
   public getDuree() {
     if (!this.leParcours)
       return "";
@@ -110,13 +139,22 @@ export class ParcoursComponent implements OnInit {
     return this.convertTime(this.leParcours.duree);
   }
 
-  private convertTime(duree: number) { //améliorer pour faire XXh xxmin
+  /**
+   * Convertit le temps(secondes) en minutes ou heures
+   * @param duree la durée du parcours en seconde
+   * @returns le temps en heures ou minutes
+   */
+  private convertTime(duree: number) {
     let heure = duree / 3600; //temps en heure
     if (heure < 1)
       return duree / 60 + " min"; //temps en min
     return heure + " h";
   }
 
+  /**
+   * Get les items qui ont été vu par l'utilisateur
+   * @returns la liste d'items (qui ne sont pas à l'état inactive)
+   */
   public getSeenItems() {
     let seenItem = [];
     let listEtape = this.etapes?.filter(e => {
@@ -132,11 +170,12 @@ export class ParcoursComponent implements OnInit {
     return seenItem;
   }
 
+  /**
+   * Get les étapes
+   * @returns les étapes
+   */
   public getEtapes() {
     return this.etapes;
   }
 
-  public getItems() {
-    return this.items;
-  }
 }

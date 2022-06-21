@@ -18,16 +18,19 @@ export class ParcoursThemesComponent implements OnInit {
 
   constructor(private _catMng: CatsMngService) { }
 
+  /**
+   * Récupère les catégories enfant de la catégorie thématique
+   */
   ngOnInit(): void {
     this._catMng.catsChildren(this.idCatHome).subscribe((cats: Category[]) => {
 
-      if(!this.listCat) {
+      if (!this.listCat) {
         this.listCat = [];
       }
 
-      for(let ind = 0; ind < cats.length; ind++) {
+      for (let ind = 0; ind < cats.length; ind++) {
         let c = cats[ind];
-        this.listCat.splice(ind, 0 , {
+        this.listCat.splice(ind, 0, {
           img: c.image,
           lbl: c.title,
           url: "/themes/" + c.id,
@@ -36,6 +39,10 @@ export class ParcoursThemesComponent implements OnInit {
     });
   }
 
+  /**
+   * Get la liste des catégories
+   * @returns la liste de catégories
+   */
   public getListCat() {
     return this.listCat;
   }

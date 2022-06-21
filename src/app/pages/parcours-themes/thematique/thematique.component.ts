@@ -16,7 +16,6 @@ export class ThematiqueComponent implements OnInit {
 
   currentCat: Category | undefined;
   listParcours: Item[] | undefined
-  cssClass="bg-color";
 
   mapParcours: ParcoursMap = new ParcoursMap();
 
@@ -25,23 +24,29 @@ export class ThematiqueComponent implements OnInit {
     private _route: ActivatedRoute,
     private _jcms: JAngularService) { }
 
+  /**
+   * Recupère la thématique et les différents parcours associés
+   * @returns
+   */
   ngOnInit(): void {
+    //delete les étapes store (voir si on les garde ou pas ?)
     localStorage.removeItem('etape');
-
 
     let catThematique = this._route.snapshot.paramMap.get('id');
 
     if (!catThematique) {
       return;
     }
-    if(!this.listParcours) {
+    if (!this.listParcours) {
       this.listParcours = [];
     }
 
+    //get la thématique
     this._catMng.cat(catThematique).subscribe((cat) => {
       this.currentCat = cat;
     });
 
+    //get les parcours
     this._jcms.get<Parcours>('search', {
       params: {
         types: 'Parcours',
@@ -53,7 +58,7 @@ export class ThematiqueComponent implements OnInit {
         rep.dataSet.map((itData: any): Parcours => this.mapParcours.mapToParcours(itData))
       )
     ).subscribe((parcours: Parcours[]) => {
-      for(let p of parcours) {
+      for (let p of parcours) {
         this.listParcours?.push({
           lbl: p.title,
           url: 'parcours/' + p.id,
@@ -62,10 +67,18 @@ export class ThematiqueComponent implements OnInit {
     });
   }
 
+  /**
+   * Get la liste des parcours
+   * @returns la liste de parcours
+   */
   public getListParcours() {
     return this.listParcours;
   }
 
+  /**
+   * Get la cat de la thématique
+   * @returns la current cat
+   */
   public getCurrentCat() {
     return this.currentCat;
   }
