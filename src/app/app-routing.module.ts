@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExploreComponent } from './pages/explore/explore/explore.component';
-import { OeuvreComponent } from './pages/explore/oeuvre/oeuvre.component';
+import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
+import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.component';
 
 const routes: Routes = [
   {

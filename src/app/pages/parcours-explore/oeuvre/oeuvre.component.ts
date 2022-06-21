@@ -22,7 +22,6 @@ export class OeuvreComponent {
           .get<Oeuvre>('data/' + id)
           .subscribe((oeuvre: Oeuvre) => {
             this.oeuvre = oeuvre;
-            console.log(oeuvre?.fichierSonDaide);
         });
       });
      }

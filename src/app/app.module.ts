@@ -6,10 +6,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JAngularService, JcmsInterceptor } from 'j-angular';
-import { OeuvreComponent } from './pages/explore/oeuvre/oeuvre.component';
+import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.component';
-import { ExploreComponent } from './pages/explore/explore/explore.component';
+import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
 
 @NgModule({
   declarations: [
