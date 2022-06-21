@@ -11,7 +11,10 @@ picture.ds44-container-imgRatio {
   height: auto;
 
   .ds44-imgRatio {
-    position: relative;
-    height: inherit;
+    position: inherit;
+    height: auto;
+    object-fit: contain;
+    display: inline;
+    vertical-align: top;
   }
 }

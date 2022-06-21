@@ -9,6 +9,7 @@ import { JAngularService, JcmsInterceptor } from 'j-angular';
 import { OeuvreComponent } from './pages/explore/oeuvre/oeuvre.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.component';
+import { ExploreComponent } from './pages/explore/explore/explore.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.
     OeuvreComponent,
     CarrouselComponent,
     LecteurAudioComponent,
+    ExploreComponent,
   ],
   imports: [
     BrowserModule,

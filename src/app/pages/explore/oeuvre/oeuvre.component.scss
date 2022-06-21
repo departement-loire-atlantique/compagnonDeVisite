@@ -19,18 +19,22 @@ header {
     float: right;
 
     a {
+      font-size: 8px;
       padding: 13.85px 15.5px;
       text-decoration: none;
       display: inline-block;
       text-align: center;
-      font: normal normal bold 8px/18px Muli;
-      letter-spacing: 0px;
-      color: $black;
       text-transform: uppercase;
-      opacity: 1;
 
       .icon::before {
-        font-size: 20px;
+        display: block;
+        font-size: 27px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .i-name{
+        padding-left: 0;
       }
     }
   }
