@@ -5,7 +5,7 @@ UL {
   border: none;
 
   LI {
-    border-bottom-color: $pink;
+    border-bottom-color: $main-color;
 
     BUTTON {
       color: black;
@@ -31,5 +31,5 @@ UL {
 
 .first-elem {
   border-top: 1px solid;
-  border-top-color: $pink ;
+  border-top-color: $main-color ;
 }

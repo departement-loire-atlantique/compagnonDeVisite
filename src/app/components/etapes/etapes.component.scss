@@ -2,20 +2,20 @@
 
 .ds44-flex-container {
   flex-direction: row;
-  margin: 0;
+  flex-wrap: wrap;
+  margin: 10px 0;
 }
 
 .ds44-nav-step {
   width: auto;
   min-width: 0;
+  max-width: max-content;
   display: table;
-  margin-right: 10px;
+  margin: 5px 5px 0 0;
 }
 
-.passed {
-  .number {
-    background-color: $pink  !important;
-  }
+.ds44-nav-stepper .ds44-nav-step div.passed .number {
+  background-color: $main-color ;
 }
 
 .inactive {
