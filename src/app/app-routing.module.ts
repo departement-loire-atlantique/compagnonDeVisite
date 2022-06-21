@@ -13,7 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/errors/errors.module').then(m => m.ErrorsModule)
   },
   {
-    path: 'explore/:id', component: OeuvreComponent
+    path: 'explore/oeuvre/:id', component: OeuvreComponent
+  },
+  {
+    path: 'explore/:text', component: ExploreComponent
   },
   {
     path: 'explore', component: ExploreComponent

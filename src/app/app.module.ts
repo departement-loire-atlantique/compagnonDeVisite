@@ -10,6 +10,8 @@ import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.componen
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.component';
 import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { ExploreComponent } from './pages/parcours-explore/explore/explore.compo
     CarrouselComponent,
     LecteurAudioComponent,
     ExploreComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { ExploreComponent } from './pages/parcours-explore/explore/explore.compo
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    FormsModule,
   ],
   providers: [
     JcmsInterceptor,
