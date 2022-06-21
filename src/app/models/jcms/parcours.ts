@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Category } from './category'
 import { Content } from './content'
 import { ListeDeContenus } from './listeDeContenus';
@@ -12,6 +13,7 @@ export interface Parcours extends Content {
   duree: number,
   public1: string
   visuel: string,
+  plan: string,
   etapes: ListeDeContenus,
 }
 
@@ -26,9 +28,14 @@ export class ParcoursMap {
       description: dataRep.description,
       duree: dataRep.duree,
       public1: dataRep.public1,
-      visuel: dataRep.visuel,
+      visuel: this.checkURL(dataRep.visuel) ? environment.jcms + dataRep.visuel : "",
+      plan: this.checkURL(dataRep.plan) ? environment.jcms + dataRep.plan : "",
       etapes: dataRep.etapes
     };
+  }
+
+  private checkURL(url: string) {
+    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header-parcours',
@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./header-parcours.component.scss']
 })
 export class HeaderParcoursComponent {
+
+  @Input()
+  imagePlan:string | undefined;
 
   constructor() { }
 

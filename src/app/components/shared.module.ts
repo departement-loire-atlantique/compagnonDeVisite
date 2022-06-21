@@ -15,6 +15,7 @@ import { MenuComponent } from './menu/menu.component';
 import { OverlayTutoComponent } from './overlay-tuto/overlay-tuto.component';
 import { HeaderParcoursComponent } from './header-parcours/header-parcours.component';
 import { EtapesComponent } from './etapes/etapes.component';
+import { OverlayMapComponent } from './overlay-map/overlay-map.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { EtapesComponent } from './etapes/etapes.component';
     MenuComponent,
     HeaderParcoursComponent,
     EtapesComponent,
+    OverlayMapComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -47,6 +49,7 @@ import { EtapesComponent } from './etapes/etapes.component';
     MenuComponent,
     HeaderParcoursComponent,
     EtapesComponent,
+    OverlayMapComponent
   ],
 })
 export class SharedModule {}

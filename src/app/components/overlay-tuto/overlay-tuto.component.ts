@@ -45,7 +45,7 @@ export class OverlayTutoComponent implements OnInit {
 
   public getClassButton() {
     if (this.isIcon)
-      return "ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding";
+      return "ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component";
 
     return "ds44-btnStd btn-full-width";
   }

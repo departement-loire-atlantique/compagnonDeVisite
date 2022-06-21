@@ -9,6 +9,7 @@ import { Item } from 'src/app/models/item';
 import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 import { Jexplore } from 'src/app/models/jcms/jexplore';
 import { Observable, forkJoin } from 'rxjs';
+import { DesignSystemService } from 'src/app/services/design-system.service';
 
 @Component({
   selector: 'app-parcours',
@@ -26,6 +27,7 @@ export class ParcoursComponent implements OnInit {
   key: string = "etape";
 
   constructor(
+    private _ds: DesignSystemService,
     private _route: ActivatedRoute,
     private _jcms: JAngularService) { }
 
@@ -33,6 +35,7 @@ export class ParcoursComponent implements OnInit {
    * init le parcours et les etapes si elles ne sont pas dans le localStorage
    */
   ngOnInit(): void {
+    this._ds.initOverlay();
 
     let parcoursId = this._route.snapshot.paramMap.get('id');
 
@@ -126,6 +129,28 @@ export class ParcoursComponent implements OnInit {
       return "";
 
     return this.leParcours.title;
+  }
+
+  /**
+   * Get la description du parcours
+   * @returns la description
+   */
+  public getDescription() {
+    if (!this.leParcours)
+      return "";
+
+    return this.leParcours.description;
+  }
+
+  /**
+   * Get le plan du parcours
+   * @returns la plan
+   */
+  public getPlan() {
+    if (!this.leParcours)
+      return "";
+
+    return this.leParcours.plan;
   }
 
   /**

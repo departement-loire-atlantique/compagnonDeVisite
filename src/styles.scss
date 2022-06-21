@@ -6,7 +6,14 @@ main {
   padding-top: 0;
 }
 
-H1, H2, H3, H4, H5, H6, p, a {
+H1,
+H2,
+H3,
+H4,
+H5,
+H6,
+p,
+a {
   font-family: Muli;
   color: black;
 }
@@ -22,7 +29,9 @@ H1.underline {
   font-size: 34px;
   font-weight: bold;
   text-align: center;
+  line-height: 1.2em;
   text-decoration: underline 2px $pink;
+  text-underline-offset: 3px;
 }
 
 H2 {
@@ -35,4 +44,28 @@ H3 {
   font-size: 19px;
   text-align: left;
   background: transparent;
+}
+
+H3.title-overlay {
+  font-family: Muli;
+  font-size: 19px;
+  text-align: left;
+  background: transparent;
+  font-weight: bold;
+  display: block;
+}
+
+.text-overlay {
+  text-align: left;
+}
+
+// bouton header component
+.ds44-header .ds44-colRight .ds44-btnIcoText--maxi.ds44-btn--menu.btn-menu-component {
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+
+  .ds44-btnInnerText {
+    margin-top: 0.5rem;
+  }
+
 }

@@ -1,16 +1,16 @@
-<button type="button" [class]="getClassButton()" data-target="#overlay-test" data-js="ds44-modal">
+<button type="button" [class]="getClassButton()" data-target="#overlay-tuto" data-js="ds44-modal">
   <span class="ds44-btnInnerText"> {{ title }} </span>
   <i *ngIf="icon" [class]="getClassIcon()" aria-hidden="true"></i>
 </button>
 
-<section class="ds44-modal-container" id="overlay-test" aria-hidden="true" role="dialog" aria-modal="true">
+<section class="ds44-modal-container" id="overlay-tuto" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="ds44-modal-box">
     <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button"
       [title]="'Fermer la boîte de dialogue : ' + title" data-js="ds44-modal-action-close">
       <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
       <span class="ds44-btnInnerText--bottom">Fermer</span>
     </button>
-    <h3 id="overlay-test-title" class="h2-like"> {{ title }} </h3>
+    <h3 id="overlay-test-title" class="title-overlay"> {{ title }} </h3>
     <div class="ds44-modal-gab">
       <app-collapser [dataTitle]="getQuestionsTitle()" [dataVal]="getAnswers()"></app-collapser>
     </div>
