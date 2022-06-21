@@ -1,0 +1,5 @@
+<app-header></app-header>
+<main>
+  <app-image-text [img]="getCurrentCat()?.image" [text]="getCurrentCat()?.title"></app-image-text>
+  <app-list-bg [items]="getListParcours()" [noSeparator]="true"></app-list-bg>
+</main>

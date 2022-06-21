@@ -1,0 +1,17 @@
+<nav role="navigation" class="ds44-flex-container ds44-fg1 ds44-hiddenPrint" aria-label="Menu de pagination : [Titre du bloc à paginer]">
+  <ol class="ds44-nav-stepper ds44-fg1 ds44-flex-container ds44-list etapes">
+
+      <li *ngFor="let etape of etapes; index as i" class="ds44-nav-step">
+          <div [class]="etape.state">
+              <!-- <a [href]="etape.item.url"><span class="number" aria-hidden="true"> {{ i+1 }}</span></a> -->
+              <div *ngIf="etape.state===inactive;else clickable">
+                <p><span class="number" aria-hidden="true"> {{ i+1 }}</span></p>
+              </div>
+
+              <ng-template #clickable>
+                  <a [href]="etape.item.url"><span class="number" aria-hidden="true"> {{ i+1 }}</span></a>
+              </ng-template>
+          </div>
+      </li>
+  </ol>
+</nav>

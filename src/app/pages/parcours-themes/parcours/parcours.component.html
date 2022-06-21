@@ -1,0 +1,40 @@
+<app-header-parcours [imagePlan]="getPlan()"></app-header-parcours>
+
+<main>
+  <h1 class="underline"> {{ getTitle() }}</h1>
+
+  <div class="ds44-container-large">
+    <div class="ds44-flex-container ds44-flex-valign-center">
+      <div class="ds44-colLeft">
+        <h3> {{ getDuree() }}</h3>
+      </div>
+
+      <div class="ds44-colRight">
+        <a data-target="#overlay-plus" data-js="ds44-modal">
+          <span class="ds44-btnInnerText plus"> En savoir plus </span>
+        </a>
+
+        <section class="ds44-modal-container" id="overlay-plus" aria-hidden="true" role="dialog" aria-modal="true">
+          <div class="ds44-modal-box">
+            <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button"
+              title="Fermer la boîte de dialogue : En savoir plus" data-js="ds44-modal-action-close">
+              <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
+              <span class="ds44-btnInnerText--bottom">Fermer</span>
+            </button>
+            <h3 id="overlay-test-title" class="title-overlay"> En savoir plus </h3>
+            <div class="ds44-modal-gab">
+              <p class="text-overlay" [innerHTML]="getDescription()"></p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+  <app-etapes [etapes]="getEtapes()"></app-etapes>
+
+  <app-tuile-h [items]="getSeenItems()"></app-tuile-h>
+
+
+</main>

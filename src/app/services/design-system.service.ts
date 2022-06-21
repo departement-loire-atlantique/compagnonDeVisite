@@ -14,7 +14,7 @@ declare class FormFieldInputDatepicker {}
 declare class FormFieldInputFile {}
 declare class FormFieldInputStandard {}
 declare class FormFieldInputTextarea {}
-//declare class FormLayoutStandard {}
+declare class FormLayoutStandard {}
 declare class FormLayoutInline {}
 declare class FormLayoutObligationAlimentaire {}
 
@@ -47,6 +47,6 @@ export class DesignSystemService {
 
     new FormLayoutInline();
     new FormLayoutObligationAlimentaire();
-//    new FormLayoutStandard();
+    new FormLayoutStandard();
   }
 }

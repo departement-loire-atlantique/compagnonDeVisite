@@ -1,0 +1,23 @@
+@import '/src/theme/importDep.scss';
+
+.ds44-flex-container {
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.ds44-nav-step {
+  width: auto;
+  min-width: 0;
+  max-width: max-content;
+  display: table;
+  margin: 5px 5px 0 0;
+}
+
+.ds44-nav-stepper .ds44-nav-step div.passed .number {
+  background-color: $main-color ;
+}
+
+.inactive {
+  opacity: 0.5;
+}

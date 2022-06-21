@@ -7,6 +7,22 @@ const routes: Routes = [
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
   {
+    path: 'themes',
+    loadChildren: () => import('./pages/parcours-themes/parcours-themes.module').then(m => m.ParcoursThemesModule)
+  },
+  {
+    path: 'themes/:id',
+    loadChildren: () => import('./pages/parcours-themes/thematique/thematique.module').then(m => m.ThematiqueModule)
+  },
+  {
+    path: 'parcours/:id',
+    loadChildren: () => import('./pages/parcours-themes/parcours/parcours.module').then(m => m.ParcoursModule)
+  },
+  {
+    path: 'oeuvre/:index/:id',
+    loadChildren: () => import('./pages/parcours-themes/oeuvre/oeuvre.module').then(m => m.OeuvreModule)
+  },
+  {
     path: 'error',
     loadChildren: () => import('./pages/errors/errors.module').then(m => m.ErrorsModule)
   },
@@ -14,6 +30,7 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'error/404'
   }
+
 ];
 
 @NgModule({
