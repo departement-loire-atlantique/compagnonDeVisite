@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { map } from 'rxjs';
 import { JAngularService } from 'j-angular';
 import { Category } from 'src/app/models/jcms/category';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
@@ -28,9 +28,7 @@ export class ThematiqueComponent implements OnInit {
    * Recupère la thématique et les différents parcours associés
    * @returns
    */
-  ngOnInit(): void {
-    //delete les étapes store (voir si on les garde ou pas ?)
-    localStorage.removeItem('etape');
+  ngOnInit(): void {;
 
     let catThematique = this._route.snapshot.paramMap.get('id');
 

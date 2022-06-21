@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: 'oeuvre/:index/:id',
-    loadChildren: () => import('./pages/oeuvre/oeuvre.module').then(m => m.OeuvreModule)
+    loadChildren: () => import('./pages/parcours-themes/oeuvre/oeuvre.module').then(m => m.OeuvreModule)
   },
   {
     path: 'error',

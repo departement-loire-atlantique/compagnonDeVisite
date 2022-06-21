@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
-import { Tuile } from 'src/app/components/tuile-v/tuile-v.component';
 import { Etape, State } from 'src/app/components/etapes/etapes.component';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
@@ -24,7 +23,8 @@ export class ParcoursComponent implements OnInit {
   items: Item[] | undefined;
   etapes: Etape[] | undefined;
 
-  key: string = "etape";
+  keyEtape: string = "etape";
+  keyName: string = "nameParcours";
 
   constructor(
     private _ds: DesignSystemService,
@@ -48,8 +48,9 @@ export class ParcoursComponent implements OnInit {
       this.leParcours = this.mapParcours.mapToParcours(parcours);
 
       //recup les info dans le localStorage
-      let etapeStore = localStorage.getItem(this.key);
-      if (etapeStore) {
+      let nameStore = localStorage.getItem(this.keyName);
+      let etapeStore = localStorage.getItem(this.keyEtape);
+      if (etapeStore && nameStore == this.leParcours.title) {
         this.etapes = JSON.parse(etapeStore);
       } else {
         this.initEtape(this.leParcours.etapes.id);
@@ -116,7 +117,8 @@ export class ParcoursComponent implements OnInit {
   public storeEtapes() {
     if (this.etapes) {
       let str = JSON.stringify(this.etapes);
-      localStorage.setItem(this.key, str);
+      localStorage.setItem(this.keyEtape, str);
+      localStorage.setItem(this.keyName, this.getTitle());
     }
   }
 
@@ -171,9 +173,13 @@ export class ParcoursComponent implements OnInit {
    */
   private convertTime(duree: number) {
     let heure = duree / 3600; //temps en heure
+
     if (heure < 1)
-      return duree / 60 + " min"; //temps en min
-    return heure + " h";
+      return duree / 60 + " minutes"; //temps en min
+    else if (heure == 1)
+     return heure + " heure";
+
+    return heure + " heures";
   }
 
   /**

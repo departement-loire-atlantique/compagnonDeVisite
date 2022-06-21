@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { JAngularService } from 'j-angular';
-import { Observable, map } from 'rxjs';
 import { Category } from 'src/app/models/jcms/category';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item'
