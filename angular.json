@@ -75,6 +75,21 @@
               ],
               "outputHashing": "all"
             },
+            "development-jcms-R7": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "localize": false,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.r7.ts"
+                }
+              ]
+            },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -92,6 +107,9 @@
           "configurations": {
             "production": {
               "browserTarget": "CompagnonDeVisite:build:production"
+            },
+            "development-jcms-R7": {
+              "browserTarget": "CompagnonDeVisite:build:development-jcms-R7"
             },
             "development": {
               "browserTarget": "CompagnonDeVisite:build:development"
