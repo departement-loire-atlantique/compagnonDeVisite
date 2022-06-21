@@ -16,13 +16,19 @@ import { OverlayTutoComponent } from './overlay-tuto/overlay-tuto.component';
 import { HeaderParcoursComponent } from './header-parcours/header-parcours.component';
 import { EtapesComponent } from './etapes/etapes.component';
 import { OverlayMapComponent } from './overlay-map/overlay-map.component';
+import { CarrouselComponent } from './carrousel/carrousel.component';
+import { LecteurAudioComponent } from './lecteur-audio/lecteur-audio.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
     BackComponent,
+    CarrouselComponent,
     CollapserComponent,
+    LecteurAudioComponent,
     ListComponent,
     ListBGComponent,
+    LoaderComponent,
     TuileHComponent,
     TuileVComponent,
     ImageTextComponent,

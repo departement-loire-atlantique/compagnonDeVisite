@@ -7,21 +7,16 @@ import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JAngularService, JcmsInterceptor } from 'j-angular';
 import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.component';
-import { CarrouselComponent } from './components/carrousel/carrousel.component';
-import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.component';
 import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
-import { LoaderComponent } from './components/loader/loader.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from './components/shared.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     OeuvreComponent,
-    CarrouselComponent,
-    LecteurAudioComponent,
     ExploreComponent,
-    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +29,7 @@ import { FormsModule } from '@angular/forms';
       registrationStrategy: 'registerWhenStable:30000'
     }),
     FormsModule,
+    SharedModule,
   ],
   providers: [
     JcmsInterceptor,
