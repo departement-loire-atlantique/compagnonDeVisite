@@ -11,9 +11,9 @@ export class HomeComponent implements OnInit {
   private _nextPageRoute: string = "/TODO";
 
   languages = [
-    { lbl: 'FR', url: '/fr' + this._nextPageRoute },
-    { lbl: 'EN', url: '/en' + this._nextPageRoute },
-    { lbl: 'LSF', url: '/fr-LSF' + this._nextPageRoute }
+    { lbl: 'FR', url: '/fr' + this._nextPageRoute, img:'🇫🇷' },
+    { lbl: 'EN', url: '/en' + this._nextPageRoute, img:'🇬🇧'  },
+    { lbl: 'LSF', url: '/fr-LSF' + this._nextPageRoute, img:'👋'  }
   ];
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
