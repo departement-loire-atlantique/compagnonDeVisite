@@ -1,7 +1,7 @@
 @import '/src/theme/importDep.scss';
 
 .swiper-container {
-  overflow: inherit;
+  overflow: clip;
   ul {
     margin-bottom: 0;
   }
@@ -11,7 +11,7 @@ picture.ds44-container-imgRatio {
   height: auto;
 
   .ds44-imgRatio {
-    position: relative;
-    height: inherit;
+    position: inherit;
   }
 }
+

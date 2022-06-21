@@ -1,21 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JAngularService, JcmsInterceptor } from 'j-angular';
+import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.component';
 import { CarrouselComponent } from './components/carrousel/carrousel.component';
 import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.component';
+import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
+import { LoaderComponent } from './components/loader/loader.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    OeuvreComponent,
     CarrouselComponent,
     LecteurAudioComponent,
+    ExploreComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +33,7 @@ import { LecteurAudioComponent } from './components/lecteur-audio/lecteur-audio.
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
+    FormsModule,
   ],
   providers: [
     JcmsInterceptor,

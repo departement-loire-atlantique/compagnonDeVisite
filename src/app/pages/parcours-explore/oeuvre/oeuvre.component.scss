@@ -1,0 +1,68 @@
+@import '/src/theme/importDep.scss';
+
+header {
+  .left{
+    display: inline-block;
+    margin: 6px 9.43px;
+
+    button {
+      left: 10px;
+      text-align: left;
+      font: normal normal bold 14px/16px Muli;
+      letter-spacing: 0px;
+      color: $black;
+      opacity: 1;
+    }
+  }
+
+  .right {
+    float: right;
+
+    a {
+      font-size: 8px;
+      padding: 13.85px 15.5px;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+      text-transform: uppercase;
+
+      .icon::before {
+        display: block;
+        font-size: 27px;
+        width: 20px;
+        height: 20px;
+      }
+
+      .i-name{
+        padding-left: 0;
+      }
+    }
+  }
+}
+main {
+  padding-top: 0;
+
+  .upper {
+    margin-bottom: 126px;
+  }
+
+  app-loader {
+    width: 100%;
+  }
+
+  .etape {
+    background-color: $saumon;
+    text-align: right
+  }
+
+  .mainAudio {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 27px;
+    background-color: $saumon;
+  }
+
+}
