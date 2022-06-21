@@ -42,6 +42,10 @@ header {
 main {
   padding-top: 0;
 
+  .upper {
+    margin-bottom: 126px;
+  }
+
   app-loader {
     width: 100%;
   }
@@ -52,17 +56,13 @@ main {
   }
 
   .mainAudio {
-    position: absolute;
+    position: fixed;
+    z-index: 1;
     bottom: 0;
     width: 100%;
     padding-top: 20px;
     padding-bottom: 27px;
     background-color: $saumon;
-  }
-
-  .helpAudio {
-    position: absolute;
-    top: 0;
   }
 
 }

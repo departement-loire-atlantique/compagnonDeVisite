@@ -8,6 +8,9 @@ import { Oeuvre } from 'src/app/models/oeuvre';
   templateUrl: './oeuvre.component.html',
   styleUrls: ['./oeuvre.component.scss']
 })
+/**
+ * Affichage d'une oeuvre en mode "j'explore"
+ */
 export class OeuvreComponent implements OnInit, OnDestroy {
 
   oeuvre!: Oeuvre | undefined;
@@ -34,6 +37,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
       this.urlRetour = '/explore/' + sessionStorage.getItem('textExplore');
   }
 
+  // Détection fin audio
   changeAudioEnd(event: any) {
     this.isAudioEnded = event;
   }

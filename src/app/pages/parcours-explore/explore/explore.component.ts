@@ -10,6 +10,9 @@ import { DesignSystemService } from 'src/app/services/design-system.service';
   templateUrl: './explore.component.html',
   styleUrls: ['./explore.component.scss']
 })
+/**
+ * Affichage de la recherche "j'explore"
+ */
 export class ExploreComponent implements OnInit, AfterViewInit {
 
   text!: string;
