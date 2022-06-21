@@ -43,9 +43,12 @@ import { LoaderComponent } from './loader/loader.component';
   imports: [CommonModule, RouterModule],
   exports: [
     BackComponent,
+    CarrouselComponent,
     CollapserComponent,
+    LecteurAudioComponent,
     ListComponent,
     ListBGComponent,
+    LoaderComponent,
     TuileHComponent,
     TuileVComponent,
     ImageTextComponent,
