@@ -18,7 +18,7 @@
 </header>
 
 <main>
-    <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader>
+  <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader>
   <section *ngIf="oeuvre?.diaporama">
     <app-carrousel [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
   </section>
