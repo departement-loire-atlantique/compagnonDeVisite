@@ -13,7 +13,7 @@ export class OverlayTutoComponent implements OnInit {
   @Input()
   isIcon: boolean | undefined;
 
-  title: string = "Tutoriel";
+  title: string = $localize`:@@OverlayTutoComp-titre:Tutoriel`;
   icon: string = "icon-info";
 
   pager: JcmsPager<FaqEntry> | undefined;

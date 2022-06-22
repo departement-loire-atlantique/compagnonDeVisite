@@ -11,7 +11,7 @@ export class OverlayMapComponent implements OnInit {
   @Input()
   image:string | undefined;
 
-  title: string = "Carte";
+  title: string = $localize`:@@OverlayMapComp-titre:Carte`;
 
   constructor(
     private _ds: DesignSystemService) { }

@@ -15,14 +15,14 @@ export class BackComponent {
    * Default: Retour
    */
   @Input()
-  text: string = 'Retour';
+  text: string = $localize`:@@BackComp-text:Retour`;
 
   /**
    * Titre du lien.
    * Default: Retour à la page précédente
    */
   @Input()
-  titleLink: string = 'Retour à la page précédente';
+  titleLink: string = $localize`:@@BackComp-link-title:Retour à la page précédente`;
 
   /**
    * icon du lien.

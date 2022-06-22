@@ -12,6 +12,7 @@
           <a href="/" class="ds44-logoContainer">
             <picture class="ds44-logo"><img
                 src="https://billetterie-grand-patrimoine.loire-atlantique.fr/light_custom/lightTheme/Logo_GPLA.jpg"
+                i18n-alt="@@HeaderGpComp-back-to-home"
                 alt="Retour à la page d&apos;accueil - Site internet du Château de Clisson" /></picture>
           </a>
 
@@ -19,12 +20,12 @@
         <div class="ds44-colRight">
 
           <a [href]="this.urlLanguage" class="ds44-btnIcoText--maxi ds44--xl-padding"
-            title="English version : consultez la version anglaise du site Château de Clisson"><span
-              class="ds44-btnInnerText" lang="en">Langue</span><i class="icon icon-french icon--large"
+            i18n-title="@@HeaderGpComp-change-lang-link-title"
+            title="Changer de langue"><span
+              class="ds44-btnInnerText" i18n="@@HeaderGpComp-change-lang-link">Langue</span><i class="icon icon-french icon--large"
               aria-hidden="true"></i></a>
 
-          <button type="button" class="ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding" id="open-search"
-            aria-label="Ouvrir la zone de recherche"><span class="ds44-btnInnerText">Favoris</span><i
+          <button type="button" class="ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding" id="open-search"><span class="ds44-btnInnerText" i18n="@@HeaderGpComp-fav">Favoris</span><i
               class="icon icon-star-empty icon--large" aria-hidden="true"></i></button>
 
 
