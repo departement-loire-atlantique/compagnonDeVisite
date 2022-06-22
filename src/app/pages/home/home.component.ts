@@ -1,4 +1,5 @@
 import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { Item } from 'src/app/models/item';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -8,12 +9,12 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent implements OnInit {
 
-  private _nextPageRoute: string = "/TODO";
+  private _nextPageRoute: string = "/themes";
 
   languages = [
-    { lbl: 'FR', url: '/fr' + this._nextPageRoute, img:'🇫🇷' },
-    { lbl: 'EN', url: '/en' + this._nextPageRoute, img:'🇬🇧'  },
-    { lbl: 'LSF', url: '/fr-LSF' + this._nextPageRoute, img:'👋'  }
+    { lbl: 'FR', url: '/fr' + this._nextPageRoute, img: '🇫🇷' },
+    { lbl: 'EN', url: '/en' + this._nextPageRoute, img: '🇬🇧' },
+    { lbl: 'LSF', url: '/fr-LSF' + this._nextPageRoute, img: '👋' }
   ];
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
@@ -27,6 +28,19 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     console.log('TODO Home');
     console.log(this.locale);
+  }
+
+  getItem(): Item[] {
+    let items: Item[] = [];
+    for (let lang of this.languages) {
+      let item: Item = {
+        lbl: lang.lbl,
+        img: lang.img,
+        url: lang.url
+      };
+      items.push(item);
+    }
+    return items;
   }
 
 }

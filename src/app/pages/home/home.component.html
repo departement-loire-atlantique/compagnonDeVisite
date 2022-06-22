@@ -1,13 +1,11 @@
-<h1 i18n="home page title@@home-title">Bienvenue sur le compagnon de visite.</h1>
+<app-header-gp></app-header-gp>
 
-<p i18n="home page sub title@@home-sub-title">Sélectionnez votre langue</p>
+<main>
 
- TODO component list
-<ul>
-  <li *ngFor="let lang of languages">
-    <a [href]="lang.url">{{lang.img}} {{lang.lbl}}</a>
-  </li>
-</ul>
+  <h1 class="underline" i18n="home page title@@home-title">Bienvenue sur le compagnon de visite.</h1>
 
-<a class="btn btn-big" [routerLink]="'/themes/'">Themes
-</a>
+  <p class="ds44-introduction ds44-centeredBlock" i18n="home page sub title@@home-sub-title">Sélectionnez votre langue</p>
+
+  <app-list [items]="getItem()"></app-list>
+
+</main>
