@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
   jcms: 'TODO',
-  token: 'TODO'
+  token: 'TODO',
+  catHome: 'TODO',
 };

@@ -21,11 +21,11 @@
         "locales": {
           "en": {
             "translation": "src/locale/messages.en.xlf",
-            "baseHref": ""
+            "baseHref": "/en/"
           },
-          "fr-lsf": {
+          "fr-LSF": {
             "translation": "src/locale/messages.xlf",
-            "baseHref": ""
+            "baseHref": "/fr-LSF/"
           }
         }
       },
@@ -82,7 +82,7 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "localize": false,
+              "localize": ["fr"],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -97,7 +97,13 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "localize": false
+              "localize": ["fr"]
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "fr-lsf": {
+              "localize": ["fr-LSF"]
             }
           },
           "defaultConfiguration": "production"
@@ -113,6 +119,12 @@
             },
             "development": {
               "browserTarget": "CompagnonDeVisite:build:development"
+            },
+            "en": {
+              "browserTarget": "CompagnonDeVisite:build:en"
+            },
+            "fr-lsf": {
+              "browserTarget": "CompagnonDeVisite:build:fr-lsf"
             }
           },
           "defaultConfiguration": "development"
