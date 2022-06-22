@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { JAngularService } from 'j-angular';
-import { Carousel, CarouselElement } from 'src/app/models/carousel';
+import { Carousel, CarouselElement } from 'src/app/models/jcms/carousel';
 import { DesignSystemService } from 'src/app/services/design-system.service';
 import { environment } from 'src/environments/environment';
 

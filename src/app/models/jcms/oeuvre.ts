@@ -1,4 +1,3 @@
-import { Observable } from "rxjs";
 import { Carousel } from "./carousel";
 import { Content } from "./content";
 

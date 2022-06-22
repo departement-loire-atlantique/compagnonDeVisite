@@ -2,8 +2,9 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
-import { Content } from 'src/app/models/content';
+import { Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
+import { Oeuvre } from 'src/app/models/jcms/oeuvre';
 
 @Component({
   selector: 'app-explore',
@@ -16,12 +17,11 @@ import { DesignSystemService } from 'src/app/services/design-system.service';
 export class ExploreComponent implements OnInit, AfterViewInit {
 
   text!: string;
-
   researchRun: boolean = false;
-
   result: any[] | undefined;
-
   pager: JcmsPager<Content> | undefined;
+  plan!: string;
+  oeuvreTmp!: Oeuvre;
 
   constructor(
     private _jcms: JAngularService,
@@ -72,8 +72,13 @@ export class ExploreComponent implements OnInit, AfterViewInit {
       const contents = pager.dataInPage;
 
       for (let itContent of contents) {
+        console.log(itContent.class);
+     /*   if (itContent.class === "generated.Oeuvre") {
+          this.oeuvreTmp.diaporama?.elements1[1] =
+        }*/
         this.result.push({
           lbl: itContent.title,
+          img: itContent.class,
           url: '/explore/oeuvre/'+itContent.id,
         });
         sessionStorage.setItem('textExplore', this.text ? this.text : '');
@@ -105,5 +110,16 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     if (this.pager) {
       this.processResult(this.pager.next());
     }
+  }
+
+  /**
+   * Get le plan du parcours
+   * @returns la plan
+   */
+  public getPlan() {
+    if (!this.plan)
+      return "";
+
+    return this.plan;
   }
 }
