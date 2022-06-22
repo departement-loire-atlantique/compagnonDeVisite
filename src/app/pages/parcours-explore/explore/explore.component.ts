@@ -4,7 +4,8 @@ import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { Oeuvre } from 'src/app/models/jcms/oeuvre';
+import { OeuvreExplore } from 'src/app/models/jcms/oeuvreExplore';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-explore',
@@ -20,8 +21,8 @@ export class ExploreComponent implements OnInit, AfterViewInit {
   researchRun: boolean = false;
   result: any[] | undefined;
   pager: JcmsPager<Content> | undefined;
-  plan!: string;
-  oeuvreTmp!: Oeuvre;
+  //plan!: string; <- Faire apparaître l'icône carte
+  plan: string = ' ';
 
   constructor(
     private _jcms: JAngularService,
@@ -33,7 +34,6 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     this._route.paramMap.subscribe((params) => {
       if (params.get('text')) {
         this.text = params.get('text') || '';
-        this.research();
       }
     });
   }
@@ -42,6 +42,10 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     this._ds.initForm();
   }
 
+  /**
+   * Lance la recherche du HTML
+   * @returns
+   */
   public research(): void {
     this.result = undefined;
     this.pager = undefined;
@@ -55,13 +59,17 @@ export class ExploreComponent implements OnInit, AfterViewInit {
       this._jcms.getPager<Content>('search', {
         params: {
           text: this.text,
-          types: ['Oeuvre'],
+          types: ['OeuvreExplore'],
           exactType: true,
         },
       })
     );
   }
 
+  /**
+   *
+   * @param obs
+   */
   public processResult(obs: Observable<JcmsPager<Content>>) {
     obs.subscribe((pager: JcmsPager<Content>) => {
       if (!this.result) {
@@ -72,16 +80,15 @@ export class ExploreComponent implements OnInit, AfterViewInit {
       const contents = pager.dataInPage;
 
       for (let itContent of contents) {
-        console.log(itContent.class);
-     /*   if (itContent.class === "generated.Oeuvre") {
-          this.oeuvreTmp.diaporama?.elements1[1] =
-        }*/
-        this.result.push({
-          lbl: itContent.title,
-          img: itContent.class,
-          url: '/explore/oeuvre/'+itContent.id,
+        this._jcms.get<OeuvreExplore>('data/' + itContent.id).subscribe(res => {
+          this.result?.push({
+            lbl: itContent.title,
+            img: environment.jcms+res.vignette,
+            url: '/explore/oeuvre/' + itContent.id,
+          });
+          // Sauvegarde de la recherche si on clique sur une oeuvre
+          sessionStorage.setItem('textExplore', this.text );
         });
-        sessionStorage.setItem('textExplore', this.text ? this.text : '');
       }
       this.researchRun = false;
 
@@ -89,23 +96,32 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   *
+   * @returns Nombre de résultat(s)
+   */
   public lblNbResult(): string {
     if (this.result) {
       if (this.result.length <= 0) {
         return 'Oups, il n’y a pas de résultat. Merci de préciser ou reformuler ta recherche';
       }
-      if (this.result.length == 1) {
+  /*    if (this.result.length == 1) {
+        this.isResult = false;
         return 'Il y a 1 résultat';
       }
+      this.isResult = false;
       return (
         'Il y a ' +
         (this.pager ? this.pager.total : this.result.length) +
         ' résultats'
-      );
+      );*/
     }
     return '';
   }
 
+  /**
+   * pager sans fin
+   */
   public moreResult() {
     if (this.pager) {
       this.processResult(this.pager.next());
@@ -121,5 +137,12 @@ export class ExploreComponent implements OnInit, AfterViewInit {
       return "";
 
     return this.plan;
+  }
+
+  /**
+   * Url de retour
+   */
+  public returnUrl() {
+    return '/themes'
   }
 }
