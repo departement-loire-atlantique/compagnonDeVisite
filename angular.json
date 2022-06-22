@@ -82,7 +82,7 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "localize": false,
+              "localize": ["fr"],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
