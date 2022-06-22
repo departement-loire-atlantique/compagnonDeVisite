@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
-import { Oeuvre } from 'src/app/models/jcms/oeuvre';
+import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
 
 @Component({
   selector: 'app-oeuvre',
@@ -13,7 +13,7 @@ import { Oeuvre } from 'src/app/models/jcms/oeuvre';
  */
 export class OeuvreComponent implements OnInit, OnDestroy {
 
-  oeuvre!: Oeuvre | undefined;
+  oeuvre!: OeuvreExplore | undefined;
   isAudioEnded: boolean = false;
   urlRetour!: string;
 
@@ -29,8 +29,8 @@ export class OeuvreComponent implements OnInit, OnDestroy {
     this._route.paramMap.subscribe((params) => {
       const id = params.get('id');
       this._jcms
-          .get<Oeuvre>('data/' + id)
-          .subscribe((oeuvre: Oeuvre) => {
+          .get<OeuvreExplore>('data/' + id)
+          .subscribe((oeuvre: OeuvreExplore) => {
             this.oeuvre = oeuvre;
         });
       });
