@@ -36,7 +36,11 @@ export class OeuvreComponent implements OnInit, OnDestroy {
             this.oeuvre = oeuvre;
         });
       });
-      this.returnUrl = '/explore/' + sessionStorage.getItem('textExplore');
+
+      this.returnUrl = '/explore/';
+      if (sessionStorage.getItem('textExplore') != undefined) {
+        this.returnUrl += sessionStorage.getItem('textExplore');
+      }
       sessionStorage.removeItem('textExplore');
   }
 
@@ -44,7 +48,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    * Détection fin audio
    * @param event
    */
-  changeAudioEnd(event: any) {
+  public changeAudioEnd(event: any) {
     this.isAudioEnded = event;
   }
 

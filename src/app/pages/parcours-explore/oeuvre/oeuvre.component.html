@@ -3,9 +3,8 @@
   <div class="upper">
     <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader>
     <app-carrousel *ngIf="oeuvre?.diaporama" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
-    <span *ngIf="oeuvre?.description">{{ oeuvre?.description }}</span>
   </div>
   <div class="mainAudio" *ngIf="oeuvre?.fichierSon">
-    <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)"></app-lecteur-audio>
+    <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" ></app-lecteur-audio>
   </div>
 </main>

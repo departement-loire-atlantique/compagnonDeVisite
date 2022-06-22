@@ -30,6 +30,7 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.state.readableCurrentTime = '0';
+    this.state.currentTime = 0;
     of(this.file).subscribe(url => { this.files = [ { name: this.name, artist: '', url: url}]; });
     const file = this.files[0];
     this.openFile(file, 0);
@@ -46,10 +47,6 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
         this.next();
       }*/
       this.audioEnded.emit(this.state.ended);
-
-      if( this.state.ended) {
-        this.pause();
-      }
     });
   }
 

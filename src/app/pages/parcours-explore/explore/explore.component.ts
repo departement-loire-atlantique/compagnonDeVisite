@@ -86,7 +86,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
             img: environment.jcms+res.vignette,
             url: '/explore/oeuvre/' + itContent.id,
           });
-          // Sauvegarde de la recherche si on clique sur une oeuvre
+          // Sauvegarde du champ de la recherche si on clique sur une oeuvre
           sessionStorage.setItem('textExplore', this.text );
         });
       }
