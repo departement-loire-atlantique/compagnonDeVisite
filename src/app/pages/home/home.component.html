@@ -1,8 +1,12 @@
-<p>home works!</p>
+<h1 i18n="home page title@@home-title">Bienvenue sur le compagnon de visite.</h1>
+
+<p i18n="home page sub title@@home-sub-title">Sélectionnez votre langue</p>
+
+ TODO component list
 <ul>
-  <li>FR</li>
-  <li>EN</li>
-  <li>...</li>
+  <li *ngFor="let lang of languages">
+    <a [href]="lang.url">{{lang.img}} {{lang.lbl}}</a>
+  </li>
 </ul>
 
 <a class="btn btn-big" [routerLink]="'/themes/'">Themes
