@@ -12,9 +12,9 @@ export class HomeComponent implements OnInit {
   private _nextPageRoute: string = "/themes";
 
   languages = [
-    { lbl: 'FR', url: '/fr' + this._nextPageRoute, img: '🇫🇷' },
-    { lbl: 'EN', url: '/en' + this._nextPageRoute, img: '🇬🇧' },
-    { lbl: 'LSF', url: '/fr-LSF' + this._nextPageRoute, img: '👋' }
+    { lbl: 'FR', url: '/fr' + this._nextPageRoute, img: '🇫🇷', isPicto: true },
+    { lbl: 'EN', url: '/en' + this._nextPageRoute, img: '🇬🇧', isPicto: true },
+    { lbl: 'LSF', url: '/fr-LSF' + this._nextPageRoute, img: '👋', isPicto: true }
   ];
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
@@ -36,7 +36,8 @@ export class HomeComponent implements OnInit {
       let item: Item = {
         lbl: lang.lbl,
         img: lang.img,
-        url: lang.url
+        url: lang.url,
+        isPicto: lang.isPicto,
       };
       items.push(item);
     }

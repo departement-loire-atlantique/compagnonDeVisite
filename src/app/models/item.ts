@@ -3,4 +3,5 @@ export interface Item {
   url?: string;
   prefix?: string;
   img?: string;
+  isPicto?: boolean;
 }

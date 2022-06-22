@@ -1,12 +1,10 @@
-<ul
-  *ngIf="items && items.length > 0"
-  [class]="'ds44-list ' + (cssClass ? cssClass : '')"
->
+<ul *ngIf="items && items.length > 0" [class]="'ds44-list ' + (cssClass ? cssClass : '')">
   <li *ngFor="let itItem of items" [class.with-separator]="!noSeparator">
     <ng-template #content>
       <span class="lbl-link-wrapper">
         <span *ngIf="itItem.prefix" class="lbl-prefix">{{ itItem.prefix }}</span>
-        <img *ngIf="itItem.img" [src]="itItem.img" aria-hidden="true" />
+        <img *ngIf="itItem.img && !itItem.isPicto" [src]="itItem.img" aria-hidden="true" />
+        <span *ngIf="itItem.img && itItem.isPicto" class="img-pitco" aria-hidden="true">{{ itItem.img }}</span>
         <span class="lbl-link" [class.is--bold]="isBold">{{ itItem.lbl }}</span>
       </span>
     </ng-template>
