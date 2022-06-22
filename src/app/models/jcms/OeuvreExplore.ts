@@ -19,6 +19,8 @@ import { Content } from "./content";
 
   fichierSonDaide: string | undefined,
 
+  vignette: string | undefined,
+
     /**
    * Category
    */
