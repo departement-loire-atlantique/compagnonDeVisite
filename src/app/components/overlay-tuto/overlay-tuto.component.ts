@@ -14,6 +14,7 @@ export class OverlayTutoComponent implements OnInit {
   isIcon: boolean | undefined;
 
   title: string = $localize`:@@OverlayTutoComp-titre:Tutoriel`;
+  closeTxt = $localize `:@@OverlayTutoComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
   icon: string = "icon-info";
 
   pager: JcmsPager<FaqEntry> | undefined;

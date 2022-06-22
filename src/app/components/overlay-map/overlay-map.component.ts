@@ -13,6 +13,8 @@ export class OverlayMapComponent implements OnInit {
 
   title: string = $localize`:@@OverlayMapComp-titre:Carte`;
 
+  closeTxt = $localize `:@@OverlayMapComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
+
   constructor(
     private _ds: DesignSystemService) { }
 
