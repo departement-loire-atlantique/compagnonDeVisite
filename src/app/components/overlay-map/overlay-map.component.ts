@@ -11,7 +11,9 @@ export class OverlayMapComponent implements OnInit {
   @Input()
   image:string | undefined;
 
-  title: string = "Carte";
+  title: string = $localize`:@@OverlayMapComp-titre:Carte`;
+
+  closeTxt = $localize `:@@OverlayMapComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
 
   constructor(
     private _ds: DesignSystemService) { }
