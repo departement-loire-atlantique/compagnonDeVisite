@@ -1,7 +1,7 @@
 <app-header-parcours></app-header-parcours>
 
 <main>
-  <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()"></app-carrousel>
+  <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()"></app-carrousel>
 
   <div class="bg-color">
     <div class="ds44-flex-container ds44-flex-valign-center">

@@ -21,6 +21,7 @@ export class OeuvreComponent implements OnInit {
   nextEtapeUrl: string | undefined;
   indexEtape: number = Number(this._route.snapshot.paramMap.get('index'));
 
+  json:any|undefined;
   finParcours:boolean = false;
 
   constructor(
@@ -47,9 +48,9 @@ export class OeuvreComponent implements OnInit {
   private initEtape() {
     let etapeStore = localStorage.getItem(this.listEtape);
     if (etapeStore) {
-      let json = JSON.parse(etapeStore);
-      this.setEtapeState(json, this.indexEtape);
-      this.setNextStepUrl(json, this.indexEtape);
+      this.json = JSON.parse(etapeStore);
+      this.setEtapeState(this.json, this.indexEtape);
+      this.setNextStepUrl(this.json, this.indexEtape);
     }
   }
 
@@ -100,6 +101,10 @@ export class OeuvreComponent implements OnInit {
 
   public getIndexNextStep() {
     return this.indexEtape + 2;
+  }
+
+  public getTextEtape() {
+    return "Etape " + (this.indexEtape+1) + ' / ' + this.json.length;
   }
 
 }
