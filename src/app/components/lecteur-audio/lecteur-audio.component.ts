@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { AudioState } from 'src/app/interfaces/audio-state';
+import { AudioState } from 'src/app/models/audio-state';
 import { AudioService } from 'src/app/services/audio.service';
 import { EventEmitter } from '@angular/core';
 import { Observable, of, Subscription } from 'rxjs';

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable, BehaviorSubject, Subject } from "rxjs";
 import { takeUntil } from "rxjs/operators";
-import { AudioState } from "../interfaces/audio-state";
+import { AudioState } from "../models/audio-state";
 
 @Injectable({
   providedIn: "root"
