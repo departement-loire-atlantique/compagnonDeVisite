@@ -19,6 +19,7 @@ import { OverlayMapComponent } from './overlay-map/overlay-map.component';
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { LecteurAudioComponent } from './lecteur-audio/lecteur-audio.component';
 import { LoaderComponent } from './loader/loader.component';
+import { HeaderExploreComponent } from './header-explore/header-explore.component';
 
 @NgModule({
   declarations: [
@@ -33,12 +34,14 @@ import { LoaderComponent } from './loader/loader.component';
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,
+    HeaderExploreComponent,
     HeaderGpComponent,
     OverlayTutoComponent,
     MenuComponent,
     HeaderParcoursComponent,
     EtapesComponent,
-    OverlayMapComponent
+    OverlayMapComponent,
+    HeaderExploreComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -53,6 +56,7 @@ import { LoaderComponent } from './loader/loader.component';
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,
+    HeaderExploreComponent,
     HeaderGpComponent,
     OverlayTutoComponent,
     MenuComponent,

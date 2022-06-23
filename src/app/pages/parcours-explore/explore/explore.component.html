@@ -1,47 +1,72 @@
-<header>
-  HEADER
-</header>
+<app-header-explore [imagePlan]="getPlan()" [customProcess]="true" [returnUrl]="returnUrl()"></app-header-explore>
+
 <main>
-  <form (ngSubmit)="research()" data-is-ajax="true">
-    <div class="ds44-form__container">
-      <div class="ds44-posRel">
-        <label  for="form-element-92873" class="ds44-formLabel">
-          <span class="ds44-labelTypePlaceholder">
-            <span>Ta recherche<sup aria-hidden="true">*</sup></span>
-          </span>
-        </label>
-        <input  type="text"
-                id="form-element-92873"
-                name="form-element-92873"
-                class="ds44-inpStd"
-                title="Champ standard - obligatoire"
-                required
-                [(ngModel)]="text"/>
-        <button class="ds44-reset" type="button">
-          <i class="icon icon-cross icon--sizeL" aria-hidden="true"></i>
-          <span class="visually-hidden">Effacer le contenu saisi dans le champ : Ta recherche</span>
-        </button>
+  <h1 class="underline">J'explore</h1>
+
+  <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite">
+  </div>
+  <div class="ds44-loader hidden">
+    <div class="ds44-loader-body">
+      <svg class="ds44-loader-circular" focusable="false" aria-hidden="true">
+        <circle class="ds44-loader-path" cx="30" cy="30" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
+      </svg>
+    </div>
+  </div>
+  <div class="ds44-facette">
+    <div class="ds44-facette-body">
+      <form data-is-ajax="true" data-auto-load="true" (ngSubmit)="research()">
+      <div class="ds44-facetteContainer ds44-flex-container ds44-medium-flex-col">
+        <div class="ds44-fieldContainer ds44-fg1">
+          <div class="ds44-form__container">
+            <div class="ds44-posRel">
+              <label  for="form-element-48085" class="ds44-formLabel">
+                <span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge">
+                  <span>Votre recherche</span>
+                </span>
+              </label>
+              <input  type="text"
+                      id="form-element-48085"
+                      name="form-element-48085"
+                      class="ds44-inpLarge"
+                      title="Zone de saisie de votre recherche"
+                      aria-describedby="idTitre1"
+                      [(ngModel)]="text"
+                      required/>
+              <button class="ds44-reset" type="button">
+                <i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i>
+                <span class="visually-hidden">Effacer le contenu saisi dans le champ : Votre recherche</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="ds44-fieldContainer ds44-small-fg1">
+            <button class="ds44-btnStd ds44-theme ds44-btnStd--large" title="Lancer la recherche" [disabled]="researchRun" type="submit">
+              <span class="ds44-btnInnerText">Rechercher</span>
+              <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+            </button>
+        </div>
       </div>
+      </form>
     </div>
-    <div class="btn-wrapper">
-      <button class="btn btn-big" [disabled]="researchRun" type="submit">Rechercher</button>
-    </div>
-  </form>
+  </div>
 
   <section class="search-result">
-    <h3 *ngIf="!researchRun" class="search-result-info">
+    <h3 class="search-result-info">
       {{ lblNbResult() }}
     </h3>
 
-    <section *ngFor="let itResult of result; index as i">
-      {{ itResult.title }}
-      <a routerLink="{{ itResult.url}}">{{ itResult.lbl }}</a>
-    </section>
-
     <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
 
-    <button *ngIf="pager && pager.hasMore()" [disabled]="researchRun" (click)="moreResult()" class="btn btn-big" type="button" title="Afficher plus de résultat">
-      <span class="ds44-btnInnerText">Plus de résultat</span><i class="icon icon-long-arrow-right" aria-hidden="true"></i>
+    <app-tuile-h *ngFor="let item of result " [items]="item.item"></app-tuile-h>
+    <div class="ds44-posBot">
+    <button *ngIf="pager && pager.hasMore()"
+            [disabled]="researchRun"
+            (click)="moreResult()"
+            class="ds44-fullWBtn ds44-btn--invert"
+            type="button"
+            title="Afficher plus de résultat">
+      <span class="ds44-btnInnerText">Plus de résultat</span><i class="icon icon-down" aria-hidden="true"></i>
     </button>
+    </div>
   </section>
 </main>

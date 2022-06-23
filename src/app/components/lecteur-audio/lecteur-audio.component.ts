@@ -2,7 +2,7 @@ import { Component, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { AudioState } from 'src/app/models/audio-state';
 import { AudioService } from 'src/app/services/audio.service';
 import { EventEmitter } from '@angular/core';
-import { Observable, of, Subscription } from 'rxjs';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-lecteur-audio',
@@ -30,6 +30,7 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.state.readableCurrentTime = '0';
+    this.state.currentTime = 0;
     of(this.file).subscribe(url => { this.files = [ { name: this.name, artist: '', url: url}]; });
     const file = this.files[0];
     this.openFile(file, 0);
@@ -46,10 +47,6 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
         this.next();
       }*/
       this.audioEnded.emit(this.state.ended);
-
-      if( this.state.ended) {
-        this.pause();
-      }
     });
   }
 

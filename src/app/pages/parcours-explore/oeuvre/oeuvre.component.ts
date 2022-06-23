@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { OeuvreExplore } from 'src/app/models/jcms/oeuvreExplore';
@@ -15,7 +15,8 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   oeuvre!: OeuvreExplore | undefined;
   isAudioEnded: boolean = false;
-  urlRetour!: string;
+  //plan!: string; <- Faire apparaître l'icône carte
+  plan: string = ' ';
 
   constructor(
               private _route: ActivatedRoute,
@@ -34,11 +35,24 @@ export class OeuvreComponent implements OnInit, OnDestroy {
             this.oeuvre = oeuvre;
         });
       });
-      this.urlRetour = '/explore/' + sessionStorage.getItem('textExplore');
   }
 
-  // Détection fin audio
-  changeAudioEnd(event: any) {
+  /**
+   * Détection fin audio
+   * @param event
+   */
+  public changeAudioEnd(event: any) {
     this.isAudioEnded = event;
   }
+
+  /**
+   * Get le plan du parcours
+   * @returns la plan
+   */
+     public getPlan() {
+      if (!this.plan)
+        return "";
+
+      return this.plan;
+    }
 }
