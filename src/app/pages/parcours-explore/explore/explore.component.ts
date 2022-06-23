@@ -42,6 +42,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
     if (resultRetrieveSessionStorage !== '') {
       // retrouve la recherche
+      // TODO Gestion du pager
       this.resultRetrieve = resultRetrieveSessionStorage;
       this.text = this.resultRetrieve[0].searchField;
       this.result = this.resultRetrieve;
@@ -75,7 +76,6 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     }
 
     this.result = [];
-    this.pager = undefined;
     this.researchRun = true;
 
     this.processResult(
@@ -165,7 +165,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
 }
 
 /**
- *
+ * Gestion mémoire de la recherche
  */
  export interface Search {
   searchField: string,
