@@ -15,7 +15,6 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   oeuvre!: OeuvreExplore | undefined;
   isAudioEnded: boolean = false;
-  returnUrl!: string;
   //plan!: string; <- Faire apparaître l'icône carte
   plan: string = ' ';
 
@@ -36,12 +35,6 @@ export class OeuvreComponent implements OnInit, OnDestroy {
             this.oeuvre = oeuvre;
         });
       });
-
-      this.returnUrl = '/explore/';
-      if (sessionStorage.getItem('textExplore') != undefined) {
-        this.returnUrl += sessionStorage.getItem('textExplore');
-      }
-      sessionStorage.removeItem('textExplore');
   }
 
   /**

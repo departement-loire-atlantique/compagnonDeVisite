@@ -57,7 +57,7 @@
 
     <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
 
-    <app-tuile-h [items]="result"></app-tuile-h>
+    <app-tuile-h *ngFor="let item of result " [items]="item.item"></app-tuile-h>
     <div class="ds44-posBot">
     <button *ngIf="pager && pager.hasMore()"
             [disabled]="researchRun"
