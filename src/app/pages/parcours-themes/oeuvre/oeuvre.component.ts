@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
+import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
 
 @Component({
   selector: 'app-oeuvre',
@@ -9,18 +11,45 @@ import { State } from 'src/app/components/etapes/etapes.component';
 })
 export class OeuvreComponent implements OnInit {
 
+  oeuvre: OeuvreExplore | undefined;
+
+  hasLoaded: boolean = false;
+
+  listEtape: string = "listEtape";
+  idParcours: string = "idParcours";
+
+  nextEtapeUrl: string | undefined;
+  indexEtape: number = Number(this._route.snapshot.paramMap.get('index'));
+
+  finParcours:boolean = false;
+
   constructor(
+    private _jcms: JAngularService,
+    private router: Router,
     private _route: ActivatedRoute) { }
 
-  /**
-   * recupère les étapes dans le localStorage
-   */
   ngOnInit(): void {
-    let i: number = Number(this._route.snapshot.paramMap.get('index'));
-    let etapeStore = localStorage.getItem("etape");
+    this.initEtape();
+    this.initOeuvre();
+  }
+
+  private initOeuvre() {
+    let idOeuvre = this._route.snapshot.paramMap.get('id');
+    this._jcms.get<OeuvreExplore>('data/' + idOeuvre).subscribe(o => {
+      this.oeuvre = o;
+      this.hasLoaded = true;
+    });
+  }
+
+  /**
+     * recupère les étapes dans le localStorage
+     */
+  private initEtape() {
+    let etapeStore = localStorage.getItem(this.listEtape);
     if (etapeStore) {
       let json = JSON.parse(etapeStore);
-      this.setEtapeState(json, i);
+      this.setEtapeState(json, this.indexEtape);
+      this.setNextStepUrl(json, this.indexEtape);
     }
   }
 
@@ -36,7 +65,41 @@ export class OeuvreComponent implements OnInit {
     } else if (json[i + 1] == undefined) {
       json[i].state = State.passed;
     }
-    localStorage.setItem("etape", JSON.stringify(json));
+
+    localStorage.setItem(this.listEtape, JSON.stringify(json));
+  }
+
+  private setNextStepUrl(json: any, i: number) {
+    if(json[i+1] != undefined) {
+      this.nextEtapeUrl = json[i+1].item.url;
+    } else {
+      this.finParcours = true;
+      this.nextEtapeUrl = 'parcours/' + localStorage.getItem(this.idParcours);
+    }
+  }
+
+  public getTitle() {
+    return this.oeuvre?.title;
+  }
+
+  public getCarousel() {
+    return this.oeuvre?.diaporama;
+  }
+
+  public getCarouselId() {
+    return this.oeuvre?.diaporama?.id;
+  }
+
+  public getAudio() {
+    return this.oeuvre?.fichierSon;
+  }
+
+  public getAudioAide() {
+    return this.oeuvre?.fichierSonDaide;
+  }
+
+  public getIndexNextStep() {
+    return this.indexEtape + 2;
   }
 
 }
