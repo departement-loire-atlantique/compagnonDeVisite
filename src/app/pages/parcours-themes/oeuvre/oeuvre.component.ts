@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
 import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { DesignSystemService } from 'src/app/services/design-system.service';
 
 @Component({
   selector: 'app-oeuvre',
@@ -25,11 +26,13 @@ export class OeuvreComponent implements OnInit {
   finParcours:boolean = false;
 
   constructor(
+    private _ds: DesignSystemService,
     private _jcms: JAngularService,
     private router: Router,
     private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this._ds.initCollapser();
     this.initEtape();
     this.initOeuvre();
   }
@@ -75,7 +78,7 @@ export class OeuvreComponent implements OnInit {
       this.nextEtapeUrl = json[i+1].item.url;
     } else {
       this.finParcours = true;
-      this.nextEtapeUrl = 'parcours/' + localStorage.getItem(this.idParcours);
+      this.nextEtapeUrl = this. getHomeParcours();
     }
   }
 
@@ -105,6 +108,10 @@ export class OeuvreComponent implements OnInit {
 
   public getTextEtape() {
     return "Etape " + (this.indexEtape+1) + ' / ' + this.json.length;
+  }
+
+  public getHomeParcours() {
+    return 'parcours/' + localStorage.getItem(this.idParcours);
   }
 
 }

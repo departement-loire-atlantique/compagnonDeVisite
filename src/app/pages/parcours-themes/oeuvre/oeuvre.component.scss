@@ -1,17 +1,71 @@
 @import '/src/theme/importDep.scss';
 
 .bg-color {
-  background-color: $pink;
+  background-color: $main-color;
+
   .ds44-colRight {
-    margin: 10px;
     .nextStep {
-      span.ds44-btnInnerText, i, button {
+
+      span.ds44-btnInnerText,
+      i,
+      button {
         margin-right: 10px;
       }
+
       .number {
         border-color: $grey;
         background-color: $white;
       }
+    }
+  }
+}
+
+.btn-step {
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
+.carrousel-btn {
+  position: relative;
+
+  .ds44-alertMsg-container {
+
+    background-color: $white;
+    border: 2px solid $black;
+
+    position: absolute;
+    z-index: 200;
+    right: 0;
+    bottom:0;
+
+    margin-bottom: 10px;
+    margin-right: 10px;
+    max-width: 75%;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    p.ds44-card__title {
+      padding: 0 10px 0 0;
+      font-size: smaller;
+    }
+
+    button.ds44-collapser_button {
+      &:focus {
+        border: none;
+      }
+
+      padding: 7px 30px 7px 10px;
+      text-align: left;
+
+      .icon {
+        top: 1rem;
+      }
+    }
+
+    div.ds44-collapser_content {
+      background-color: $white;
     }
   }
 }

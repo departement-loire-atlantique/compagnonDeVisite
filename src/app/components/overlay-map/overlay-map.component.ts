@@ -9,7 +9,7 @@ import { DesignSystemService } from 'src/app/services/design-system.service';
 export class OverlayMapComponent implements OnInit {
 
   @Input()
-  image:string | undefined;
+  image:string | null = "";
 
   title: string = "Carte";
 

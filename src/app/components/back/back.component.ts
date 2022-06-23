@@ -50,8 +50,7 @@ export class BackComponent {
    */
   back() {
     if (this.customProcess) {
-      this._router.navigate(['/themes'])
-      // this._location.go('themes');
+       this._router.navigate(['/themes/'])
       // this.returnCustom.emit('return');
     } else {
       this._location.back();

@@ -54,6 +54,7 @@ export class ParcoursComponent implements OnInit {
       if (etapeStore && idParcoursStore == this.leParcours.id) {
         this.etapes = JSON.parse(etapeStore);
       } else {
+        localStorage.setItem("map", this.leParcours.plan);
         this.initEtape(this.leParcours.etapes.id);
       }
     });
@@ -105,7 +106,6 @@ export class ParcoursComponent implements OnInit {
    * @returns la liste d'observable
    */
   private getListContenus(contenus: Content[]) {
-    console.log(contenus);
     let observables: Observable<OeuvreExplore>[] = [];
     for (let contenu of contenus) {
       observables.push(this._jcms.get<OeuvreExplore>('data/' + contenu.id));
