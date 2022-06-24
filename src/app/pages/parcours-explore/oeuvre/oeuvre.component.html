@@ -7,4 +7,5 @@
   <div class="mainAudio" *ngIf="oeuvre?.fichierSon">
     <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" ></app-lecteur-audio>
   </div>
+  <div *ngIf="oeuvre?.description" class="visually-hidden">{{ oeuvre?.description }}</div>
 </main>
