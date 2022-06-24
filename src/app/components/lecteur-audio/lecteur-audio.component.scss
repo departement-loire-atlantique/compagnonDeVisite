@@ -1,12 +1,10 @@
-
 @import '/src/theme/importDep.scss';
 
 .lecteurAudio {
   background-color: $pink;
   display: flex;
-  padding-bottom: 20px;
 
-  .control{
+  .control {
 
     button {
       margin-left: 10px;
@@ -21,6 +19,7 @@
       opacity: 1;
     }
   }
+
   .slider {
     margin-left: 11px;
     margin-right: 10px;
@@ -28,7 +27,7 @@
     text-align: left;
 
     p {
-        margin-bottom: 0.2rem;
+      margin-bottom: 0.2rem;
     }
 
     input {
@@ -41,6 +40,49 @@
 
     .readableDuration {
       float: right;
+    }
+
+    .custom-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 100%;
+      height: 5px;
+      background: $white;
+      border-radius: 3px;
+
+      &::focus {
+        box-shadow: none;
+        outline: none;
+      }
+
+      /* Chrome */
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        width: 20px; /* Set a specific slider handle width */
+        height: 20px; /* Slider handle height */
+        border-radius: 50%;
+        border: 2px solid $black;
+        background: $white;
+      }
+
+      /* Firefox */
+      &::-moz-range-thumb {
+        border: none;
+        width: 20px; /* Set a specific slider handle width */
+        height: 20px; /* Slider handle height */
+        border-radius: 50%;
+        border: 2px solid $black;
+        background: $white;
+      }
+
+      &::-moz-range-progress {
+        background-color: $black;
+        border: 2px solid $black;
+        border-radius: 3px;
+      }
     }
   }
 

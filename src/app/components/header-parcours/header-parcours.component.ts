@@ -13,6 +13,9 @@ export class HeaderParcoursComponent {
   @Input()
   customProcess:boolean = false;
 
+  @Input()
+  backUrl:string | undefined;
+
   constructor() {
     if(this.imagePlan == "") {
       this.imagePlan = localStorage.getItem("map");

@@ -5,6 +5,10 @@
 
         <div class="ds44-colLeft">
           <app-back [customProcess]="customProcess" ></app-back>
+          <a *ngIf="backUrl" [href]="backUrl" type="button" class="ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component" data-target="#overlay-map" data-js="ds44-modal">
+            <span class="ds44-btnInnerText"> Fermer </span>
+            <i  class="icon icon--large icon-cross" aria-hidden="true"></i>
+          </a>
         </div>
 
         <div class="ds44-colRight">

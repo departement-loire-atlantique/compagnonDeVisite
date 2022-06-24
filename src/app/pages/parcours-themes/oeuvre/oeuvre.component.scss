@@ -2,6 +2,7 @@
 
 .bg-color {
   background-color: $main-color;
+  padding-bottom: 20px;
 
   .ds44-colRight {
     .nextStep {
@@ -10,6 +11,18 @@
       i,
       button {
         margin-right: 10px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      button {
+        min-height: 10px;
+        height: 33px;
+        width: 33px;
+        text-align: center;
+        padding: 0;
       }
 
       .number {
@@ -21,8 +34,7 @@
 }
 
 .btn-step {
-  padding: 10px;
-  padding-bottom: 20px;
+  padding: 15px 10px 25px;
 }
 
 .carrousel-btn {
@@ -31,7 +43,8 @@
   .ds44-alertMsg-container {
 
     background-color: $white;
-    border: 2px solid $black;
+    border: 1px solid $black;
+    border-radius: 3px;
 
     position: absolute;
     z-index: 200;

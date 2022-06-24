@@ -1,11 +1,11 @@
-<app-header-parcours></app-header-parcours>
+<app-header-parcours [backUrl]="getHomeParcours()"></app-header-parcours>
 
 <main>
 
 
   <div class="carrousel-btn">
 
-    <section class="ds44-alertMsg-container ">
+    <section *ngIf="!audio" class="ds44-alertMsg-container ">
       <div class="ds44-collapser">
           <div class="ds44-collapser_element">
               <p role="heading" aria-level="1">
@@ -31,11 +31,6 @@
   <div class="bg-color">
     <div class="ds44-flex-container ds44-flex-valign-center btn-step">
 
-      <div class="ds44-colLeft">
-        <a [href]="getHomeParcours()">
-          <button class="ds44-btnIco ds44-btnIco--carre"><i class="icon icon-home" aria-hidden="true"></i></button>
-        </a>
-      </div>
       <div class="ds44-colRight">
         <div *ngIf="finParcours;else next">
           <a [href]="this.nextEtapeUrl" class="nextStep">
@@ -53,6 +48,6 @@
       </div>
     </div>
 
-    <app-lecteur-audio *ngIf="hasLoaded" [file]="getAudio()" [name]="getTitle()"></app-lecteur-audio>
+    <app-lecteur-audio *ngIf="hasLoaded" (audioStarted)="setAudio($event)" [file]="getAudio()" [name]="getTitle()"></app-lecteur-audio>
   </div>
 </main>

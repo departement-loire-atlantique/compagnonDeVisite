@@ -124,6 +124,10 @@ export class ParcoursComponent implements OnInit {
     }
   }
 
+  /**
+   * Get l'id du parcours
+   * @returns l'id du parcours
+   */
   public getId() {
     if (!this.leParcours)
       return "";

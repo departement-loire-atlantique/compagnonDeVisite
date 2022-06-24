@@ -34,7 +34,6 @@ export class CarrouselComponent implements OnInit, AfterViewInit{
     if (!this.carousel && this.id) {
       this._jcms.get<Carousel>('data/' + this.id).subscribe((res: Carousel) => {
         this.carousel = res;
-        console.log(res);
         this.getFullElement();
       });
     } else {
