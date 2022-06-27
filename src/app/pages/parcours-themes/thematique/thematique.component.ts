@@ -59,7 +59,7 @@ export class ThematiqueComponent implements OnInit {
       for (let p of parcours) {
         this.listParcours?.push({
           lbl: p.title,
-          url: 'parcours/' + p.id,
+          url: p.jexplore ? 'explore/' : 'parcours/' + p.id,
         })
       }
     });
