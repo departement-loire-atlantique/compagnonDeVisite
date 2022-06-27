@@ -214,6 +214,16 @@ export class ParcoursComponent implements OnInit {
     return seenItem;
   }
 
+  public getItems() {
+    let items = [];
+    if (this.etapes) {
+      for (let etape of this.etapes) {
+        items.push(etape.item);
+      }
+    }
+    return items;
+  }
+
   /**
    * Get les étapes
    * @returns les étapes

@@ -3,9 +3,8 @@
 <main>
 
 
-  <div class="carrousel-btn">
-
-    <section *ngIf="!audio" class="ds44-alertMsg-container ">
+  <!-- <div class="carrousel-btn"> -->
+  <!-- <section *ngIf="!audio" class="ds44-alertMsg-container ">
       <div class="ds44-collapser">
           <div class="ds44-collapser_element">
               <p role="heading" aria-level="1">
@@ -17,15 +16,28 @@
                   </button>
               </p>
               <div class="ds44-collapser_content">
-                <!-- <app-lecteur-audio *ngIf="hasLoaded" [file]="getAudio()" [name]="getTitle()"></app-lecteur-audio> -->
+                <app-lecteur-audio *ngIf="hasLoaded && getAudioAide()" [test]="'aide'" [file]="getAudioAide()" [name]="'Se rendre au point'"></app-lecteur-audio>
                 <p> test </p>
+                <audio controls *ngIf="hasLoaded && getAudioAide()" class="audio-aide">
+                  <source [src]="getAudioAide()" type="audio/mp3">
+                </audio>
               </div>
           </div>
       </div>
-  </section>
-
+  </section> -->
+  <!-- </div> -->
+  <div class="detail-oeuvre">
     <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()">
     </app-carrousel>
+
+    <div class="indications">
+      <h3> Comment me rendre à l'étape " {{ getTitle() }} "</h3>
+
+        <p> Réécouter l'indication audio</p>
+        <app-lecteur-audio *ngIf="hasLoaded && getAudioAide()" [file]="getAudioAide()" [name]="" class="audio-help"></app-lecteur-audio>
+
+      <app-overlay-map [isIcon]="false"></app-overlay-map>
+    </div>
   </div>
 
   <div class="bg-color">
@@ -33,13 +45,13 @@
 
       <div class="ds44-colRight">
         <div *ngIf="finParcours;else next">
-          <a [href]="this.nextEtapeUrl" class="nextStep">
+          <a [href]="this.nextEtapeUrl" class="back-parcours">
             <button class="ds44-btnStd number"><span> Retour Parcours </span></button>
           </a>
         </div>
 
         <ng-template #next>
-          <a [href]="this.nextEtapeUrl" class="nextStep">
+          <a [href]="this.nextEtapeUrl" class="next-step">
             <span class="ds44-btnInnerText"> Suivant </span>
             <button class="ds44-btnStd number"><span> {{ getIndexNextStep() }}</span></button>
             <i class="icon icon-right" aria-hidden="true"></i>
@@ -48,6 +60,7 @@
       </div>
     </div>
 
-    <app-lecteur-audio *ngIf="hasLoaded" (audioStarted)="setAudio($event)" [file]="getAudio()" [name]="getTitle()"></app-lecteur-audio>
+    <app-lecteur-audio *ngIf="hasLoaded" (audioStarted)="setAudio($event)" [file]="getAudio()"
+      [name]="getTitle()"></app-lecteur-audio>
   </div>
 </main>

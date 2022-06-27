@@ -56,8 +56,10 @@ export class ThematiqueComponent implements OnInit {
         rep.dataSet.map((itData: any): Parcours => this.mapParcours.mapToParcours(itData))
       )
     ).subscribe((parcours: Parcours[]) => {
-      for (let p of parcours) {
-        this.listParcours?.push({
+      parcours.sort((a,b) => a.ordre - b.ordre);
+      for (let ind in parcours) {
+        let p = parcours[ind];
+        this.listParcours?.splice(Number(ind),0,{
           lbl: p.title,
           url: 'parcours/' + p.id,
         })

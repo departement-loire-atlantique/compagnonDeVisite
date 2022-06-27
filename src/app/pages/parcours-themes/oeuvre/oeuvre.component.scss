@@ -3,9 +3,12 @@
 .bg-color {
   background-color: $main-color;
   padding-bottom: 20px;
+  position: sticky;
+  bottom: 0;
+  z-index: 200;
 
   .ds44-colRight {
-    .nextStep {
+    .next-step {
 
       span.ds44-btnInnerText,
       i,
@@ -30,55 +33,103 @@
         background-color: $white;
       }
     }
+
+    .back-parcours {
+
+      span.ds44-btnInnerText,
+      i,
+      button {
+        margin-right: 10px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+
+      .number {
+        border-color: $grey;
+        background-color: $white;
+      }
+    }
   }
 }
 
 .btn-step {
-  padding: 15px 10px 25px;
+  padding: 15px 10px 15px;
 }
 
-.carrousel-btn {
-  position: relative;
+// .carrousel-btn {
+//   position: relative;
 
-  .ds44-alertMsg-container {
+//   .ds44-alertMsg-container {
 
-    background-color: $white;
-    border: 1px solid $black;
-    border-radius: 3px;
+//     background-color: $white;
+//     border: 1px solid $black;
+//     border-radius: 3px;
 
-    position: absolute;
-    z-index: 200;
-    right: 0;
-    bottom:0;
+//     position: absolute;
+//     z-index: 200;
+//     right: 0;
+//     bottom:0;
 
-    margin-bottom: 10px;
-    margin-right: 10px;
-    max-width: 75%;
+//     margin-bottom: 10px;
+//     margin-right: 10px;
+//     max-width: 75%;
 
-    p {
-      margin-bottom: 0;
-    }
+//     p {
+//       margin-bottom: 0;
+//     }
 
-    p.ds44-card__title {
-      padding: 0 10px 0 0;
-      font-size: smaller;
-    }
+//     p.ds44-card__title {
+//       padding: 0 10px 0 0;
+//       font-size: smaller;
+//     }
 
-    button.ds44-collapser_button {
-      &:focus {
-        border: none;
-      }
+//     button.ds44-collapser_button {
+//       &:focus {
+//         border: none;
+//       }
 
-      padding: 7px 30px 7px 10px;
-      text-align: left;
+//       padding: 7px 30px 7px 10px;
+//       text-align: left;
 
-      .icon {
-        top: 1rem;
-      }
-    }
+//       .icon {
+//         top: 1rem;
+//       }
+//     }
 
-    div.ds44-collapser_content {
-      background-color: $white;
+//     div.ds44-collapser_content {
+//       background-color: $white;
+//     }
+//   }
+// }
+
+.detail-oeuvre {
+  margin: 10px;
+  padding-bottom: 100px;
+
+  .indications {
+    h3 {
+      padding: 30px 10px;
     }
   }
+
+  .audio-aide {
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-webkit-media-controls-panel {
+      background-color: $white;
+    }
+
+    &::-webkit-media-controls-play-button{
+      background-color:$black;}
+
+  }
+
+}
+
+.audio-help {
+  margin-bottom:20px;
+  margin-right:20px;
 }

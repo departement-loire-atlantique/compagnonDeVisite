@@ -25,7 +25,7 @@ export class OeuvreComponent implements OnInit {
   json:any|undefined;
   finParcours:boolean = false;
 
-  audio:boolean | undefined;
+  audio:boolean = false;
 
   constructor(
     private _jcms: JAngularService,

@@ -7,6 +7,7 @@ import { CollapserComponent } from './collapser/collapser.component';
 import { ListComponent } from './list/list.component';
 import { ListBGComponent } from './list-bg/list-bg.component';
 import { TuileHComponent } from './tuile-h/tuile-h.component';
+import { TuileHEtapeComponent } from './tuile-h-etape/tuile-h-etape.component';
 import { TuileVComponent } from './tuile-v/tuile-v.component';
 import { ImageTextComponent } from './image-text/image-text.component';
 import { HeaderComponent } from './header/header.component';
@@ -30,6 +31,7 @@ import { LoaderComponent } from './loader/loader.component';
     ListBGComponent,
     LoaderComponent,
     TuileHComponent,
+    TuileHEtapeComponent,
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,
@@ -50,6 +52,7 @@ import { LoaderComponent } from './loader/loader.component';
     ListBGComponent,
     LoaderComponent,
     TuileHComponent,
+    TuileHEtapeComponent,
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,
