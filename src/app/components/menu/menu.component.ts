@@ -11,7 +11,7 @@ export class MenuComponent implements OnInit {
   constructor(private _ds: DesignSystemService) { }
 
   ngOnInit(): void {
-    this._ds.initOverlay();
+    this._ds.initMenu();
   }
 
 }

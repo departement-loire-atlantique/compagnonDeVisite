@@ -18,6 +18,8 @@ declare class FormLayoutStandard {}
 declare class FormLayoutInline {}
 declare class FormLayoutObligationAlimentaire {}
 
+declare class MenuHeader {}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -48,5 +50,9 @@ export class DesignSystemService {
     new FormLayoutInline();
     new FormLayoutObligationAlimentaire();
     new FormLayoutStandard();
+  }
+
+  public initMenu() {
+    new MenuHeader();
   }
 }
