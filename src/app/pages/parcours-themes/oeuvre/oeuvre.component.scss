@@ -2,7 +2,6 @@
 
 .bg-color {
   background-color: $main-color;
-  padding-bottom: 20px;
   position: sticky;
   bottom: 0;
   z-index: 200;
@@ -52,84 +51,55 @@
       }
     }
   }
+
+  .audio-oeuvre {
+    padding-bottom: 20px;
+  }
 }
 
 .btn-step {
   padding: 15px 10px 15px;
 }
 
-// .carrousel-btn {
-//   position: relative;
-
-//   .ds44-alertMsg-container {
-
-//     background-color: $white;
-//     border: 1px solid $black;
-//     border-radius: 3px;
-
-//     position: absolute;
-//     z-index: 200;
-//     right: 0;
-//     bottom:0;
-
-//     margin-bottom: 10px;
-//     margin-right: 10px;
-//     max-width: 75%;
-
-//     p {
-//       margin-bottom: 0;
-//     }
-
-//     p.ds44-card__title {
-//       padding: 0 10px 0 0;
-//       font-size: smaller;
-//     }
-
-//     button.ds44-collapser_button {
-//       &:focus {
-//         border: none;
-//       }
-
-//       padding: 7px 30px 7px 10px;
-//       text-align: left;
-
-//       .icon {
-//         top: 1rem;
-//       }
-//     }
-
-//     div.ds44-collapser_content {
-//       background-color: $white;
-//     }
-//   }
-// }
 
 .detail-oeuvre {
   margin: 10px;
-  padding-bottom: 100px;
 
-  .indications {
+  .block-indications {
     h3 {
       padding: 30px 10px;
     }
-  }
 
-  .audio-aide {
-    -webkit-appearance: none;
-    appearance: none;
+    .indication {
+      background-color: $light-grey;
+      margin: 20px 0px;
+      padding: 10px;
 
-    &::-webkit-media-controls-panel {
-      background-color: $white;
+      div {
+        display: inline-flex;
+        margin: 3px 0px;
+      }
+
+      i.icon {
+        padding-right: 15px;
+        padding-left: 5px;
+      }
+
+      .img-icon {
+        max-width: 40px;
+        max-height: 40px;
+      }
     }
 
-    &::-webkit-media-controls-play-button{
-      background-color:$black;}
-
+    .audio-help {
+      width: 100%;
+      border: 2px solid $main-color;
+      padding: 10px;
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
   }
 
-}
 
-.audio-help {
-  margin-bottom:20px;
-  margin-right:20px;
+
 }

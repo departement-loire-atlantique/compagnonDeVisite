@@ -15,7 +15,6 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
   @Input() name!: string | undefined;
 
   @Output() audioEnded = new EventEmitter<boolean>();
-  @Output() audioStarted = new EventEmitter<boolean>();
 
   files!: Array<any>;
   state!: AudioState;
@@ -64,7 +63,6 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
   }
 
   play() {
-    this.audioStarted.emit(true);
     this.audioService.play();
   }
 

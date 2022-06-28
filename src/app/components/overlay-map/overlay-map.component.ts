@@ -14,11 +14,14 @@ export class OverlayMapComponent implements OnInit {
   @Input()
   isIcon: boolean = true;
 
+  @Input()
   title: string = "Carte";
+
   icon: string = "icon-map";
 
   constructor(
-    private _ds: DesignSystemService) { }
+    private _ds: DesignSystemService) {
+     }
 
   ngOnInit(): void {
     this._ds.initOverlay();

@@ -13,7 +13,9 @@ export class OverlayTutoComponent implements OnInit {
   @Input()
   isIcon: boolean = true;
 
+  @Input()
   title: string = "Tutoriel";
+
   icon: string = "icon-info";
 
   pager: JcmsPager<FaqEntry> | undefined;

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService } from 'j-angular';
+import { forkJoin, map, Observable } from 'rxjs';
 import { State } from 'src/app/components/etapes/etapes.component';
+import { Content } from 'src/app/models/jcms/content';
 import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { Indication, IndicationMap } from 'src/app/models/jcms/indication';
+import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 
 @Component({
   selector: 'app-oeuvre',
@@ -12,6 +16,8 @@ import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
 export class OeuvreComponent implements OnInit {
 
   oeuvre: OeuvreExplore | undefined;
+  indications: Indication[] | undefined;
+  mapIndication: IndicationMap = new IndicationMap();
 
   hasLoaded: boolean = false;
 
@@ -22,19 +28,19 @@ export class OeuvreComponent implements OnInit {
   nextEtapeUrl: string | undefined;
   indexEtape: number = Number(this._route.snapshot.paramMap.get('index'));
 
-  json:any|undefined;
-  finParcours:boolean = false;
+  json: any | undefined;
+  finParcours: boolean = false;
 
-  audio:boolean = false;
+  audio: boolean = false;
 
   constructor(
     private _jcms: JAngularService,
     private router: Router,
     private _route: ActivatedRoute) { }
 
-    /**
-     * Initialise les étapes et l'oeuvre de la page
-     */
+  /**
+   * Initialise les étapes et l'oeuvre de la page
+   */
   ngOnInit(): void {
     this.initEtape();
     this.initOeuvre();
@@ -47,8 +53,36 @@ export class OeuvreComponent implements OnInit {
     let idOeuvre = this._route.snapshot.paramMap.get('id');
     this._jcms.get<OeuvreExplore>('data/' + idOeuvre).subscribe(o => {
       this.oeuvre = o;
+
+      //récupère les indications
+      if (this.oeuvre.indications) {
+        this._jcms.get<ListeDeContenus>('data/' + this.oeuvre.indications.id).subscribe((listeDeContenus: ListeDeContenus) => {
+            this.getListContenus(listeDeContenus.contenus).subscribe(dataArray => {
+              if (!this.indications) {
+                this.indications = [];
+              }
+              for (let elem of dataArray) {
+                let indication = this.mapIndication.mapToIndication(elem);
+                this.indications.push(indication);
+              }
+            })
+          });
+      }
       this.hasLoaded = true;
     });
+  }
+
+  /**
+   * Get le détail de la liste de contenus
+   * @param contenus le contenus de la liste de contenus
+   * @returns liste d'observable
+   */
+  private getListContenus(contenus: Content[]) {
+    let observables: Observable<Indication>[] = [];
+    for (let contenu of contenus) {
+      observables.push(this._jcms.get<Indication>('data/' + contenu.id));
+    }
+    return forkJoin(observables);
   }
 
   /**
@@ -85,11 +119,11 @@ export class OeuvreComponent implements OnInit {
    * @param i l'index de l'étape
    */
   private setNextStepUrl(json: any, i: number) {
-    if(json[i+1] != undefined) {
-      this.nextEtapeUrl = json[i+1].item.url;
+    if (json[i + 1] != undefined) {
+      this.nextEtapeUrl = json[i + 1].item.url;
     } else {
       this.finParcours = true;
-      this.nextEtapeUrl = this. getHomeParcours();
+      this.nextEtapeUrl = this.getHomeParcours();
     }
   }
 
@@ -106,7 +140,7 @@ export class OeuvreComponent implements OnInit {
    * @returns
    */
   public getTextEtape() {
-    return "Etape " + (this.indexEtape+1) + ' / ' + this.json.length;
+    return "Etape " + (this.indexEtape + 1) + ' / ' + this.json.length;
   }
 
   /**
@@ -121,8 +155,8 @@ export class OeuvreComponent implements OnInit {
    * Set Audio a true si on a lancé l'audio de l'oeuvre
    * @param started l'audio est lancé ou non
    */
-   public setAudio(started: boolean) {
-    if(started)
+  public setAudio(started: boolean) {
+    if (started)
       this.audio = true;
   }
 
@@ -131,7 +165,7 @@ export class OeuvreComponent implements OnInit {
    * Get le titre de l'oeuvre
    * @returns le titre
    */
-   public getTitle() {
+  public getTitle() {
     return this.oeuvre?.title;
   }
 
@@ -165,6 +199,14 @@ export class OeuvreComponent implements OnInit {
    */
   public getAudioAide() {
     return this.oeuvre?.fichierSonDaide;
+  }
+
+  public getMap() {
+    return localStorage.getItem("map");
+  }
+
+  public checkURL(url: string) {
+    return (url.match(/\.(jpeg|jpg|gif|png|ico)$/) != null);
   }
 
 }
