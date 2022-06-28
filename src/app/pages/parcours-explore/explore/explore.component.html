@@ -51,22 +51,22 @@
   </div>
 
   <section class="search-result">
-    <h3 class="search-result-info">
-      {{ lblNbResult() }}
-    </h3>
-
     <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
-
-    <app-tuile-h *ngFor="let item of result " [items]="item.item"></app-tuile-h>
-    <div class="ds44-posBot">
-    <button *ngIf="pager && pager.hasMore()"
-            [disabled]="researchRun"
-            (click)="moreResult()"
-            class="ds44-fullWBtn ds44-btn--invert"
-            type="button"
-            title="Afficher plus de résultat">
-      <span class="ds44-btnInnerText">Plus de résultat</span><i class="icon icon-down" aria-hidden="true"></i>
-    </button>
-    </div>
+    <section *ngIf="!researchRun">
+      <h3 class="search-result-info">
+        {{ lblNbResult() }}
+      </h3>
+      <app-tuile-h *ngFor="let item of result " [items]="item.item"></app-tuile-h>
+      <div class="ds44-posBot">
+      <button *ngIf="pager && pager.hasMore()"
+              [disabled]="researchRun"
+              (click)="moreResult()"
+              class="ds44-fullWBtn ds44-btn--invert"
+              type="button"
+              title="Afficher plus de résultat">
+        <span class="ds44-btnInnerText">Plus de résultat</span><i class="icon icon-down" aria-hidden="true"></i>
+      </button>
+      </div>
+    </section>
   </section>
 </main>
