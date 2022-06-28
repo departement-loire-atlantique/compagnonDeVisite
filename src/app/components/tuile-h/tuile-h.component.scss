@@ -1,25 +1,5 @@
 @import '/src/theme/importDep.scss';
 
-section {
-  padding-top: 20px;
-  background-color: transparent;
-}
 .ds44-flex-container {
-  font-weight: bold;
   margin-bottom:20px;
-  background-color: $light-grey;
-}
-
-.ds44-card:hover {
-  box-shadow: none;
-}
-
-.ds44-flex-valign-center{
-  &:hover {
-    box-shadow: 0px 13px 16px 0px rgba(0, 0, 0, 0.35);
-  }
-
-  a {
-    text-decoration: none;
-  }
 }
