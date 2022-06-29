@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
 import { JAngularService } from 'j-angular';
+import { map } from 'rxjs';
+import { Item } from 'src/app/models/item';
 import { Category } from 'src/app/models/jcms/category';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
-import { Item } from 'src/app/models/item'
 import { CatsMngService } from 'src/app/services/cats-mng.service';
+import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 
 @Component({
   selector: 'app-thematique',
@@ -22,13 +23,20 @@ export class ThematiqueComponent implements OnInit {
   constructor(
     private _catMng: CatsMngService,
     private _route: ActivatedRoute,
-    private _jcms: JAngularService) { }
+    private _jcms: JAngularService,
+    private _jcmsEspace: EspaceByLangService,
+  ) { }
 
   /**
    * Recupère la thématique et les différents parcours associés
    * @returns
    */
-  ngOnInit(): void {;
+  ngOnInit(): void {
+    const espaceJcms = this._jcmsEspace.getJcmsSpace();
+
+    if(!espaceJcms){
+      return;
+    }
 
     let catThematique = this._route.snapshot.paramMap.get('id');
 
@@ -50,6 +58,7 @@ export class ThematiqueComponent implements OnInit {
         types: 'Parcours',
         exactType: true,
         cids: catThematique,
+        wrkspc: espaceJcms.espace,
       }
     }).pipe(
       map((rep: any) =>

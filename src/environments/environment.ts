@@ -2,12 +2,17 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false,
-  jcms: 'http://localhost:8080/GPLA/',
-  token: 'djI7al8yOzE2ODY4Mzc5OTEwNjA7R0VULFBVVCxQT1NULERFTEVURSw7OzIyOyQyYSQwNCR1TjcyVWY0Wk9weWl2OG93eUNQeVlPb3J2NjVubTQxNnpDRUZNUVM3Ui9JYzRHSDMyVjZoVw==',
+import { Environment } from "src/app/models/environment";
 
-  catHome: 'c_5007',
+export const environment: Environment = {
+  production: false,
+  jcms: 'http://localhost:8080/GP/',
+  token: '',
+  lang: {
+    'fr': { espace: 'rec_5033', catHome: 'rec_5034' },
+    'en': { espace: 'rec_5038', catHome: 'rec_5039' },
+    'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044' }
+  }
 };
 
 /*
