@@ -4,7 +4,7 @@ import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { OeuvreExplore } from 'src/app/models/jcms/oeuvreExplore';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
 
@@ -81,9 +81,12 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
-          text: this.text,
+          text: this.text + '*',
           types: ['OeuvreExplore'],
+          searchedFields: ['title'],
+          sort: ['title'],
           exactType: true,
+          mode: 'advanced',
         },
       })
     );
