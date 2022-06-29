@@ -4,7 +4,7 @@ import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/oeuvreExplore';
+import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
 
@@ -130,7 +130,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     if (this.result && this.text) {
       if (this.result.length <= 0) {
         sessionStorage.removeItem(this.resultRetrieveKey);
-        return 'Oups, il n’y a pas de résultat. Merci de préciser ou reformuler ta recherche';
+        return $localize`:@@ExploreComp-noResult:Oups, il n’y a pas de résultat. Merci de préciser ou reformuler ta recherche`;
       }
     }
     return '';

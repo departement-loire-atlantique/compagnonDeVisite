@@ -1,7 +1,7 @@
 <app-header-explore [imagePlan]="getPlan()" [customProcess]="true" [returnUrl]="returnUrl()"></app-header-explore>
 
 <main>
-  <h1 class="underline">J'explore</h1>
+  <h1 class="underline" i18n="@@ExploreComp-title">J'explore</h1>
 
   <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite">
   </div>
@@ -19,29 +19,29 @@
         <div class="ds44-fieldContainer ds44-fg1">
           <div class="ds44-form__container">
             <div class="ds44-posRel">
-              <label  for="form-element-48085" class="ds44-formLabel">
+              <label for="form-element-48085" class="ds44-formLabel">
                 <span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge">
-                  <span>Votre recherche</span>
+                  <span i18n="@@ExploreComp-recherche-lbl">Votre recherche</span>
                 </span>
               </label>
               <input  type="text"
                       id="form-element-48085"
                       name="form-element-48085"
                       class="ds44-inpLarge"
+                      i18n-title="@@ExploreComp-input-title"
                       title="Zone de saisie de votre recherche"
-                      aria-describedby="idTitre1"
                       [(ngModel)]="text"
                       required/>
               <button class="ds44-reset" type="button">
                 <i class="icon icon-cross icon--sizeXL" aria-hidden="true"></i>
-                <span class="visually-hidden">Effacer le contenu saisi dans le champ : Votre recherche</span>
+                <span class="visually-hidden" i18n="@@ExploreComp-input-clear">Effacer le contenu saisi dans le champ : Votre recherche</span>
               </button>
             </div>
           </div>
         </div>
         <div class="ds44-fieldContainer ds44-small-fg1">
             <button class="ds44-btnStd ds44-theme ds44-btnStd--large" title="Lancer la recherche" [disabled]="researchRun" type="submit">
-              <span class="ds44-btnInnerText">Rechercher</span>
+              <span class="ds44-btnInnerText" i18n="@@ExploreComp-recherche-btn">Rechercher</span>
               <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
             </button>
         </div>
@@ -63,8 +63,9 @@
               (click)="moreResult()"
               class="ds44-fullWBtn ds44-btn--invert"
               type="button"
+              i18n-title="@@ExploreComp-recherche-more-title"
               title="Afficher plus de résultat">
-        <span class="ds44-btnInnerText">Plus de résultat</span><i class="icon icon-down" aria-hidden="true"></i>
+        <span class="ds44-btnInnerText" i18n="@@ExploreComp-recherche-more">Plus de résultat</span><i class="icon icon-down" aria-hidden="true"></i>
       </button>
       </div>
     </section>
