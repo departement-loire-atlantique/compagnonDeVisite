@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JcmsEspace } from 'src/app/models/environment';
 import { Item } from 'src/app/models/item';
 import { Category } from 'src/app/models/jcms/category';
 import { CatsMngService } from 'src/app/services/cats-mng.service';
@@ -12,25 +13,32 @@ import { environment } from 'src/environments/environment';
 })
 export class ParcoursThemesComponent implements OnInit {
 
-  idCatHome: string = environment.catHome;
+  idCatHome: string = '';
   listCat: Item[] | undefined;
+  espaceJcms: JcmsEspace | undefined;
 
   constructor(
     private _catMng: CatsMngService,
     private _jcmsEspace: EspaceByLangService,
-  ) { }
+  ) {
+
+    this.espaceJcms = this._jcmsEspace.getJcmsSpace();
+
+    if (this.espaceJcms){
+      this.idCatHome = this.espaceJcms.catHome;
+    }
+  }
 
   /**
    * Récupère les catégories enfant de la catégorie thématique
    */
   ngOnInit(): void {
-    const espaceJcms = this._jcmsEspace.getJcmsSpace();
 
-    if (!espaceJcms) {
+    if (!this.espaceJcms) {
       return;
     }
 
-    this._catMng.catsChildren(espaceJcms.catHome).subscribe((cats: Category[]) => {
+    this._catMng.catsChildren(this.idCatHome).subscribe((cats: Category[]) => {
 
       if (!this.listCat) {
         this.listCat = [];
