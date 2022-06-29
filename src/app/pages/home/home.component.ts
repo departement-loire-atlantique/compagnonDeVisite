@@ -9,30 +9,32 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent {
 
-  private _nextPageRoute: string = "/themes";
+  private _nextPageRoute: string = "themes";
 
-  languages = [
-    { lbl: 'FR', url: '/fr' + this._nextPageRoute, img: '🇫🇷', isPicto: true },
-    { lbl: 'EN', url: '/en' + this._nextPageRoute, img: '🇬🇧', isPicto: true },
-    { lbl: 'LSF', url: '/fr-LSF' + this._nextPageRoute, img: '👋', isPicto: true }
-  ];
+  languages: { [key: string]: any } = {
+    'fr': { lbl: 'FR', url: '/fr/' + this._nextPageRoute, img: '🇫🇷', isPicto: true },
+    'en': { lbl: 'EN', url: '/en/' + this._nextPageRoute, img: '🇬🇧', isPicto: true },
+    'fr-LSF': { lbl: 'LSF', url: '/fr-LSF/' + this._nextPageRoute, img: '👋', isPicto: true }
+  };
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
     if (!environment.production) {
-      for (let lang of this.languages) {
-        lang.url = this._nextPageRoute;
+      for (let key in this.languages) {
+        this.languages[key].url = this._nextPageRoute;
       }
+    }else {
+      this.languages[locale].url = this._nextPageRoute;
     }
   }
 
   getItem(): Item[] {
     let items: Item[] = [];
-    for (let lang of this.languages) {
+    for (let key in this.languages) {
       let item: Item = {
-        lbl: lang.lbl,
-        img: lang.img,
-        url: lang.url,
-        isPicto: lang.isPicto,
+        lbl: this.languages[key].lbl,
+        img: this.languages[key].img,
+        url: this.languages[key].url,
+        isPicto: this.languages[key].isPicto,
       };
       items.push(item);
     }
