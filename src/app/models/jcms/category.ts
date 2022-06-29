@@ -33,8 +33,6 @@ export interface Category {
 
   order: number;
 
-  idContentTrieur: string;
-
   /**
    * id parent category
    */
