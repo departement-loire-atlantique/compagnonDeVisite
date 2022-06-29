@@ -16,6 +16,7 @@ export interface Parcours extends Content {
   plan: string,
   etapes: ListeDeContenus,
   jexplore: boolean,
+  ordre: number,
 }
 
 export class ParcoursMap {
@@ -33,6 +34,7 @@ export class ParcoursMap {
       plan: this.checkURL(dataRep.plan) ? environment.jcms + dataRep.plan : "",
       etapes: dataRep.etapes,
       jexplore: dataRep.jexplore,
+      ordre: dataRep.ordre,
     };
   }
 

@@ -1,4 +1,4 @@
-<app-header-parcours [imagePlan]="getPlan()"></app-header-parcours>
+<app-header-parcours [customProcess]="true" [imagePlan]="getPlan()"></app-header-parcours>
 
 <main>
   <h1 class="underline"> {{ getTitle() }}</h1>
@@ -34,7 +34,7 @@
 
   <app-etapes [etapes]="getEtapes()"></app-etapes>
 
-  <app-tuile-h [items]="getSeenItems()"></app-tuile-h>
+  <app-tuile-h-etape [etapes]="getEtapes()"></app-tuile-h-etape>
 
 
 </main>

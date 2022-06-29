@@ -1,29 +1,28 @@
-<section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-darkContext">
+<section *ngIf="tuile" class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-darkContext">
 
   <picture class="ds44-container-imgRatio">
-    <img *ngIf="tuile" [src]="tuile?.img" alt="" class="ds44-imgRatio" />
+    <img [src]="tuile.img" alt="" class="ds44-imgRatio" />
   </picture>
 
-  <div class="ds44-card__section">
+  <div class="ds44-card__section champs">
 
-    <div *ngIf="tuile?.titleUrl; else noLink">
-      <p role="heading" aria-level="2" class="ds44-card__title"><a [href]="tuile?.titleUrl" class="ds44-card__globalLink">{{ tuile?.title }}</a></p></div>
-    <ng-template #noLink>
-      <p role="heading" aria-level="2" class="ds44-card__title"> {{ tuile?.title }} </p>
-    </ng-template>
-
-    <div *ngIf="tuile?.url1; else noLinkChamp1">
-      <p><i [class]="'icon ' + tuile?.icone1" aria-hidden="true"></i> <a [href]="tuile?.url1" class="ds44-card__globalLink"><span class="ds44-iconInnerText">{{ tuile?.champ1 }}</span></a></p></div>
-    <ng-template #noLinkChamp1>
-      <p><i [class]="'icon ' + tuile?.icone1" aria-hidden="true"></i> <span class="ds44-iconInnerText">{{ tuile?.champ1 }}</span></p>
-    </ng-template>
-
-    <div *ngIf="tuile?.url2; else noLinkChamp2">
-      <p><i [class]="'icon ' + tuile?.icone2" aria-hidden="true"></i> <a [href]="tuile?.url2" class="ds44-card__globalLink"><span class="ds44-iconInnerText">{{ tuile?.champ2 }}</span></a></p></div>
-    <ng-template #noLinkChamp2>
-      <p><i [class]="'icon ' + tuile?.icone2" aria-hidden="true"></i> <span class="ds44-iconInnerText">{{ tuile?.champ2 }}</span></p>
-    </ng-template>
+    <div *ngIf="tuile.title">
+      <div *ngIf="tuile.titleUrl; else noLink">
+        <p role="heading" aria-level="2" class="ds44-card__title"><a [href]="tuile.titleUrl" class="ds44-card__globalLink">{{ tuile.title }}</a></p></div>
+      <ng-template #noLink>
+        <p role="heading" aria-level="2" class="ds44-card__title"> {{ tuile?.title }} </p>
+      </ng-template>
+    </div>
 
 
+    <div *ngIf="tuile.champs">
+      <div *ngFor="let champ of tuile.champs">
+        <div *ngIf="champ.url; else noLinkChamp1">
+          <p ><i [class]="'icon ' + champ.icon" aria-hidden="true"></i> <a [href]="champ.url" class="ds44-card__globalLink"><span class="ds44-iconInnerText">{{ champ.lbl }}</span></a></p></div>
+        <ng-template #noLinkChamp1>
+          <p><i [class]="'icon ' + champ.icon" aria-hidden="true"></i> <span class="ds44-iconInnerText">{{ champ.lbl }}</span></p>
+        </ng-template>
+      </div>
+    </div>
   </div>
 </section>

@@ -6,9 +6,10 @@ import { Etape, State } from 'src/app/components/etapes/etapes.component';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
 import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
-import { Jexplore } from 'src/app/models/jcms/jexplore';
 import { Observable, forkJoin } from 'rxjs';
 import { DesignSystemService } from 'src/app/services/design-system.service';
+import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { Content } from 'src/app/models/jcms/content';
 
 @Component({
   selector: 'app-parcours',
@@ -23,8 +24,8 @@ export class ParcoursComponent implements OnInit {
   items: Item[] | undefined;
   etapes: Etape[] | undefined;
 
-  keyEtape: string = "etape";
-  keyName: string = "nameParcours";
+  listEtape: string = "listEtape";
+  idParcours: string = "idParcours";
 
   constructor(
     private _ds: DesignSystemService,
@@ -48,11 +49,12 @@ export class ParcoursComponent implements OnInit {
       this.leParcours = this.mapParcours.mapToParcours(parcours);
 
       //recup les info dans le localStorage
-      let nameStore = localStorage.getItem(this.keyName);
-      let etapeStore = localStorage.getItem(this.keyEtape);
-      if (etapeStore && nameStore == this.leParcours.title) {
+      let idParcoursStore = localStorage.getItem(this.idParcours);
+      let etapeStore = localStorage.getItem(this.listEtape);
+      if (etapeStore && idParcoursStore == this.leParcours.id) {
         this.etapes = JSON.parse(etapeStore);
       } else {
+        localStorage.setItem("map", this.leParcours.plan);
         this.initEtape(this.leParcours.etapes.id);
       }
     });
@@ -65,7 +67,7 @@ export class ParcoursComponent implements OnInit {
   private initEtape(etapeId: string) {
 
     this._jcms.get<ListeDeContenus>('data/' + etapeId).subscribe((listeDeContenus: ListeDeContenus) => {
-      this.getListContenus(listeDeContenus.contenu).subscribe(dataArray => {
+      this.getListContenus(listeDeContenus.contenus).subscribe(dataArray => {
 
         if (!this.items) {
           this.items = [];
@@ -80,7 +82,7 @@ export class ParcoursComponent implements OnInit {
           //ajoute les items (tuile horizontale)
           this.items.push({
             lbl: c.title,
-            img: environment.jcms + c.visuel,
+            img: environment.jcms + c.vignette,
             url: "/oeuvre/" + ind + "/" + c.id,
           });
 
@@ -103,10 +105,10 @@ export class ParcoursComponent implements OnInit {
    * @param contenus la liste de contenus du parcours
    * @returns la liste d'observable
    */
-  private getListContenus(contenus: Jexplore[]) {
-    let observables: Observable<Jexplore>[] = [];
+  private getListContenus(contenus: Content[]) {
+    let observables: Observable<OeuvreExplore>[] = [];
     for (let contenu of contenus) {
-      observables.push(this._jcms.get<Jexplore>('data/' + contenu.id));
+      observables.push(this._jcms.get<OeuvreExplore>('data/' + contenu.id));
     }
     return forkJoin(observables);
   }
@@ -117,9 +119,20 @@ export class ParcoursComponent implements OnInit {
   public storeEtapes() {
     if (this.etapes) {
       let str = JSON.stringify(this.etapes);
-      localStorage.setItem(this.keyEtape, str);
-      localStorage.setItem(this.keyName, this.getTitle());
+      localStorage.setItem(this.listEtape, str);
+      localStorage.setItem(this.idParcours, this.getId());
     }
+  }
+
+  /**
+   * Get l'id du parcours
+   * @returns l'id du parcours
+   */
+  public getId() {
+    if (!this.leParcours)
+      return "";
+
+    return this.leParcours.id;
   }
 
   /**
@@ -177,7 +190,7 @@ export class ParcoursComponent implements OnInit {
     if (heure < 1)
       return duree / 60 + " minutes"; //temps en min
     else if (heure == 1)
-     return heure + " heure";
+      return heure + " heure";
 
     return heure + " heures";
   }
@@ -199,6 +212,16 @@ export class ParcoursComponent implements OnInit {
       }
     }
     return seenItem;
+  }
+
+  public getItems() {
+    let items = [];
+    if (this.etapes) {
+      for (let etape of this.etapes) {
+        items.push(etape.item);
+      }
+    }
+    return items;
   }
 
   /**

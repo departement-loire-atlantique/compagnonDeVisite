@@ -3,10 +3,19 @@
 
 .ds44-card__section {
   background-color: $main-color;
+
 }
 
 .ds44-card {
   &:hover, &:active, &:focus {
     box-shadow: none;
+  }
+}
+
+.champs div div p {
+  display: inline-flex;
+
+  i {
+    margin: 0 5px;
   }
 }

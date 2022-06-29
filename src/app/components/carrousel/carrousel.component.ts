@@ -16,6 +16,8 @@ export class CarrouselComponent implements OnInit, AfterViewInit{
 
   @Input() text: string | undefined;
 
+  @Input() etape: string | undefined;
+
   elements: (CarouselElement | undefined)[] = [];
 
   @ViewChildren('itemSwiper')

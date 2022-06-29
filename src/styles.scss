@@ -38,6 +38,7 @@ H2 {
   font-size: 21px;
   text-align: center;
   background: transparent;
+  padding: 0;
 }
 
 H3 {
@@ -68,4 +69,10 @@ H3.title-overlay {
     margin-top: 0.5rem;
   }
 
+}
+
+button {
+  &:hover, &:active, &:focus {
+    box-shadow: none;
+  }
 }

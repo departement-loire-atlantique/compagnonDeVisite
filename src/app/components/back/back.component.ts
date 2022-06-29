@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {Router} from "@angular/router"
 
 /**
  * This component should be used to go back to the previous page.
@@ -41,14 +42,16 @@ export class BackComponent {
   @Output()
   returnCustom: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private _location: Location) {}
+  constructor(private _location: Location,
+    private _router: Router) {}
 
   /**
    * @ignore
    */
   back() {
     if (this.customProcess) {
-      this.returnCustom.emit('return');
+       this._router.navigate(['/themes/'])
+      // this.returnCustom.emit('return');
     } else {
       this._location.back();
     }

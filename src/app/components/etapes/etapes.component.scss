@@ -21,3 +21,9 @@
 .inactive {
   opacity: 0.5;
 }
+
+.passed a span {
+  &:hover, &:active {
+    background-color: $pink !important;
+  }
+}

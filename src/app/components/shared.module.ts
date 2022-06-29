@@ -7,6 +7,7 @@ import { CollapserComponent } from './collapser/collapser.component';
 import { ListComponent } from './list/list.component';
 import { ListBGComponent } from './list-bg/list-bg.component';
 import { TuileHComponent } from './tuile-h/tuile-h.component';
+import { TuileHEtapeComponent } from './tuile-h-etape/tuile-h-etape.component';
 import { TuileVComponent } from './tuile-v/tuile-v.component';
 import { ImageTextComponent } from './image-text/image-text.component';
 import { HeaderComponent } from './header/header.component';
@@ -20,6 +21,8 @@ import { CarrouselComponent } from './carrousel/carrousel.component';
 import { LecteurAudioComponent } from './lecteur-audio/lecteur-audio.component';
 import { LoaderComponent } from './loader/loader.component';
 import { HeaderExploreComponent } from './header-explore/header-explore.component';
+import { PartageRsComponent } from './partage-rs/partage-rs.component';
+import { PageUtileComponent } from './page-utile/page-utile.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,7 @@ import { HeaderExploreComponent } from './header-explore/header-explore.componen
     ListBGComponent,
     LoaderComponent,
     TuileHComponent,
+    TuileHEtapeComponent,
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,
@@ -41,7 +45,9 @@ import { HeaderExploreComponent } from './header-explore/header-explore.componen
     HeaderParcoursComponent,
     EtapesComponent,
     OverlayMapComponent,
-    HeaderExploreComponent
+    HeaderExploreComponent,
+    PartageRsComponent,
+    PageUtileComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -53,6 +59,7 @@ import { HeaderExploreComponent } from './header-explore/header-explore.componen
     ListBGComponent,
     LoaderComponent,
     TuileHComponent,
+    TuileHEtapeComponent,
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,
@@ -62,7 +69,9 @@ import { HeaderExploreComponent } from './header-explore/header-explore.componen
     MenuComponent,
     HeaderParcoursComponent,
     EtapesComponent,
-    OverlayMapComponent
+    OverlayMapComponent,
+    PartageRsComponent,
+    PageUtileComponent
   ],
 })
 export class SharedModule {}

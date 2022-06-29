@@ -21,6 +21,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/parcours-themes/parcours/parcours.module').then(m => m.ParcoursModule)
   },
   {
+    path: 'parcours-fin/:id',
+    loadChildren: () => import('./pages/parcours-themes/parcours-fin/parcours-fin.module').then(m => m.ParcoursFinModule)
+  },
+  {
     path: 'oeuvre/:index/:id',
     loadChildren: () => import('./pages/parcours-themes/oeuvre/oeuvre.module').then(m => m.OeuvreModule)
   },
