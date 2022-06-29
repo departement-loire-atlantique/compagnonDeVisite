@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   private _nextPageRoute: string = "/themes";
 
@@ -23,11 +23,6 @@ export class HomeComponent implements OnInit {
         lang.url = this._nextPageRoute;
       }
     }
-  }
-
-  ngOnInit(): void {
-    console.log('TODO Home');
-    console.log(this.locale);
   }
 
   getItem(): Item[] {
