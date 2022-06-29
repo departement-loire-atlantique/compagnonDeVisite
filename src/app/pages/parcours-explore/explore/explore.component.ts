@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { OeuvreExplore } from 'src/app/models/jcms/oeuvreExplore';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
@@ -19,7 +19,7 @@ import { JcmsEspace } from 'src/app/models/environment';
 /**
  * Affichage de la recherche "j'explore"
  */
-export class ExploreComponent implements OnInit, AfterViewInit {
+export class ExploreComponent implements OnInit {
 
   text!: string;
   researchRun: boolean = false;
@@ -44,6 +44,8 @@ export class ExploreComponent implements OnInit, AfterViewInit {
    *
    */
   ngOnInit(): void {
+    this._ds.initForm();
+
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
 
     if (!this.espaceJcms) {
@@ -67,13 +69,6 @@ export class ExploreComponent implements OnInit, AfterViewInit {
         }
       })
     }
-  }
-
-  /**
-   *
-   */
-  ngAfterViewInit(): void {
-    this._ds.initForm();
   }
 
   /**

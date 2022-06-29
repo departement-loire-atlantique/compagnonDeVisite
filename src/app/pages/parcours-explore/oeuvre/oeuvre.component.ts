@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { OeuvreExplore } from 'src/app/models/jcms/oeuvreExplore';
 
 @Component({
   selector: 'app-oeuvre',
