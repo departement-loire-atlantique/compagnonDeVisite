@@ -8,12 +8,10 @@ export const environment: Environment = {
   production: false,
   jcms: 'http://localhost:8080/GP/',
   token: '',
-
-  catHome: 'j_5',
   lang: {
-    'fr': { espace: 'c_5011', catHome: 'c_5012' },
-    'en': { espace: '', catHome: '' },
-    'fr-LSF': { espace: '', catHome: '' }
+    'fr': { espace: 'rec_5033', catHome: 'rec_5034' },
+    'en': { espace: 'rec_5038', catHome: 'rec_5039' },
+    'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044' }
   }
 };
 
