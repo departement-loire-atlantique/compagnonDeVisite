@@ -1,9 +1,9 @@
-import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Item } from 'src/app/models/item';
 import { Category } from 'src/app/models/jcms/category';
-import { environment } from 'src/environments/environment';
-import { Item } from 'src/app/models/item'
 import { CatsMngService } from 'src/app/services/cats-mng.service';
-import { Router } from '@angular/router';
+import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-parcours-themes',
@@ -17,18 +17,16 @@ export class ParcoursThemesComponent implements OnInit {
 
   constructor(
     private _catMng: CatsMngService,
-    private _router: Router,
-    @Inject(LOCALE_ID) private _locale: string
+    private _jcmsEspace: EspaceByLangService,
   ) { }
 
   /**
    * Récupère les catégories enfant de la catégorie thématique
    */
   ngOnInit(): void {
-    let espaceJcms = environment.lang[this._locale];
+    const espaceJcms = this._jcmsEspace.getJcmsSpace();
 
     if (!espaceJcms) {
-      this._router.navigateByUrl('error/F-01', { skipLocationChange: true });
       return;
     }
 

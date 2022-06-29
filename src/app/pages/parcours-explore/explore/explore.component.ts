@@ -4,9 +4,11 @@ import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/oeuvreExplore';
+import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
+import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
+import { JcmsEspace } from 'src/app/models/environment';
 
 @Component({
   selector: 'app-explore',
@@ -21,7 +23,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
 
   text!: string;
   researchRun: boolean = false;
-  result!: Search[] ;
+  result!: Search[];
   resultRetrieveKey: string = 'jsonExplore;'
   resultRetrieve!: Search[];
   isResultRetrieve: boolean = false;
@@ -29,16 +31,25 @@ export class ExploreComponent implements OnInit, AfterViewInit {
   //plan!: string; <- Faire apparaître l'icône carte
   plan: string = ' ';
 
+  espaceJcms: JcmsEspace | undefined;
+
   constructor(
     private _jcms: JAngularService,
     private _ds: DesignSystemService,
     private _route: ActivatedRoute,
+    private _jcmsEspace: EspaceByLangService,
   ) { }
 
   /**
    *
    */
   ngOnInit(): void {
+    this.espaceJcms = this._jcmsEspace.getJcmsSpace();
+
+    if (!this.espaceJcms) {
+      return;
+    }
+
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
     if (resultRetrieveSessionStorage !== '') {
       // retrouve la recherche
@@ -51,10 +62,10 @@ export class ExploreComponent implements OnInit, AfterViewInit {
     } else {
       // Recherche par url
       this._route.paramMap.subscribe((params) => {
-      if (params.get('text')) {
-        this.text = params.get('text') || '';
-      }
-    })
+        if (params.get('text')) {
+          this.text = params.get('text') || '';
+        }
+      })
     }
   }
 
@@ -84,6 +95,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
           text: this.text,
           types: ['OeuvreExplore'],
           exactType: true,
+          wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
         },
       })
     );
@@ -108,7 +120,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
             searchField: this.text,
             item: [{
               lbl: itContent.title,
-              img: environment.jcms+res.vignette,
+              img: environment.jcms + res.vignette,
               url: '/explore/oeuvre/' + itContent.id,
             }],
           });
@@ -167,7 +179,7 @@ export class ExploreComponent implements OnInit, AfterViewInit {
 /**
  * Gestion mémoire de la recherche
  */
- export interface Search {
+export interface Search {
   searchField: string,
   item: Item[],
 }
