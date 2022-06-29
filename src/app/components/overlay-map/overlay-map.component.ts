@@ -9,6 +9,9 @@ import { DesignSystemService } from 'src/app/services/design-system.service';
 export class OverlayMapComponent implements OnInit {
 
   @Input()
+  idTarget: string = "overlay-map";
+
+  @Input()
   image:string | null = "";
 
   @Input()
@@ -18,6 +21,7 @@ export class OverlayMapComponent implements OnInit {
   title: string = "Carte";
 
   icon: string = "icon-map";
+
 
   constructor(
     private _ds: DesignSystemService) {

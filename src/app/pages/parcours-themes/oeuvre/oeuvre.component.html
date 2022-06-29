@@ -16,12 +16,12 @@
           </app-lecteur-audio>
         </div>
       </div>
-      <!-- <app-overlay-map *ngIf="getMap()" [image]="getMap()" [isIcon]="false" [title]="'Me repérer sur le plan'"></app-overlay-map> -->
+      <app-overlay-map *ngIf="getMap()" idTarget="overlay-map-btn" [image]="getMap()" [isIcon]="false" [title]="'Me repérer sur le plan'"></app-overlay-map>
 
-      <button type="button" class="ds44-btnStd ds44-fullWBtn" data-target="#overlay-map" data-js="ds44-modal">
+      <!-- <button type="button" class="ds44-btnStd ds44-fullWBtn" data-target="#overlay-map" data-js="ds44-modal">
         <span class="ds44-btnInnerText"> Me repérer sur le plan </span>
         <i class="icon icon--large icon-map" aria-hidden="true"></i>
-      </button>
+      </button> -->
 
       <div *ngIf="indications" class="indication">
         <div *ngFor="let indication of indications">
@@ -67,6 +67,7 @@
       <app-lecteur-audio *ngIf="hasLoaded" [file]="getAudio()" [name]="getTitle()">
       </app-lecteur-audio>
     </div>
+
     <button type="button" class="ds44-fullWBtn ds44-btn--invert"
       onClick="document.getElementById('indications').scrollIntoView();">
       <!-- {behavior: 'smooth'} -->
