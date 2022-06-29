@@ -11,11 +11,14 @@ import { FaqEntry } from 'src/app/models/jcms/faqEntry';
 export class OverlayTutoComponent implements OnInit {
 
   @Input()
-  isIcon: boolean | undefined;
+  isIcon: boolean = true;
 
+  @Input()
   title: string = $localize`:@@OverlayTutoComp-titre:Tutoriel`;
-  closeTxt = $localize `:@@OverlayTutoComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
+
   icon: string = "icon-info";
+
+  closeTxt = $localize `:@@OverlayTutoComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
 
   pager: JcmsPager<FaqEntry> | undefined;
   faqEntry: FaqEntry[] | undefined;
@@ -48,7 +51,7 @@ export class OverlayTutoComponent implements OnInit {
     if (this.isIcon)
       return "ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component";
 
-    return "ds44-btnStd btn-full-width";
+    return "ds44-btnStd ds44-fullWBtn";
   }
 
   public getClassIcon() {

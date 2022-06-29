@@ -8,9 +8,19 @@ import { Component, Input } from '@angular/core';
 export class HeaderParcoursComponent {
 
   @Input()
-  imagePlan:string | undefined;
+  imagePlan:string | null = "";
 
-  constructor() { }
+  @Input()
+  customProcess:boolean = false;
+
+  @Input()
+  backUrl:string | undefined;
+
+  constructor() {
+    if(this.imagePlan == "") {
+      this.imagePlan = localStorage.getItem("map");
+    }
+  }
 
 
 }

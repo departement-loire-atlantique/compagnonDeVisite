@@ -14,13 +14,14 @@ export class TuileVComponent {
 }
 
 export interface Tuile {
-  title:string,
   img:string,
+  title?:string,
   titleUrl?:string,
-  champ1?:string,
-  champ2?:string,
-  icone1?:string,
-  icone2?:string,
-  url1?:string,
-  url2?:string
+  champs?: Champ[]
+}
+
+export interface Champ {
+  lbl?:string,
+  icon?:string,
+  url?:string,
 }

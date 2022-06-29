@@ -15,3 +15,16 @@ picture.ds44-container-imgRatio {
   }
 }
 
+.carrousel-text {
+  padding: 1rem 3rem 3rem 3rem;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  z-index: 100;
+
+  p {
+    font-weight: lighter;
+  }
+}
+
+

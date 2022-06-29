@@ -7,11 +7,18 @@ import { AudioState } from "../models/audio-state";
   providedIn: "root"
 })
 export class AudioService {
+
+  private stop$;
+  private audioObj;
+
+  constructor() {
+    this.stop$ = new Subject();
+    this.audioObj = new Audio();
+  }
+
   playStream(url: any) {
     return this.streamObservable(url).pipe(takeUntil(this.stop$));
   }
-  private stop$ = new Subject();
-  private audioObj = new Audio();
   audioEvents = [
     "ended",
     "error",
@@ -120,7 +127,7 @@ export class AudioService {
       // Play audio
       this.audioObj.src = url;
       this.audioObj.load();
-      this.audioObj.play();
+      // this.audioObj.play();
 
       const handler = (event: Event) => {
         this.updateStateEvents(event);

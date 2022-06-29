@@ -9,17 +9,41 @@ import { DesignSystemService } from 'src/app/services/design-system.service';
 export class OverlayMapComponent implements OnInit {
 
   @Input()
-  image:string | undefined;
+  idTarget: string = "overlay-map";
 
+  @Input()
+  image:string | null = "";
+
+  @Input()
+  isIcon: boolean = true;
+
+  @Input()
   title: string = $localize`:@@OverlayMapComp-titre:Carte`;
+
+  icon: string = "icon-map";
 
   closeTxt = $localize `:@@OverlayMapComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
 
   constructor(
-    private _ds: DesignSystemService) { }
+    private _ds: DesignSystemService) {
+     }
 
   ngOnInit(): void {
     this._ds.initOverlay();
+  }
+
+  public getClassButton() {
+    if (this.isIcon)
+      return "ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component";
+
+    return "ds44-btnStd ds44-fullWBtn";
+  }
+
+  public getClassIcon() {
+    if (this.isIcon)
+      return "icon icon--large " + this.icon;
+
+    return "icon " + this.icon
   }
 
 }

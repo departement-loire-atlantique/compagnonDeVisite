@@ -23,6 +23,7 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
   constructor(
     private audioService: AudioService,
     ) {
+      this.audioService = new AudioService();
     this.audioService.getState().subscribe(state => {
       this.state = state;
     });
@@ -48,6 +49,7 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
       }*/
       this.audioEnded.emit(this.state.ended);
     });
+    // this.audioService.pause();
   }
 
   isFirstPlaying() {

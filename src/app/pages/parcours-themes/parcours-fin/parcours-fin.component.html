@@ -1,0 +1,25 @@
+<app-header-parcours [imagePlan]="map"></app-header-parcours>
+
+<div class="fin-parcours">
+  <div class="page-title">
+    <h2>Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée !</h2>
+  </div>
+
+  <div class="fav">
+    <app-tuile-v [tuile]="tuile"></app-tuile-v>
+  </div>
+
+  <app-partage-rs></app-partage-rs>
+</div>
+
+
+<div class="bg-block">
+  <h2>Nouvelle visite ?</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis semper risus sed laoreet. Quisque et
+    finibus felis, id semper felis. Vestibulum vel sapien eu nisi tincidunt finibus.</p>
+  <a class="ds44-btnStd" [href]="getHome()">
+    <span class="ds44-btnInnerText"> Que souhaitez-vous visiter ?</span>
+  </a>
+</div>
+
+<app-page-utile></app-page-utile>
