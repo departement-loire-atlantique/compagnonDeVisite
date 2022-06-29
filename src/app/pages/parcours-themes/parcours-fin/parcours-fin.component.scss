@@ -1,0 +1,29 @@
+@import '/src/theme/importDep.scss';
+
+.fin-parcours {
+  margin: 0 10px;
+
+  .page-title {
+    background-color: $light-grey;
+    padding: 20px;
+
+  }
+
+  .fav {
+    margin: 0 10px;
+  }
+}
+
+.bg-block {
+  h2 {
+    margin: 10px;
+  }
+  a {
+    margin-top: 15px;
+  }
+  background-color: $main-color;
+  text-align: center;
+  padding: 30px;
+
+  margin-bottom: 30px;
+}

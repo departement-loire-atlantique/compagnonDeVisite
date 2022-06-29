@@ -123,7 +123,7 @@ export class OeuvreComponent implements OnInit {
       this.nextEtapeUrl = json[i + 1].item.url;
     } else {
       this.finParcours = true;
-      this.nextEtapeUrl = this.getHomeParcours();
+      this.nextEtapeUrl = 'parcours-fin/' + localStorage.getItem(this.idParcours);
     }
   }
 

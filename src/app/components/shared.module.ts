@@ -20,6 +20,8 @@ import { OverlayMapComponent } from './overlay-map/overlay-map.component';
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { LecteurAudioComponent } from './lecteur-audio/lecteur-audio.component';
 import { LoaderComponent } from './loader/loader.component';
+import { PartageRsComponent } from './partage-rs/partage-rs.component';
+import { PageUtileComponent } from './page-utile/page-utile.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { LoaderComponent } from './loader/loader.component';
     MenuComponent,
     HeaderParcoursComponent,
     EtapesComponent,
-    OverlayMapComponent
+    OverlayMapComponent,
+    PartageRsComponent,
+    PageUtileComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -61,7 +65,9 @@ import { LoaderComponent } from './loader/loader.component';
     MenuComponent,
     HeaderParcoursComponent,
     EtapesComponent,
-    OverlayMapComponent
+    OverlayMapComponent,
+    PartageRsComponent,
+    PageUtileComponent
   ],
 })
 export class SharedModule {}
