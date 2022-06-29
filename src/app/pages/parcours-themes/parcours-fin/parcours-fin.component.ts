@@ -15,7 +15,7 @@ export class ParcoursFinComponent implements OnInit {
 
   ngOnInit(): void {
     this.map = localStorage.getItem("map");
-    localStorage.clear();
+    // localStorage.clear();
 
     this.tuile = {
       img: "http://localhost:8080/GPLA/upload/docs/image/jpeg/2022-06/7726398754_5154e64eb7_b.jpg",
