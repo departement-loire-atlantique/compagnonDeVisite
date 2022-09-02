@@ -75,6 +75,28 @@
               ],
               "outputHashing": "all"
             },
+            "pre-prod": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.PP.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "localize": true
+            },
             "development-jcms-R7": {
               "buildOptimizer": false,
               "optimization": false,
@@ -113,6 +135,9 @@
           "configurations": {
             "production": {
               "browserTarget": "CompagnonDeVisite:build:production"
+            },
+            "pre-prod": {
+              "browserTarget": "CompagnonDeVisite:build:pre-prod"
             },
             "development-jcms-R7": {
               "browserTarget": "CompagnonDeVisite:build:development-jcms-R7"

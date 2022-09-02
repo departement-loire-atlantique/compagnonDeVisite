@@ -8,6 +8,7 @@
     "dev-R7": "ng serve -c development-jcms-R7",
     "dev-R7I": "ng serve -c development-jcms-R7-I",
     "build": "ng build",
+    "build-pp": "ng build -c pre-prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "docs:json": "compodoc -p ./tsconfig.json -e json -d .",

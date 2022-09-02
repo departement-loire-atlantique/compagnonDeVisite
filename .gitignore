@@ -44,5 +44,4 @@ documentation.json
 Thumbs.db
 
 # libs
-/libs/*
 !/libs/.gitkeep
