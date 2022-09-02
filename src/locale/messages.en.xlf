@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="BackComp-text" datatype="html">
+        <source>Retour</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/back/back.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="BackComp-link-title" datatype="html">
+        <source>Retour à la page précédente</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/back/back.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="EtapesComp-arialbl-nav" datatype="html">
+        <source>Menu de pagination : [Titre du bloc à paginer]</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/etapes/etapes.component.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="HeaderGpComp-back-to-home" datatype="html">
+        <source>Retour à la page d&apos;accueil - Site internet du Château de Clisson</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header-gp/header-gp.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="HeaderGpComp-change-lang-link-title" datatype="html">
+        <source>Changer de langue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header-gp/header-gp.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="HeaderGpComp-change-lang-link" datatype="html">
+        <source>Langue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header-gp/header-gp.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="HeaderGpComp-fav" datatype="html">
+        <source>Favoris</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/header-gp/header-gp.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="MenuComp-menu" datatype="html">
+        <source>Menu</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="MenuComp-menu-close-aria-lbl" datatype="html">
+        <source>Fermer le menu de navigation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="global-close" datatype="html">
+        <source>Fermer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/overlay-map/overlay-map.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/overlay-tuto/overlay-tuto.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-themes/parcours/parcours.component.html</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Fermer un menu, une page</note>
+      </trans-unit>
+      <trans-unit id="MenuComp-menu-aria-lbl" datatype="html">
+        <source>Menu de navigation</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="MenuComp-menu-item" datatype="html">
+        <source>TODO<x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i class=&quot;icon icon-arrow-right&quot; aria-hidden=&quot;true&quot;&gt;"/><x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/menu/menu.component.html</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="OverlayMapComp-titre" datatype="html">
+        <source>Carte</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/overlay-map/overlay-map.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="OverlayMapComp-close" datatype="html">
+        <source>Fermer la boîte de dialogue : <x id="title" equiv-text="this.title"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/overlay-map/overlay-map.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="OverlayTutoComp-titre" datatype="html">
+        <source>Tutoriel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/overlay-tuto/overlay-tuto.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="OverlayTutoComp-close" datatype="html">
+        <source>Fermer la boîte de dialogue : <x id="title" equiv-text="this.title"/></source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/components/overlay-tuto/overlay-tuto.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-title" datatype="html">
+        <source>Une erreur est survenue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/errors/errors.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="global-home" datatype="html">
+        <source>Accueil</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/errors/errors.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/errors/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">lbl lien vers la l\&apos;accueil</note>
+      </trans-unit>
+      <trans-unit id="error-404-title" datatype="html">
+        <source>Page non trouvée !</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/errors/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="error-404-desc" datatype="html">
+        <source>Nous sommes désolés. La page que vous recherchez est introuvable.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/errors/page-not-found/page-not-found.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="home-title" datatype="html">
+        <source>Bienvenue sur le compagnon de visite</source>
+        <target>[EN] Bienvenue sur le compagnon de visite"</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">home page title</note>
+      </trans-unit>
+      <trans-unit id="home-sub-title" datatype="html">
+        <source>Sélectionnez votre langue</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/home/home.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">home page sub title</note>
+      </trans-unit>
+      <trans-unit id="ExploreComp-title" datatype="html">
+        <source>J&apos;explore</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ExploreComp-recherche-lbl" datatype="html">
+        <source>Votre recherche</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ExploreComp-input-title" datatype="html">
+        <source>Zone de saisie de votre recherche</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ExploreComp-input-clear" datatype="html">
+        <source>Effacer le contenu saisi dans le champ : Votre recherche</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.html</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ExploreComp-recherche-btn" datatype="html">
+        <source>Rechercher</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.html</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ExploreComp-recherche-more-title" datatype="html">
+        <source>Afficher plus de résultat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ExploreComp-recherche-more" datatype="html">
+        <source>Plus de résultat</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.html</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ExploreComp-noResult" datatype="html">
+        <source>Oups, il n’y a pas de résultat. Merci de préciser ou reformuler ta recherche</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-explore/explore/explore.component.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ParcoursThemesComp-title" datatype="html">
+        <source>Que souhaitez-vous visiter ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-themes/parcours-themes.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ParcoursComp-info" datatype="html">
+        <source> En savoir plus </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-themes/parcours/parcours.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-themes/parcours/parcours.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
