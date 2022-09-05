@@ -8,7 +8,7 @@ install:
   - npm install -g @angular/cli
 
 script:
-  - ng build -c pre-production
+  - ng build -c pre-prod
   - cd dist/compagnon_de_visite
   - zip -r "${TRAVIS_BUILD_DIR}/compagnon_de_visite_${TRAVIS_TAG}.zip" * 
   
