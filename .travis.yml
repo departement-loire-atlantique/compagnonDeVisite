@@ -1,0 +1,23 @@
+language: node_js
+
+node_js:
+  - 16
+
+install:
+  - npm install
+  - npm install -g @angular/cli
+
+script:
+  - ng build -c pre-prod
+  - cd dist/compagnon-de-visite
+  - zip -r "${TRAVIS_BUILD_DIR}/compagnon_de_visite_${TRAVIS_TAG}.zip" * 
+  
+deploy:
+  provider: releases
+  api_key:
+    secure: d1pWFasdxhxcpIp/ZeJoyggZVQeHxvsZf0BQtRVQn6+AaPXjqBaUN5KIFZ6q0J1nWsjjdewyI7XyOoKznrPDaHeXr0vZDvh2v++qrEUU8uwDIX7yTfZi6t6QGpKXdMYHR6TDICZCnOvEQgVPyWnGnQEuIKoKOGf7IJNb07H77blrOsdoz3n152wZLy7X4elLQW68rMRUtAqWEgqDzkx7IPr1j/asBBSgmEJ0vwKZ8tPx4Kit/8UsuEoZmj9pUJHp4o8LuFVTvFny1kbGuw6I9iXWYMfPyFCqHlQCQJV1dG97IvW0OKOUyPiJK9IQ4dpZoFIJlLvddMRIZiykLscVClYLS+GfWYRtSubksiv9/1EjbsCpGa7gfbvaiEIjJcGTB/sjCUzH+HY8HC6RLKJUs0CW4Aj4eTlSUecFX7ylaTUTltKIJnuZSKZ3Pj8t04Zl/KXnPz0iZAAK+5TignkEp5v13n3z2dAD1AjmjXIbQXdE94bGHmf3yQafKLMiuM4UMqq76ILyOjZGFgAIkf3yffjPCyfCYZY4WTdkyTSLjIP5jmJdhObv+2ah9sMH7SLe+qBCho859muJJZu69MG7oPArb3HMPaNcmlxYIyZt8xotq4c0z9L9SGDFQepmHN8yoX1o5qjQQ5JkC8Z6cTPZUg5q/NbBXKzrd0N2kX2sW74=
+  file_glob: true
+  file: "${TRAVIS_BUILD_DIR}/*.zip"
+  skip_cleanup: true
+  on:
+    tags: true
