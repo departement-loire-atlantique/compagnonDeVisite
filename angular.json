@@ -104,7 +104,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "localize": ["fr"],
+              "localize": [
+                "fr"
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -119,13 +121,19 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true,
-              "localize": ["fr"]
+              "localize": [
+                "fr"
+              ]
             },
             "en": {
-              "localize": ["en"]
+              "localize": [
+                "en"
+              ]
             },
             "fr-lsf": {
-              "localize": ["fr-LSF"]
+              "localize": [
+                "fr-LSF"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -191,8 +199,10 @@
       }
     }
   },
-  "defaultProject": "CompagnonDeVisite",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ],
+    "analytics": false
   }
 }

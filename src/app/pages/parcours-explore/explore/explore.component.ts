@@ -28,8 +28,8 @@ export class ExploreComponent implements OnInit {
   resultRetrieve!: Search[];
   isResultRetrieve: boolean = false;
   pager: JcmsPager<Content> | undefined;
-  //plan!: string; <- Faire apparaître l'icône carte
-  plan: string = ' ';
+  plan!: string;
+  idCatJExplore: string = '';
 
   espaceJcms: JcmsEspace | undefined;
 
@@ -50,6 +50,10 @@ export class ExploreComponent implements OnInit {
 
     if (!this.espaceJcms) {
       return;
+    }
+
+    if (this.espaceJcms){
+      this.idCatJExplore = this.espaceJcms.catJExplore;
     }
 
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
@@ -82,6 +86,12 @@ export class ExploreComponent implements OnInit {
     }
 
     this.result = [];
+
+    // Catégorie inexistante -> pas de résultats
+    if (!this.idCatJExplore) {
+      return;
+    }
+
     this.researchRun = true;
 
     this.processResult(
@@ -94,6 +104,7 @@ export class ExploreComponent implements OnInit {
           exactType: true,
           mode: 'advanced',
           wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
+          cids: this.idCatJExplore,
         },
       })
     );

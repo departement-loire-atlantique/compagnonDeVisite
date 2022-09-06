@@ -7,12 +7,12 @@ import { Environment } from "src/app/models/environment";
 export const environment: Environment = {
   production: false,
   jcms: 'http://localhost:8080/GP/',
-  token: '',
+  token: 'djI7Y181MDA3OzE2ODY5MTQ3OTkzOTk7R0VULFBVVCxQT1NULERFTEVURSw7OzI2OyQyYSQwNCRPV1J3bmxoOXRlQWZ3T1JwcS9PVTBlZW45eEJvY2NGUE1ZaDFNeEU1MHVyTm80dUV0MTVYYQ==',
   lang: {
-    'fr': { espace: 'rec_5033', catHome: 'rec_5034' },
-    'en': { espace: 'rec_5038', catHome: 'rec_5039' },
-    'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044' }
-  }
+    'fr': { espace: 'fde_5034', catHome: 'fde_5054', catJExplore: 'fde_5050' },
+    'en': { espace: 'fde_5035', catHome: 'fde_5032', catJExplore: 'fde_5050' },
+    'fr-LSF': { espace: 'fde_5036', catHome: 'fde_5033', catJExplore: 'fde_5050' }
+  },
 };
 
 /*
