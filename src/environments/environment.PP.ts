@@ -6,8 +6,8 @@ export const environment: Environment = {
   jcms: 'https://admin-prep-visite-musee-dobree.loire-atlantique.fr/',
   token: '',
   lang: {
-    'fr': { espace: '', catHome: '' },
-    'en': { espace: '', catHome: '' },
-    'fr-LSF': { espace: '', catHome: '' }
+    'fr': { espace: '', catHome: '', catJExplore: '' },
+    'en': { espace: '', catHome: '', catJExplore: '' },
+    'fr-LSF': { espace: '', catHome: '', catJExplore: '' }
   }
 };

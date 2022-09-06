@@ -8,4 +8,5 @@ export interface Environment {
 export interface JcmsEspace {
   espace: string,
   catHome: string,
+  catJExplore: string,
 }

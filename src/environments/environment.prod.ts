@@ -5,8 +5,8 @@ export const environment: Environment = {
   jcms: 'TODO',
   token: 'TODO',
   lang: {
-    'fr': { espace: '', catHome: '' },
-    'en': { espace: '', catHome: '' },
-    'fr-LSF': { espace: '', catHome: '' }
+    'fr': { espace: '', catHome: '', catJExplore: '' },
+    'en': { espace: '', catHome: '', catJExplore: '' },
+    'fr-LSF': { espace: '', catHome: '', catJExplore: '' }
   }
 };
