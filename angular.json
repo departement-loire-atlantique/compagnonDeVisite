@@ -26,6 +26,10 @@
           "fr-LSF": {
             "translation": "src/locale/messages.xlf",
             "baseHref": "/fr-LSF/"
+          },
+          "fr-PMR": {
+            "translation": "src/locale/messages.xlf",
+            "baseHref": "/fr-PMR/"
           }
         }
       },

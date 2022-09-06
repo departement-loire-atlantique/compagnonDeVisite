@@ -12,7 +12,8 @@ export const environment: Environment = {
   lang: {
     'fr': { espace: 'fde_5034', catHome: 'fde_5054', catJExplore: 'fde_5050' },
     'en': { espace: 'fde_5035', catHome: 'fde_5032', catJExplore: 'fde_5050' },
-    'fr-LSF': { espace: 'fde_5036', catHome: 'fde_5033', catJExplore: 'fde_5050' }
+    'fr-LSF': { espace: 'fde_5036', catHome: 'fde_5033', catJExplore: 'fde_5050' },
+    'fr-PMR': { espace: '', catHome: '', catJExplore: '' }
   },
 };
 

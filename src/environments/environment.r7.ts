@@ -13,7 +13,8 @@ export const environment: Environment = {
   lang: {
     'fr': { espace: 'rec_5033', catHome: 'rec_5034',   catJExplore: '' },
     'en': { espace: 'rec_5038', catHome: 'rec_5039',   catJExplore: '' },
-    'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044',  catJExplore: '' }
+    'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044',  catJExplore: '' },
+    'fr-PMR': { espace: '', catHome: '', catJExplore: '' }
   }
 };
 

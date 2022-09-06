@@ -8,6 +8,7 @@ export const environment: Environment = {
   lang: {
     'fr': { espace: '', catHome: '', catJExplore: '' },
     'en': { espace: '', catHome: '', catJExplore: '' },
-    'fr-LSF': { espace: '', catHome: '', catJExplore: '' }
+    'fr-LSF': { espace: '', catHome: '', catJExplore: '' },
+    'fr-PMR': { espace: '', catHome: '', catJExplore: '' }
   }
 };
