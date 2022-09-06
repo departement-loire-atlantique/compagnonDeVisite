@@ -8,6 +8,7 @@ export const environment: Environment = {
   production: false,
 
   jcms: 'http://10.1.12.88:8080/',
+  front: 'http://localhost:8089/',
   token: 'djI7cmVjXzUwMDc7MTY4NzM1Mzg4ODk3MDtHRVQsOzsyMzskMmEkMDQkWDFvTFlMNDdhRzdTYVhCWkFyQnF0T1Bwamk5UHRXNzZKZXZ2UWVsOWRqckx5V0JLZy9HMG0=',
   lang: {
     'fr': { espace: 'rec_5033', catHome: 'rec_5034',   catJExplore: '' },

@@ -1,6 +1,7 @@
 export interface Environment {
   production: boolean,
   jcms: string,
+  front: string,
   token: string,
   lang: { [key: string]: JcmsEspace },
 }

@@ -12,9 +12,9 @@ export class HomeComponent {
   private _nextPageRoute: string = "themes";
 
   languages: { [key: string]: any } = {
-    'fr': { lbl: 'FR', url: '/fr/' + this._nextPageRoute, img: '🇫🇷', isPicto: true },
-    'en': { lbl: 'EN', url: '/en/' + this._nextPageRoute, img: '🇬🇧', isPicto: true },
-    'fr-LSF': { lbl: 'LSF', url: '/fr-LSF/' + this._nextPageRoute, img: '👋', isPicto: true }
+    'fr': { lbl: 'FR', url: environment.front + 'fr/' + this._nextPageRoute, img: '🇫🇷', isPicto: true },
+    'en': { lbl: 'EN', url: environment.front + 'en/' + this._nextPageRoute, img: '🇬🇧', isPicto: true },
+    'fr-LSF': { lbl: 'LSF', url: environment.front + 'fr-LSF/' + this._nextPageRoute, img: '👋', isPicto: true }
   };
 
   constructor(@Inject(LOCALE_ID) public locale: string) {

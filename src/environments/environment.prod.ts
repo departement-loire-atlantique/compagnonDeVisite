@@ -3,6 +3,7 @@ import { Environment } from "src/app/models/environment";
 export const environment: Environment = {
   production: true,
   jcms: 'TODO',
+  front: 'TODO',
   token: 'TODO',
   lang: {
     'fr': { espace: '', catHome: '', catJExplore: '' },
