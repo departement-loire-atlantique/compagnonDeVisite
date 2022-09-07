@@ -75,10 +75,18 @@ export class ThematiqueComponent implements OnInit {
       parcours.sort((a,b) => a.ordre - b.ordre);
       for (let ind in parcours) {
         let p = parcours[ind];
-        this.listParcours?.splice(Number(ind),0,{
-          lbl: p.title,
-          url: p.jexplore ? 'explore/' : 'parcours/' + p.id,
-        })
+        if (p.jexplore) {
+          this.listParcours?.splice(-1,0,{
+            lbl: p.title,
+            url: 'explore/',
+            isJExplore: true,
+          })
+        } else {
+          this.listParcours?.splice(Number(ind),0,{
+            lbl: p.title,
+            url: 'parcours/' + p.id,
+          })
+        }
       }
     });
   }

@@ -4,4 +4,5 @@ export interface Item {
   prefix?: string;
   img?: string;
   isPicto?: boolean;
+  isJExplore?: boolean;
 }
