@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
-import { Content } from 'src/app/models/jcms/content';
+import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { environment } from 'src/environments/environment';
@@ -126,7 +126,7 @@ export class ExploreComponent implements OnInit {
             searchField: this.text,
             item: [{
               lbl: itContent.title,
-              img: environment.jcms + res.vignette,
+              img: buildUrlMedia(res.vignette),
               url: '/explore/oeuvre/' + itContent.id,
             }],
           });

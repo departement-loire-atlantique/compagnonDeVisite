@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 
 @Component({
@@ -33,6 +34,9 @@ export class OeuvreComponent implements OnInit, OnDestroy {
           .get<Oeuvre>('data/' + id)
           .subscribe((oeuvre: Oeuvre) => {
             this.oeuvre = oeuvre;
+            this.oeuvre.fichierSon = buildUrlMedia(oeuvre.fichierSon);
+            this.oeuvre.fichierSonDaide = buildUrlMedia(oeuvre.fichierSonDaide);
+            this.oeuvre.vignette = buildUrlMedia(oeuvre.vignette);
         });
       });
   }

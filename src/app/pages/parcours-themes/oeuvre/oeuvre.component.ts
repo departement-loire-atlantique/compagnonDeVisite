@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { forkJoin, map, Observable } from 'rxjs';
 import { State } from 'src/app/components/etapes/etapes.component';
-import { Content } from 'src/app/models/jcms/content';
+import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { Indication, IndicationMap } from 'src/app/models/jcms/indication';
 import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
@@ -53,6 +53,9 @@ export class OeuvreComponent implements OnInit {
     let idOeuvre = this._route.snapshot.paramMap.get('id');
     this._jcms.get<Oeuvre>('data/' + idOeuvre).subscribe(o => {
       this.oeuvre = o;
+      this.oeuvre.fichierSon = buildUrlMedia(o.fichierSon);
+      this.oeuvre.fichierSonDaide = buildUrlMedia(o.fichierSonDaide);
+      this.oeuvre.vignette = buildUrlMedia(o.vignette);
 
       //récupère les indications
       if (this.oeuvre.indications) {

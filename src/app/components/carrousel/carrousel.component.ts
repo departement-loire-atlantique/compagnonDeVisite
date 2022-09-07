@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { JAngularService } from 'j-angular';
 import { Carousel, CarouselElement } from 'src/app/models/jcms/carousel';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
 import { environment } from 'src/environments/environment';
 
@@ -9,7 +10,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './carrousel.component.html',
   styleUrls: ['./carrousel.component.scss']
 })
-export class CarrouselComponent implements OnInit, AfterViewInit{
+export class CarrouselComponent implements OnInit, AfterViewInit {
   @Input() carousel: Carousel | undefined;
 
   @Input() id: string | undefined;
@@ -27,8 +28,8 @@ export class CarrouselComponent implements OnInit, AfterViewInit{
 
   currentSlide: number = 1;
 
-  constructor( private _ds: DesignSystemService,
-               private _jcms: JAngularService ) { }
+  constructor(private _ds: DesignSystemService,
+    private _jcms: JAngularService) { }
 
   ngOnInit(): void {
     if (!this.carousel && this.id) {
@@ -53,8 +54,7 @@ export class CarrouselComponent implements OnInit, AfterViewInit{
       this._jcms
         .get<CarouselElement>('data/' + item.id)
         .subscribe((res: CarouselElement) => {
-          // TODO service fix img link
-          res.imageMobile = environment.jcms + res.imageMobile;
+          res.imageMobile = buildUrlMedia(res.imageMobile);
           this.elements[i] = res;
         });
     }

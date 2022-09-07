@@ -1,6 +1,6 @@
 import { environment } from 'src/environments/environment';
 import { Category } from './category'
-import { Content } from './content'
+import { buildUrlMedia, Content } from './content'
 import { ListeDeContenus } from './listeDeContenus';
 
 /**
@@ -30,16 +30,12 @@ export class ParcoursMap {
       description: dataRep.description,
       duree: dataRep.duree,
       public1: dataRep.public1,
-      visuel: this.checkURL(dataRep.visuel) ? environment.jcms + dataRep.visuel : "",
-      plan: this.checkURL(dataRep.plan) ? environment.jcms + dataRep.plan : "",
+      visuel: buildUrlMedia(dataRep.visuel),
+      plan: buildUrlMedia(dataRep.plan),
       etapes: dataRep.etapes,
       jexplore: dataRep.jexplore,
       ordre: dataRep.ordre,
     };
-  }
-
-  private checkURL(url: string) {
-    return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
   }
 }
 
