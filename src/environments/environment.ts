@@ -8,12 +8,13 @@ export const environment: Environment = {
   production: false,
   jcms: 'http://localhost:8080/GP/',
   front: 'http://127.0.0.1:8089/',
-  token: 'djI7Y181MDA3OzE2ODY5MTQ3OTkzOTk7R0VULFBVVCxQT1NULERFTEVURSw7OzI2OyQyYSQwNCRPV1J3bmxoOXRlQWZ3T1JwcS9PVTBlZW45eEJvY2NGUE1ZaDFNeEU1MHVyTm80dUV0MTVYYQ==',
+  token: 'djI7ZmRlXzUwNDQ7MTY5NDA3NzY2Nzg0NjtHRVQsOzsyNTskMmEkMDQkOVJBSG5UT1oua0tVd0JGd1Bjb2dxLk1pLkpNYUhuL25hV0hNZ0VwbUZkenVNQzBmMnlQLnE=',
+  catJExplore: 'c_5023',
   lang: {
-    'fr': { espace: 'fde_5034', catHome: 'fde_5054', catJExplore: 'fde_5050' },
-    'en': { espace: 'fde_5035', catHome: 'fde_5032', catJExplore: 'fde_5050' },
-    'fr-LSF': { espace: 'fde_5036', catHome: 'fde_5033', catJExplore: 'fde_5050' },
-    'fr-PMR': { espace: '', catHome: '', catJExplore: '' }
+    'fr': { espace: 'c_5019', catHome: 'c_5020' },
+    'en': { espace: 'c_5015', catHome: 'c_5016' },
+    'fr-LSF': { espace: 'c_5011', catHome: 'c_5012' },
+    'fr-PMR': { espace: 'fde_5028', catHome: 'fde_5029' }
   },
 };
 
