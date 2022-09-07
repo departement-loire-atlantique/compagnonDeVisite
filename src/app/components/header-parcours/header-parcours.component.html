@@ -4,11 +4,7 @@
       <div class="ds44-flex-container ds44-flex-valign-center">
 
         <div class="ds44-colLeft">
-          <app-back [customProcess]="customProcess" ></app-back>
-          <a *ngIf="backUrl" [href]="backUrl" type="button" class="ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component">
-            <span class="ds44-btnInnerText"> Fermer </span>
-            <i  class="icon icon--large icon-cross" aria-hidden="true"></i>
-          </a>
+          <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)" ></app-back>
         </div>
 
         <div class="ds44-colRight">

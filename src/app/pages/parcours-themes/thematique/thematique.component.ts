@@ -20,6 +20,8 @@ export class ThematiqueComponent implements OnInit {
 
   mapParcours: ParcoursMap = new ParcoursMap();
 
+  idThematique: string = "idThematique";
+
   constructor(
     private _catMng: CatsMngService,
     private _route: ActivatedRoute,
@@ -33,6 +35,11 @@ export class ThematiqueComponent implements OnInit {
    */
   ngOnInit(): void {
     const espaceJcms = this._jcmsEspace.getJcmsSpace();
+
+
+    let thematiqueId = this._route.snapshot.paramMap.get('id');
+    if(thematiqueId)
+      localStorage.setItem(this.idThematique, thematiqueId);
 
     if(!espaceJcms){
       return;

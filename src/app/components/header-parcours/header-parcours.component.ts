@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-parcours',
@@ -14,13 +15,16 @@ export class HeaderParcoursComponent {
   customProcess:boolean = false;
 
   @Input()
-  backUrl:string | undefined;
+  returnUrl:string | undefined;
 
-  constructor() {
+  constructor(private router: Router ) {
     if(this.imagePlan == "") {
       this.imagePlan = localStorage.getItem("map");
     }
   }
 
+  returnCustom($event: string) {
+    this.router.navigate([this.returnUrl]);
+  }
 
 }

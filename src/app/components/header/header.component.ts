@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,16 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
-  constructor() { }
+  @Input()
+  customProcess:boolean = false;
+
+  @Input()
+  returnUrl:string | undefined;
+
+  constructor(private router: Router ) { }
+
+  returnCustom($event: string) {
+    this.router.navigate([this.returnUrl]);
+  }
 
 }

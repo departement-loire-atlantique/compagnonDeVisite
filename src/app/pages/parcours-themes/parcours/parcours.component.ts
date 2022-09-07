@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { Etape, State } from 'src/app/components/etapes/etapes.component';
@@ -26,11 +26,13 @@ export class ParcoursComponent implements OnInit {
 
   listEtape: string = "listEtape";
   idParcours: string = "idParcours";
+  idThematique: string = "idThematique";
 
   constructor(
     private _ds: DesignSystemService,
     private _route: ActivatedRoute,
-    private _jcms: JAngularService) { }
+    private _jcms: JAngularService,
+    private _router: Router) { }
 
   /**
    * init le parcours et les etapes si elles ne sont pas dans le localStorage
@@ -230,6 +232,11 @@ export class ParcoursComponent implements OnInit {
    */
   public getEtapes() {
     return this.etapes;
+  }
+
+  public getThemeURL() {
+    let idTheme = localStorage.getItem(this.idThematique);
+    return 'themes/' + idTheme;
   }
 
 }

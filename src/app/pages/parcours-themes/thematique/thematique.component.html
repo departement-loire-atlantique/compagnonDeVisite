@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header [customProcess]="true" returnUrl="themes/"></app-header>
 <main>
   <app-image-text [img]="getCurrentCat()?.image" [text]="getCurrentCat()?.title"></app-image-text>
   <app-list-bg [items]="getListParcours()" [noSeparator]="true"></app-list-bg>
