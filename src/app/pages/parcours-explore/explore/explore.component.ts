@@ -30,6 +30,7 @@ export class ExploreComponent implements OnInit {
   pager: JcmsPager<Content> | undefined;
   plan!: string;
   idCatJExplore!: string;
+  title!: string;
 
   espaceJcms: JcmsEspace | undefined;
 
@@ -45,6 +46,8 @@ export class ExploreComponent implements OnInit {
    */
   ngOnInit(): void {
     this._ds.initForm();
+
+    this.title = localStorage.getItem("TitleJExplore") || "Visite libre dans le musée";
 
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
 
