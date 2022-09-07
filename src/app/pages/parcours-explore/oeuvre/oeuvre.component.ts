@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 
 @Component({
   selector: 'app-oeuvre',
@@ -13,7 +13,7 @@ import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
  */
 export class OeuvreComponent implements OnInit, OnDestroy {
 
-  oeuvre!: OeuvreExplore | undefined;
+  oeuvre!: Oeuvre | undefined;
   isAudioEnded: boolean = false;
   //plan!: string; <- Faire apparaître l'icône carte
   plan: string = ' ';
@@ -30,8 +30,8 @@ export class OeuvreComponent implements OnInit, OnDestroy {
     this._route.paramMap.subscribe((params) => {
       const id = params.get('id');
       this._jcms
-          .get<OeuvreExplore>('data/' + id)
-          .subscribe((oeuvre: OeuvreExplore) => {
+          .get<Oeuvre>('data/' + id)
+          .subscribe((oeuvre: Oeuvre) => {
             this.oeuvre = oeuvre;
         });
       });

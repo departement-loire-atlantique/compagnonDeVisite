@@ -4,7 +4,7 @@ import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
 import { JcmsEspace } from 'src/app/models/environment';
@@ -95,7 +95,7 @@ export class ExploreComponent implements OnInit {
       this._jcms.getPager<Content>('search', {
         params: {
           text: this.text + '*',
-          types: ['OeuvreExplore'],
+          types: ['Oeuvre'],
           searchedFields: ['title'],
           sort: ['title'],
           exactType: true,
@@ -121,7 +121,7 @@ export class ExploreComponent implements OnInit {
       const contents = pager.dataInPage;
 
       for (let itContent of contents) {
-        this._jcms.get<OeuvreExplore>('data/' + itContent.id).subscribe(res => {
+        this._jcms.get<Oeuvre>('data/' + itContent.id).subscribe(res => {
           this.result?.push({
             searchField: this.text,
             item: [{
