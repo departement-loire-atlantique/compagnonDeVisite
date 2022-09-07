@@ -7,8 +7,8 @@ import { DesignSystemService } from 'src/app/services/design-system.service';
 import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
-import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { JcmsEspace } from 'src/app/models/environment';
+import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 
 @Component({
   selector: 'app-explore',
@@ -29,7 +29,7 @@ export class ExploreComponent implements OnInit {
   isResultRetrieve: boolean = false;
   pager: JcmsPager<Content> | undefined;
   plan!: string;
-  idCatJExplore: string = '';
+  idCatJExplore!: string;
 
   espaceJcms: JcmsEspace | undefined;
 
@@ -52,9 +52,7 @@ export class ExploreComponent implements OnInit {
       return;
     }
 
-    if (this.espaceJcms){
-      this.idCatJExplore = this.espaceJcms.catJExplore;
-    }
+    this.idCatJExplore = environment.catJExplore;
 
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
     if (resultRetrieveSessionStorage !== '') {
@@ -86,7 +84,6 @@ export class ExploreComponent implements OnInit {
     }
 
     this.result = [];
-
     // Catégorie inexistante -> pas de résultats
     if (!this.idCatJExplore) {
       return;
