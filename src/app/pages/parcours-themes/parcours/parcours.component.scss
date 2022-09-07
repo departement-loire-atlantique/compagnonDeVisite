@@ -11,8 +11,11 @@ H1 {
 }
 
 .plus {
+  text-align: center;
+  display: block;
   text-decoration: underline 1px;
   text-underline-offset: 3px;
+  margin-bottom: 20px;
 }
 
 .ds44-posBot {
@@ -21,5 +24,23 @@ H1 {
 
 .ds44-container-large {
   margin: 0;
+}
+
+.max-lines {
+  // display: inline-block;/* or inline-block */
+  // text-overflow: ellipsis;
+  // word-wrap: break-word;
+  // max-height: 3.6em;
+  // line-height: 1.8em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.default-lines {
+  display: inline-block; /* or inline-block */
+  word-wrap: break-word;
+  line-height: 1.8em;
 }
 

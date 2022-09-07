@@ -28,6 +28,9 @@ export class ParcoursComponent implements OnInit {
   idParcours: string = "idParcours";
   idThematique: string = "idThematique";
 
+  defaultCSS = "max-lines";
+  defaultText = "Lire la suite"
+
   constructor(
     private _ds: DesignSystemService,
     private _route: ActivatedRoute,
@@ -237,6 +240,20 @@ export class ParcoursComponent implements OnInit {
   public getThemeURL() {
     let idTheme = localStorage.getItem(this.idThematique);
     return 'themes/' + idTheme;
+  }
+
+  public showDesc() {
+    if(this.defaultCSS === "max-lines") {
+      this.defaultCSS = "default-lines ";
+      this.defaultText = "Réduire"
+    } else {
+      this.defaultCSS = "max-lines";
+      this.defaultText = "Lire la suite"
+    }
+  }
+
+  public getCSS() {
+    return this.defaultCSS;
   }
 
 }

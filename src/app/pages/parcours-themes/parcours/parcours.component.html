@@ -4,11 +4,17 @@
   <h1 class="underline"> {{ getTitle() }}</h1>
 
   <div class="ds44-container-large">
-    <div class="ds44-flex-container ds44-flex-valign-center">
-      <div class="ds44-colLeft">
-        <h3> {{ getDuree() }}</h3>
-      </div>
 
+    <div>
+      <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
+      <span (click)="showDesc()" class="ds44-btnInnerText plus"> {{ defaultText }} </span>
+    </div>
+
+    <h3> {{ getDuree() }}</h3>
+
+    <!-- <div class="ds44-flex-container ds44-flex-valign-center">
+      <div class="ds44-colLeft">
+      </div>
       <div class="ds44-colRight">
         <a data-target="#overlay-plus" data-js="ds44-modal">
           <span class="ds44-btnInnerText plus" i18n="@@ParcoursComp-info"> En savoir plus </span>
@@ -28,8 +34,7 @@
           </div>
         </section>
       </div>
-
-    </div>
+    </div> -->
   </div>
 
   <app-etapes [etapes]="getEtapes()"></app-etapes>
