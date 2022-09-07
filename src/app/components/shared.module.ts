@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BackComponent } from './back/back.component';
+import { BackPopupComponent } from './back-popup/back-popup.component';
 import { CollapserComponent } from './collapser/collapser.component';
 import { ListComponent } from './list/list.component';
 import { ListBGComponent } from './list-bg/list-bg.component';
@@ -27,6 +28,7 @@ import { PageUtileComponent } from './page-utile/page-utile.component';
 @NgModule({
   declarations: [
     BackComponent,
+    BackPopupComponent,
     CarrouselComponent,
     CollapserComponent,
     LecteurAudioComponent,
@@ -52,6 +54,7 @@ import { PageUtileComponent } from './page-utile/page-utile.component';
   imports: [CommonModule, RouterModule],
   exports: [
     BackComponent,
+    BackPopupComponent,
     CarrouselComponent,
     CollapserComponent,
     LecteurAudioComponent,

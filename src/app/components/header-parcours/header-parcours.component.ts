@@ -17,6 +17,9 @@ export class HeaderParcoursComponent {
   @Input()
   returnUrl:string | undefined;
 
+  @Input()
+  popUp:boolean = false;
+
   constructor(private router: Router ) {
     if(this.imagePlan == "") {
       this.imagePlan = localStorage.getItem("map");
