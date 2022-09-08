@@ -1,0 +1,62 @@
+<ul class="ds44-collapser">
+
+  <li class="ds44-collapser_element  first-elem">
+    <p role="heading" aria-level="3">
+      <button type="button" class="ds44-collapser_button">
+        Réécouter l'indication audio
+        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
+      </button>
+    </p>
+    <div class="ds44-collapser_content">
+      <div class="audio-help">
+        <app-lecteur-audio *ngIf="hasLoaded" [file]='audio' [name]='titleAudio'>
+        </app-lecteur-audio>
+      </div>
+    </div>
+  </li>
+
+  <li *ngIf="imagePlan" class="ds44-collapser_element ">
+    <p role="heading" aria-level="3">
+      <button type="button" class="ds44-collapser_button">
+        Me repérer sur le plan
+        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
+      </button>
+    </p>
+    <div class="ds44-collapser_content">
+      <div class="img-plan">
+        <picture class="ds44-container-imgRatio">
+          <img [src]="imagePlan" alt=""/>
+        </picture>
+      </div>
+    </div>
+  </li>
+
+  <li class="ds44-collapser_element ">
+    <p role="heading" aria-level="3">
+      <button type="button" class="ds44-collapser_button">
+        Suivre le parcours
+        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
+      </button>
+    </p>
+    <div class="ds44-collapser_content">
+      <div *ngIf="indications" class="indication">
+        <div *ngFor="let indication of indications">
+
+          <div *ngIf="indication.icon">
+            <div *ngIf="checkURL(indication.icon);else icon">
+              <img class="img-icon" [src]="indication.icon">
+              <span>{{indication.title}}</span>
+            </div>
+            <ng-template #icon>
+              <i [class]="'icon ' + indication.icon"></i>
+              <span>{{indication.title}}</span>
+            </ng-template>
+          </div>
+          <!-- <i [class]="'icon ' + indication.icon"></i>
+            <span>{{indication.title}}</span>  -->
+        </div>
+      </div>
+    </div>
+
+  </li>
+</ul>

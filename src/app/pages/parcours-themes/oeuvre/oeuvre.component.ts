@@ -26,16 +26,17 @@ export class OeuvreComponent implements OnInit {
   idParcours: string = "idParcours";
 
   nextEtapeUrl: string | undefined;
+  previousEtapeUrl: string | undefined;
   indexEtape: number = Number(this._route.snapshot.paramMap.get('index'));
 
   json: any | undefined;
   finParcours: boolean = false;
+  debParcours: boolean = true;
 
   audio: boolean = false;
 
   constructor(
     private _jcms: JAngularService,
-    private router: Router,
     private _route: ActivatedRoute) { }
 
   /**
@@ -125,6 +126,12 @@ export class OeuvreComponent implements OnInit {
       this.finParcours = true;
       this.nextEtapeUrl = 'parcours-fin/' + localStorage.getItem(this.idParcours);
     }
+    if(json[i - 1] != undefined) {
+      this.previousEtapeUrl = json[i - 1].item.url;
+      this.debParcours = false;
+    } else {
+      this.debParcours = true;
+    }
   }
 
   /**
@@ -133,6 +140,14 @@ export class OeuvreComponent implements OnInit {
    */
   public getIndexNextStep() {
     return this.indexEtape + 2;
+  }
+
+  /**
+   * Get l'index de l'étape précédente pour l'affichage
+   * @returns index de la précédente
+   */
+  public getIndexPreviousStep() {
+    return this.indexEtape;
   }
 
   /**
@@ -160,13 +175,20 @@ export class OeuvreComponent implements OnInit {
       this.audio = true;
   }
 
-
   /**
    * Get le titre de l'oeuvre
    * @returns le titre
    */
   public getTitle() {
     return this.oeuvre?.title;
+  }
+
+  /**
+   * Get la description de l'oeuvre
+   * @returns la description
+   */
+  public getDesc() {
+    return this.oeuvre?.description;
   }
 
   /**
@@ -198,15 +220,14 @@ export class OeuvreComponent implements OnInit {
    * @returns le fichier son d'aide
    */
   public getAudioAide() {
-    return this.oeuvre?.fichierSonDaide;
+    if(this.oeuvre?.fichierSonDaide) {
+      return this.oeuvre?.fichierSonDaide;
+    }
+    return "";
   }
 
   public getMap() {
     return localStorage.getItem("map");
-  }
-
-  public checkURL(url: string) {
-    return (url.match(/\.(jpeg|jpg|gif|png|ico)$/) != null);
   }
 
 }
