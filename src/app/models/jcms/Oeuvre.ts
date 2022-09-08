@@ -5,7 +5,7 @@ import { ListeDeContenus } from "./listeDeContenus";
 /**
  * Link for JCMS content oeuvre
  */
- export interface OeuvreExplore extends Content {
+ export interface Oeuvre extends Content {
 
   titre: string | undefined,
 
