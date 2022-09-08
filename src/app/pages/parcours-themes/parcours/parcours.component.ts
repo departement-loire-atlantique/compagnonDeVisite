@@ -206,19 +206,20 @@ export class ParcoursComponent implements OnInit {
    */
   public getSeenItems() {
     let seenItem = [];
-    let listEtape = this.etapes?.filter(e => {
-      if (e.state == State.inactive)
-        return false;
-      return true;
-    });
-    if (listEtape) {
-      for (let etape of listEtape) {
-        seenItem.push(etape.item);
+    if(this.etapes) {
+      for(let etape of this.etapes) {
+        if (!(etape.state == State.inactive))
+          seenItem.push(etape.item);
       }
     }
     return seenItem;
   }
 
+
+  /**
+   * Get les items du parcours
+   * @returns la liste d'items
+   */
   public getItems() {
     let items = [];
     if (this.etapes) {
@@ -237,11 +238,34 @@ export class ParcoursComponent implements OnInit {
     return this.etapes;
   }
 
+  /**
+   * Get le nombre d'oeuvre dans le parcours
+   * @returns le nombre d'items
+   */
+  public getNumberItem() {
+    return this.etapes?.length;
+  }
+
+  /**
+   * Get le nombre d'oeuvre vu du parcours
+   * @returns le nombre d'items vu
+   */
+  public getNumberSeenItem() {
+    return this.getSeenItems().length;
+  }
+
+  /**
+   * Get l'url pour retourner à la liste des parcours d'un thème
+   * @returns
+   */
   public getThemeURL() {
     let idTheme = localStorage.getItem(this.idThematique);
     return 'themes/' + idTheme;
   }
 
+  /**
+   * Change les classes CSS lors d'un click bouton
+   */
   public showDesc() {
     if(this.defaultCSS === "max-lines") {
       this.defaultCSS = "default-lines ";
@@ -252,6 +276,10 @@ export class ParcoursComponent implements OnInit {
     }
   }
 
+  /**
+   * Retourne la classe css
+   * @returns la classe css
+   */
   public getCSS() {
     return this.defaultCSS;
   }
