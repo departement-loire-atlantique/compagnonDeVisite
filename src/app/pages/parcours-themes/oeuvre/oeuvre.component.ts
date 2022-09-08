@@ -3,8 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { forkJoin, map, Observable } from 'rxjs';
 import { State } from 'src/app/components/etapes/etapes.component';
-import { Content } from 'src/app/models/jcms/content';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
+import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { Indication, IndicationMap } from 'src/app/models/jcms/indication';
 import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 
@@ -15,7 +15,7 @@ import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 })
 export class OeuvreComponent implements OnInit {
 
-  oeuvre: OeuvreExplore | undefined;
+  oeuvre: Oeuvre | undefined;
   indications: Indication[] | undefined;
   mapIndication: IndicationMap = new IndicationMap();
 
@@ -52,8 +52,11 @@ export class OeuvreComponent implements OnInit {
    */
   private initOeuvre() {
     let idOeuvre = this._route.snapshot.paramMap.get('id');
-    this._jcms.get<OeuvreExplore>('data/' + idOeuvre).subscribe(o => {
+    this._jcms.get<Oeuvre>('data/' + idOeuvre).subscribe(o => {
       this.oeuvre = o;
+      this.oeuvre.fichierSon = buildUrlMedia(o.fichierSon);
+      this.oeuvre.fichierSonDaide = buildUrlMedia(o.fichierSonDaide);
+      this.oeuvre.vignette = buildUrlMedia(o.vignette);
 
       //récupère les indications
       if (this.oeuvre.indications) {

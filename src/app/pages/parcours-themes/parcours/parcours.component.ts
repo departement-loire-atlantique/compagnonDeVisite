@@ -8,7 +8,7 @@ import { Item } from 'src/app/models/item';
 import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 import { Observable, forkJoin } from 'rxjs';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { Content } from 'src/app/models/jcms/content';
 
 @Component({
@@ -111,9 +111,9 @@ export class ParcoursComponent implements OnInit {
    * @returns la liste d'observable
    */
   private getListContenus(contenus: Content[]) {
-    let observables: Observable<OeuvreExplore>[] = [];
+    let observables: Observable<Oeuvre>[] = [];
     for (let contenu of contenus) {
-      observables.push(this._jcms.get<OeuvreExplore>('data/' + contenu.id));
+      observables.push(this._jcms.get<Oeuvre>('data/' + contenu.id));
     }
     return forkJoin(observables);
   }

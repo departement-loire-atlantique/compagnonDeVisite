@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JcmsEspace } from 'src/app/models/environment';
 import { Item } from 'src/app/models/item';
 import { Category } from 'src/app/models/jcms/category';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { CatsMngService } from 'src/app/services/cats-mng.service';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { environment } from 'src/environments/environment';
@@ -47,7 +48,7 @@ export class ParcoursThemesComponent implements OnInit {
       for (let ind = 0; ind < cats.length; ind++) {
         let c = cats[ind];
         this.listCat.splice(ind, 0, {
-          img: c.image,
+          img: buildUrlMedia(c.image),
           lbl: c.title,
           url: "themes/" + c.id,
         })

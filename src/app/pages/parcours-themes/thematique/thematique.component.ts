@@ -76,6 +76,7 @@ export class ThematiqueComponent implements OnInit {
       for (let ind in parcours) {
         let p = parcours[ind];
         if (p.jexplore) {
+          localStorage.setItem("TitleJExplore", p.title);
           this.listParcours?.splice(-1,0,{
             lbl: p.title,
             url: 'explore/',
