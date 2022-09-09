@@ -59,7 +59,7 @@ export class ParcoursComponent implements OnInit {
       if (etapeStore && idParcoursStore == this.leParcours.id) {
         this.etapes = JSON.parse(etapeStore);
       } else {
-        localStorage.setItem("map", this.leParcours.plan);
+        // localStorage.setItem("map", this.leParcours.plan);
         this.initEtape(this.leParcours.etapes.id);
       }
     });
