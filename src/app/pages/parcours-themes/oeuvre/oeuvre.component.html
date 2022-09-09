@@ -1,4 +1,4 @@
-<app-header-parcours [customProcess]="true" [returnUrl]="getHomeParcours()" [popUp]="true"></app-header-parcours>
+<app-header-parcours [customProcess]="true" [imagePlan]="getMap()" [returnUrl]="getHomeParcours()" [popUp]="true"></app-header-parcours>
 
 <main>
 
@@ -11,7 +11,7 @@
       <div id="indications" class="desc-oeuvre">
         <p> {{ getDesc() }} </p>
       </div>
-      <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()" [indications]="indications">
+      <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()" [indications]="getIndications()">
       </app-collapser-oeuvre>
     </div>
   </div>

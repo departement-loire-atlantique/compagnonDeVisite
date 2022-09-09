@@ -1,6 +1,5 @@
 import { Carousel } from "./carousel";
 import { Content } from "./content";
-import { ListeDeContenus } from "./listeDeContenus";
 
 /**
  * Link for JCMS content oeuvre
@@ -22,7 +21,9 @@ import { ListeDeContenus } from "./listeDeContenus";
 
   vignette: string | undefined,
 
-  indications: ListeDeContenus | undefined,
+  indications: string | undefined,
+
+  plan: string | undefined,
 
     /**
    * Category

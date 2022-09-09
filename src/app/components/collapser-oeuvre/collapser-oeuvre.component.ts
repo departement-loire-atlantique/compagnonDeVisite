@@ -2,9 +2,6 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 
 import { DesignSystemService } from 'src/app/services/design-system.service';
 
-import { Indication, IndicationMap } from 'src/app/models/jcms/indication';
-import { Item } from 'src/app/models/item';
-
 @Component({
   selector: 'app-collapser-oeuvre',
   templateUrl: './collapser-oeuvre.component.html',
@@ -22,19 +19,14 @@ export class CollapserOeuvreComponent implements AfterViewInit {
   audio: string = "";
 
   @Input()
-  imagePlan: string | null = "";
+  imagePlan: string | undefined = "";
 
   @Input()
-  indications: Indication[] | undefined;
+  indications: string | undefined;
 
   constructor(private _ds: DesignSystemService) {}
 
   ngAfterViewInit(): void {
     this._ds.initCollapser();
   }
-
-  public checkURL(url: string) {
-    return (url.match(/\.(jpeg|jpg|gif|png|ico)$/) != null);
-  }
-
 }

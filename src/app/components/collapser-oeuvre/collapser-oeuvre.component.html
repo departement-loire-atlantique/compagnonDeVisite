@@ -24,7 +24,7 @@
       </button>
     </p>
     <div class="ds44-collapser_content">
-      <div class="img-plan">
+      <div class="img-collapser">
         <picture class="ds44-container-imgRatio">
           <img [src]="imagePlan" alt="" />
         </picture>
@@ -40,22 +40,10 @@
       </button>
     </p>
     <div class="ds44-collapser_content">
-      <div *ngIf="indications" class="indication">
-        <div *ngFor="let indication of indications">
-
-          <div *ngIf="indication.icon">
-            <div *ngIf="checkURL(indication.icon);else icon">
-              <img class="img-icon" [src]="indication.icon">
-              <span>{{indication.title}}</span>
-            </div>
-            <ng-template #icon>
-              <i [class]="'icon ' + indication.icon"></i>
-              <span>{{indication.title}}</span>
-            </ng-template>
-          </div>
-          <!-- <i [class]="'icon ' + indication.icon"></i>
-            <span>{{indication.title}}</span>  -->
-        </div>
+      <div class="img-collapser">
+        <picture class="ds44-container-imgRatio">
+          <img [src]="indications" alt="" />
+        </picture>
       </div>
     </div>
 

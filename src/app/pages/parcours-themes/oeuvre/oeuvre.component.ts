@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
-import { forkJoin, map, Observable } from 'rxjs';
 import { State } from 'src/app/components/etapes/etapes.component';
-import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
-import { Indication, IndicationMap } from 'src/app/models/jcms/indication';
-import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 
 @Component({
   selector: 'app-oeuvre',
@@ -16,8 +13,7 @@ import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 export class OeuvreComponent implements OnInit {
 
   oeuvre: Oeuvre | undefined;
-  indications: Indication[] | undefined;
-  mapIndication: IndicationMap = new IndicationMap();
+  indications: string | undefined;
 
   hasLoaded: boolean = false;
 
@@ -57,36 +53,11 @@ export class OeuvreComponent implements OnInit {
       this.oeuvre.fichierSon = buildUrlMedia(o.fichierSon);
       this.oeuvre.fichierSonDaide = buildUrlMedia(o.fichierSonDaide);
       this.oeuvre.vignette = buildUrlMedia(o.vignette);
+      this.oeuvre.indications = buildUrlMedia(o.indications);
+      this.oeuvre.plan = buildUrlMedia(o.plan);
 
-      //récupère les indications
-      if (this.oeuvre.indications) {
-        this._jcms.get<ListeDeContenus>('data/' + this.oeuvre.indications.id).subscribe((listeDeContenus: ListeDeContenus) => {
-            this.getListContenus(listeDeContenus.contenus).subscribe(dataArray => {
-              if (!this.indications) {
-                this.indications = [];
-              }
-              for (let elem of dataArray) {
-                let indication = this.mapIndication.mapToIndication(elem);
-                this.indications.push(indication);
-              }
-            })
-          });
-      }
       this.hasLoaded = true;
     });
-  }
-
-  /**
-   * Get le détail de la liste de contenus
-   * @param contenus le contenus de la liste de contenus
-   * @returns liste d'observable
-   */
-  private getListContenus(contenus: Content[]) {
-    let observables: Observable<Indication>[] = [];
-    for (let contenu of contenus) {
-      observables.push(this._jcms.get<Indication>('data/' + contenu.id));
-    }
-    return forkJoin(observables);
   }
 
   /**
@@ -229,8 +200,21 @@ export class OeuvreComponent implements OnInit {
     return "";
   }
 
+  /**
+   * Get la carte de l'oeuvre
+   * @returns la carte de l'oeuvre
+   */
   public getMap() {
-    return localStorage.getItem("map");
+    return this.oeuvre?.plan;
+    // return localStorage.getItem("map");
+  }
+
+  /**
+   * Get les indications de l'oeuvre
+   * @returns les indications de l'oeuvre
+   */
+  public getIndications() {
+    return this.oeuvre?.indications;
   }
 
 }
