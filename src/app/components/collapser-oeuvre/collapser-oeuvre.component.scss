@@ -21,6 +21,8 @@ UL {
 
     .ds44-collapser_content {
       background-color: $light-grey;
+      border-top: 1px solid;
+      border-top-color: $main-color ;
 
       .img-collapser {
         padding: 10px;
@@ -32,8 +34,6 @@ UL {
        }
 
       .audio-help {
-        border-top: 1px solid;
-        border-top-color: $main-color ;
         padding: 20px 10px 20px 10px;
       }
 
@@ -65,6 +65,14 @@ UL {
 .first-elem {
   border-top: 1px solid;
   border-top-color: $main-color ;
+}
+
+.visible {
+  display: block;
+}
+
+.hide {
+  display: none;
 }
 
 

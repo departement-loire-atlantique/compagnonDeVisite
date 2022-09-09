@@ -16,10 +16,10 @@ export class CollapserOeuvreComponent implements AfterViewInit {
   titleAudio: string = "";
 
   @Input()
-  audio: string = "";
+  audio: string | undefined;
 
   @Input()
-  imagePlan: string | undefined = "";
+  imagePlan: string | undefined;
 
   @Input()
   indications: string | undefined;
@@ -28,5 +28,17 @@ export class CollapserOeuvreComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this._ds.initCollapser();
+  }
+
+  public isAudio() {
+    return this.audio ? "visible" : "hide";
+  }
+
+  public isImagePlan() {
+    return this.imagePlan ? "visible" : "hide";
+  }
+
+  public isIndications() {
+    return this.indications ? "visible" : "hide";
   }
 }
