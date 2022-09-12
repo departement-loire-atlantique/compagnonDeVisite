@@ -145,10 +145,7 @@ export class ParcoursComponent implements OnInit {
    * @returns le title du parcours
    */
   public getTitle() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.title;
+    return this.leParcours?.title;
   }
 
   /**
@@ -156,10 +153,7 @@ export class ParcoursComponent implements OnInit {
    * @returns la description
    */
   public getDescription() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.description;
+    return this.leParcours?.description;
   }
 
   /**
@@ -167,10 +161,15 @@ export class ParcoursComponent implements OnInit {
    * @returns la plan
    */
   public getPlan() {
-    if (!this.leParcours)
-      return "";
+    return this.leParcours?.plan;
+  }
 
-    return this.leParcours.plan;
+  /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+  public getVideo() {
+    return this.leParcours?.video;
   }
 
   /**

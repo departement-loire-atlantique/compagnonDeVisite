@@ -35,4 +35,6 @@ import { Content } from "./content";
       */
   miseEnAvant: Content[] | undefined,
 
+  video: string | undefined,
+
  }

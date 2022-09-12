@@ -21,6 +21,10 @@
     </div>
   </div>
 
+  <div *ngIf="getVideo()">
+    <app-video [url]="getVideo()"></app-video>
+  </div>
+
   <app-etapes [etapes]="getEtapes()"></app-etapes>
 
   <app-tuile-h-etape [etapes]="getEtapes()"></app-tuile-h-etape>

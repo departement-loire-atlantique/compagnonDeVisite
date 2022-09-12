@@ -3,16 +3,20 @@
 <main>
 
   <div class="detail-oeuvre">
-    <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()">
-    </app-carrousel>
+    <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()"></app-carrousel>
 
     <div class="block-indications">
+
+
+      <div *ngIf="getVideo()">
+        <app-video [url]="getVideo()"></app-video>
+      </div>
 
       <div id="indications" class="desc-oeuvre">
         <p> {{ getDesc() }} </p>
       </div>
-      <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()" [indications]="getIndications()">
-      </app-collapser-oeuvre>
+      <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
+        [indications]="getIndications()"></app-collapser-oeuvre>
     </div>
   </div>
 

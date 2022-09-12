@@ -17,6 +17,7 @@ export interface Parcours extends Content {
   etapes: ListeDeContenus,
   jexplore: boolean,
   ordre: number,
+  video: string | undefined,
 }
 
 export class ParcoursMap {
@@ -35,6 +36,7 @@ export class ParcoursMap {
       etapes: dataRep.etapes,
       jexplore: dataRep.jexplore,
       ordre: dataRep.ordre,
+      video: buildUrlMedia(dataRep.video),
     };
   }
 }

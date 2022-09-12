@@ -55,6 +55,7 @@ export class OeuvreComponent implements OnInit {
       this.oeuvre.vignette = buildUrlMedia(o.vignette);
       this.oeuvre.indications = buildUrlMedia(o.indications);
       this.oeuvre.plan = buildUrlMedia(o.plan);
+      this.oeuvre.video = buildUrlMedia(o.video);
 
       this.hasLoaded = true;
     });
@@ -217,4 +218,11 @@ export class OeuvreComponent implements OnInit {
     return this.oeuvre?.indications;
   }
 
+  /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+   public getVideo() {
+    return this.oeuvre?.video;
+  }
 }

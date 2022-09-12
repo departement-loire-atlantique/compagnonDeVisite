@@ -25,6 +25,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { HeaderExploreComponent } from './header-explore/header-explore.component';
 import { PartageRsComponent } from './partage-rs/partage-rs.component';
 import { PageUtileComponent } from './page-utile/page-utile.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { PageUtileComponent } from './page-utile/page-utile.component';
     OverlayMapComponent,
     HeaderExploreComponent,
     PartageRsComponent,
-    PageUtileComponent
+    PageUtileComponent,
+    VideoComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -77,7 +79,8 @@ import { PageUtileComponent } from './page-utile/page-utile.component';
     EtapesComponent,
     OverlayMapComponent,
     PartageRsComponent,
-    PageUtileComponent
+    PageUtileComponent,
+    VideoComponent,
   ],
 })
 export class SharedModule {}
