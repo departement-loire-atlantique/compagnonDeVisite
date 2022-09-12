@@ -16,8 +16,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   oeuvre!: Oeuvre | undefined;
   isAudioEnded: boolean = false;
-  //plan!: string; <- Faire apparaître l'icône carte
-  plan: string = ' ';
+  plan!: string;
 
   constructor(
               private _route: ActivatedRoute,
