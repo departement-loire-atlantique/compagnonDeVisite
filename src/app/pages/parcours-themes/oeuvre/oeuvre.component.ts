@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
-import { forkJoin, map, Observable } from 'rxjs';
 import { State } from 'src/app/components/etapes/etapes.component';
-import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
-import { Indication, IndicationMap } from 'src/app/models/jcms/indication';
-import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 
 @Component({
   selector: 'app-oeuvre',
@@ -16,8 +13,7 @@ import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 export class OeuvreComponent implements OnInit {
 
   oeuvre: Oeuvre | undefined;
-  indications: Indication[] | undefined;
-  mapIndication: IndicationMap = new IndicationMap();
+  indications: string | undefined;
 
   hasLoaded: boolean = false;
 
@@ -26,16 +22,17 @@ export class OeuvreComponent implements OnInit {
   idParcours: string = "idParcours";
 
   nextEtapeUrl: string | undefined;
+  previousEtapeUrl: string | undefined;
   indexEtape: number = Number(this._route.snapshot.paramMap.get('index'));
 
   json: any | undefined;
   finParcours: boolean = false;
+  debParcours: boolean = true;
 
   audio: boolean = false;
 
   constructor(
     private _jcms: JAngularService,
-    private router: Router,
     private _route: ActivatedRoute) { }
 
   /**
@@ -56,36 +53,12 @@ export class OeuvreComponent implements OnInit {
       this.oeuvre.fichierSon = buildUrlMedia(o.fichierSon);
       this.oeuvre.fichierSonDaide = buildUrlMedia(o.fichierSonDaide);
       this.oeuvre.vignette = buildUrlMedia(o.vignette);
+      this.oeuvre.indications = buildUrlMedia(o.indications);
+      this.oeuvre.plan = buildUrlMedia(o.plan);
+      this.oeuvre.video = buildUrlMedia(o.video);
 
-      //récupère les indications
-      if (this.oeuvre.indications) {
-        this._jcms.get<ListeDeContenus>('data/' + this.oeuvre.indications.id).subscribe((listeDeContenus: ListeDeContenus) => {
-            this.getListContenus(listeDeContenus.contenus).subscribe(dataArray => {
-              if (!this.indications) {
-                this.indications = [];
-              }
-              for (let elem of dataArray) {
-                let indication = this.mapIndication.mapToIndication(elem);
-                this.indications.push(indication);
-              }
-            })
-          });
-      }
       this.hasLoaded = true;
     });
-  }
-
-  /**
-   * Get le détail de la liste de contenus
-   * @param contenus le contenus de la liste de contenus
-   * @returns liste d'observable
-   */
-  private getListContenus(contenus: Content[]) {
-    let observables: Observable<Indication>[] = [];
-    for (let contenu of contenus) {
-      observables.push(this._jcms.get<Indication>('data/' + contenu.id));
-    }
-    return forkJoin(observables);
   }
 
   /**
@@ -128,6 +101,12 @@ export class OeuvreComponent implements OnInit {
       this.finParcours = true;
       this.nextEtapeUrl = 'parcours-fin/' + localStorage.getItem(this.idParcours);
     }
+    if(json[i - 1] != undefined) {
+      this.previousEtapeUrl = json[i - 1].item.url;
+      this.debParcours = false;
+    } else {
+      this.debParcours = true;
+    }
   }
 
   /**
@@ -136,6 +115,14 @@ export class OeuvreComponent implements OnInit {
    */
   public getIndexNextStep() {
     return this.indexEtape + 2;
+  }
+
+  /**
+   * Get l'index de l'étape précédente pour l'affichage
+   * @returns index de la précédente
+   */
+  public getIndexPreviousStep() {
+    return this.indexEtape;
   }
 
   /**
@@ -163,13 +150,20 @@ export class OeuvreComponent implements OnInit {
       this.audio = true;
   }
 
-
   /**
    * Get le titre de l'oeuvre
    * @returns le titre
    */
   public getTitle() {
     return this.oeuvre?.title;
+  }
+
+  /**
+   * Get la description de l'oeuvre
+   * @returns la description
+   */
+  public getDesc() {
+    return this.oeuvre?.description;
   }
 
   /**
@@ -201,15 +195,34 @@ export class OeuvreComponent implements OnInit {
    * @returns le fichier son d'aide
    */
   public getAudioAide() {
-    return this.oeuvre?.fichierSonDaide;
+    if(this.oeuvre?.fichierSonDaide) {
+      return this.oeuvre?.fichierSonDaide;
+    }
+    return "";
   }
 
+  /**
+   * Get la carte de l'oeuvre
+   * @returns la carte de l'oeuvre
+   */
   public getMap() {
-    return localStorage.getItem("map");
+    return this.oeuvre?.plan;
+    // return localStorage.getItem("map");
   }
 
-  public checkURL(url: string) {
-    return (url.match(/\.(jpeg|jpg|gif|png|ico)$/) != null);
+  /**
+   * Get les indications de l'oeuvre
+   * @returns les indications de l'oeuvre
+   */
+  public getIndications() {
+    return this.oeuvre?.indications;
   }
 
+  /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+   public getVideo() {
+    return this.oeuvre?.video;
+  }
 }

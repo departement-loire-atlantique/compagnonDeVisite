@@ -1,0 +1,80 @@
+@import '/src/theme/importDep.scss';
+
+UL {
+  color: black;
+  border: none;
+
+  LI {
+    border-bottom-color: $main-color;
+
+    BUTTON {
+      color: black;
+      //padding-left: 0;
+
+      I {
+        color: black;
+        &::before {
+          line-height: 0.25;
+        }
+      }
+    }
+
+    .ds44-collapser_content {
+      background-color: $light-grey;
+      border-top: 1px solid;
+      border-top-color: $main-color ;
+
+      .img-collapser {
+        padding: 10px;
+
+        picture {
+          height: 100%;
+          padding-top: 0;
+        }
+       }
+
+      .audio-help {
+        padding: 20px 10px 20px 10px;
+      }
+
+      .indication {
+        background-color: $light-grey;
+        margin: 20px 0px;
+        padding: 10px;
+
+        div {
+          display: inline-flex;
+          margin: 3px 0px;
+        }
+
+        i.icon {
+          padding-right: 15px;
+          padding-left: 5px;
+        }
+
+        .img-icon {
+          max-width: 40px;
+          max-height: 40px;
+        }
+      }
+
+    }
+  }
+}
+
+.first-elem {
+  border-top: 1px solid;
+  border-top-color: $main-color ;
+}
+
+.visible {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+
+
+

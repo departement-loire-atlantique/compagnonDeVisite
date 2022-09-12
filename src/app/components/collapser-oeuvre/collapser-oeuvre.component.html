@@ -1,0 +1,51 @@
+<ul class="ds44-collapser">
+
+  <li [class]="isAudio() + ' ds44-collapser_element  first-elem'">
+    <p role="heading" aria-level="3">
+      <button type="button" class="ds44-collapser_button">
+        Réécouter l'indication audio
+        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
+      </button>
+    </p>
+    <div class="ds44-collapser_content">
+      <div class="audio-help">
+        <app-lecteur-audio *ngIf="hasLoaded" [file]='audio' [name]='titleAudio'>
+        </app-lecteur-audio>
+      </div>
+    </div>
+  </li>
+
+
+  <li [class]="isImagePlan() + ' ds44-collapser_element'">
+    <p role="heading" aria-level="3">
+      <button type="button" class="ds44-collapser_button">
+        Me repérer sur le plan
+        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
+      </button>
+    </p>
+    <div class="ds44-collapser_content">
+      <div class="img-collapser">
+        <picture class="ds44-container-imgRatio">
+          <img [src]="imagePlan" alt="" />
+        </picture>
+      </div>
+    </div>
+  </li>
+
+  <li [class]="isIndications() + ' ds44-collapser_element'">
+    <p role="heading" aria-level="3">
+      <button type="button" class="ds44-collapser_button">
+        Suivre le parcours
+        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
+      </button>
+    </p>
+    <div class="ds44-collapser_content">
+      <div class="img-collapser">
+        <picture class="ds44-container-imgRatio">
+          <img [src]="indications" alt="" />
+        </picture>
+      </div>
+    </div>
+
+  </li>
+</ul>

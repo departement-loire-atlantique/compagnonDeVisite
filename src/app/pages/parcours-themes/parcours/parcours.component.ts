@@ -59,7 +59,7 @@ export class ParcoursComponent implements OnInit {
       if (etapeStore && idParcoursStore == this.leParcours.id) {
         this.etapes = JSON.parse(etapeStore);
       } else {
-        localStorage.setItem("map", this.leParcours.plan);
+        // localStorage.setItem("map", this.leParcours.plan);
         this.initEtape(this.leParcours.etapes.id);
       }
     });
@@ -145,10 +145,7 @@ export class ParcoursComponent implements OnInit {
    * @returns le title du parcours
    */
   public getTitle() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.title;
+    return this.leParcours?.title;
   }
 
   /**
@@ -156,10 +153,7 @@ export class ParcoursComponent implements OnInit {
    * @returns la description
    */
   public getDescription() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.description;
+    return this.leParcours?.description;
   }
 
   /**
@@ -167,10 +161,15 @@ export class ParcoursComponent implements OnInit {
    * @returns la plan
    */
   public getPlan() {
-    if (!this.leParcours)
-      return "";
+    return this.leParcours?.plan;
+  }
 
-    return this.leParcours.plan;
+  /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+  public getVideo() {
+    return this.leParcours?.video;
   }
 
   /**
@@ -206,19 +205,20 @@ export class ParcoursComponent implements OnInit {
    */
   public getSeenItems() {
     let seenItem = [];
-    let listEtape = this.etapes?.filter(e => {
-      if (e.state == State.inactive)
-        return false;
-      return true;
-    });
-    if (listEtape) {
-      for (let etape of listEtape) {
-        seenItem.push(etape.item);
+    if(this.etapes) {
+      for(let etape of this.etapes) {
+        if (!(etape.state == State.inactive))
+          seenItem.push(etape.item);
       }
     }
     return seenItem;
   }
 
+
+  /**
+   * Get les items du parcours
+   * @returns la liste d'items
+   */
   public getItems() {
     let items = [];
     if (this.etapes) {
@@ -237,11 +237,34 @@ export class ParcoursComponent implements OnInit {
     return this.etapes;
   }
 
+  /**
+   * Get le nombre d'oeuvre dans le parcours
+   * @returns le nombre d'items
+   */
+  public getNumberItem() {
+    return this.etapes?.length;
+  }
+
+  /**
+   * Get le nombre d'oeuvre vu du parcours
+   * @returns le nombre d'items vu
+   */
+  public getNumberSeenItem() {
+    return this.getSeenItems().length;
+  }
+
+  /**
+   * Get l'url pour retourner à la liste des parcours d'un thème
+   * @returns
+   */
   public getThemeURL() {
     let idTheme = localStorage.getItem(this.idThematique);
     return 'themes/' + idTheme;
   }
 
+  /**
+   * Change les classes CSS lors d'un click bouton
+   */
   public showDesc() {
     if(this.defaultCSS === "max-lines") {
       this.defaultCSS = "default-lines ";
@@ -252,6 +275,10 @@ export class ParcoursComponent implements OnInit {
     }
   }
 
+  /**
+   * Retourne la classe css
+   * @returns la classe css
+   */
   public getCSS() {
     return this.defaultCSS;
   }

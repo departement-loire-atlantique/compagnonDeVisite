@@ -16,6 +16,9 @@
 
 .ds44-nav-stepper .ds44-nav-step div.passed .number {
   background-color: $main-color ;
+  &:hover {
+    box-shadow: none;
+  }
 }
 
 .inactive {

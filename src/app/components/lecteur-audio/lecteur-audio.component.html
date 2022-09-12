@@ -1,6 +1,6 @@
 <div class="lecteurAudio">
   <div class="control">
-    <button (click)="play()" [disabled]="state?.error" *ngIf="!state?.playing">
+    <button (click)="play()" [disabled]="state.error" *ngIf="!state?.playing">
       <i class="icon icon-play" aria-hidden="true"></i>
       <span class="i-name visually-hidden">icon-play</span>
     </button>
@@ -16,14 +16,14 @@
               name="cowbell"
               min="0"
               class="custom-slider"
-              [max]="state?.duration"
-              [value]="state?.currentTime"
+              [max]="state.duration"
+              [value]="state.currentTime"
               (oninput) ="onSliderChangeEnd($event)"
               (change)="onSliderChangeEnd($event)"
-              [disabled]="state?.error || currentFile.index === undefined">
+              [disabled]="state.error || currentFile.index === undefined">
       </p>
-    <p class="curseur">{{ state?.readableCurrentTime | date:"mm:ss" }}
-      <span class="readableDuration">{{ state?.readableDuration | date:"mm:ss" }}</span>
+    <p class="curseur">{{ state.readableCurrentTime | date:"mm:ss" }}
+      <span class="readableDuration">{{ state.readableDuration | date:"mm:ss" }}</span>
     </p>
   </div>
 </div>
