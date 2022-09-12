@@ -1,45 +1,38 @@
-<app-header-parcours [customProcess]="true" [returnUrl]="getHomeParcours()"></app-header-parcours>
+<app-header-parcours [customProcess]="true" [imagePlan]="getMap()" [returnUrl]="getHomeParcours()" [popUp]="true"></app-header-parcours>
 
 <main>
 
   <div class="detail-oeuvre">
-    <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()">
-    </app-carrousel>
+    <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()"></app-carrousel>
 
     <div class="block-indications">
-      <h3 id="indications"> Comment me rendre à l'étape <br>" {{ getTitle() }} "</h3>
 
-      <div *ngIf="getAudioAide()">
-        <p> Réécouter l'indication audio</p>
-        <div class="audio-help">
-          <app-lecteur-audio *ngIf="hasLoaded && getAudioAide()" [file]="getAudioAide()" [name]="">
-          </app-lecteur-audio>
-        </div>
+
+      <div *ngIf="getVideo()">
+        <app-video [url]="getVideo()"></app-video>
       </div>
-      <app-overlay-map *ngIf="getMap()" idTarget="overlay-map-btn" [image]="getMap()" [isIcon]="false" [title]="'Me repérer sur le plan'"></app-overlay-map>
 
-      <div *ngIf="indications" class="indication">
-        <div *ngFor="let indication of indications">
-
-          <div *ngIf="indication.icon">
-            <div *ngIf="checkURL(indication.icon);else icon">
-              <img class="img-icon" [src]="indication.icon">
-              <span>{{indication.title}}</span>
-            </div>
-            <ng-template #icon>
-              <i [class]="'icon ' + indication.icon"></i>
-              <span>{{indication.title}}</span>
-            </ng-template>
-          </div>
-          <!-- <i [class]="'icon ' + indication.icon"></i>
-          <span>{{indication.title}}</span>  -->
-        </div>
+      <div id="indications" class="desc-oeuvre">
+        <p> {{ getDesc() }} </p>
       </div>
+      <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
+        [indications]="getIndications()"></app-collapser-oeuvre>
     </div>
   </div>
 
+
   <div class="bg-color">
     <div class="ds44-flex-container ds44-flex-valign-center btn-step">
+
+      <div class="ds44-colLeft">
+        <div *ngIf="!debParcours">
+          <a [href]="this.previousEtapeUrl" class="next-step">
+            <i class="icon icon-left" aria-hidden="true"></i>
+            <button class="ds44-btnStd number"><span> {{ getIndexPreviousStep() }}</span></button>
+            <span class="ds44-btnInnerText"> Précédent </span>
+          </a>
+        </div>
+      </div>
 
       <div class="ds44-colRight">
         <div *ngIf="finParcours;else next">
@@ -56,10 +49,12 @@
           </a>
         </ng-template>
       </div>
+
+
     </div>
 
     <div class="audio-oeuvre">
-      <app-lecteur-audio *ngIf="hasLoaded" [file]="getAudio()" [name]="getTitle()">
+      <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getTitle()'>
       </app-lecteur-audio>
     </div>
 

@@ -1,12 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DesignSystemService } from 'src/app/services/design-system.service';
+
+import panzoom from "panzoom";
 
 @Component({
   selector: 'app-overlay-map',
   templateUrl: './overlay-map.component.html',
   styleUrls: ['./overlay-map.component.scss']
 })
-export class OverlayMapComponent implements OnInit {
+export class OverlayMapComponent implements OnInit, AfterViewInit {
+  @ViewChild('imagePlan', { static: false }) imagePlan!: ElementRef;
 
   @Input()
   idTarget: string = "overlay-map";
@@ -25,11 +28,16 @@ export class OverlayMapComponent implements OnInit {
   closeTxt = $localize `:@@OverlayMapComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
 
   constructor(
-    private _ds: DesignSystemService) {
-     }
+    private _ds: DesignSystemService,
+    private renderer: Renderer2,
+    ) { }
 
   ngOnInit(): void {
     this._ds.initOverlay();
+  }
+
+  ngAfterViewInit() {
+    panzoom(this.imagePlan.nativeElement);
   }
 
   public getClassButton() {
@@ -41,9 +49,15 @@ export class OverlayMapComponent implements OnInit {
 
   public getClassIcon() {
     if (this.isIcon)
-      return "icon icon--large " + this.icon;
+      return "icon icon--sizeL " + this.icon;
 
     return "icon " + this.icon
   }
 
+  public zoom(palier: number = 100) {
+    var currWidth = this.imagePlan.nativeElement.clientWidth;
+    this.imagePlan.nativeElement.style.width = (currWidth - palier) + "px"
+    this.imagePlan.nativeElement.style.objectFit = "cover";
+  }
 }
+

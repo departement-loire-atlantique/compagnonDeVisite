@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "dev": "ng serve",
-    "dev-R7": "ng serve -c development-jcms-R7",
+    "dev": "ng serve --host 0.0.0.0",
+    "dev-R7": "ng serve -c development-jcms-R7 --host 0.0.0.0",
     "dev-R7I": "ng serve -c development-jcms-R7-I",
     "build": "ng build",
     "build-pp": "ng build -c pre-prod",
@@ -29,6 +29,7 @@
     "@angular/router": "~14.1.0",
     "@angular/service-worker": "~14.1.0",
     "j-angular": "file:libs/j-angular-1.2.0.tgz",
+    "panzoom": "^9.4.3",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
