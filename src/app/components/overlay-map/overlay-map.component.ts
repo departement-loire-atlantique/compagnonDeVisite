@@ -48,14 +48,7 @@ export class OverlayMapComponent implements OnInit  {
     return "icon " + this.icon
   }
 
-  public zoomin(palier: number = 100) {
-    let myImg  = document.getElementById('imagePlan') as HTMLElement;
-    var currWidth = myImg.clientWidth;
-    myImg.style.width = (currWidth + palier) + "px"
-    myImg.style.objectFit = "cover";
-  }
-
-  public zoomout(palier: number = 100) {
+  public zoom(palier: number = 100) {
     let myImg  = document.getElementById('imagePlan') as HTMLElement;
     var currWidth = myImg.clientWidth;
     myImg.style.width = (currWidth - palier) + "px"
