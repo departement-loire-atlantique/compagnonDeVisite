@@ -4,7 +4,7 @@ import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
+import { Oeuvre } from 'src/app/models/jcms/oeuvre';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
 import { JcmsEspace } from 'src/app/models/environment';

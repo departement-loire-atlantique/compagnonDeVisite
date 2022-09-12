@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
-import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
+import { Oeuvre } from 'src/app/models/jcms/oeuvre';
 
 @Component({
   selector: 'app-oeuvre',

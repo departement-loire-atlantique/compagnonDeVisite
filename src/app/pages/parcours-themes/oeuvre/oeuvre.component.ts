@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
-import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
+import { Oeuvre, OeuvreMap } from 'src/app/models/jcms/oeuvre';
 
 @Component({
   selector: 'app-oeuvre',
@@ -12,6 +12,7 @@ import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 })
 export class OeuvreComponent implements OnInit {
 
+  mapOeuvre : OeuvreMap = new OeuvreMap();
   oeuvre: Oeuvre | undefined;
   indications: string | undefined;
 
@@ -49,13 +50,7 @@ export class OeuvreComponent implements OnInit {
   private initOeuvre() {
     let idOeuvre = this._route.snapshot.paramMap.get('id');
     this._jcms.get<Oeuvre>('data/' + idOeuvre).subscribe(o => {
-      this.oeuvre = o;
-      this.oeuvre.fichierSon = buildUrlMedia(o.fichierSon);
-      this.oeuvre.fichierSonDaide = buildUrlMedia(o.fichierSonDaide);
-      this.oeuvre.vignette = buildUrlMedia(o.vignette);
-      this.oeuvre.indications = buildUrlMedia(o.indications);
-      this.oeuvre.plan = buildUrlMedia(o.plan);
-      this.oeuvre.video = buildUrlMedia(o.video);
+      this.oeuvre = this.mapOeuvre.mapToOeuvre(o);
 
       this.hasLoaded = true;
     });
