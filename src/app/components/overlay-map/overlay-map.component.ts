@@ -1,13 +1,14 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild } from '@angular/core';
 import { DesignSystemService } from 'src/app/services/design-system.service';
+
+import 'hammerjs';
 
 @Component({
   selector: 'app-overlay-map',
   templateUrl: './overlay-map.component.html',
   styleUrls: ['./overlay-map.component.scss']
 })
-export class OverlayMapComponent implements OnInit {
-
+export class OverlayMapComponent implements OnInit  {
   @Input()
   idTarget: string = "overlay-map";
 
@@ -25,8 +26,9 @@ export class OverlayMapComponent implements OnInit {
   closeTxt = $localize `:@@OverlayMapComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
 
   constructor(
-    private _ds: DesignSystemService) {
-     }
+    private _ds: DesignSystemService,
+    private renderer: Renderer2,
+    ) { }
 
   ngOnInit(): void {
     this._ds.initOverlay();
@@ -46,4 +48,18 @@ export class OverlayMapComponent implements OnInit {
     return "icon " + this.icon
   }
 
+  public zoomin(palier: number = 100) {
+    let myImg  = document.getElementById('imagePlan') as HTMLElement;
+    var currWidth = myImg.clientWidth;
+    myImg.style.width = (currWidth + palier) + "px"
+    myImg.style.objectFit = "cover";
+  }
+
+  public zoomout(palier: number = 100) {
+    let myImg  = document.getElementById('imagePlan') as HTMLElement;
+    var currWidth = myImg.clientWidth;
+    myImg.style.width = (currWidth - palier) + "px"
+    myImg.style.objectFit = "cover";
+  }
 }
+
