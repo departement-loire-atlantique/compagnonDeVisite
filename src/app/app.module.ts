@@ -11,7 +11,6 @@ import { ExploreComponent } from './pages/parcours-explore/explore/explore.compo
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './components/shared.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +40,7 @@ import { SharedModule } from './components/shared.module';
       },
       deps: [JcmsInterceptor],
       multi: true,
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })
