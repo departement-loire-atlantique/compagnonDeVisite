@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import * as Hammer from 'hammerjs';
-import { BrowserModule, HammerGestureConfig, HammerModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -11,13 +10,6 @@ import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.componen
 import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './components/shared.module';
-
-export class MyHammerConfig extends HammerGestureConfig {
-  override overrides = <any>{
-    pan: { direction: Hammer.DIRECTION_ALL },
-    pinch: {enable: true},
-  };
-}
 
 @NgModule({
   declarations: [
@@ -37,7 +29,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     }),
     FormsModule,
     SharedModule,
-    HammerModule
   ],
   providers: [
     JcmsInterceptor,
@@ -49,10 +40,6 @@ export class MyHammerConfig extends HammerGestureConfig {
       },
       deps: [JcmsInterceptor],
       multi: true,
-    },
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: MyHammerConfig
     },
   ],
   bootstrap: [AppComponent]

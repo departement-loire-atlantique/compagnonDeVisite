@@ -1,14 +1,16 @@
-import { Component, OnInit, Input, Renderer2, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DesignSystemService } from 'src/app/services/design-system.service';
 
-import 'hammerjs';
+import panzoom from "panzoom";
 
 @Component({
   selector: 'app-overlay-map',
   templateUrl: './overlay-map.component.html',
   styleUrls: ['./overlay-map.component.scss']
 })
-export class OverlayMapComponent implements OnInit  {
+export class OverlayMapComponent implements OnInit, AfterViewInit {
+  @ViewChild('imagePlan', { static: false }) imagePlan!: ElementRef;
+
   @Input()
   idTarget: string = "overlay-map";
 
@@ -34,6 +36,10 @@ export class OverlayMapComponent implements OnInit  {
     this._ds.initOverlay();
   }
 
+  ngAfterViewInit() {
+    panzoom(this.imagePlan.nativeElement);
+  }
+
   public getClassButton() {
     if (this.isIcon)
       return "ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component";
@@ -49,10 +55,9 @@ export class OverlayMapComponent implements OnInit  {
   }
 
   public zoom(palier: number = 100) {
-    let myImg  = document.getElementById('imagePlan') as HTMLElement;
-    var currWidth = myImg.clientWidth;
-    myImg.style.width = (currWidth - palier) + "px"
-    myImg.style.objectFit = "cover";
+    var currWidth = this.imagePlan.nativeElement.clientWidth;
+    this.imagePlan.nativeElement.style.width = (currWidth - palier) + "px"
+    this.imagePlan.nativeElement.style.objectFit = "cover";
   }
 }
 
