@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class HeaderParcoursComponent {
 
   @Input()
-  imagePlan:string | null = "";
+  imagePlan:string | undefined;
 
   @Input()
   customProcess:boolean = false;
@@ -17,10 +17,15 @@ export class HeaderParcoursComponent {
   @Input()
   returnUrl:string | undefined;
 
+  @Input()
+  popUp:boolean = false;
+
   constructor(private router: Router ) {
-    if(this.imagePlan == "") {
-      this.imagePlan = localStorage.getItem("map");
-    }
+    // if(this.imagePlan == "") {
+    //   let plan = localStorage.getItem("map");
+    //   if(plan)
+    //     this.imagePlan = plan;
+    // }
   }
 
   returnCustom($event: string) {

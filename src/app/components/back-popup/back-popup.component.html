@@ -1,0 +1,18 @@
+<a [title]="titleLink" class="ds44-btnStd" [attr.data-target]="'#' + idTarget" data-js="ds44-modal">
+  <i *ngIf="picto" [class]="'icon ' + picto" aria-hidden="true"></i>
+  <span class="ds44-btnInnerText">{{ text }}</span>
+</a>
+
+<section class="ds44-modal-container" [id]="idTarget" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="ds44-modal-box">
+    <h3 id="overlay-map-title" class="title-overlay"> {{ title }} </h3>
+    <div class="btn-popup">
+      <a (click)="back()" class="ds44-btnStd" > Oui </a>
+
+      <a data-js="ds44-modal-action-close" class="ds44-btnStd" >
+        <span i18n="@@global-close">Fermer</span>
+      </a>
+    </div>
+
+  </div>
+</section>

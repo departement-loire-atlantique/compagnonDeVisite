@@ -49,7 +49,7 @@ export class OverlayMapComponent implements OnInit, AfterViewInit {
 
   public getClassIcon() {
     if (this.isIcon)
-      return "icon icon--large " + this.icon;
+      return "icon icon--sizeL " + this.icon;
 
     return "icon " + this.icon
   }

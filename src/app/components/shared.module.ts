@@ -3,7 +3,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { BackComponent } from './back/back.component';
+import { BackPopupComponent } from './back-popup/back-popup.component';
 import { CollapserComponent } from './collapser/collapser.component';
+import { CollapserOeuvreComponent } from './collapser-oeuvre/collapser-oeuvre.component';
 import { ListComponent } from './list/list.component';
 import { ListBGComponent } from './list-bg/list-bg.component';
 import { TuileHComponent } from './tuile-h/tuile-h.component';
@@ -23,12 +25,15 @@ import { LoaderComponent } from './loader/loader.component';
 import { HeaderExploreComponent } from './header-explore/header-explore.component';
 import { PartageRsComponent } from './partage-rs/partage-rs.component';
 import { PageUtileComponent } from './page-utile/page-utile.component';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
     BackComponent,
+    BackPopupComponent,
     CarrouselComponent,
     CollapserComponent,
+    CollapserOeuvreComponent,
     LecteurAudioComponent,
     ListComponent,
     ListBGComponent,
@@ -47,13 +52,16 @@ import { PageUtileComponent } from './page-utile/page-utile.component';
     OverlayMapComponent,
     HeaderExploreComponent,
     PartageRsComponent,
-    PageUtileComponent
+    PageUtileComponent,
+    VideoComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
     BackComponent,
+    BackPopupComponent,
     CarrouselComponent,
     CollapserComponent,
+    CollapserOeuvreComponent,
     LecteurAudioComponent,
     ListComponent,
     ListBGComponent,
@@ -71,7 +79,8 @@ import { PageUtileComponent } from './page-utile/page-utile.component';
     EtapesComponent,
     OverlayMapComponent,
     PartageRsComponent,
-    PageUtileComponent
+    PageUtileComponent,
+    VideoComponent,
   ],
 })
 export class SharedModule {}

@@ -1,12 +1,13 @@
-<app-header-parcours [imagePlan]="map"></app-header-parcours>
+<app-header-parcours [imagePlan]="getMap()"></app-header-parcours>
 
 <div class="fin-parcours">
-  <div class="page-title">
-    <h2>Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée !</h2>
-  </div>
+  <div class="bg-title"></div>
 
   <div class="fav">
-    <app-tuile-v [tuile]="tuile"></app-tuile-v>
+    <div class="spacer"></div>
+    <h2 class="page-title">Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée !</h2>
+    <div class="spacer"></div>
+    <app-tuile-v [tuile]="getTuile()"></app-tuile-v>
   </div>
 
   <app-partage-rs></app-partage-rs>
