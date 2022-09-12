@@ -8,7 +8,7 @@ import { Item } from 'src/app/models/item';
 import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 import { Observable, forkJoin } from 'rxjs';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { Oeuvre } from 'src/app/models/jcms/oeuvre';
+import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { Content } from 'src/app/models/jcms/content';
 
 @Component({
