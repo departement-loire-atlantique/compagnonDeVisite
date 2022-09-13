@@ -16,7 +16,6 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   oeuvre!: Oeuvre | undefined;
   isAudioEnded: boolean = false;
-  plan!: string;
 
   constructor(
               private _route: ActivatedRoute,
@@ -36,6 +35,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
             this.oeuvre.fichierSon = buildUrlMedia(oeuvre.fichierSon);
             this.oeuvre.fichierSonDaide = buildUrlMedia(oeuvre.fichierSonDaide);
             this.oeuvre.vignette = buildUrlMedia(oeuvre.vignette);
+            this.oeuvre.plan = buildUrlMedia(oeuvre.plan);
         });
       });
   }
@@ -52,10 +52,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    * Get le plan du parcours
    * @returns la plan
    */
-     public getPlan() {
-      if (!this.plan)
-        return "";
-
-      return this.plan;
-    }
+  public getPlan() {
+    return this.oeuvre?.plan;
+  }
 }
