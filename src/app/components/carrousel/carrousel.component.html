@@ -5,7 +5,7 @@
     <p *ngIf="etape" role="heading" aria-level="1" class="h3 ds44-text--colorInvert ">
       {{ etape }}
     </p>
-    <h3 role="heading" aria-level="1" class="h3 ds44-text--colorInvert">
+    <h3 *ngIf="text" role="heading" aria-level="1" class="h3 ds44-text--colorInvert">
       {{ text }}
     </h3>
   </div>
@@ -14,7 +14,7 @@
         <li #itemSwiper *ngFor="let item of elements" class="swiper-slide">
           <section class="ds44-card ds44-js-card ds44-card--verticalPicture">
             <picture class="ds44-container-imgRatio">
-              <div class="ds44-alphaGradient ds44-alphaGradient--header"></div>
+              <div *ngIf="text" class="ds44-alphaGradient ds44-alphaGradient--header"></div>
               <img *ngIf="item" [src]="item.imageMobile" [alt]="item.title" class="ds44-imgRatio" />
             </picture>
           </section>
