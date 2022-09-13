@@ -4,21 +4,21 @@ import { from } from 'rxjs';
 
 import { JAngularService } from 'j-angular';
 
-import { VideoComponent } from './video.component';
+import { LecteurVideoComponent } from './lecteur-video.component';
 
-describe('VideoComponent', () => {
-  let component: VideoComponent;
-  let fixture: ComponentFixture<VideoComponent>;
+describe('LecteurVideoComponent', () => {
+  let component: LecteurVideoComponent;
+  let fixture: ComponentFixture<LecteurVideoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VideoComponent]
+      declarations: [LecteurVideoComponent]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoComponent);
+    fixture = TestBed.createComponent(LecteurVideoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
