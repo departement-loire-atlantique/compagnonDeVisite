@@ -5,9 +5,21 @@
 
   <div class="fav">
     <div class="spacer"></div>
-    <h2 class="page-title">Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée !</h2>
+    <h2 class="page-title">Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée
+      !</h2>
     <div class="spacer"></div>
-    <app-tuile-v [tuile]="getTuile()"></app-tuile-v>
+
+    <app-tuile-v *ngIf="!video;else lsf" [tuile]="getTuile()"></app-tuile-v>
+
+    <ng-template #lsf>
+      <app-lecteur-video [file]="video"></app-lecteur-video>
+
+      <p class=" fav-box"><i class="icon icon-star-empty" aria-hidden="true"></i>
+        <a [href]="" class="ds44-card__globalLink">
+          <span class="ds44-iconInnerText">Ajouter la liste des oeuvres à mes favoris</span>
+        </a>
+      </p>
+    </ng-template>
   </div>
 
   <app-partage-rs></app-partage-rs>
@@ -23,4 +35,4 @@
   </a>
 </div>
 
-<app-page-utile></app-page-utile>
+<app-page-utile *ngIf="!video"></app-page-utile>

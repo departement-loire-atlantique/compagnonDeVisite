@@ -21,6 +21,18 @@
   }
 }
 
+.fav-box {
+  width: 100%;
+  display: inline-flex;
+  padding: 10px 10px;
+  margin: 1.5rem 0;
+  background-color: $pink;
+
+  i {
+    margin: 0 10px;
+  }
+}
+
 .bg-block {
   h2 {
     margin: 10px;
