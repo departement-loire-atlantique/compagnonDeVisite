@@ -21,6 +21,26 @@ export class MenuComponent implements OnInit {
       lbl: "Que souhaitez-vous visiter ?",
       url: "themes"
     }
+    items[1] = {
+      lbl: "Plan (PDF)",
+      url: ""
+    }
+    items[2] = {
+      lbl: "Aide",
+      url: ""
+    }
+    items[3] = {
+      lbl: "Crédits",
+      url: ""
+    }
+    items[4] = {
+      lbl: "Contacts",
+      url: ""
+    }
+    items[5] = {
+      lbl: "Autre services",
+      url: ""
+    }
     return items;
   }
 

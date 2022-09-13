@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
-import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
+import { Oeuvre, OeuvreMap } from 'src/app/models/jcms/Oeuvre';
 
 @Component({
   selector: 'app-oeuvre',
@@ -12,6 +12,7 @@ import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 })
 export class OeuvreComponent implements OnInit {
 
+  mapOeuvre: OeuvreMap = new OeuvreMap();
   oeuvre: Oeuvre | undefined;
   indications: string | undefined;
 
@@ -49,13 +50,7 @@ export class OeuvreComponent implements OnInit {
   private initOeuvre() {
     let idOeuvre = this._route.snapshot.paramMap.get('id');
     this._jcms.get<Oeuvre>('data/' + idOeuvre).subscribe(o => {
-      this.oeuvre = o;
-      this.oeuvre.fichierSon = buildUrlMedia(o.fichierSon);
-      this.oeuvre.fichierSonDaide = buildUrlMedia(o.fichierSonDaide);
-      this.oeuvre.vignette = buildUrlMedia(o.vignette);
-      this.oeuvre.indications = buildUrlMedia(o.indications);
-      this.oeuvre.plan = buildUrlMedia(o.plan);
-      this.oeuvre.video = buildUrlMedia(o.video);
+      this.oeuvre = this.mapOeuvre.mapToOeuvre(o);
 
       this.hasLoaded = true;
     });
@@ -101,7 +96,7 @@ export class OeuvreComponent implements OnInit {
       this.finParcours = true;
       this.nextEtapeUrl = 'parcours-fin/' + localStorage.getItem(this.idParcours);
     }
-    if(json[i - 1] != undefined) {
+    if (json[i - 1] != undefined) {
       this.previousEtapeUrl = json[i - 1].item.url;
       this.debParcours = false;
     } else {
@@ -195,7 +190,7 @@ export class OeuvreComponent implements OnInit {
    * @returns le fichier son d'aide
    */
   public getAudioAide() {
-    if(this.oeuvre?.fichierSonDaide) {
+    if (this.oeuvre?.fichierSonDaide) {
       return this.oeuvre?.fichierSonDaide;
     }
     return "";
@@ -222,7 +217,7 @@ export class OeuvreComponent implements OnInit {
    * Get l'id de la video LSF
    * @returns l'id de la video
    */
-   public getVideo() {
+  public getVideo() {
     return this.oeuvre?.video;
   }
 }

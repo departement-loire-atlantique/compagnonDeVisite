@@ -7,10 +7,9 @@
 
     <div class="block-indications">
 
-
-      <div *ngIf="getVideo()">
-        <app-video [url]="getVideo()"></app-video>
-      </div>
+      <!-- <div *ngIf="getVideo()">
+        <app-lecteur-video *ngIf="hasLoaded" [file]="getVideo()"></app-lecteur-video>
+      </div> -->
 
       <div id="indications" class="desc-oeuvre">
         <p> {{ getDesc() }} </p>
