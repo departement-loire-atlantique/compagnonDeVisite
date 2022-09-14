@@ -8,7 +8,7 @@
     <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()"></app-lecteur-video-oeuvre>
       <div class="block-indications">
         <div class="desc-oeuvre">
-          <p> {{ getDesc() }} </p>
+          <p [innerHTML]="getDesc()"></p>
         </div>
         <app-collapser-oeuvre id="indications"  [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
@@ -24,7 +24,7 @@
 
       <div class="block-indications">
         <div id="indications" class="desc-oeuvre">
-          <p> {{ getDesc() }} </p>
+          <p [innerHTML]="getDesc()"></p>
         </div>
         <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
@@ -48,7 +48,4 @@
       </button>
     </div>
   </ng-template>
-
-
-
 </main>

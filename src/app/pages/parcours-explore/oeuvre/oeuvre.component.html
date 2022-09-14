@@ -4,7 +4,7 @@
     <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader>
     <app-carrousel *ngIf="oeuvre?.diaporama" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
     <div id="indications" class="desc-oeuvre">
-      <p> {{ oeuvre?.description }} </p>
+      <p [innerHTML]="oeuvre?.description"></p>
     </div>
   </div>
   <div class="mainAudio" *ngIf="oeuvre?.fichierSon">
