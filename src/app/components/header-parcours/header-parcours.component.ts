@@ -20,13 +20,7 @@ export class HeaderParcoursComponent {
   @Input()
   popUp:boolean = false;
 
-  constructor(private router: Router ) {
-    // if(this.imagePlan == "") {
-    //   let plan = localStorage.getItem("map");
-    //   if(plan)
-    //     this.imagePlan = plan;
-    // }
-  }
+  constructor(private router: Router ) { }
 
   returnCustom($event: string) {
     this.router.navigate([this.returnUrl]);

@@ -13,7 +13,7 @@ export class ParcoursFinComponent implements OnInit {
 
   mapParcours: ParcoursMap = new ParcoursMap();
   tuile:Tuile | undefined;
-  map: string | undefined = "";
+  map: string | undefined;
   video: string | undefined;
 
   constructor(

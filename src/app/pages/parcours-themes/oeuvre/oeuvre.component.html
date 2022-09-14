@@ -7,10 +7,10 @@
     <div class="detail-oeuvre">
     <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()"></app-lecteur-video-oeuvre>
       <div class="block-indications">
-        <div id="indications" class="desc-oeuvre">
+        <div class="desc-oeuvre">
           <p> {{ getDesc() }} </p>
         </div>
-        <app-collapser-oeuvre [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
+        <app-collapser-oeuvre id="indications"  [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
       </div>
     </div>
@@ -42,8 +42,7 @@
       </div>
 
       <button type="button" class="ds44-fullWBtn ds44-btn--invert"
-        onClick="document.getElementById('indications').scrollIntoView();">
-        <!-- {behavior: 'smooth'} -->
+        onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
         <span class="ds44-btnInnerText" i18n="@@ParcoursOeuvreComp-how-to-go">Comment m’y rendre</span>
         <i class="icon icon-down" aria-hidden="true"></i>
       </button>

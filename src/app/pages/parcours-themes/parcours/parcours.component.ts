@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { Etape, State } from 'src/app/components/etapes/etapes.component';
@@ -24,10 +24,12 @@ export class ParcoursComponent implements OnInit {
   items: Item[] | undefined;
   etapes: Etape[] | undefined;
 
+  //key localStorage
   listEtape: string = "listEtape";
   idParcours: string = "idParcours";
   idThematique: string = "idThematique";
 
+  //template
   defaultCSS = "max-lines";
   defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
   step: string = $localize`:@@ParcoursComp-step:Etape`;
@@ -35,8 +37,7 @@ export class ParcoursComponent implements OnInit {
   constructor(
     private _ds: DesignSystemService,
     private _route: ActivatedRoute,
-    private _jcms: JAngularService,
-    private _router: Router) { }
+    private _jcms: JAngularService) { }
 
   /**
    * init le parcours et les etapes si elles ne sont pas dans le localStorage
@@ -60,7 +61,6 @@ export class ParcoursComponent implements OnInit {
       if (etapeStore && idParcoursStore == this.leParcours.id) {
         this.etapes = JSON.parse(etapeStore);
       } else {
-        // localStorage.setItem("map", this.leParcours.plan);
         this.initEtape(this.leParcours.etapes.id);
       }
     });
@@ -123,29 +123,74 @@ export class ParcoursComponent implements OnInit {
    * Store les étapes au format json dans le localStorage
    */
   public storeEtapes() {
-    if (this.etapes) {
+    if (this.etapes && this.leParcours?.id) {
       let str = JSON.stringify(this.etapes);
       localStorage.setItem(this.listEtape, str);
-      localStorage.setItem(this.idParcours, this.getId());
+      localStorage.setItem(this.idParcours, this.leParcours.id);
     }
   }
 
   /**
-   * Get l'id du parcours
-   * @returns l'id du parcours
+   * Get les items qui ont été vu par l'utilisateur
+   * @returns la liste d'items (qui ne sont pas à l'état inactive)
    */
-  public getId() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.id;
+  public getSeenItems() {
+    let seenItem = [];
+    if(this.etapes) {
+      for(let etape of this.etapes) {
+        if (!(etape.state == State.inactive))
+          seenItem.push(etape.item);
+      }
+    }
+    return seenItem;
   }
 
+  /**
+   * Get les items du parcours
+   * @returns la liste d'items
+   */
+  public getItems() {
+    let items = [];
+    if (this.etapes) {
+      for (let etape of this.etapes) {
+        items.push(etape.item);
+      }
+    }
+    return items;
+  }
+
+  /**
+   * Convertit le temps(secondes) en minutes ou heures
+   * @param duree la durée du parcours en seconde
+   * @returns le temps en heures ou minutes
+   */
+  private convertTime(duree: number) {
+    let heure = duree / 3600; //temps en heure
+
+    if (heure < 1)
+      return duree / 60 + " minutes"; //temps en min
+    else if (heure == 1)
+      return heure + " heure";
+
+    return heure + " heures";
+  }
+
+  /**
+   * Get l'url pour retourner à la liste des parcours d'un thème
+   * @returns
+   */
+  public getThemeURL() {
+    let idTheme = localStorage.getItem(this.idThematique);
+    return 'themes/' + idTheme;
+  }
+
+
+  /* GETTER PARCOURS */
   /**
    * Get le title du parcours
    * @returns le title du parcours
    */
-  public getTitle() {
+   public getTitle() {
     return this.leParcours?.title;
   }
 
@@ -184,57 +229,13 @@ export class ParcoursComponent implements OnInit {
     return this.convertTime(this.leParcours.duree);
   }
 
-  /**
-   * Convertit le temps(secondes) en minutes ou heures
-   * @param duree la durée du parcours en seconde
-   * @returns le temps en heures ou minutes
-   */
-  private convertTime(duree: number) {
-    let heure = duree / 3600; //temps en heure
 
-    if (heure < 1)
-      return duree / 60 + " minutes"; //temps en min
-    else if (heure == 1)
-      return heure + " heure";
-
-    return heure + " heures";
-  }
-
-  /**
-   * Get les items qui ont été vu par l'utilisateur
-   * @returns la liste d'items (qui ne sont pas à l'état inactive)
-   */
-  public getSeenItems() {
-    let seenItem = [];
-    if(this.etapes) {
-      for(let etape of this.etapes) {
-        if (!(etape.state == State.inactive))
-          seenItem.push(etape.item);
-      }
-    }
-    return seenItem;
-  }
-
-
-  /**
-   * Get les items du parcours
-   * @returns la liste d'items
-   */
-  public getItems() {
-    let items = [];
-    if (this.etapes) {
-      for (let etape of this.etapes) {
-        items.push(etape.item);
-      }
-    }
-    return items;
-  }
-
+  /* GETTER ETAPE */
   /**
    * Get les étapes
    * @returns les étapes
    */
-  public getEtapes() {
+   public getEtapes() {
     return this.etapes;
   }
 
@@ -254,19 +255,12 @@ export class ParcoursComponent implements OnInit {
     return this.getSeenItems().length;
   }
 
-  /**
-   * Get l'url pour retourner à la liste des parcours d'un thème
-   * @returns
-   */
-  public getThemeURL() {
-    let idTheme = localStorage.getItem(this.idThematique);
-    return 'themes/' + idTheme;
-  }
 
+  /* CSS */
   /**
    * Change les classes CSS lors d'un click bouton
    */
-  public showDesc() {
+   public showDesc() {
     if(this.defaultCSS === "max-lines") {
       this.defaultCSS = "default-lines ";
       this.defaultText = $localize`:@@ParcoursComp-less:Réduire`;

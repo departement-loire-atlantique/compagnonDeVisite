@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
-import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { Oeuvre, OeuvreMap } from 'src/app/models/jcms/Oeuvre';
 import { Steps } from 'src/app/components/oeuvre-suiv-pred/oeuvre-suiv-pred.component';
 
@@ -60,8 +59,35 @@ export class OeuvreComponent implements OnInit {
   }
 
   /**
-     * recupère les étapes dans le localStorage
-     */
+   * Get le texte de l'avancé des étapes
+   * @returns
+   */
+   public getTextEtape() {
+    return this.step + " " + (this.indexEtape + 1) + ' / ' + this.json.length;
+  }
+
+  /**
+   * Retourne l'url de la page d'accueil du parcours
+   * @returns l'url du parcours
+   */
+  public getHomeParcours() {
+    return 'parcours/' + localStorage.getItem(this.idParcours);
+  }
+
+  /**
+   * Set Audio a true si on a lancé l'audio de l'oeuvre
+   * @param started l'audio est lancé ou non
+   */
+  public setAudio(started: boolean) {
+    if (started)
+      this.audio = true;
+  }
+
+
+  /* GESTION ETAPES */
+  /**
+    * recupère les étapes dans le localStorage
+    */
   private initEtape() {
     let etapeStore = localStorage.getItem(this.listEtape);
     if (etapeStore) {
@@ -138,31 +164,8 @@ export class OeuvreComponent implements OnInit {
     }
   }
 
-  /**
-   * Get le texte de l'avancé des étapes
-   * @returns
-   */
-  public getTextEtape() {
-    return this.step + " " + (this.indexEtape + 1) + ' / ' + this.json.length;
-  }
 
-  /**
-   * Retourne l'url de la page d'accueil du parcours
-   * @returns l'url du parcours
-   */
-  public getHomeParcours() {
-    return 'parcours/' + localStorage.getItem(this.idParcours);
-  }
-
-  /**
-   * Set Audio a true si on a lancé l'audio de l'oeuvre
-   * @param started l'audio est lancé ou non
-   */
-  public setAudio(started: boolean) {
-    if (started)
-      this.audio = true;
-  }
-
+  /* GETTER OEUVRE */
   /**
    * Get le titre de l'oeuvre
    * @returns le titre
@@ -208,10 +211,7 @@ export class OeuvreComponent implements OnInit {
    * @returns le fichier son d'aide
    */
   public getAudioAide() {
-    if (this.oeuvre?.fichierSonDaide) {
-      return this.oeuvre?.fichierSonDaide;
-    }
-    return "";
+    return this.oeuvre?.fichierSonDaide;
   }
 
   /**
@@ -220,7 +220,6 @@ export class OeuvreComponent implements OnInit {
    */
   public getMap() {
     return this.oeuvre?.plan;
-    // return localStorage.getItem("map");
   }
 
   /**
