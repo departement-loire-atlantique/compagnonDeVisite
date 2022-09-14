@@ -1,5 +1,13 @@
 <app-header [customProcess]="true" returnUrl="themes/"></app-header>
 <main>
-  <app-image-text [img]="getCurrentCat()?.image" [text]="getCurrentCat()?.title"></app-image-text>
+
+    <div *ngIf="!videoLSF">
+      <app-image-text [img]="getCurrentCat()?.image" [text]="getCurrentCat()?.title"></app-image-text>
+    </div>
+    <div *ngIf="videoLSF" class="top-page-lsf">
+      <h1 class="title big-title">{{ getCurrentCat()?.title }}</h1>
+      <app-lecteur-video [file]="videoLSF"></app-lecteur-video>
+    </div>
+
   <app-list-bg [items]="getListParcours()" [noSeparator]="true"></app-list-bg>
 </main>

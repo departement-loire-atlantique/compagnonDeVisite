@@ -1,70 +1,55 @@
-<app-header-parcours [customProcess]="true" [imagePlan]="getMap()" [returnUrl]="getHomeParcours()" [popUp]="true"></app-header-parcours>
+<app-header-parcours [customProcess]="true" [imagePlan]="getMap()" [returnUrl]="getHomeParcours()" [popUp]="true">
+</app-header-parcours>
 
 <main>
 
-  <div class="detail-oeuvre">
-    <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()"></app-carrousel>
-
-    <div class="block-indications">
-
-      <!-- <div *ngIf="getVideo()">
-        <app-lecteur-video *ngIf="hasLoaded" [file]="getVideo()"></app-lecteur-video>
-      </div> -->
-
-      <div id="indications" class="desc-oeuvre">
-        <p> {{ getDesc() }} </p>
+  <div *ngIf="getVideo(); else noVideo">
+    <div class="detail-oeuvre">
+    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()"></app-lecteur-video-oeuvre>
+      <div class="block-indications">
+        <div id="indications" class="desc-oeuvre">
+          <p> {{ getDesc() }} </p>
+        </div>
+        <app-collapser-oeuvre [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
+          [indications]="getIndications()"></app-collapser-oeuvre>
       </div>
-      <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
-        [indications]="getIndications()"></app-collapser-oeuvre>
     </div>
   </div>
 
 
-  <div class="bg-color">
-    <div class="ds44-flex-container ds44-flex-valign-center btn-step">
+  <ng-template #noVideo>
+    <div class="detail-oeuvre">
+      <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()">
+      </app-carrousel>
 
-      <div class="ds44-colLeft">
-        <div *ngIf="!debParcours">
-          <a [href]="this.previousEtapeUrl" class="next-step">
-            <i class="icon icon-left" aria-hidden="true"></i>
-            <button class="ds44-btnStd number"><span> {{ getIndexPreviousStep() }}</span></button>
-            <span class="ds44-btnInnerText"> Précédent </span>
-          </a>
+      <div class="block-indications">
+        <div id="indications" class="desc-oeuvre">
+          <p> {{ getDesc() }} </p>
         </div>
+        <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
+          [indications]="getIndications()"></app-collapser-oeuvre>
       </div>
-
-      <div class="ds44-colRight">
-        <div *ngIf="finParcours;else next">
-          <a [href]="this.nextEtapeUrl" class="back-parcours">
-            <button class="ds44-btnStd number"><span> Fin Parcours </span></button>
-          </a>
-        </div>
-
-        <ng-template #next>
-          <a [href]="this.nextEtapeUrl" class="next-step">
-            <span class="ds44-btnInnerText"> Suivant </span>
-            <button class="ds44-btnStd number"><span> {{ getIndexNextStep() }}</span></button>
-            <i class="icon icon-right" aria-hidden="true"></i>
-          </a>
-        </ng-template>
-      </div>
-
-
     </div>
 
-    <div class="audio-oeuvre">
-      <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getTitle()'>
-      </app-lecteur-audio>
+
+    <div class="bg-color">
+
+      <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
+
+      <div class="audio-oeuvre">
+        <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getTitle()'>
+        </app-lecteur-audio>
+      </div>
+
+      <button type="button" class="ds44-fullWBtn ds44-btn--invert"
+        onClick="document.getElementById('indications').scrollIntoView();">
+        <!-- {behavior: 'smooth'} -->
+        <span class="ds44-btnInnerText">Comment m’y rendre</span>
+        <i class="icon icon-down" aria-hidden="true"></i>
+      </button>
     </div>
-
-    <button type="button" class="ds44-fullWBtn ds44-btn--invert"
-      onClick="document.getElementById('indications').scrollIntoView();">
-      <!-- {behavior: 'smooth'} -->
-      <span class="ds44-btnInnerText">Comment m’y rendre</span>
-      <i class="icon icon-down" aria-hidden="true"></i>
-    </button>
+  </ng-template>
 
 
-  </div>
 
 </main>

@@ -7,6 +7,8 @@ import { Category } from 'src/app/models/jcms/category';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { CatsMngService } from 'src/app/services/cats-mng.service';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
+import { Media } from 'src/app/models/jcms/media';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
 
 @Component({
   selector: 'app-thematique',
@@ -16,7 +18,8 @@ import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 export class ThematiqueComponent implements OnInit {
 
   currentCat: Category | undefined;
-  listParcours: Item[] | undefined
+  listParcours: Item[] | undefined;
+  videoLSF: string | undefined;
 
   mapParcours: ParcoursMap = new ParcoursMap();
 
@@ -90,6 +93,29 @@ export class ThematiqueComponent implements OnInit {
         }
       }
     });
+
+    //get la video lsf de la catégorie si elle existe
+    let espace = this._jcmsEspace.getJcmsSpace()?.espace;
+    if(espace) {
+      this._jcms.get<Media>('search', {
+        params: {
+          types: 'Media',
+          exactType: true,
+          exactCat: true,
+          cids: catThematique,
+          wrkspc:  espace,
+        }
+      }).pipe(
+        map((res : any) => {
+          return res.dataSet;
+        })
+      )
+      .subscribe((media: Media[]) => {
+        if(media[0]) {
+          this.videoLSF = buildUrlMedia(media[0].filename);
+        }
+      })
+    }
   }
 
   /**

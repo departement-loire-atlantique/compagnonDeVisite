@@ -69,7 +69,6 @@ export class VideoService {
   }
 
   play() {
-    console.log(this.videoObj)
     this.videoObj.play();
   }
 

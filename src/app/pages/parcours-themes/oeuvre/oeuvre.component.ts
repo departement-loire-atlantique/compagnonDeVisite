@@ -4,6 +4,7 @@ import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { Oeuvre, OeuvreMap } from 'src/app/models/jcms/Oeuvre';
+import { Steps } from 'src/app/components/oeuvre-suiv-pred/oeuvre-suiv-pred.component';
 
 @Component({
   selector: 'app-oeuvre',
@@ -121,6 +122,21 @@ export class OeuvreComponent implements OnInit {
   }
 
   /**
+   * Get les paramètres pour le bandeau suivant/précédent de l'oeuvre
+   * @returns les steps
+   */
+  public getSteps(): Steps {
+    return {
+      debParcours: this.debParcours,
+      finParcours: this.finParcours,
+      nextStepUrl: this.nextEtapeUrl ? this.nextEtapeUrl : "",
+      previousStepUrl: this.previousEtapeUrl ? this.previousEtapeUrl : "",
+      indexNextStep: this.getIndexNextStep(),
+      indexPreviousStep: this.getIndexPreviousStep()
+    }
+  }
+
+  /**
    * Get le texte de l'avancé des étapes
    * @returns
    */
@@ -220,4 +236,5 @@ export class OeuvreComponent implements OnInit {
   public getVideo() {
     return this.oeuvre?.video;
   }
+
 }

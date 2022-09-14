@@ -2,6 +2,9 @@
 
 <main>
   <h1 class="underline" i18n="@@ParcoursThemesComp-title">Que souhaitez-vous visiter ?</h1>
+  <div *ngIf="videoLSF" class="video-lsf">
+    <app-lecteur-video [file]="videoLSF"></app-lecteur-video>
+  </div>
   <app-tuile-h [items]="getListCat()"></app-tuile-h>
 </main>
 
