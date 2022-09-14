@@ -31,6 +31,8 @@ export class ExploreComponent implements OnInit {
   plan!: string;
   idCatJExplore!: string;
   title!: string;
+  isFirstArrive: boolean = true;
+  listHelp!: Item[];
 
   espaceJcms: JcmsEspace | undefined;
 
@@ -60,12 +62,12 @@ export class ExploreComponent implements OnInit {
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
     if (resultRetrieveSessionStorage !== '') {
       // retrouve la recherche
-      // TODO Gestion du pager
       this.resultRetrieve = resultRetrieveSessionStorage;
       this.text = this.resultRetrieve[0].searchField;
       this.result = this.resultRetrieve;
       this.isResultRetrieve = true;
       sessionStorage.removeItem(this.resultRetrieveKey);
+      this.isFirstArrive = false;
     } else {
       // Recherche par url
       this._route.paramMap.subscribe((params) => {
@@ -86,6 +88,7 @@ export class ExploreComponent implements OnInit {
       return;
     }
 
+    this.isFirstArrive = false;
     this.result = [];
     // Catégorie inexistante -> pas de résultats
     if (!this.idCatJExplore) {
@@ -182,6 +185,28 @@ export class ExploreComponent implements OnInit {
    */
   public returnUrl() {
     return '/themes'
+  }
+
+  /**
+   * Get la liste des aides
+   * @returns la liste des aides
+   */
+  public getListHelp() {
+    this.listHelp = [
+      {
+        lbl: $localize`:@@ExploreComp-help-1:Identifiez toutes les oeuvres`,
+        url: '#'
+      },
+      {
+        lbl: $localize`:@@ExploreComp-help-2:Vous ne trouvez pas d’info sur une oeuvre qui vous intéresse ?`,
+        url: '#'
+      },
+      {
+        lbl: $localize`:@@ExploreComp-help-3:Aide`,
+        url: '#'
+      },
+    ];
+    return this.listHelp;
   }
 }
 

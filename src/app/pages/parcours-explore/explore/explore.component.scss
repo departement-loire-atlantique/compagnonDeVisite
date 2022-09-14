@@ -1,21 +1,79 @@
 @import '/src/theme/importDep.scss';
 
-main {
-  padding: 0 20px;
-}
-
 H1 {
   text-align: left;
-  padding: 10px 0;
-  margin-top: 15px;
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+
 }
 
-.ds44-btnStd{
+.ds44-theme {
   background-color: $pink;
+}
+
+main {
+  padding: 0 2rem;
+}
+
+// zone de recherche
+.h4-like{
+  text-align: center;
+  font-family: Muli;
+  font-weight: bold;
+  margin-top: 3rem;
+  margin-bottom: 0;
+}
+
+.ds44-medium-flex-col .ds44-fieldContainer:last-child {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ds44-fieldContainer.ds44-small-fg1 > .ds44-btnStd{
+  background-color: $black;
+  color: $white;
 
   &:focus,
   &:hover,
   &:active {
-    background-color: $pink;
+    background-color: $black;
+  }
+
+  .ds44-btnInnerText {
+    font-size: 1.4rem;
+    font-weight: bold;
+    vertical-align: initial;
   }
 }
+
+// Encart rose
+.encart {
+  .ds44-pushTitle {
+    font-family: muli;
+    font-size: 2.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .ds44-boxPushPic {
+    position: relative;
+
+    span {
+      position: absolute;
+      font-size: 2.1rem;
+      font-weight: bold;
+      background-color: $white;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 3rem;
+      line-height: 6rem;
+    }
+  }
+}
+
+// Liste d'aide
+.listHelp{
+  margin-top: 3em;
+  margin-bottom: 3.8em;
+}
+
