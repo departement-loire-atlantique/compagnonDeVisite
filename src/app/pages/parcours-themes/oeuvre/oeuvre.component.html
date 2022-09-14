@@ -10,7 +10,7 @@
         <div class="desc-oeuvre">
           <p [innerHTML]="getDesc()"></p>
         </div>
-        <app-collapser-oeuvre id="indications"  [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
+        <app-collapser-oeuvre   [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
       </div>
     </div>
@@ -23,10 +23,10 @@
       </app-carrousel>
 
       <div class="block-indications">
-        <div id="indications" class="desc-oeuvre">
+        <div class="desc-oeuvre">
           <p [innerHTML]="getDesc()"></p>
         </div>
-        <app-collapser-oeuvre [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
+        <app-collapser-oeuvre id="indications" [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
       </div>
     </div>
