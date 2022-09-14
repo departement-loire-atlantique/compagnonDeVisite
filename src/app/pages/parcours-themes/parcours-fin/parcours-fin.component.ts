@@ -3,7 +3,6 @@ import { Tuile } from 'src/app/components/tuile-v/tuile-v.component';
 import { JAngularService } from 'j-angular';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { ActivatedRoute } from '@angular/router';
-import { buildUrlMedia } from 'src/app/models/jcms/content'
 
 @Component({
   selector: 'app-parcours-fin',
@@ -33,7 +32,7 @@ export class ParcoursFinComponent implements OnInit {
       this.video = p.video;
       this.tuile = {
         img: p.visuel,
-        champs: [{lbl:"Ajouter la liste des oeuvres à mes favoris", icon:"icon-star-empty"}]
+        champs: [{lbl: $localize`:@@ParcoursFinComp-fav-text:Ajouter la liste des oeuvres à mes favoris`, icon:"icon-star-empty"}]
       }
     });
   }

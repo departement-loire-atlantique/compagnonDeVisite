@@ -1,29 +1,37 @@
 <section class="ds44-container-fluid ds44-lightBG ds44--xxl-padding-tb">
   <header class="txtcenter ds44--xl-padding-b">
-    <h1 class="underline">Avez-vous apprécié votre visite ?</h1>
+    <h1 class="underline" i18n="@@PageUtileComp-title">Avez-vous apprécié votre visite ?</h1>
   </header>
   <div class="ds44-inner-container ds44-grid12-offset-1">
     <div class="ds44-choiceYN ds44--m-padding-t ds44--xl-padding-b js-tabs">
-      <button (click)="changeCSSY()" [class]="getCSSBtnY() + ' ds44-btnStd js-tablist__link'" type="button" aria-pressed="false"
-        aria-label="Oui, cette page m'a été utile" data-href="#ds44-choiceY"
+      <button (click)="changeCSSY()" [class]="getCSSBtnY() + ' ds44-btnStd js-tablist__link'" type="button"
+        aria-pressed="false" aria-label="Oui, cette page m'a été utile" data-href="#ds44-choiceY"
         data-statistic='{"name": "declenche-evenement","category": "Avis page","action": "Oui"}'>
-        <span class="ds44-btnInnerText">Oui</span><i class="icon icon-like icon--sizeL" aria-hidden="true"></i></button>
-      <button (click)="changeCSSN()"  [class]="getCSSBtnN() + ' ds44-btnStd js-tablist__link'" type="button" aria-pressed="false"
-        aria-label="Non, cette page ne m'a pas été utile" data-href="#ds44-choiceN"
+        <span class="ds44-btnInnerText" i18n="@@PageUtileComp-yes">Oui</span>
+        <i class="icon icon-like icon--sizeL" aria-hidden="true"></i>
+      </button>
+      <button (click)="changeCSSN()" [class]="getCSSBtnN() + ' ds44-btnStd js-tablist__link'" type="button"
+        aria-pressed="false" aria-label="Non, cette page ne m'a pas été utile" data-href="#ds44-choiceN"
         data-statistic='{"name": "declenche-evenement","category": "Avis page","action": "Non"}'>
-        <span class="ds44-btnInnerText">Non</span><i class="icon icon-dislike icon--sizeL" aria-hidden="true"></i></button>
+        <span class="ds44-btnInnerText" i18n="@@PageUtileComp-no">Non</span>
+        <i class="icon icon-dislike icon--sizeL" aria-hidden="true"></i>
+      </button>
     </div>
 
     <div id="ds44-choiceY" [class]="getCSSY()">
       <form data-is-ajax="true" action="/">
         <div class="grid-1-small-1 ds44-box">
           <div>
-            <p id="form-bloc-utils-Y" tabindex="-1">Merci ! Si vous le souhaitez, vous pouvez nous laisser un
-              commentaire :</p>
+            <p id="form-bloc-utils-Y" tabindex="-1" i18n="@@PageUtileComp-introY">
+              Merci ! Si vous le souhaitez, vous pouvez nous laisser un commentaire :
+            </p>
             <div class="ds44-form__container">
               <div class="ds44-posRel">
-                <label for="form-element-63758" class="ds44-formLabel"><span
-                    class="ds44-labelTypePlaceholder"><span>Commentaire</span></span></label>
+                <label for="form-element-63758" class="ds44-formLabel">
+                  <span class="ds44-labelTypePlaceholder">
+                    <span i18n="@@PageUtileComp-title" i18n="@@PageUtileComp-comment">Commentaire</span>
+                  </span>
+                </label>
                 <textarea rows="5" cols="1" id="form-element-63758" name="form-element-63758"
                   class="ds44-inpStd"></textarea>
               </div>
@@ -31,7 +39,7 @@
           </div>
           <div class="ds44-mt-std">
             <button class="ds44-btnStd send" title="Envoyer votre commentaire">
-              <span class="ds44-btnInnerText">Envoyer</span>
+              <span class="ds44-btnInnerText" i18n="@@PageUtileComp-send">Envoyer</span>
               <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
             </button>
           </div>
@@ -45,53 +53,63 @@
         <div class="grid-2-small-1 ds44-box">
 
           <div class="col">
-            <p id="bloc-utile-informations" aria-level="3" role="heading" tabindex="-1">Pourquoi cette
-              page ne vous a pas été utile ?</p>
+            <p id="bloc-utile-informations" aria-level="3" role="heading" tabindex="-1" i18n="@@PageUtileComp-introN">
+              Pourquoi cette page ne vous a pas été utile ?
+            </p>
             <div id="form-element-50168" data-name="bloc-utile-informations-questions"
               class="ds44-form__checkbox_container ds44-form__container" data-required="true">
 
-              <p id="mandatory-message-form-element-50168" class="ds44-mandatory_message">Au moins une de ces cases doit
-                être cochée :</p>
+              <p id="mandatory-message-form-element-50168" class="ds44-mandatory_message"
+                i18n="@@PageUtileComp-check-cases">
+                Au moins une de ces cases doit être cochée :
+              </p>
               <div class="ds44-form__container ds44-checkBox-radio_list ">
                 <input type="checkbox" id="name-check-form-element-50168-1" name="bloc-utile-informations-questions"
                   value="1" class="ds44-checkbox" required
-                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" /><label
-                  for="name-check-form-element-50168-1" class="ds44-boxLabel"
-                  id="name-check-label-form-element-50168-1">Je me suis perdu dans ma visite</label>
+                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" />
+                <label for="name-check-form-element-50168-1" class="ds44-boxLabel"
+                  id="name-check-label-form-element-50168-1" i18n="@@PageUtileComp-elem1">
+                  Je me suis perdu dans ma visite
+                </label>
               </div>
 
               <div class="ds44-form__container ds44-checkBox-radio_list ">
                 <input type="checkbox" id="name-check-form-element-50168-2" name="bloc-utile-informations-questions"
                   value="2" class="ds44-checkbox" required
-                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" /><label
-                  for="name-check-form-element-50168-2" class="ds44-boxLabel"
-                  id="name-check-label-form-element-50168-2">Les contenus sont trop compliqués</label>
+                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" />
+                <label for="name-check-form-element-50168-2" class="ds44-boxLabel"
+                  id="name-check-label-form-element-50168-2" i18n="@@PageUtileComp-elem2">
+                  Les contenus sont trop compliqués
+                </label>
               </div>
               <div class="ds44-form__container ds44-checkBox-radio_list ">
                 <input type="checkbox" id="name-check-form-element-50168-3" name="bloc-utile-informations-questions"
                   value="3" class="ds44-checkbox" required
-                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" /><label
-                  for="name-check-form-element-50168-3" class="ds44-boxLabel"
-                  id="name-check-label-form-element-50168-3">C'est trop long</label>
+                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" />
+                <label for="name-check-form-element-50168-3" class="ds44-boxLabel"
+                  id="name-check-label-form-element-50168-3" i18n="@@PageUtileComp-elem3">
+                  C'est trop long
+                </label>
               </div>
               <div class="ds44-form__container ds44-checkBox-radio_list ">
                 <input type="checkbox" id="name-check-form-element-50168-4" name="bloc-utile-informations-questions"
                   value="4" class="ds44-checkbox" required
-                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" /><label
-                  for="name-check-form-element-50168-4" class="ds44-boxLabel"
-                  id="name-check-label-form-element-50168-4">C'est trop court</label>
+                  aria-describedby="mandatory-message-form-element-50168 bloc-utile-informations" />
+                <label for="name-check-form-element-50168-4" class="ds44-boxLabel"
+                  id="name-check-label-form-element-50168-4" i18n="@@PageUtileComp-elem4">
+                  C'est trop court
+                </label>
               </div>
             </div>
           </div>
           <div class="col ds44--xl-padding-l">
-            <p id="form-bloc-utils-N">Aidez-nous à améliorer nos visites en nous laissant un commentaire :</p>
+            <p id="form-bloc-utils-N" i18n="@@PageUtileComp-intro-commentaire">Aidez-nous à améliorer nos visites en
+              nous laissant un commentaire :</p>
             <!-- <p class="ds44-textLegend ds44-textLegend--mentions">Les champs marqués d’un astérisque * sont obligatoires</p> -->
             <div class="ds44-form__container">
               <div class="ds44-posRel">
-                <label for="form-element-88100" class="ds44-formLabel"><span
-                    class="ds44-labelTypePlaceholder"><span>Commentaire
-                      <!-- <sup aria-hidden="true">*</sup> -->
-                    </span>
+                <label for="form-element-88100" class="ds44-formLabel"><span class="ds44-labelTypePlaceholder">
+                    <span i18n="@@PageUtileComp-comment">Commentaire</span>
                   </span>
                 </label>
 
@@ -104,7 +122,7 @@
         </div>
         <div class="ds44-mt-std">
           <button class="ds44-btnStd send" title="Envoyer votre commentaire pour rendre cette page plus utile">
-            <span class="ds44-btnInnerText">Envoyer</span>
+            <span class="ds44-btnInnerText" i18n="@@PageUtileComp-send">Envoyer</span>
             <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
           </button>
         </div>

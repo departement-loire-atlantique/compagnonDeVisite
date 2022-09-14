@@ -33,6 +33,8 @@ export class OeuvreComponent implements OnInit {
 
   audio: boolean = false;
 
+  step: string = $localize`:@@OeuvreComp-step:Etape`;
+
   constructor(
     private _jcms: JAngularService,
     private _route: ActivatedRoute) { }
@@ -141,7 +143,7 @@ export class OeuvreComponent implements OnInit {
    * @returns
    */
   public getTextEtape() {
-    return "Etape " + (this.indexEtape + 1) + ' / ' + this.json.length;
+    return this.step + " " + (this.indexEtape + 1) + ' / ' + this.json.length;
   }
 
   /**

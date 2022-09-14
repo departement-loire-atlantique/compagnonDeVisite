@@ -29,7 +29,8 @@ export class ParcoursComponent implements OnInit {
   idThematique: string = "idThematique";
 
   defaultCSS = "max-lines";
-  defaultText = "Lire la suite"
+  defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+  step: string = $localize`:@@ParcoursComp-step:Etape`;
 
   constructor(
     private _ds: DesignSystemService,
@@ -268,10 +269,10 @@ export class ParcoursComponent implements OnInit {
   public showDesc() {
     if(this.defaultCSS === "max-lines") {
       this.defaultCSS = "default-lines ";
-      this.defaultText = "Réduire"
+      this.defaultText = $localize`:@@ParcoursComp-less:Réduire`;
     } else {
       this.defaultCSS = "max-lines";
-      this.defaultText = "Lire la suite"
+      this.defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
     }
   }
 
