@@ -6,11 +6,11 @@ export const environment: Environment = {
   jcms: 'https://admin-prep-visite-musee-dobree.loire-atlantique.fr/',
   front: 'https://prep-visite-musee-dobree.loire-atlantique.fr/',
   token: '',
-  catJExplore: '',
+  catJExplore: 'c_5036',
   lang: {
-    'fr': { espace: '', catHome: '' },
-    'en': { espace: '', catHome: '' },
-    'fr-LSF': { espace: '', catHome: '' },
-    'fr-PMR': { espace: '', catHome: '' }
+    'fr': { espace: 'c_5038', catHome: 'c_5039' },
+    'en': { espace: 'c_5044', catHome: 'c_5045' },
+    'fr-LSF': { espace: 'c_5048', catHome: 'c_5049' },
+    'fr-PMR': { espace: 'c_5052', catHome: 'c_5053' }
   }
 };
