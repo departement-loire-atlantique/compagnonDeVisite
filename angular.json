@@ -129,6 +129,11 @@
                 "fr"
               ]
             },
+            "fr": {
+              "localize": [
+                "fr"
+              ]
+            },
             "en": {
               "localize": [
                 "en"
@@ -156,6 +161,9 @@
             },
             "development": {
               "browserTarget": "CompagnonDeVisite:build:development"
+            },
+            "fr": {
+              "browserTarget": "CompagnonDeVisite:build:fr"
             },
             "en": {
               "browserTarget": "CompagnonDeVisite:build:en"
