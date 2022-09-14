@@ -1,16 +1,19 @@
-import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { JAngularService } from 'j-angular';
 import { Carousel, CarouselElement } from 'src/app/models/jcms/carousel';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-carrousel',
   templateUrl: './carrousel.component.html',
   styleUrls: ['./carrousel.component.scss']
 })
-export class CarrouselComponent implements OnInit, AfterViewInit {
+
+/**
+ * Gestion des carrousels
+ */
+export class CarrouselComponent implements OnInit {
   @Input() carousel: Carousel | undefined;
 
   @Input() id: string | undefined;
@@ -28,6 +31,8 @@ export class CarrouselComponent implements OnInit, AfterViewInit {
 
   currentSlide: number = 1;
 
+  isElementLoading: boolean = true;
+
   constructor(private _ds: DesignSystemService,
     private _jcms: JAngularService) { }
 
@@ -41,6 +46,10 @@ export class CarrouselComponent implements OnInit, AfterViewInit {
       this.getFullElement();
     }
   }
+
+  /**
+   * Chargement des éléments du carrousel
+  */
   getFullElement() {
     if (!this.carousel || !this.carousel.elements1) {
       return;
@@ -56,16 +65,19 @@ export class CarrouselComponent implements OnInit, AfterViewInit {
         .subscribe((res: CarouselElement) => {
           res.imageMobile = buildUrlMedia(res.imageMobile);
           this.elements[i] = res;
+          if(i + 1 === this.carousel?.elements1?.length) {
+            this.itemSwiper?.changes.subscribe((_) => {
+              this.buildCarousel();
+            });
+            this.isElementLoading = false;
+          }
         });
     }
   }
 
-  ngAfterViewInit(): void {
-    this.itemSwiper?.changes.subscribe((_) => {
-      this.buildCarousel();
-    });
-  }
-
+  /**
+   * Construction du carrousel via le design system
+   */
   buildCarousel() {
     this._ds.initCarousel();
   }
