@@ -25,7 +25,7 @@ export class ExploreComponent implements OnInit {
   text!: string;
   researchRun: boolean = false;
   result!: Search[];
-  resultRetrieveKey: string = 'jsonExplore;'
+  resultRetrieveKey: string = 'jsonExplore'
   resultRetrieve!: Search[];
   isResultRetrieve: boolean = false;
   pager: JcmsPager<Content> | undefined;
@@ -54,14 +54,13 @@ export class ExploreComponent implements OnInit {
   ngOnInit(): void {
     this._ds.initForm();
 
-    this.idJExplore = localStorage.getItem("IdJExplore") || "";
-
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
 
     if (!this.espaceJcms) {
       return;
     }
 
+    this.idJExplore = localStorage.getItem("IdJExplore") || "";
     this.idCatJExplore = environment.catJExplore;
 
     this._jcms.get<Parcours>('data/' + this.idJExplore).subscribe((parcours: Parcours) => {

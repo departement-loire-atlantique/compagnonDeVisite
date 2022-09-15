@@ -18,7 +18,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   oeuvre!: Oeuvre | undefined;
   isAudioEnded: boolean = false;
   result!: Search[];
-  resultRetrieveKey: string = 'jsonExplore;'
+  resultRetrieveKey: string = 'jsonExplore'
   resultRetrieve!: Search[];
   id!: string | '';
 
