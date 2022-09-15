@@ -137,14 +137,15 @@ export class ExploreComponent implements OnInit {
               url: '/explore/oeuvre/' + itContent.id,
             },
             state: State.active});
-          this.result?.push({
-              searchField: this.text,
-              searchItem: this.itSearchItem,
-          });
-            // Sauvegarde des résultats de la recherche
+          this.result=[{
+            searchField: this.text,
+            searchItem: this.itSearchItem,
+          }];
           sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
         });
       }
+
+      // Sauvegarde des résultats de la recherche
       this.researchRun = false;
 
       // TODO Focus for accessibility
