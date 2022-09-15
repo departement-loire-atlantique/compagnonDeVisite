@@ -7,7 +7,7 @@
                   <div *ngIf="true" class="ds44-diaporama-vignette">
                       <figure class="ds44-diaporama-vignette-container" role="figure" aria-label="item?.title">
                           <img class="ds44-diaporama-vignette-image" [src]="item?.imageMobile" [alt]="item?.title" />
-                          <figcaption *ngIf="item!.title" class="ds44-diaporama-vignette-text">{{ item?.title }}</figcaption>
+                          <figcaption *ngIf="item?.title" class="ds44-diaporama-vignette-text">{{ item?.title }}</figcaption>
                       </figure>
                   </div>
               </li>
