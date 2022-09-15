@@ -46,7 +46,7 @@ export class BackPopupComponent {
   idTarget: string = "overlay-back";
 
   @Input()
-  title: string = "Quitter le parcours ?";
+  title: string = $localize`:@@BackPopUpComp-title-pop-up:Quitter le point d'intéret ?`;
 
   constructor(private _location: Location) {}
 

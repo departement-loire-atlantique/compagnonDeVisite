@@ -5,6 +5,10 @@
 
   <div *ngIf="getVideo(); else noVideo">
     <div class="detail-oeuvre">
+      <div class="video-title">
+        <p>{{ getTextEtape() }}</p>
+        <h3>{{ getTitle() }}</h3>
+      </div>
     <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()"></app-lecteur-video-oeuvre>
       <div class="block-indications">
         <div class="desc-oeuvre">

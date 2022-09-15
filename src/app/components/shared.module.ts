@@ -14,15 +14,16 @@ import { TuileVComponent } from './tuile-v/tuile-v.component';
 import { ImageTextComponent } from './image-text/image-text.component';
 import { HeaderComponent } from './header/header.component';
 import { HeaderGpComponent } from './header-gp/header-gp.component';
+import { HeaderParcoursComponent } from './header-parcours/header-parcours.component';
+import { HeaderExploreComponent } from './header-explore/header-explore.component';
+import { HeaderLangComponent } from './header-lang/header-lang.component';
 import { MenuComponent } from './menu/menu.component';
 import { OverlayTutoComponent } from './overlay-tuto/overlay-tuto.component';
-import { HeaderParcoursComponent } from './header-parcours/header-parcours.component';
 import { EtapesComponent } from './etapes/etapes.component';
 import { OverlayMapComponent } from './overlay-map/overlay-map.component';
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { LecteurAudioComponent } from './lecteur-audio/lecteur-audio.component';
 import { LoaderComponent } from './loader/loader.component';
-import { HeaderExploreComponent } from './header-explore/header-explore.component';
 import { PartageRsComponent } from './partage-rs/partage-rs.component';
 import { PageUtileComponent } from './page-utile/page-utile.component';
 import { LecteurVideoComponent } from './lecteur-video/lecteur-video.component';
@@ -57,7 +58,8 @@ import { OeuvreSuivPredComponent } from './oeuvre-suiv-pred/oeuvre-suiv-pred.com
     PageUtileComponent,
     LecteurVideoComponent,
     LecteurVideoOeuvreComponent,
-    OeuvreSuivPredComponent
+    OeuvreSuivPredComponent,
+    HeaderLangComponent
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -86,7 +88,8 @@ import { OeuvreSuivPredComponent } from './oeuvre-suiv-pred/oeuvre-suiv-pred.com
     PageUtileComponent,
     LecteurVideoComponent,
     LecteurVideoOeuvreComponent,
-    OeuvreSuivPredComponent
+    OeuvreSuivPredComponent,
+    HeaderLangComponent
   ],
 })
 export class SharedModule {}
