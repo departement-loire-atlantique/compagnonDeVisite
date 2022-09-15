@@ -9,6 +9,7 @@ import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
 import { JcmsEspace } from 'src/app/models/environment';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
+import { Parcours } from 'src/app/models/jcms/parcours';
 
 @Component({
   selector: 'app-explore',
@@ -30,7 +31,9 @@ export class ExploreComponent implements OnInit {
   pager: JcmsPager<Content> | undefined;
   plan!: string;
   idCatJExplore!: string;
+  idJExplore!: string;
   title!: string;
+  video!: string | undefined;
   isFirstArrive: boolean = true;
   listHelp!: Item[];
 
@@ -51,7 +54,7 @@ export class ExploreComponent implements OnInit {
   ngOnInit(): void {
     this._ds.initForm();
 
-    this.title = localStorage.getItem("TitleJExplore") || "Visite libre dans le musée";
+    this.idJExplore = localStorage.getItem("IdJExplore") || "";
 
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
 
@@ -60,6 +63,11 @@ export class ExploreComponent implements OnInit {
     }
 
     this.idCatJExplore = environment.catJExplore;
+
+    this._jcms.get<Parcours>('data/' + this.idJExplore).subscribe((parcours: Parcours) => {
+      this.title = parcours.title;
+      this.video = parcours.video || undefined;
+    });
 
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
     if (resultRetrieveSessionStorage !== '') {
@@ -215,6 +223,14 @@ export class ExploreComponent implements OnInit {
     ];
     return this.listHelp;
   }
+
+    /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+     public getVideo() {
+      return this.video;
+    }
 }
 
 /**

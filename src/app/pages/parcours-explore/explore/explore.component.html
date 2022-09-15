@@ -3,7 +3,10 @@
 <main>
   <h1 class="underline" i18n="@@ExploreComp-title">{{ title }}</h1>
 
-  <p *ngIf="isFirstArrive" i18n="@@ExploreComp-recherche-intro">Je visite le musée en toute autonomie et me laisse surprendre par des oeuvres !</p>
+  <p *ngIf="isFirstArrive && !getVideo()" i18n="@@ExploreComp-recherche-intro">Je visite le musée en toute autonomie et me laisse surprendre par des oeuvres !</p>
+  <div *ngIf="getVideo()">
+    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="title"></app-lecteur-video-oeuvre>
+  </div>
 
   <p id="idTitre1" class="h4-like" i18n="@@ExploreComp-recherche-lbl">Recherchez par mots-clés ou numéro de l’oeuvre :</p>
 

@@ -73,4 +73,12 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   public getPlan() {
     return this.oeuvre?.plan;
   }
+
+  /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+  public getVideo() {
+    return this.oeuvre?.video;
+  }
 }
