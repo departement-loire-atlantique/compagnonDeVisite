@@ -15,6 +15,7 @@ export class ParcoursFinComponent implements OnInit {
   tuile:Tuile | undefined;
   map: string | undefined;
   video: string | undefined;
+  idParcours: string = "idParcours";
 
   constructor(
     private _route: ActivatedRoute,
@@ -35,6 +36,10 @@ export class ParcoursFinComponent implements OnInit {
         champs: [{lbl: $localize`:@@ParcoursFinComp-fav-text:Ajouter la liste des oeuvres à mes favoris`, icon:"icon-star-empty"}]
       }
     });
+  }
+
+  public getHomeParcours() {
+    return 'parcours/' + localStorage.getItem(this.idParcours);
   }
 
   public getHome() {
