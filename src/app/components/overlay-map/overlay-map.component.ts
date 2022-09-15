@@ -37,7 +37,10 @@ export class OverlayMapComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    panzoom(this.imagePlan.nativeElement);
+    panzoom(this.imagePlan.nativeElement, {
+      maxZoom: 5,
+      minZoom: 0.5
+    });
   }
 
   public getClassButton() {
@@ -56,8 +59,13 @@ export class OverlayMapComponent implements OnInit, AfterViewInit {
 
   public zoom(palier: number = 100) {
     var currWidth = this.imagePlan.nativeElement.clientWidth;
-    this.imagePlan.nativeElement.style.width = (currWidth - palier) + "px"
-    this.imagePlan.nativeElement.style.objectFit = "cover";
+    if (currWidth < 300) {
+      currWidth = 300;
+    } else if (currWidth > 700) {
+      currWidth = 700;
+    }
+      this.imagePlan.nativeElement.style.width = (currWidth - palier) + "px"
+      this.imagePlan.nativeElement.style.objectFit = "cover";
   }
 }
 
