@@ -105,6 +105,7 @@ export class ExploreComponent implements OnInit {
     }
 
     this.researchRun = true;
+    this.itSearchItem = [];
 
     this.processResult(
       this._jcms.getPager<Content>('search', {

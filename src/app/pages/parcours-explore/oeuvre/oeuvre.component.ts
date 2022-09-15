@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
-import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
+import { Oeuvre, OeuvreMap } from 'src/app/models/jcms/Oeuvre';
 import { Search, State } from '../explore/explore.component';
 
 @Component({
@@ -16,6 +16,8 @@ import { Search, State } from '../explore/explore.component';
 export class OeuvreComponent implements OnInit, OnDestroy {
 
   oeuvre!: Oeuvre | undefined;
+  mapOeuvre: OeuvreMap = new OeuvreMap();
+
   isAudioEnded: boolean = false;
   result!: Search[];
   resultRetrieveKey: string = 'jsonExplore'
@@ -36,11 +38,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
       this._jcms
         .get<Oeuvre>('data/' + this.id)
         .subscribe((oeuvre: Oeuvre) => {
-          this.oeuvre = oeuvre;
-          this.oeuvre.fichierSon = buildUrlMedia(oeuvre.fichierSon);
-          this.oeuvre.fichierSonDaide = buildUrlMedia(oeuvre.fichierSonDaide);
-          this.oeuvre.vignette = buildUrlMedia(oeuvre.vignette);
-          this.oeuvre.plan = buildUrlMedia(oeuvre.plan);
+          this.oeuvre = this.mapOeuvre.mapToOeuvre(oeuvre);
       });
     });
 
