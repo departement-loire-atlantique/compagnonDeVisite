@@ -79,7 +79,7 @@
       <h3 class="search-result-info">
         {{ lblNbResult() }}
       </h3>
-      <app-tuile-h *ngFor="let item of result " [items]="item.item"></app-tuile-h>
+      <app-tuile-h-explore *ngFor="let item of result" [searchItems]="item.searchItem"></app-tuile-h-explore>
       <div class="ds44-posBot">
       <button *ngIf="pager && pager.hasMore()"
               [disabled]="researchRun"

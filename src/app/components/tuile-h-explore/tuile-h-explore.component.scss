@@ -1,0 +1,47 @@
+@import '/src/theme/importDep.scss';
+
+.tuile-etape {
+  margin-top: 20px;
+}
+
+.ds44-flex-container {
+  font-weight: bold;
+  margin-bottom:20px;
+  background-color: $light-grey;
+}
+
+.icone-tuile {
+    position: relative;
+
+    .btn-play {
+
+      background-color: $white;
+      border-radius: 3px;
+
+      position: absolute;
+      z-index: 200;
+      left: 0;
+      bottom:0;
+
+      width: 44px;
+      height: 44px;
+
+      margin-bottom: 10px;
+      margin-left: 10px;
+    }
+
+    .inactive {
+      background-color: $white;
+    }
+
+    .active {
+      .icon {
+        color: $white;
+      }
+      background-color:$black;
+    }
+
+    .passed {
+      background-color: $pink;
+    }
+  }

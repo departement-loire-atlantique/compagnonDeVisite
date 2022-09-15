@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
+import { Search, State } from '../explore/explore.component';
 
 @Component({
   selector: 'app-oeuvre',
@@ -16,6 +17,10 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   oeuvre!: Oeuvre | undefined;
   isAudioEnded: boolean = false;
+  result!: Search[];
+  resultRetrieveKey: string = 'jsonExplore;'
+  resultRetrieve!: Search[];
+  id!: string | '';
 
   constructor(
               private _route: ActivatedRoute,
@@ -27,17 +32,30 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._route.paramMap.subscribe((params) => {
-      const id = params.get('id');
+      this.id = params.get('id') || '';
       this._jcms
-          .get<Oeuvre>('data/' + id)
-          .subscribe((oeuvre: Oeuvre) => {
-            this.oeuvre = oeuvre;
-            this.oeuvre.fichierSon = buildUrlMedia(oeuvre.fichierSon);
-            this.oeuvre.fichierSonDaide = buildUrlMedia(oeuvre.fichierSonDaide);
-            this.oeuvre.vignette = buildUrlMedia(oeuvre.vignette);
-            this.oeuvre.plan = buildUrlMedia(oeuvre.plan);
-        });
+        .get<Oeuvre>('data/' + this.id)
+        .subscribe((oeuvre: Oeuvre) => {
+          this.oeuvre = oeuvre;
+          this.oeuvre.fichierSon = buildUrlMedia(oeuvre.fichierSon);
+          this.oeuvre.fichierSonDaide = buildUrlMedia(oeuvre.fichierSonDaide);
+          this.oeuvre.vignette = buildUrlMedia(oeuvre.vignette);
+          this.oeuvre.plan = buildUrlMedia(oeuvre.plan);
       });
+    });
+
+    // MAJ du local storage
+    var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
+    if (resultRetrieveSessionStorage !== '') {
+      this.result = resultRetrieveSessionStorage;
+      for (let item of this.result[0].searchItem) {
+        if (item.item.url?.includes(this.id)){
+          item.state = State.passed;
+          sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
+          break;
+        }
+      }
+    }
   }
 
   /**
