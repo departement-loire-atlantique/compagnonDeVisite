@@ -28,6 +28,7 @@ import { PageUtileComponent } from './page-utile/page-utile.component';
 import { LecteurVideoComponent } from './lecteur-video/lecteur-video.component';
 import { LecteurVideoOeuvreComponent } from './lecteur-video-oeuvre/lecteur-video-oeuvre.component';
 import { OeuvreSuivPredComponent } from './oeuvre-suiv-pred/oeuvre-suiv-pred.component';
+import { TuileHExploreComponent } from './tuile-h-explore/tuile-h-explore.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { OeuvreSuivPredComponent } from './oeuvre-suiv-pred/oeuvre-suiv-pred.com
     LoaderComponent,
     TuileHComponent,
     TuileHEtapeComponent,
+    TuileHExploreComponent,
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,
@@ -57,7 +59,7 @@ import { OeuvreSuivPredComponent } from './oeuvre-suiv-pred/oeuvre-suiv-pred.com
     PageUtileComponent,
     LecteurVideoComponent,
     LecteurVideoOeuvreComponent,
-    OeuvreSuivPredComponent
+    OeuvreSuivPredComponent,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -72,6 +74,7 @@ import { OeuvreSuivPredComponent } from './oeuvre-suiv-pred/oeuvre-suiv-pred.com
     LoaderComponent,
     TuileHComponent,
     TuileHEtapeComponent,
+    TuileHExploreComponent,
     TuileVComponent,
     ImageTextComponent,
     HeaderComponent,

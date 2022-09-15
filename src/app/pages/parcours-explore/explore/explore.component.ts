@@ -34,6 +34,8 @@ export class ExploreComponent implements OnInit {
   isFirstArrive: boolean = true;
   listHelp!: Item[];
 
+  itSearchItem: SearchItem[] = [];
+
   espaceJcms: JcmsEspace | undefined;
 
   constructor(
@@ -44,7 +46,7 @@ export class ExploreComponent implements OnInit {
   ) { }
 
   /**
-   *
+   * Initialisation du module
    */
   ngOnInit(): void {
     this._ds.initForm();
@@ -66,7 +68,7 @@ export class ExploreComponent implements OnInit {
       this.text = this.resultRetrieve[0].searchField;
       this.result = this.resultRetrieve;
       this.isResultRetrieve = true;
-      sessionStorage.removeItem(this.resultRetrieveKey);
+//      sessionStorage.removeItem(this.resultRetrieveKey);
       this.isFirstArrive = false;
     } else {
       // Recherche par url
@@ -114,7 +116,7 @@ export class ExploreComponent implements OnInit {
   }
 
   /**
-   *
+   * Stockage des résultats
    * @param obs
    */
   public processResult(obs: Observable<JcmsPager<Content>>) {
@@ -128,15 +130,18 @@ export class ExploreComponent implements OnInit {
 
       for (let itContent of contents) {
         this._jcms.get<Oeuvre>('data/' + itContent.id).subscribe(res => {
-          this.result?.push({
-            searchField: this.text,
-            item: [{
+          this.itSearchItem.push({
+            item:{
               lbl: itContent.title,
               img: buildUrlMedia(res.vignette),
               url: '/explore/oeuvre/' + itContent.id,
-            }],
+            },
+            state: State.active});
+          this.result?.push({
+              searchField: this.text,
+              searchItem: this.itSearchItem,
           });
-          // Sauvegarde des résultats de la recherche
+            // Sauvegarde des résultats de la recherche
           sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
         });
       }
@@ -197,14 +202,15 @@ export class ExploreComponent implements OnInit {
         lbl: $localize`:@@ExploreComp-help-1:Identifiez toutes les oeuvres`,
         url: '#'
       },
-      {
+      // En attente d'activation des fonctionnalités
+     /* {
         lbl: $localize`:@@ExploreComp-help-2:Vous ne trouvez pas d’info sur une oeuvre qui vous intéresse ?`,
         url: '#'
       },
       {
         lbl: $localize`:@@ExploreComp-help-3:Aide`,
         url: '#'
-      },
+      },*/
     ];
     return this.listHelp;
   }
@@ -215,5 +221,16 @@ export class ExploreComponent implements OnInit {
  */
 export interface Search {
   searchField: string,
-  item: Item[],
+  searchItem: SearchItem[],
+}
+
+export interface SearchItem {
+  item: Item,
+  state?: State,
+}
+
+export enum State {
+  active = "active",
+  inactive = "inactive",
+  passed = "passed"
 }
