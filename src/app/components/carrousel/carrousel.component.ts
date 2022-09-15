@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { JAngularService } from 'j-angular';
+import { combineLatest, Observable } from 'rxjs';
 import { Carousel, CarouselElement } from 'src/app/models/jcms/carousel';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
@@ -54,25 +55,31 @@ export class CarrouselComponent implements OnInit {
     if (!this.carousel || !this.carousel.elements1) {
       return;
     }
+
+    const fullElements: Observable<CarouselElement>[] = [];
+
     for (let i = 0; i < this.carousel.elements1.length; i++) {
       let item = this.carousel.elements1[i];
 
       // array init with empty item (for order)
       this.elements.push(undefined);
 
-      this._jcms
-        .get<CarouselElement>('data/' + item.id)
-        .subscribe((res: CarouselElement) => {
-          res.imageMobile = buildUrlMedia(res.imageMobile);
-          this.elements[i] = res;
-          if(i + 1 === this.carousel?.elements1?.length) {
-            this.itemSwiper?.changes.subscribe((_) => {
-              this.buildCarousel();
-            });
-            this.isElementLoading = false;
-          }
-        });
+      fullElements[i] = this._jcms.get<CarouselElement>('data/' + item.id);
     }
+
+    combineLatest(fullElements).subscribe(reps => {
+      for (let i = 0; i < reps.length; i++) {
+        let itRep: CarouselElement = reps[i];
+        itRep.imageMobile = buildUrlMedia(itRep.imageMobile);
+        this.elements[i] = itRep;
+      }
+
+      this.itemSwiper?.changes.subscribe((_) => {
+        this.buildCarousel();
+      });
+
+      this.isElementLoading = false;
+    });
   }
 
   /**
