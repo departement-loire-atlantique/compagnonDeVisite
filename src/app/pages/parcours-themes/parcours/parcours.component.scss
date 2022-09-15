@@ -1,12 +1,7 @@
 @import '/src/theme/importDep.scss';
 
-main {
-  padding: 0 20px;
-}
-
 H1 {
   text-align: left;
-  margin-top: 25px;
 }
 
 .plus {
@@ -14,7 +9,6 @@ H1 {
   display: block;
   text-decoration: underline 1px;
   text-underline-offset: 3px;
-  margin-bottom: 20px;
 }
 
 .ds44-posBot {
@@ -41,9 +35,5 @@ H1 {
   display: inline-block; /* or inline-block */
   word-wrap: break-word;
   line-height: 1.8em;
-}
-
-.video {
-  margin: 10px 0;
 }
 

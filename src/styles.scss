@@ -67,6 +67,28 @@ H3.title-overlay {
   font-weight: bold;
 }
 
+.side-space {
+  margin: 2rem;
+}
+
+.top-space {
+  margin-top: 2rem;
+}
+
+.bottom-space {
+  margin-bottom: 2rem;
+}
+
+.border-space {
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.small-border-space {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
 // bouton header component
 .ds44-header .ds44-colRight .ds44-btnIcoText--maxi.ds44-btn--menu.btn-menu-component {
   margin-right: 1.5rem;

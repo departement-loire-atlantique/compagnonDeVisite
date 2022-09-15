@@ -2,7 +2,6 @@
 
 .fin-parcours {
   position: relative;
-  margin: 0 10px;
 
   .bg-title {
     position: absolute;
@@ -26,7 +25,7 @@
   display: inline-flex;
   padding: 10px 10px;
   margin: 1.5rem 0;
-  background-color: $pink;
+  background-color: $main-color;
 
   i {
     margin: 0 10px;
@@ -41,14 +40,14 @@
     margin-top: 15px;
   }
   .img-appli {
-    margin-top: 10px;
+    margin-top: 1rem;
     width: 80%;
     height: auto;
   }
   background-color: $main-color;
   text-align: center;
   padding: 30px 30px 0 30px;
-  margin: 1.5rem 10px 30px 10px;
+  margin: 1.5rem 1rem 1.5rem 1rem;
 }
 
 .spacer {

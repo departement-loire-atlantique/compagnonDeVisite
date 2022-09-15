@@ -1,12 +1,7 @@
 @import '/src/theme/importDep.scss';
 
-.tuile-etape {
-  margin-top: 20px;
-}
-
 .ds44-flex-container {
   font-weight: bold;
-  margin-bottom:20px;
   background-color: $light-grey;
 }
 
@@ -42,6 +37,6 @@
     }
 
     .passed {
-      background-color: $pink;
+      background-color: $main-color;
     }
   }

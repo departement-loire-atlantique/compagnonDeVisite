@@ -1,13 +1,13 @@
-<app-header-parcours [customProcess]="true" [returnUrl]="getThemeURL()" [imagePlan]="getPlan()"></app-header-parcours>
+<app-header-parcours [customProcess]="true" [returnUrl]="getThemeURL()" [imagePlan]="getPlan()" [popUp]="true"></app-header-parcours>
 
-<main>
-  <h1 class="underline"> {{ getTitle() }}</h1>
+<main class="border-space">
+  <h1 class="underline top-space"> {{ getTitle() }}</h1>
 
   <div class="ds44-container-large">
 
     <div *ngIf="!getVideo()">
       <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
-      <span (click)="showDesc()" class="ds44-btnInnerText plus"> {{ defaultText }} </span>
+      <span (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
     </div>
 
 
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div *ngIf="getVideo()" class="video">
+    <div *ngIf="getVideo()" class="top-space">
       <app-lecteur-video [file]="getVideo()"></app-lecteur-video>
     </div>
   </div>
