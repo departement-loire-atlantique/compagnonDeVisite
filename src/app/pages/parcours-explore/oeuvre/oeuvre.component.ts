@@ -47,7 +47,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
     if (resultRetrieveSessionStorage !== '') {
       this.result = resultRetrieveSessionStorage;
       for (let item of this.result[0].searchItem) {
-        if (item.item.url?.includes(this.id)){
+        if (item && item.item.url?.includes(this.id)){
           item.state = State.passed;
           sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
           break;

@@ -9,7 +9,7 @@ import { SearchItem, State } from 'src/app/pages/parcours-explore/explore/explor
 export class TuileHExploreComponent {
 
   @Input()
-  searchItems: SearchItem[] | undefined;
+  searchItems: (SearchItem | undefined)[] | undefined;
 
   inactive = State.inactive;
   active = State.active;

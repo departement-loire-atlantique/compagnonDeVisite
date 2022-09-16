@@ -37,7 +37,7 @@ export class ExploreComponent implements OnInit {
   isFirstArrive: boolean = true;
   listHelp!: Item[];
 
-  itSearchItem: SearchItem[] = [];
+  itSearchItem: (SearchItem | undefined)[] = [];
 
   espaceJcms: JcmsEspace | undefined;
 
@@ -75,7 +75,7 @@ export class ExploreComponent implements OnInit {
       this.text = this.resultRetrieve[0].searchField;
       this.result = this.resultRetrieve;
       this.isResultRetrieve = true;
-//      sessionStorage.removeItem(this.resultRetrieveKey);
+      //      sessionStorage.removeItem(this.resultRetrieveKey);
       this.isFirstArrive = false;
     } else {
       // Recherche par url
@@ -136,16 +136,22 @@ export class ExploreComponent implements OnInit {
       this.pager = pager;
       const contents = pager.dataInPage;
 
-      for (let itContent of contents) {
+      for (let i = 0; i < contents.length; i++) {
+        const itContent = contents[i];
+
+        // array init with empty item (for order)
+        this.itSearchItem.push(undefined);
+
         this._jcms.get<Oeuvre>('data/' + itContent.id).subscribe(res => {
-          this.itSearchItem.push({
-            item:{
+          this.itSearchItem[i] = {
+            item: {
               lbl: itContent.title,
               img: buildUrlMedia(res.vignette),
               url: '/explore/oeuvre/' + itContent.id,
             },
-            state: State.active});
-          this.result=[{
+            state: State.active
+          };
+          this.result = [{
             searchField: this.text,
             searchItem: this.itSearchItem,
           }];
@@ -212,25 +218,25 @@ export class ExploreComponent implements OnInit {
         url: '#'
       },
       // En attente d'activation des fonctionnalités
-     /* {
-        lbl: $localize`:@@ExploreComp-help-2:Vous ne trouvez pas d’info sur une oeuvre qui vous intéresse ?`,
-        url: '#'
-      },
-      {
-        lbl: $localize`:@@ExploreComp-help-3:Aide`,
-        url: '#'
-      },*/
+      /* {
+         lbl: $localize`:@@ExploreComp-help-2:Vous ne trouvez pas d’info sur une oeuvre qui vous intéresse ?`,
+         url: '#'
+       },
+       {
+         lbl: $localize`:@@ExploreComp-help-3:Aide`,
+         url: '#'
+       },*/
     ];
     return this.listHelp;
   }
 
-    /**
-   * Get l'id de la video LSF
-   * @returns l'id de la video
-   */
-     public getVideo() {
-      return this.video;
-    }
+  /**
+ * Get l'id de la video LSF
+ * @returns l'id de la video
+ */
+  public getVideo() {
+    return this.video;
+  }
 }
 
 /**
@@ -238,7 +244,7 @@ export class ExploreComponent implements OnInit {
  */
 export interface Search {
   searchField: string,
-  searchItem: SearchItem[],
+  searchItem: (SearchItem | undefined)[],
 }
 
 export interface SearchItem {
