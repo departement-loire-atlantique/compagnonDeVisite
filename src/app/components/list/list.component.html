@@ -4,7 +4,7 @@
       <span class="lbl-link-wrapper">
         <span *ngIf="itItem.prefix" class="lbl-prefix">{{ itItem.prefix }}</span>
         <img *ngIf="itItem.img && !itItem.isPicto" [src]="itItem.img" aria-hidden="true" />
-        <span *ngIf="itItem.img && itItem.isPicto" class="img-pitco" aria-hidden="true">{{ itItem.img }}</span>
+        <i *ngIf="itItem.img && itItem.isPicto" class="img-pitco icon {{ itItem.img }}" aria-hidden="true"></i>
         <span class="lbl-link" [class.is--bold]="isBold">{{ itItem.lbl }}</span>
       </span>
     </ng-template>
