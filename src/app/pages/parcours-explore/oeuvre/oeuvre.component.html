@@ -1,10 +1,17 @@
 <app-header-explore [imagePlan]="getPlan()"></app-header-explore>
 <main>
   <div class="upper">
-    <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader>
-    <app-carrousel *ngIf="oeuvre?.diaporama" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
+    <!-- <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader> -->
+    <div class="mainVideo" *ngIf="getVideo()">
+      <app-lecteur-video-oeuvre [file]="getVideo()" [name]="oeuvre?.title"></app-lecteur-video-oeuvre>
+    </div>
+
+    <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
+    <div id="indications" class="desc-oeuvre">
+      <p [innerHTML]="oeuvre?.description"></p>
+    </div>
   </div>
-  <div class="mainAudio" *ngIf="oeuvre?.fichierSon">
+  <div class="mainAudio" *ngIf="oeuvre?.fichierSon && !getVideo()">
     <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" ></app-lecteur-audio>
   </div>
   <div *ngIf="oeuvre?.description" class="visually-hidden">{{ oeuvre?.description }}</div>

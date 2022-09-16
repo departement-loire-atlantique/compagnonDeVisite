@@ -1,15 +1,20 @@
-import { AfterViewInit, Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { JAngularService } from 'j-angular';
+import { combineLatest, Observable } from 'rxjs';
 import { Carousel, CarouselElement } from 'src/app/models/jcms/carousel';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-carrousel',
   templateUrl: './carrousel.component.html',
   styleUrls: ['./carrousel.component.scss']
 })
-export class CarrouselComponent implements OnInit, AfterViewInit{
+
+/**
+ * Gestion des carrousels
+ */
+export class CarrouselComponent implements OnInit {
   @Input() carousel: Carousel | undefined;
 
   @Input() id: string | undefined;
@@ -27,8 +32,10 @@ export class CarrouselComponent implements OnInit, AfterViewInit{
 
   currentSlide: number = 1;
 
-  constructor( private _ds: DesignSystemService,
-               private _jcms: JAngularService ) { }
+  isElementLoading: boolean = true;
+
+  constructor(private _ds: DesignSystemService,
+    private _jcms: JAngularService) { }
 
   ngOnInit(): void {
     if (!this.carousel && this.id) {
@@ -40,32 +47,44 @@ export class CarrouselComponent implements OnInit, AfterViewInit{
       this.getFullElement();
     }
   }
+
+  /**
+   * Chargement des éléments du carrousel
+  */
   getFullElement() {
     if (!this.carousel || !this.carousel.elements1) {
       return;
     }
+
+    const fullElements: Observable<CarouselElement>[] = [];
+
     for (let i = 0; i < this.carousel.elements1.length; i++) {
       let item = this.carousel.elements1[i];
 
       // array init with empty item (for order)
       this.elements.push(undefined);
 
-      this._jcms
-        .get<CarouselElement>('data/' + item.id)
-        .subscribe((res: CarouselElement) => {
-          // TODO service fix img link
-          res.imageMobile = environment.jcms + res.imageMobile;
-          this.elements[i] = res;
-        });
+      fullElements[i] = this._jcms.get<CarouselElement>('data/' + item.id);
     }
-  }
 
-  ngAfterViewInit(): void {
-    this.itemSwiper?.changes.subscribe((_) => {
-      this.buildCarousel();
+    combineLatest(fullElements).subscribe(reps => {
+      for (let i = 0; i < reps.length; i++) {
+        let itRep: CarouselElement = reps[i];
+        itRep.imageMobile = buildUrlMedia(itRep.imageMobile);
+        this.elements[i] = itRep;
+      }
+
+      this.itemSwiper?.changes.subscribe((_) => {
+        this.buildCarousel();
+      });
+
+      this.isElementLoading = false;
     });
   }
 
+  /**
+   * Construction du carrousel via le design system
+   */
   buildCarousel() {
     this._ds.initCarousel();
   }

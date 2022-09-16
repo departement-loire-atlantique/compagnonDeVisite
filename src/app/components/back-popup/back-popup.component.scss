@@ -1,0 +1,42 @@
+@import "/src/theme/importDep.scss";
+
+:host {
+  &.back-in-top {
+    color: $main-color;
+    margin-top: 20px;
+    margin-left: 25px;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    &.right {
+      left: auto;
+      right: 0;
+      margin-top: 10px;
+      margin-left: 0px;
+      margin-right: 20px;
+    }
+  }
+  &.color-w {
+    color: $white;
+  }
+}
+
+A.back-btn {
+  cursor: pointer;
+  color: inherit;
+}
+
+.ds44-btnInnerText {
+  margin-left: 1rem;
+}
+
+.ds44-btnStd {
+  margin: 10px;
+}
+
+.btn-popup {
+  display: flex;
+  justify-content: center;
+}
+

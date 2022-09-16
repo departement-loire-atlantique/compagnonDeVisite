@@ -1,7 +1,14 @@
 <app-header-explore [imagePlan]="getPlan()"></app-header-explore>
 
 <main>
-  <h1 class="underline" i18n="@@ExploreComp-title">Visite libre dans le musée</h1>
+  <h1 class="underline" i18n="@@ExploreComp-title">{{ title }}</h1>
+
+  <p *ngIf="isFirstArrive && !getVideo()" i18n="@@ExploreComp-recherche-intro">Je visite le musée en toute autonomie et me laisse surprendre par des oeuvres !</p>
+  <div *ngIf="getVideo()">
+    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="title"></app-lecteur-video-oeuvre>
+  </div>
+
+  <p id="idTitre1" class="h4-like" i18n="@@ExploreComp-recherche-lbl">Recherchez par mots-clés ou numéro de l’oeuvre :</p>
 
   <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite">
   </div>
@@ -20,16 +27,16 @@
           <div class="ds44-form__container">
             <div class="ds44-posRel">
               <label for="form-element-48085" class="ds44-formLabel">
-                <span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholderLarge">
-                  <span i18n="@@ExploreComp-recherche-lbl">Votre recherche</span>
+                <span class="ds44-labelTypePlaceholder ds44-labelTypePlaceholder">
+                  <span i18n="@@ExploreComp-recherche-placeHolder">Numéro de l'oeuvre, mots clefs...</span>
                 </span>
               </label>
               <input  type="text"
                       id="form-element-48085"
                       name="form-element-48085"
-                      class="ds44-inpLarge"
+                      class="ds44-inpStd"
                       i18n-title="@@ExploreComp-input-title"
-                      title="Zone de saisie de votre recherche"
+                      title="Numéro de l'oeuvre, mots clefs..."
                       [(ngModel)]="text"
                       required/>
               <button class="ds44-reset" type="button">
@@ -40,7 +47,7 @@
           </div>
         </div>
         <div class="ds44-fieldContainer ds44-small-fg1">
-            <button class="ds44-btnStd ds44-theme ds44-btnStd--large" title="Lancer la recherche" [disabled]="researchRun" type="submit">
+            <button class="ds44-btnStd ds44-theme" title="Lancer la recherche" [disabled]="researchRun" type="submit">
               <span class="ds44-btnInnerText" i18n="@@ExploreComp-recherche-btn">Rechercher</span>
               <i class="icon icon-long-arrow-right" aria-hidden="true"></i>
             </button>
@@ -50,13 +57,32 @@
     </div>
   </div>
 
+  <div class="col-4 colPush encart" *ngIf="isFirstArrive">
+    <section class="ds44-box ds44-theme ds44-bgTriangle-left">
+      <div class="ds44-flex-container ds44-box--push">
+        <picture class="ds44-boxPushPic">
+          <source srcset="../../../../assets/encart-expositions_passee.png" media="(max-width: 479px)">
+          <img src="../../../../assets/encart-expositions_passee.png" alt="" />
+          <span style="display: none;">25</span>
+        </picture>
+        <div class="ds44-boxPushContent">
+          <p role="heading" aria-level="2" class="ds44-pushTitle" i18n="@@ExploreComp-encart-title">Soyez curieux !</p>
+          <p i18n="@@ExploreComp-encart-contenu">Repérez les numéros sur les oeuvres et tapez les dans la barre de recherche pour bénéficier d’un contenu enrichie sur cette oeuvre !</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="listHelp" *ngIf="isFirstArrive">
+    <app-list [items]="getListHelp()" [noSeparator]="true"></app-list>
+  </div>
+
   <section class="search-result">
     <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
     <section *ngIf="!researchRun">
       <h3 class="search-result-info">
         {{ lblNbResult() }}
       </h3>
-      <app-tuile-h *ngFor="let item of result " [items]="item.item"></app-tuile-h>
+      <app-tuile-h-explore *ngFor="let item of result" [searchItems]="item.searchItem"></app-tuile-h-explore>
       <div class="ds44-posBot">
       <button *ngIf="pager && pager.hasMore()"
               [disabled]="researchRun"

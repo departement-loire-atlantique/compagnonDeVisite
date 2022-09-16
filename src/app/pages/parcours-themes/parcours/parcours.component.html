@@ -1,34 +1,27 @@
-<app-header-parcours [customProcess]="true" [imagePlan]="getPlan()"></app-header-parcours>
+<app-header-parcours [customProcess]="true" [returnUrl]="getThemeURL()" [imagePlan]="getPlan()" [popUp]="true"></app-header-parcours>
 
-<main>
-  <h1 class="underline"> {{ getTitle() }}</h1>
+<main class="border-space">
+  <h1 class="underline top-space"> {{ getTitle() }}</h1>
 
   <div class="ds44-container-large">
+
+    <div *ngIf="!getVideo()">
+      <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
+      <span (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
+    </div>
+
+
     <div class="ds44-flex-container ds44-flex-valign-center">
       <div class="ds44-colLeft">
         <h3> {{ getDuree() }}</h3>
       </div>
-
       <div class="ds44-colRight">
-        <a data-target="#overlay-plus" data-js="ds44-modal">
-          <span class="ds44-btnInnerText plus" i18n="@@ParcoursComp-info"> En savoir plus </span>
-        </a>
-
-        <section class="ds44-modal-container" id="overlay-plus" aria-hidden="true" role="dialog" aria-modal="true">
-          <div class="ds44-modal-box">
-            <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button"
-              title="Fermer la boîte de dialogue : En savoir plus" data-js="ds44-modal-action-close">
-              <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
-              <span class="ds44-btnInnerText--bottom" i18n="@@global-close">Fermer</span>
-            </button>
-            <h3 id="overlay-test-title" class="title-overlay" i18n="@@ParcoursComp-info"> En savoir plus </h3>
-            <div class="ds44-modal-gab">
-              <p class="text-overlay" [innerHTML]="getDescription()"></p>
-            </div>
-          </div>
-        </section>
+        <p>{{step}} {{ getNumberSeenItem() }} / {{ getNumberItem() }}</p>
       </div>
+    </div>
 
+    <div *ngIf="getVideo()" class="top-space">
+      <app-lecteur-video [file]="getVideo()"></app-lecteur-video>
     </div>
   </div>
 

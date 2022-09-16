@@ -10,7 +10,7 @@
       <div *ngIf="tuile.titleUrl; else noLink">
         <p role="heading" aria-level="2" class="ds44-card__title"><a [href]="tuile.titleUrl" class="ds44-card__globalLink">{{ tuile.title }}</a></p></div>
       <ng-template #noLink>
-        <p role="heading" aria-level="2" class="ds44-card__title"> {{ tuile?.title }} </p>
+        <p role="heading" aria-level="2" class="ds44-card__title"> {{ tuile.title }} </p>
       </ng-template>
     </div>
 

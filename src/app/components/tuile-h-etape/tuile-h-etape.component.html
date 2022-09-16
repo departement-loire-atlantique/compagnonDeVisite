@@ -1,26 +1,27 @@
-<section class="ds44-card ds44-card--horizontal">
-  <div class="ds44-flex-container ds44-js-card ds44-flex-valign-center" *ngFor="let etape of etapes">
+<div class="top-space">
+  <section *ngFor="let etape of etapes" class="ds44-card ds44-card--horizontal">
+    <div class="ds44-flex-container ds44-js-card ds44-flex-valign-center">
 
-    <div class="ds44-card__section--horizontal--img icone-tuile">
-      <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
-        <img *ngIf="etape.item.img" [src]="etape.item.img" alt="" class="ds44-imgRatio" />
-      </picture>
-      <button [class]="'btn-play ' + etape.state">
-        <i class="icon icon-play" aria-hidden="true" ></i>
-      </button>
-    </div>
-    <div class="ds44-card__section--horizontal">
-      <div role="heading" aria-level=" 2" class="ds44-card__title">
-        <div *ngIf="etape.item.url && etape.state !== inactive;else noUrl">
-          <a [href]="etape.item.url" > {{ etape.item.lbl }}</a>
+      <div class="ds44-card__section--horizontal--img icone-tuile">
+        <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
+          <img *ngIf="etape.item.img" [src]="etape.item.img" alt="" class="ds44-imgRatio" />
+        </picture>
+        <button [class]="'btn-play ' + etape.state">
+          <i class="icon icon-play" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="ds44-card__section--horizontal">
+        <div role="heading" aria-level=" 2" class="ds44-card__title">
+          <div *ngIf="etape.item.url && etape.state !== inactive;else noUrl">
+            <a [href]="etape.item.url"> {{ etape.item.lbl }}</a>
+          </div>
+
+          <ng-template #noUrl>
+            <p> {{ etape.item.lbl }} </p>
+          </ng-template>
         </div>
 
-        <ng-template #noUrl>
-          <p> {{ etape.item.lbl }} </p>
-        </ng-template>
       </div>
-
-      <i class="icon icon-arrow-right ds44-cardArrow" aria-hidden="true"></i>
     </div>
-  </div>
-</section>
+  </section>
+</div>

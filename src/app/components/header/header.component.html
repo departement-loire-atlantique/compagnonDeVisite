@@ -4,19 +4,14 @@
       <div class="ds44-flex-container ds44-flex-valign-center">
 
         <div class="ds44-colLeft">
-          <app-back></app-back>
+          <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)"></app-back>
         </div>
 
         <div class="ds44-colRight">
-          <!-- <button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button"
-            aria-label="Ouvrir le menu de navigation" aria-controls="menu" data-open-overlay="true" id="open-menu"><span
-              class="ds44-btnInnerText">Menu</span><i class="icon icon-burger icon--xlarge"
-              aria-hidden="true"></i></button> -->
-              <app-menu></app-menu>
+          <app-menu></app-menu>
         </div>
 
       </div>
     </div>
   </div>
-
 </header>

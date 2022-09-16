@@ -1,0 +1,28 @@
+<div class="top-space">
+  <section *ngFor="let searchItem of searchItems" class="ds44-card ds44-card--horizontal">
+    <div class="ds44-flex-container ds44-js-card ds44-flex-valign-center">
+
+      <div class="ds44-card__section--horizontal--img icone-tuile">
+        <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
+          <img *ngIf="searchItem.item.img" [src]="searchItem.item.img" alt="" class="ds44-imgRatio" />
+        </picture>
+        <button [class]="'btn-play ' + searchItem.state">
+          <i *ngIf="searchItem.state !== passed" class="icon icon-play" aria-hidden="true"></i>
+          <i *ngIf="searchItem.state === passed" class="icon icon-replay" aria-hidden="true"></i>
+        </button>
+      </div>
+      <div class="ds44-card__section--horizontal">
+        <div role="heading" aria-level=" 2" class="ds44-card__title">
+          <div *ngIf="searchItem.item.url && searchItem.state !== inactive;else noUrl">
+            <a [href]="searchItem.item.url"> {{ searchItem.item.lbl }}</a>
+          </div>
+
+          <ng-template #noUrl>
+            <p> {{ searchItem.item.lbl }} </p>
+          </ng-template>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>

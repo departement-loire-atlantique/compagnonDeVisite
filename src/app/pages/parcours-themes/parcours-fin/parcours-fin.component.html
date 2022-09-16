@@ -1,25 +1,38 @@
-<app-header-parcours [imagePlan]="map"></app-header-parcours>
+<app-header-parcours [imagePlan]="getMap()" [customProcess]="true" [returnUrl]="getHomeParcours()"></app-header-parcours>
 
-<div class="fin-parcours">
-  <div class="page-title">
-    <h2>Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée !</h2>
-  </div>
+<div class="fin-parcours small-border-space">
+  <div class="bg-title"></div>
 
   <div class="fav">
-    <app-tuile-v [tuile]="tuile"></app-tuile-v>
+    <div class="spacer"></div>
+    <h2 class="page-title" i18n="@@ParcoursFinComp-thanks-msg">Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée
+      !</h2>
+    <div class="spacer"></div>
+
+    <app-tuile-v *ngIf="!video;else lsf" [tuile]="getTuile()"></app-tuile-v>
+
+    <ng-template #lsf>
+      <app-lecteur-video [file]="video"></app-lecteur-video>
+
+      <p class=" fav-box"><i class="icon icon-star-empty" aria-hidden="true"></i>
+        <a [href]="" class="ds44-card__globalLink">
+          <span class="ds44-iconInnerText" i18n="@@ParcoursFinComp-add-list-fav">Ajouter la liste des oeuvres à mes favoris</span>
+        </a>
+      </p>
+    </ng-template>
   </div>
 
   <app-partage-rs></app-partage-rs>
 </div>
 
 
-<div class="bg-block">
-  <h2>Nouvelle visite ?</h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis semper risus sed laoreet. Quisque et
-    finibus felis, id semper felis. Vestibulum vel sapien eu nisi tincidunt finibus.</p>
+<div class="bg-block ds44-box ds44-theme ds44-bgTriangle-left">
+  <h2 i18n="@@ParcoursFinComp-new-visit">Nouvelle visite ?</h2>
+  <p i18n="@@ParcoursFinComp-new-visit-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis semper risus sed laoreet. </p>
   <a class="ds44-btnStd" [href]="getHome()">
-    <span class="ds44-btnInnerText"> Que souhaitez-vous visiter ?</span>
+    <span class="ds44-btnInnerText" i18n="@@ParcoursFinComp-new-visit-btn"> Que souhaitez-vous visiter ?</span>
   </a>
+  <img class="img-appli" src="https://design.loire-atlantique.fr/assets/images/push/mobile/encart-appli-mag.png" alt="">
 </div>
 
-<app-page-utile></app-page-utile>
+<app-page-utile *ngIf="!video"></app-page-utile>

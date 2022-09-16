@@ -26,6 +26,10 @@
           "fr-LSF": {
             "translation": "src/locale/messages.xlf",
             "baseHref": "/fr-LSF/"
+          },
+          "fr-PMR": {
+            "translation": "src/locale/messages.xlf",
+            "baseHref": "/fr-PMR/"
           }
         }
       },
@@ -125,6 +129,11 @@
                 "fr"
               ]
             },
+            "fr": {
+              "localize": [
+                "fr"
+              ]
+            },
             "en": {
               "localize": [
                 "en"
@@ -152,6 +161,9 @@
             },
             "development": {
               "browserTarget": "CompagnonDeVisite:build:development"
+            },
+            "fr": {
+              "browserTarget": "CompagnonDeVisite:build:fr"
             },
             "en": {
               "browserTarget": "CompagnonDeVisite:build:en"

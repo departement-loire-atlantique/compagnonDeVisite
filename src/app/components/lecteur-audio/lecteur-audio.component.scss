@@ -1,7 +1,6 @@
 @import '/src/theme/importDep.scss';
 
 .lecteurAudio {
-  // background-color: $pink;
   display: flex;
   align-items: flex-end;
 
@@ -50,7 +49,7 @@
       cursor: pointer;
       width: 100%;
       height: 5px;
-      background: $light-grey;
+      background: $white;
       border-radius: 3px;
 
       &::focus {

@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { buildUrlMedia } from 'src/app/models/jcms/content';
+import { Oeuvre, OeuvreMap } from 'src/app/models/jcms/Oeuvre';
+import { Search, State } from '../explore/explore.component';
 
 @Component({
   selector: 'app-oeuvre',
@@ -13,10 +15,14 @@ import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
  */
 export class OeuvreComponent implements OnInit, OnDestroy {
 
-  oeuvre!: OeuvreExplore | undefined;
+  oeuvre!: Oeuvre | undefined;
+  mapOeuvre: OeuvreMap = new OeuvreMap();
+
   isAudioEnded: boolean = false;
-  //plan!: string; <- Faire apparaître l'icône carte
-  plan: string = ' ';
+  result!: Search[];
+  resultRetrieveKey: string = 'jsonExplore'
+  resultRetrieve!: Search[];
+  id!: string | '';
 
   constructor(
               private _route: ActivatedRoute,
@@ -28,13 +34,26 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._route.paramMap.subscribe((params) => {
-      const id = params.get('id');
+      this.id = params.get('id') || '';
       this._jcms
-          .get<OeuvreExplore>('data/' + id)
-          .subscribe((oeuvre: OeuvreExplore) => {
-            this.oeuvre = oeuvre;
-        });
+        .get<Oeuvre>('data/' + this.id)
+        .subscribe((oeuvre: Oeuvre) => {
+          this.oeuvre = this.mapOeuvre.mapToOeuvre(oeuvre);
       });
+    });
+
+    // MAJ du local storage
+    var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
+    if (resultRetrieveSessionStorage !== '') {
+      this.result = resultRetrieveSessionStorage;
+      for (let item of this.result[0].searchItem) {
+        if (item.item.url?.includes(this.id)){
+          item.state = State.passed;
+          sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
+          break;
+        }
+      }
+    }
   }
 
   /**
@@ -49,10 +68,15 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    * Get le plan du parcours
    * @returns la plan
    */
-     public getPlan() {
-      if (!this.plan)
-        return "";
+  public getPlan() {
+    return this.oeuvre?.plan;
+  }
 
-      return this.plan;
-    }
+  /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+  public getVideo() {
+    return this.oeuvre?.video;
+  }
 }

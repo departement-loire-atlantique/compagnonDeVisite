@@ -1,0 +1,49 @@
+@import '/src/theme/importDep.scss';
+
+.ds44-flex-container {
+  padding: 10px;
+
+  .next-step {
+
+    span.ds44-btnInnerText,
+    i,
+    button {
+      margin: 0 5px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    button {
+      min-height: 10px;
+      height: 33px;
+      width: 33px;
+      text-align: center;
+      padding: 0;
+    }
+
+    .number {
+      border-color: $grey;
+      background-color: $white;
+    }
+  }
+
+  .back-parcours {
+
+    span.ds44-btnInnerText,
+    i,
+    button {
+      margin: 0 5px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+
+    .number {
+      border-color: $grey;
+      background-color: $white;
+    }
+  }
+}

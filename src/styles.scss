@@ -20,18 +20,25 @@ a {
 
 
 H1 {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: bold;
   text-align: left;
 }
 
 H1.underline {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
   line-height: 1.2em;
-  text-decoration: underline 2px $main-color;
-  text-underline-offset: 3px;
+  text-decoration: underline 1px $main-color;
+  text-underline-offset: 7px;
+  margin-bottom: 0.5em;
+}
+
+H1.big-title {
+  font-size: 34px;
+  font-weight: bold;
+  text-align: left;
 }
 
 H2 {
@@ -56,23 +63,51 @@ H3.title-overlay {
   display: block;
 }
 
-.text-overlay {
-  text-align: left;
+.bold-txt {
+  font-weight: bold;
+}
+
+.side-space {
+  margin: 2rem;
+}
+
+.top-space {
+  margin-top: 2rem;
+}
+
+.bottom-space {
+  margin-bottom: 2rem;
+}
+
+.border-space {
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.small-border-space {
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 // bouton header component
 .ds44-header .ds44-colRight .ds44-btnIcoText--maxi.ds44-btn--menu.btn-menu-component {
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
+  margin-right: 1.5rem;
+  padding: 0;
 
   .ds44-btnInnerText {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
   }
 
 }
 
-button {
+button, .ds44-card, a.ds44-btnStd {
   &:hover, &:active, &:focus {
     box-shadow: none;
   }
+}
+
+
+.ds44-colLeft, .ds44-colRight {
+  flex: auto;
+  align-items: center;
 }

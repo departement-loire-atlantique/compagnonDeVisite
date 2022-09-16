@@ -8,7 +8,7 @@ import { Item } from 'src/app/models/item';
 import { ListeDeContenus } from 'src/app/models/jcms/listeDeContenus';
 import { Observable, forkJoin } from 'rxjs';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { Content } from 'src/app/models/jcms/content';
 
 @Component({
@@ -24,8 +24,15 @@ export class ParcoursComponent implements OnInit {
   items: Item[] | undefined;
   etapes: Etape[] | undefined;
 
+  //key localStorage
   listEtape: string = "listEtape";
   idParcours: string = "idParcours";
+  idThematique: string = "idThematique";
+
+  //template
+  defaultCSS = "max-lines";
+  defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+  step: string = $localize`:@@ParcoursComp-step:Etape`;
 
   constructor(
     private _ds: DesignSystemService,
@@ -54,7 +61,6 @@ export class ParcoursComponent implements OnInit {
       if (etapeStore && idParcoursStore == this.leParcours.id) {
         this.etapes = JSON.parse(etapeStore);
       } else {
-        localStorage.setItem("map", this.leParcours.plan);
         this.initEtape(this.leParcours.etapes.id);
       }
     });
@@ -106,9 +112,9 @@ export class ParcoursComponent implements OnInit {
    * @returns la liste d'observable
    */
   private getListContenus(contenus: Content[]) {
-    let observables: Observable<OeuvreExplore>[] = [];
+    let observables: Observable<Oeuvre>[] = [];
     for (let contenu of contenus) {
-      observables.push(this._jcms.get<OeuvreExplore>('data/' + contenu.id));
+      observables.push(this._jcms.get<Oeuvre>('data/' + contenu.id));
     }
     return forkJoin(observables);
   }
@@ -117,66 +123,40 @@ export class ParcoursComponent implements OnInit {
    * Store les étapes au format json dans le localStorage
    */
   public storeEtapes() {
-    if (this.etapes) {
+    if (this.etapes && this.leParcours?.id) {
       let str = JSON.stringify(this.etapes);
       localStorage.setItem(this.listEtape, str);
-      localStorage.setItem(this.idParcours, this.getId());
+      localStorage.setItem(this.idParcours, this.leParcours.id);
     }
   }
 
   /**
-   * Get l'id du parcours
-   * @returns l'id du parcours
+   * Get les items qui ont été vu par l'utilisateur
+   * @returns la liste d'items (qui ne sont pas à l'état inactive)
    */
-  public getId() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.id;
+  public getSeenItems() {
+    let seenItem = [];
+    if(this.etapes) {
+      for(let etape of this.etapes) {
+        if (!(etape.state == State.inactive))
+          seenItem.push(etape.item);
+      }
+    }
+    return seenItem;
   }
 
   /**
-   * Get le title du parcours
-   * @returns le title du parcours
+   * Get les items du parcours
+   * @returns la liste d'items
    */
-  public getTitle() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.title;
-  }
-
-  /**
-   * Get la description du parcours
-   * @returns la description
-   */
-  public getDescription() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.description;
-  }
-
-  /**
-   * Get le plan du parcours
-   * @returns la plan
-   */
-  public getPlan() {
-    if (!this.leParcours)
-      return "";
-
-    return this.leParcours.plan;
-  }
-
-  /**
-   * Get la durée du parcours
-   * @returns la durée du parcours convertit
-   */
-  public getDuree() {
-    if (!this.leParcours)
-      return "";
-
-    return this.convertTime(this.leParcours.duree);
+  public getItems() {
+    let items = [];
+    if (this.etapes) {
+      for (let etape of this.etapes) {
+        items.push(etape.item);
+      }
+    }
+    return items;
   }
 
   /**
@@ -196,40 +176,106 @@ export class ParcoursComponent implements OnInit {
   }
 
   /**
-   * Get les items qui ont été vu par l'utilisateur
-   * @returns la liste d'items (qui ne sont pas à l'état inactive)
+   * Get l'url pour retourner à la liste des parcours d'un thème
+   * @returns
    */
-  public getSeenItems() {
-    let seenItem = [];
-    let listEtape = this.etapes?.filter(e => {
-      if (e.state == State.inactive)
-        return false;
-      return true;
-    });
-    if (listEtape) {
-      for (let etape of listEtape) {
-        seenItem.push(etape.item);
-      }
-    }
-    return seenItem;
+  public getThemeURL() {
+    let idTheme = localStorage.getItem(this.idThematique);
+    return 'themes/' + idTheme;
   }
 
-  public getItems() {
-    let items = [];
-    if (this.etapes) {
-      for (let etape of this.etapes) {
-        items.push(etape.item);
-      }
-    }
-    return items;
+
+  /* GETTER PARCOURS */
+  /**
+   * Get le title du parcours
+   * @returns le title du parcours
+   */
+   public getTitle() {
+    return this.leParcours?.title;
   }
 
+  /**
+   * Get la description du parcours
+   * @returns la description
+   */
+  public getDescription() {
+    return this.leParcours?.description;
+  }
+
+  /**
+   * Get le plan du parcours
+   * @returns la plan
+   */
+  public getPlan() {
+    return this.leParcours?.plan;
+  }
+
+  /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+  public getVideo() {
+    return this.leParcours?.video;
+  }
+
+  /**
+   * Get la durée du parcours
+   * @returns la durée du parcours convertit
+   */
+  public getDuree() {
+    if (!this.leParcours)
+      return "";
+
+    return this.convertTime(this.leParcours.duree);
+  }
+
+
+  /* GETTER ETAPE */
   /**
    * Get les étapes
    * @returns les étapes
    */
-  public getEtapes() {
+   public getEtapes() {
     return this.etapes;
+  }
+
+  /**
+   * Get le nombre d'oeuvre dans le parcours
+   * @returns le nombre d'items
+   */
+  public getNumberItem() {
+    return this.etapes?.length;
+  }
+
+  /**
+   * Get le nombre d'oeuvre vu du parcours
+   * @returns le nombre d'items vu
+   */
+  public getNumberSeenItem() {
+    return this.getSeenItems().length;
+  }
+
+
+  /* CSS */
+  /**
+   * Change les classes CSS lors d'un click bouton
+   */
+   public showDesc() {
+    if(this.defaultCSS === "max-lines") {
+      this.defaultCSS = "default-lines ";
+      this.defaultText = $localize`:@@ParcoursComp-less:Réduire`;
+    } else {
+      this.defaultCSS = "max-lines";
+      this.defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+    }
+  }
+
+  /**
+   * Retourne la classe css
+   * @returns la classe css
+   */
+  public getCSS() {
+    return this.defaultCSS;
   }
 
 }

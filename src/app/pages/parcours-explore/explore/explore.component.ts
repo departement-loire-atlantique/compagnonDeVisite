@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
-import { Content } from 'src/app/models/jcms/content';
+import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
 import { DesignSystemService } from 'src/app/services/design-system.service';
-import { OeuvreExplore } from 'src/app/models/jcms/OeuvreExplore';
+import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
 import { environment } from 'src/environments/environment';
 import { Item } from 'src/app/models/item';
-import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { JcmsEspace } from 'src/app/models/environment';
+import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
+import { Parcours } from 'src/app/models/jcms/parcours';
 
 @Component({
   selector: 'app-explore',
@@ -24,12 +25,19 @@ export class ExploreComponent implements OnInit {
   text!: string;
   researchRun: boolean = false;
   result!: Search[];
-  resultRetrieveKey: string = 'jsonExplore;'
+  resultRetrieveKey: string = 'jsonExplore'
   resultRetrieve!: Search[];
   isResultRetrieve: boolean = false;
   pager: JcmsPager<Content> | undefined;
   plan!: string;
-  idCatJExplore: string = '';
+  idCatJExplore!: string;
+  idJExplore!: string;
+  title!: string;
+  video!: string | undefined;
+  isFirstArrive: boolean = true;
+  listHelp!: Item[];
+
+  itSearchItem: SearchItem[] = [];
 
   espaceJcms: JcmsEspace | undefined;
 
@@ -41,7 +49,7 @@ export class ExploreComponent implements OnInit {
   ) { }
 
   /**
-   *
+   * Initialisation du module
    */
   ngOnInit(): void {
     this._ds.initForm();
@@ -52,19 +60,23 @@ export class ExploreComponent implements OnInit {
       return;
     }
 
-    if (this.espaceJcms){
-      this.idCatJExplore = this.espaceJcms.catJExplore;
-    }
+    this.idJExplore = localStorage.getItem("IdJExplore") || "";
+    this.idCatJExplore = environment.catJExplore;
+
+    this._jcms.get<Parcours>('data/' + this.idJExplore).subscribe((parcours: Parcours) => {
+      this.title = parcours.title;
+      this.video = parcours.video || undefined;
+    });
 
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
     if (resultRetrieveSessionStorage !== '') {
       // retrouve la recherche
-      // TODO Gestion du pager
       this.resultRetrieve = resultRetrieveSessionStorage;
       this.text = this.resultRetrieve[0].searchField;
       this.result = this.resultRetrieve;
       this.isResultRetrieve = true;
-      sessionStorage.removeItem(this.resultRetrieveKey);
+//      sessionStorage.removeItem(this.resultRetrieveKey);
+      this.isFirstArrive = false;
     } else {
       // Recherche par url
       this._route.paramMap.subscribe((params) => {
@@ -85,20 +97,21 @@ export class ExploreComponent implements OnInit {
       return;
     }
 
+    this.isFirstArrive = false;
     this.result = [];
-
     // Catégorie inexistante -> pas de résultats
     if (!this.idCatJExplore) {
       return;
     }
 
     this.researchRun = true;
+    this.itSearchItem = [];
 
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
           text: this.text + '*',
-          types: ['OeuvreExplore'],
+          types: ['Oeuvre'],
           searchedFields: ['title'],
           sort: ['title'],
           exactType: true,
@@ -111,7 +124,7 @@ export class ExploreComponent implements OnInit {
   }
 
   /**
-   *
+   * Stockage des résultats
    * @param obs
    */
   public processResult(obs: Observable<JcmsPager<Content>>) {
@@ -124,19 +137,23 @@ export class ExploreComponent implements OnInit {
       const contents = pager.dataInPage;
 
       for (let itContent of contents) {
-        this._jcms.get<OeuvreExplore>('data/' + itContent.id).subscribe(res => {
-          this.result?.push({
-            searchField: this.text,
-            item: [{
+        this._jcms.get<Oeuvre>('data/' + itContent.id).subscribe(res => {
+          this.itSearchItem.push({
+            item:{
               lbl: itContent.title,
-              img: environment.jcms + res.vignette,
+              img: buildUrlMedia(res.vignette),
               url: '/explore/oeuvre/' + itContent.id,
-            }],
-          });
-          // Sauvegarde des résultats de la recherche
+            },
+            state: State.active});
+          this.result=[{
+            searchField: this.text,
+            searchItem: this.itSearchItem,
+          }];
           sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
         });
       }
+
+      // Sauvegarde des résultats de la recherche
       this.researchRun = false;
 
       // TODO Focus for accessibility
@@ -183,6 +200,37 @@ export class ExploreComponent implements OnInit {
   public returnUrl() {
     return '/themes'
   }
+
+  /**
+   * Get la liste des aides
+   * @returns la liste des aides
+   */
+  public getListHelp() {
+    this.listHelp = [
+      {
+        lbl: $localize`:@@ExploreComp-help-1:Identifiez toutes les oeuvres`,
+        url: '#'
+      },
+      // En attente d'activation des fonctionnalités
+     /* {
+        lbl: $localize`:@@ExploreComp-help-2:Vous ne trouvez pas d’info sur une oeuvre qui vous intéresse ?`,
+        url: '#'
+      },
+      {
+        lbl: $localize`:@@ExploreComp-help-3:Aide`,
+        url: '#'
+      },*/
+    ];
+    return this.listHelp;
+  }
+
+    /**
+   * Get l'id de la video LSF
+   * @returns l'id de la video
+   */
+     public getVideo() {
+      return this.video;
+    }
 }
 
 /**
@@ -190,5 +238,16 @@ export class ExploreComponent implements OnInit {
  */
 export interface Search {
   searchField: string,
-  item: Item[],
+  searchItem: SearchItem[],
+}
+
+export interface SearchItem {
+  item: Item,
+  state?: State,
+}
+
+export enum State {
+  active = "active",
+  inactive = "inactive",
+  passed = "passed"
 }

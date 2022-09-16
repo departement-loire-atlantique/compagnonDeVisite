@@ -42,16 +42,14 @@ export class BackComponent {
   @Output()
   returnCustom: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private _location: Location,
-    private _router: Router) {}
+  constructor(private _location: Location) {}
 
   /**
    * @ignore
    */
   back() {
     if (this.customProcess) {
-       this._router.navigate(['/themes/'])
-      // this.returnCustom.emit('return');
+      this.returnCustom.emit('return');
     } else {
       this._location.back();
     }
