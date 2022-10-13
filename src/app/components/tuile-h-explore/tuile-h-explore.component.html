@@ -14,7 +14,7 @@
       <div class="ds44-card__section--horizontal">
         <div role="heading" aria-level=" 2" class="ds44-card__title">
           <div *ngIf="searchItem.item.url && searchItem.state !== inactive;else noUrl">
-            <a [href]="searchItem.item.url"> {{ searchItem.item.lbl }}</a>
+            <a [routerLink]="searchItem.item.url"> {{ searchItem.item.lbl }}</a>
           </div>
 
           <ng-template #noUrl>

@@ -13,7 +13,7 @@
       <div class="ds44-card__section--horizontal">
         <div role="heading" aria-level=" 2" class="ds44-card__title">
           <div *ngIf="etape.item.url && etape.state !== inactive;else noUrl">
-            <a [href]="etape.item.url"> {{ etape.item.lbl }}</a>
+            <a [routerLink]="etape.item.url"> {{ etape.item.lbl }}</a>
           </div>
 
           <ng-template #noUrl>
