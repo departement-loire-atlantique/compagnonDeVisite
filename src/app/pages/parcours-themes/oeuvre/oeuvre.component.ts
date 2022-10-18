@@ -129,7 +129,7 @@ export class OeuvreComponent implements OnInit {
       this.nextEtapeUrl = json[i + 1].item.url;
     } else {
       this.finParcours = true;
-      this.nextEtapeUrl = 'parcours-fin/' + localStorage.getItem(this.idParcours);
+      this.nextEtapeUrl = '/parcours-fin/' + localStorage.getItem(this.idParcours);
     }
     if (json[i - 1] != undefined) {
       this.previousEtapeUrl = json[i - 1].item.url;
