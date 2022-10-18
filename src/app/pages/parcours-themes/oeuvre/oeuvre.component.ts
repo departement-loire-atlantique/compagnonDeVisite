@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
 import { Oeuvre, OeuvreMap } from 'src/app/models/jcms/Oeuvre';
@@ -36,7 +36,13 @@ export class OeuvreComponent implements OnInit {
 
   constructor(
     private _jcms: JAngularService,
-    private _route: ActivatedRoute) { }
+    private _route: ActivatedRoute,
+    private router: Router
+  ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => {
+      return false;
+    };
+  }
 
   /**
    * Initialise les étapes et l'oeuvre de la page
@@ -62,7 +68,7 @@ export class OeuvreComponent implements OnInit {
    * Get le texte de l'avancé des étapes
    * @returns
    */
-   public getTextEtape() {
+  public getTextEtape() {
     return this.step + " " + (this.indexEtape + 1) + ' / ' + this.json.length;
   }
 
@@ -123,7 +129,7 @@ export class OeuvreComponent implements OnInit {
       this.nextEtapeUrl = json[i + 1].item.url;
     } else {
       this.finParcours = true;
-      this.nextEtapeUrl = 'parcours-fin/' + localStorage.getItem(this.idParcours);
+      this.nextEtapeUrl = '/parcours-fin/' + localStorage.getItem(this.idParcours);
     }
     if (json[i - 1] != undefined) {
       this.previousEtapeUrl = json[i - 1].item.url;

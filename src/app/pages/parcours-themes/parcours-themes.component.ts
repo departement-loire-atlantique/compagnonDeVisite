@@ -54,7 +54,7 @@ export class ParcoursThemesComponent implements OnInit {
         this.listCat.splice(ind, 0, {
           img: buildUrlMedia(c.image),
           lbl: c.title,
-          url: "themes/" + c.id,
+          url: "/themes/" + c.id,
         })
       }
     });
