@@ -2,8 +2,8 @@
   <div class="ds44-blocBandeau ds44-header ds44-header--patrimoine" style="position: relative;">
     <div class="ds44-container-large">
       <ul class="ds44-list ds44-skiplinks">
-        <li><a [href]="this.urlLanguage" class="ds44-skiplinks--link">Aller au contenu</a></li>
-        <li><a [href]="this.urlFavoris" class="ds44-skiplinks--link">Aller au menu</a></li>
+        <li><a [routerLink]="this.urlLanguage" class="ds44-skiplinks--link">Aller au contenu</a></li>
+        <li><a [routerLink]="this.urlFavoris" class="ds44-skiplinks--link">Aller au menu</a></li>
         <li><a href="#open-search" class="ds44-skiplinks--link">Aller à la recherche</a></li>
         <li><a href="/" class="ds44-skiplinks--link">Aller à la page d'accessibilité</a></li>
       </ul>
@@ -20,7 +20,7 @@
         </div>
         <div class="ds44-colRight">
 
-          <a [href]="this.urlLanguage" class="ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component"
+          <a [routerLink]="this.urlLanguage" class="ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component"
             i18n-title="@@HeaderGpComp-change-lang-link-title" title="Changer de langue">
             <span class="ds44-btnInnerText" i18n="@@HeaderGpComp-change-lang-link">Langue
             </span>
