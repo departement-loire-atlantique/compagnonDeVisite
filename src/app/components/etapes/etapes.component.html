@@ -8,7 +8,7 @@
               </div>
 
               <ng-template #clickable>
-                  <a [href]="etape.item.url"><span class="number" aria-hidden="true"> {{ i+1 }}</span></a>
+                  <a [routerLink]="etape.item.url"><span class="number" aria-hidden="true"> {{ i+1 }}</span></a>
               </ng-template>
           </div>
       </li>

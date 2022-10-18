@@ -10,7 +10,7 @@
       <div class="ds44-card__section--horizontal">
         <div role="heading" aria-level=" 2" class="ds44-card__title">
           <div *ngIf="itItem.url;else noUrl">
-            <a [href]="itItem.url" class="ds44-card__globalLink"> {{ itItem.lbl }}</a>
+            <a [routerLink]="itItem.url" class="ds44-card__globalLink"> {{ itItem.lbl }}</a>
           </div>
 
           <ng-template #noUrl>

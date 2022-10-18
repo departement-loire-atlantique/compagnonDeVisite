@@ -1,7 +1,7 @@
 <div *ngIf="steps" class="ds44-flex-container ds44-flex-valign-center btn-step">
   <div class="ds44-colLeft">
     <div *ngIf="!steps.debParcours">
-      <a [href]="steps.previousStepUrl" class="next-step">
+      <a [routerLink]="steps.previousStepUrl" class="next-step">
         <i class="icon icon-left" aria-hidden="true"></i>
         <button class="ds44-btnStd number"><span> {{ steps.indexPreviousStep }}</span></button>
         <span class="ds44-btnInnerText" i18n="@@OeuvreSuivPredComp-previous"> Précédent </span>
@@ -11,13 +11,13 @@
 
   <div class="ds44-colRight">
     <div *ngIf="steps.finParcours;else next">
-      <a [href]="steps.nextStepUrl" class="back-parcours">
+      <a [routerLink]="steps.nextStepUrl" class="back-parcours">
         <button class="ds44-btnStd number" i18n="@@OeuvreSuivPredComp-end"><span> Fin Parcours </span></button>
       </a>
     </div>
 
     <ng-template #next>
-      <a [href]="steps.nextStepUrl" class="next-step">
+      <a [routerLink]="steps.nextStepUrl" class="next-step">
         <span class="ds44-btnInnerText" i18n="@@OeuvreSuivPredComp-next"> Suivant </span>
         <button class="ds44-btnStd number"><span> {{ steps.indexNextStep }}</span></button>
         <i class="icon icon-right" aria-hidden="true"></i>
