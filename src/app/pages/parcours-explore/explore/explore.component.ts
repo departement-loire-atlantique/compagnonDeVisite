@@ -10,6 +10,7 @@ import { Item } from 'src/app/models/item';
 import { JcmsEspace } from 'src/app/models/environment';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { Parcours } from 'src/app/models/jcms/parcours';
+import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-explore',
@@ -28,6 +29,7 @@ export class ExploreComponent implements OnInit {
   resultRetrieveKey: string = 'jsonExplore'
   resultRetrieve!: Search[];
   isResultRetrieve: boolean = false;
+  isAllResult: boolean = false;
   pager: JcmsPager<Content> | undefined;
   plan!: string;
   idCatJExplore!: string;
@@ -60,6 +62,8 @@ export class ExploreComponent implements OnInit {
       return;
     }
 
+    this.isFirstArrive = true;
+
     this.idJExplore = localStorage.getItem("IdJExplore") || "";
     this.idCatJExplore = environment.catJExplore;
 
@@ -69,13 +73,14 @@ export class ExploreComponent implements OnInit {
     });
 
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
-    if (resultRetrieveSessionStorage !== '') {
+    if (resultRetrieveSessionStorage != '') {
+      console.debug("Get cache search");
       // retrouve la recherche
       this.resultRetrieve = resultRetrieveSessionStorage;
       this.text = this.resultRetrieve[0].searchField;
       this.result = this.resultRetrieve;
       this.isResultRetrieve = true;
-      //      sessionStorage.removeItem(this.resultRetrieveKey);
+      sessionStorage.removeItem(this.resultRetrieveKey);
       this.isFirstArrive = false;
     } else {
       // Recherche par url
@@ -91,10 +96,19 @@ export class ExploreComponent implements OnInit {
    * Lance la recherche du HTML
    * @returns
    */
-  public research(): void {
-    if (!this.text || this.isResultRetrieve) {
+  public research(typeSearch:string): void {
+
+    if (typeSearch === 'one' && !this.text || this.isResultRetrieve) {
       this.isResultRetrieve = false;
       return;
+    }
+
+    let textSearch = '';
+    if (typeSearch === 'one') {
+      textSearch = this.text + '*';
+    } else {
+      this.text = '';
+      this.isAllResult = true;
     }
 
     this.isFirstArrive = false;
@@ -110,9 +124,9 @@ export class ExploreComponent implements OnInit {
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
-          text: this.text + '*',
+          text: textSearch,
           types: ['Oeuvre'],
-          searchedFields: ['title'],
+          searchedFields: ['title', 'numeroDeLoeuvre'],
           sort: ['title'],
           exactType: true,
           mode: 'advanced',
@@ -206,29 +220,6 @@ export class ExploreComponent implements OnInit {
    */
   public returnUrl() {
     return '/themes'
-  }
-
-  /**
-   * Get la liste des aides
-   * @returns la liste des aides
-   */
-  public getListHelp() {
-    this.listHelp = [
-      {
-        lbl: $localize`:@@ExploreComp-help-1:Identifiez toutes les oeuvres`,
-        url: '#'
-      },
-      // En attente d'activation des fonctionnalités
-      /* {
-         lbl: $localize`:@@ExploreComp-help-2:Vous ne trouvez pas d’info sur une oeuvre qui vous intéresse ?`,
-         url: '#'
-       },
-       {
-         lbl: $localize`:@@ExploreComp-help-3:Aide`,
-         url: '#'
-       },*/
-    ];
-    return this.listHelp;
   }
 
   /**
