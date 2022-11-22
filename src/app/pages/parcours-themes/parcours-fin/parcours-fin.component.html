@@ -21,10 +21,11 @@
       </p>
     </ng-template>
   </div>
-
-  <app-partage-rs></app-partage-rs>
 </div>
 
+<app-page-utile *ngIf="!video"></app-page-utile>
+
+<app-partage-rs></app-partage-rs>
 
 <div class="bg-block ds44-box ds44-theme ds44-bgTriangle-left">
   <h2 i18n="@@ParcoursFinComp-new-visit">Nouvelle visite ?</h2>
@@ -34,5 +35,3 @@
   </a>
   <img class="img-appli" src="https://design.loire-atlantique.fr/assets/images/push/mobile/encart-appli-mag.png" alt="">
 </div>
-
-<app-page-utile *ngIf="!video"></app-page-utile>
