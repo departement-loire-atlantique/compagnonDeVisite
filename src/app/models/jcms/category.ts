@@ -37,4 +37,9 @@ export interface Category {
    * id parent category
    */
   parent: string | undefined;
+
+  /**
+   * Affiche ou cache l'exposition
+   */
+  afficheExpo: string | false;
 }

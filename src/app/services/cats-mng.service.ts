@@ -18,7 +18,7 @@ export class CatsMngService {
    */
   public catsChildren(idCat: string): Observable<Category[]> {
     return this._jcms
-      .get<Category[]>('data/children/' + idCat, {
+      .get<Category[]>('plugins/compagnondevisite/category/children/' + idCat, {
         params: { pagerAll: 'true' },
       })
       .pipe(
@@ -69,6 +69,7 @@ export class CatsMngService {
       url: dataRep.friendlyURLSet ? dataRep.friendlyURLSet[0] : '',
       order: dataRep.order,
       parent: dataRep.parent ? dataRep.parent.id : undefined,
+      afficheExpo: dataRep.afficheExpo,
     };
   }
 }
