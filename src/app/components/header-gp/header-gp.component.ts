@@ -19,7 +19,7 @@ export class HeaderGpComponent implements OnInit {
     [ 'EN', $localize`:@@Menulang-fr:English` ],
     [ 'FR', $localize`:@@Menulang-fr:Français`],
     [ 'LSF', $localize`:@@Menulang-fr:LSF`],
-    [ 'PMR', $localize`:@@Menulang-fr:PMR`],
+    [ 'FALC', $localize`:@@Menulang-fr:FALC`],
   ]);
 
   constructor(
