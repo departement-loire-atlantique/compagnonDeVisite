@@ -1,14 +1,28 @@
 <app-header-explore [imagePlan]="getPlan()"></app-header-explore>
 
 <main>
-  <h1 class="underline" i18n="@@ExploreComp-title">{{ title }}</h1>
-
-  <p *ngIf="isFirstArrive && !getVideo()" i18n="@@ExploreComp-recherche-intro">Je visite le musée en toute autonomie et me laisse surprendre par des oeuvres !</p>
-  <div *ngIf="getVideo()">
-    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="title"></app-lecteur-video-oeuvre>
+  <div *ngIf="!result; else titleResult">
+    <h1 class="underline" i18n="@@ExploreComp-title">{{ title }}</h1>
   </div>
+  <ng-template #titleResult >
+    <h1 class="underline" i18n="@@ExploreComp-titleResult">Découvrir les oeuvres</h1>
+  </ng-template>
 
-  <p id="idTitre1" class="h4-like" i18n="@@ExploreComp-recherche-lbl">Recherchez par mots-clés ou numéro de l’oeuvre :</p>
+  <div class="col-4 colPush encart" *ngIf="isFirstArrive">
+    <section class="ds44-box ds44-theme ds44-bgTriangle-left">
+      <div class="ds44-flex-container ds44-box--push">
+        <picture class="ds44-boxPushPic">
+          <source srcset="../../../../assets/encart-expositions_passee.png" media="(max-width: 479px)">
+          <img src="../../../../assets/encart-expositions_passee.png" alt="" />
+          <span>25</span>
+        </picture>
+        <div class="ds44-boxPushContent">
+          <p role="heading" aria-level="2" class="ds44-pushTitle" i18n="@@ExploreComp-encart-title">Soyez curieux !</p>
+          <p i18n="@@ExploreComp-encart-contenu">Repérez les numéros sur les oeuvres et tapez les dans la barre de recherche pour bénéficier d’un contenu enrichie sur cette oeuvre !</p>
+        </div>
+      </div>
+    </section>
+  </div>
 
   <div class="ds44-loader-text visually-hidden" tabindex="-1" aria-live="polite">
   </div>
@@ -19,9 +33,9 @@
       </svg>
     </div>
   </div>
-  <div class="ds44-facette">
+  <div class="ds44-facette" *ngIf="!isAllResult">
     <div class="ds44-facette-body">
-      <form data-is-ajax="true" data-auto-load="true" (ngSubmit)="research()">
+      <form data-is-ajax="true" data-auto-load="true" (ngSubmit)="research('one')" id="form1">
       <div class="ds44-facetteContainer ds44-flex-container ds44-medium-flex-col">
         <div class="ds44-fieldContainer ds44-fg1">
           <div class="ds44-form__container">
@@ -55,25 +69,12 @@
       </div>
       </form>
     </div>
-  </div>
-
-  <div class="col-4 colPush encart" *ngIf="isFirstArrive">
-    <section class="ds44-box ds44-theme ds44-bgTriangle-left">
-      <div class="ds44-flex-container ds44-box--push">
-        <picture class="ds44-boxPushPic">
-          <source srcset="../../../../assets/encart-expositions_passee.png" media="(max-width: 479px)">
-          <img src="../../../../assets/encart-expositions_passee.png" alt="" />
-          <span style="display: none;">25</span>
-        </picture>
-        <div class="ds44-boxPushContent">
-          <p role="heading" aria-level="2" class="ds44-pushTitle" i18n="@@ExploreComp-encart-title">Soyez curieux !</p>
-          <p i18n="@@ExploreComp-encart-contenu">Repérez les numéros sur les oeuvres et tapez les dans la barre de recherche pour bénéficier d’un contenu enrichie sur cette oeuvre !</p>
-        </div>
-      </div>
-    </section>
-  </div>
-  <div class="listHelp" *ngIf="isFirstArrive">
-    <app-list [items]="getListHelp()" [noSeparator]="true"></app-list>
+    <section class="identify">
+      <button routerLink="/explore-all" title="Identifiez toutes les oeuvres" class="ds44-btnStd" >
+        <span class="ds44-btnInnerText" i18n="@@ExploreComp-recherche-identify">Identifiez toutes les oeuvres</span>
+        <i class="icon icon-arrow-right"></i>
+      </button>
+  </section>
   </div>
 
   <section class="search-result">

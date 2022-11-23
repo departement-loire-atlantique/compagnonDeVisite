@@ -21,6 +21,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   isAudioEnded: boolean = false;
   result!: Search[];
   resultRetrieveKey: string = 'jsonExplore'
+  resultAllRetrieveKey: string = 'jsonExploreAll'
   resultRetrieve!: Search[];
   id!: string | '';
 
@@ -43,13 +44,24 @@ export class OeuvreComponent implements OnInit, OnDestroy {
     });
 
     // MAJ du local storage
-    var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
+    if (sessionStorage.getItem(this.resultRetrieveKey))
+      this.changeLocalStorage(this.resultRetrieveKey);
+
+    if (sessionStorage.getItem(this.resultAllRetrieveKey))
+      this.changeLocalStorage(this.resultAllRetrieveKey);
+  }
+
+  /**
+   * MAJ du local storage
+   */
+  private changeLocalStorage(key: string) {
+    var resultRetrieveSessionStorage = sessionStorage.getItem(key) ? JSON.parse(sessionStorage.getItem(key) || '') : '';
     if (resultRetrieveSessionStorage !== '') {
       this.result = resultRetrieveSessionStorage;
       for (let item of this.result[0].searchItem) {
         if (item && item.item.url?.includes(this.id)){
           item.state = State.passed;
-          sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
+          sessionStorage.setItem(key, JSON.stringify(this.result));
           break;
         }
       }
@@ -79,4 +91,5 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   public getVideo() {
     return this.oeuvre?.video;
   }
+
 }

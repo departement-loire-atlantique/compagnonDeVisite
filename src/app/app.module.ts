@@ -10,12 +10,14 @@ import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.componen
 import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './components/shared.module';
+import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explore-all.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OeuvreComponent,
     ExploreComponent,
+    ExploreAllComponent,
   ],
   imports: [
     BrowserModule,

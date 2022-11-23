@@ -51,6 +51,8 @@ export class ParcoursThemesComponent implements OnInit {
 
       for (let ind = 0; ind < cats.length; ind++) {
         let c = cats[ind];
+        if (c.afficheExpo === "false")
+          continue ;
         this.listCat.splice(ind, 0, {
           img: buildUrlMedia(c.image),
           lbl: c.title,
