@@ -5,10 +5,10 @@
 
         <div class="ds44-colLeft">
           <div *ngIf="popUp;else next">
-            <app-back-popup [customProcess]="customProcess" (returnCustom)="returnCustom($event)"></app-back-popup>
+            <app-back-popup [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()" ></app-back-popup>
           </div>
           <ng-template #next>
-            <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)"></app-back>
+            <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()" ></app-back>
           </ng-template>
         </div>
 

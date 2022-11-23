@@ -244,4 +244,11 @@ export class OeuvreComponent implements OnInit {
     return this.oeuvre?.video;
   }
 
+  /**
+   * get label bouton
+   */
+   public getLabelBtn() {
+    return $localize`:@@BackComp-liste:Retour à la liste`;
+  }
+
 }

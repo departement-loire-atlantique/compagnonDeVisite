@@ -278,4 +278,11 @@ export class ParcoursComponent implements OnInit {
     return this.defaultCSS;
   }
 
+  /**
+   * get label bouton
+   */
+   public getLabelBtn() {
+    return $localize`:@@BackComp-parcours:Retour aux parcours`;
+  }
+
 }

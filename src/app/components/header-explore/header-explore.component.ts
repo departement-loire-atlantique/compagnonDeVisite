@@ -15,7 +15,10 @@ export class HeaderExploreComponent {
   returnUrl:string | undefined;
 
   @Input()
-  labelBouton: string = $localize`:@@BackComp-text:Retour` ;
+  labelBtn: string = $localize`:@@BackComp-text:Retour` ;
+
+  @Input()
+  hoverBtn!: string | undefined;
 
   @Input()
   customProcess = false;
@@ -26,7 +29,11 @@ export class HeaderExploreComponent {
     this.router.navigate([this.returnUrl]);
   }
 
-  getLabelBouton(){
-    return this.labelBouton;
+  getLabelBtn() {
+    return this.labelBtn;
+  }
+
+  getHoverBtn() {
+    return this.hoverBtn ? this.hoverBtn : this.labelBtn;
   }
 }

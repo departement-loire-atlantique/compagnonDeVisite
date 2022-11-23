@@ -54,4 +54,10 @@ export class ParcoursFinComponent implements OnInit {
     return this.map;
   }
 
+    /**
+   * get label bouton
+   */
+     public getLabelBtn() {
+      return $localize`:@@BackComp-oeuvre:Retour à l'oeuvre`;
+    }
 }

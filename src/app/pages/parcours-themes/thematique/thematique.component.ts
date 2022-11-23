@@ -135,4 +135,19 @@ export class ThematiqueComponent implements OnInit {
   public getCurrentCat() {
     return this.currentCat;
   }
+
+  /**
+   * Get l'url de retour
+   */
+  public getURLBack() {
+    sessionStorage.setItem("backURL","themes/id");
+    return 'themes/';
+  }
+
+  /**
+   * get label bouton
+   */
+  public getLabelBtn() {
+    return $localize`:@@BackComp-accueil:Retour à l\'acceuil`;
+  }
 }
