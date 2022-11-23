@@ -6,4 +6,5 @@ export interface Item {
   img?: string;
   isPicto?: boolean;
   isJExplore?: boolean;
+  parcoursPMR?: boolean;
 }
