@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
 import { Observable } from 'rxjs';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-explore-all',
@@ -33,6 +33,7 @@ export class ExploreAllComponent implements OnInit {
     private _ds: DesignSystemService,
     private _jcmsEspace: EspaceByLangService,
     private _jcms: JAngularService,
+    private _location: Location,
   ) { }
 
   /**
@@ -177,5 +178,12 @@ export class ExploreAllComponent implements OnInit {
    */
    public returnUrl() {
     return '/themes'
+  }
+
+  /**
+   * Label du bouton de retour
+   */
+  getLabelBouton() {
+    return $localize`:@@BackComp-text:Retour à la recherche`;
   }
 }
