@@ -35,6 +35,8 @@ import { buildUrlMedia, Content } from "./content";
 
   video: string | undefined,
 
+  localisation: string | undefined;
+
  }
 
  export class OeuvreMap {
@@ -54,6 +56,7 @@ import { buildUrlMedia, Content } from "./content";
       video: buildUrlMedia(dataRep.video),
       categorieDeNavigation: dataRep.categorieDeNavigation,
       miseEnAvant: dataRep.miseEnAvant,
+      localisation: dataRep.localisation,
     };
   }
 }

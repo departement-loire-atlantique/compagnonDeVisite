@@ -13,6 +13,7 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
 
   @Input() file!: string | undefined;
   @Input() name!: string | undefined;
+  @Input() location!: string;
 
   @Output() audioEnded = new EventEmitter<boolean>();
 
@@ -92,6 +93,7 @@ export class LecteurAudioComponent implements OnInit, OnDestroy {
   onSliderChangeEnd(event: any) {
     this.audioService.seekTo(event.target.value);
   }
+
 }
 
 

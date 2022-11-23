@@ -10,7 +10,6 @@
     </button>
   </div>
   <div class="slider">
-    <p><strong>{{ this.name }}</strong></p>
     <p><input type="range"
               id="cowbell"
               name="cowbell"
@@ -26,4 +25,10 @@
       <span class="readableDuration">{{ state.readableDuration | date:"mm:ss" }}</span>
     </p>
   </div>
+</div>
+<div *ngIf="name" class="name">
+  {{ name }}
+</div>
+<div *ngIf="location" class="location">
+  {{ location }}
 </div>

@@ -92,4 +92,17 @@ export class OeuvreComponent implements OnInit, OnDestroy {
     return this.oeuvre?.video;
   }
 
+   /**
+   * get label bouton
+   */
+  public getLabelBtn() {
+    return $localize`:@@BackComp-liste:Retour à la liste`;
+  }
+
+  /**
+   * getLocation for cartel
+   */
+  public getLocation() {
+    return this.oeuvre?.localisation || '';
+  }
 }

@@ -9,7 +9,6 @@
     button {
       margin-left: 10px;
       margin-right: 10px;
-      // margin-bottom: 27px;
       width: 44px;
       height: 44px;
       background-color: $black;
@@ -85,5 +84,18 @@
       }
     }
   }
+}
 
+.name,
+.location {
+  margin-left: 20px;
+}
+.name {
+  font: normal normal bold 16px/22px Muli;
+  margin-top: 10px;
+}
+
+.location {
+  font: normal normal normal 12px/15px Muli;
+  margin-top: 5px;
 }
