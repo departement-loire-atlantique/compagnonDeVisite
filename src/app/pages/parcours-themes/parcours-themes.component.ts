@@ -8,6 +8,7 @@ import { Media } from 'src/app/models/jcms/media';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { CatsMngService } from 'src/app/services/cats-mng.service';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-parcours-themes',
@@ -25,6 +26,7 @@ export class ParcoursThemesComponent implements OnInit {
     private _catMng: CatsMngService,
     private _jcms: JAngularService,
     private _jcmsEspace: EspaceByLangService,
+    private _router: Router,
   ) {
 
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
@@ -49,10 +51,19 @@ export class ParcoursThemesComponent implements OnInit {
         this.listCat = [];
       }
 
+      cats.forEach((currentValue, index) => {
+       if(currentValue.afficheExpo === 'false') {
+        cats.splice(index,1);
+       }
+      });
+
+      if (cats.length === 1) {
+        let url = "/themes/" + cats[0].id;
+        this._router.navigate([url]);
+      }
+
       for (let ind = 0; ind < cats.length; ind++) {
         let c = cats[ind];
-        if (c.afficheExpo === "false")
-          continue ;
         this.listCat.splice(ind, 0, {
           img: buildUrlMedia(c.image),
           lbl: c.title,
