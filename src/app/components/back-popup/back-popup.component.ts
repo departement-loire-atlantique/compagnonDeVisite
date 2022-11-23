@@ -1,6 +1,5 @@
 import { Location } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import {Router} from "@angular/router"
 
 /**
  * This component should be used to go back to the previous page.
