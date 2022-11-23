@@ -42,13 +42,10 @@ header {
 main {
   padding-top: 0;
 
-  .upper {
-    margin-bottom: 126px;
-
-    .desc-oeuvre {
-      margin: 10px;
-    }
+  .desc-oeuvre {
+    margin: 10px;
   }
+
 
   app-loader {
     width: 100%;
@@ -59,14 +56,17 @@ main {
     text-align: right
   }
 
-  .mainAudio {
-    position: fixed;
+  .bottomFixed {
+    position: sticky;
     z-index: 1;
     bottom: 0;
     width: 100%;
-    padding-top: 20px;
-    padding-bottom: 27px;
+    padding-top: 10px;
     background-color: $main-color;
+  }
+
+  .ds44-fullWBtn.ds44-btn--invert {
+    margin-top: 1em;
   }
 
 }
