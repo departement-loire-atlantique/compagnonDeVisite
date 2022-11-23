@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explore-all.component';
 import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
 import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.component';
 
@@ -40,6 +41,9 @@ const routes: Routes = [
   },
   {
     path: 'explore', component: ExploreComponent
+  },
+  {
+    path: 'explore-all', component: ExploreAllComponent
   },
   {
     path: '**',

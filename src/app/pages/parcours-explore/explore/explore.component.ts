@@ -10,7 +10,6 @@ import { Item } from 'src/app/models/item';
 import { JcmsEspace } from 'src/app/models/environment';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { Parcours } from 'src/app/models/jcms/parcours';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-explore',
@@ -74,13 +73,11 @@ export class ExploreComponent implements OnInit {
 
     var resultRetrieveSessionStorage = sessionStorage.getItem(this.resultRetrieveKey) ? JSON.parse(sessionStorage.getItem(this.resultRetrieveKey) || '') : '';
     if (resultRetrieveSessionStorage != '') {
-      console.debug("Get cache search");
       // retrouve la recherche
       this.resultRetrieve = resultRetrieveSessionStorage;
       this.text = this.resultRetrieve[0].searchField;
       this.result = this.resultRetrieve;
       this.isResultRetrieve = true;
-      sessionStorage.removeItem(this.resultRetrieveKey);
       this.isFirstArrive = false;
     } else {
       // Recherche par url
@@ -176,8 +173,6 @@ export class ExploreComponent implements OnInit {
 
       // Sauvegarde des résultats de la recherche
       this.researchRun = false;
-
-      // TODO Focus for accessibility
     });
   }
 
