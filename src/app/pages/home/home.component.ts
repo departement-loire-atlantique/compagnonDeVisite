@@ -12,10 +12,30 @@ export class HomeComponent {
   private _nextPageRoute: string = "themes";
 
   languages: { [key: string]: any } = {
-    'fr': { lbl: 'FR', url: environment.front + 'fr/' + this._nextPageRoute, img: 'icon-french', isPicto: true },
-    'en': { lbl: 'EN', url: environment.front + 'en/' + this._nextPageRoute, img: 'icon-english', isPicto: true },
-    'fr-LSF': { lbl: 'LSF', url: environment.front + 'fr-LSF/' + this._nextPageRoute, img: 'icon-lsf', isPicto: true },
-    'fr-PMR': { lbl: 'PMR', url: environment.front + 'fr-PMR/' + this._nextPageRoute, img: 'icon-handicap-moteur', isPicto: true }
+    'fr': {
+      lbl: 'FR',
+      title: 'Version française : consultez la version française du site',
+      url: environment.front + 'fr/' + this._nextPageRoute, img: 'icon-french',
+      isPicto: true
+    },
+    'en': {
+      lbl: 'EN',
+      title: 'English version : visit the english version of the website',
+      url: environment.front + 'en/' + this._nextPageRoute, img: 'icon-english',
+      isPicto: true
+    },
+    'fr-LSF': {
+      lbl: 'LSF',
+      title: 'Version LSF : consultez la version Langue des signes française du site',
+      url: environment.front + 'fr-LSF/' + this._nextPageRoute, img: 'icon-lsf',
+      isPicto: true
+    },
+    'fr-FALC': {
+      lbl: 'FALC',
+      title: 'Version FALC : consultez la version Facile à lire et à comprendre',
+      url: environment.front + 'fr-FALC/' + this._nextPageRoute, img: 'icon-etudes',
+      isPicto: true
+    }
   };
 
   constructor(@Inject(LOCALE_ID) public locale: string) {
@@ -23,7 +43,7 @@ export class HomeComponent {
       for (let key in this.languages) {
         this.languages[key].url = this._nextPageRoute;
       }
-    }else {
+    } else {
       this.languages[locale].url = this._nextPageRoute;
     }
   }
@@ -33,6 +53,7 @@ export class HomeComponent {
     for (let key in this.languages) {
       let item: Item = {
         lbl: this.languages[key].lbl,
+        title: '',
         img: this.languages[key].img,
         url: this.languages[key].url,
         isPicto: this.languages[key].isPicto,

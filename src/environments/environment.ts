@@ -14,8 +14,8 @@ export const environment: Environment = {
     'fr': { espace: 'c_5019', catHome: 'c_5020' },
     'en': { espace: 'c_5015', catHome: 'c_5016' },
     'fr-LSF': { espace: 'c_5011', catHome: 'c_5012' },
-    'fr-PMR': { espace: 'fde_5028', catHome: 'fde_5029' }
-  },
+    'fr-FALC': { espace: '', catHome: '' }
+  }
 };
 
 /*
