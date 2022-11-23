@@ -1,10 +1,14 @@
-<button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding" type="button"
-  aria-label="Ouvrir le menu de navigation" aria-controls="menu" data-open-overlay="true" id="open-menu">
+<button class="ds44-btnIcoText--maxi ds44-btn--contextual ds44-btn--menu ds44--xl-padding"
+        type="button"
+        aria-label="Ouvrir le menu de navigation"
+        aria-controls="menu"
+        data-open-overlay="true"
+        id="open-menu">
   <span class="ds44-btnInnerText" i18n="@@MenuComp-menu">Menu</span>
   <i class="icon icon-burger icon--xlarge" aria-hidden="true"></i>
 </button>
 
-<div class="ds44-blocMenu">
+<div class="ds44-blocMenu" aria-hidden="true">
 
   <section class="ds44-menuBox" id="menu">
 
@@ -12,9 +16,10 @@
       aria-label="Menu principal niveau 1" id="nav1">
 
       <button class="ds44-btnOverlay ds44-btnOverlay--closeOverlay" type="button"
-        i18n-aria-label="@@MenuComp-menu-close-aria-lbl" aria-label="Fermer le menu de navigation"><i
-          class="icon icon-cross icon--xlarge" aria-hidden="true"></i><span class="ds44-btnInnerText--bottom"
-          i18n="Fermer un menu, une page@@global-close">Fermer</span></button>
+        i18n-aria-label="@@MenuComp-menu-close-aria-lbl" aria-label="Fermer le menu de navigation">
+        <i class="icon icon-cross icon--xlarge" aria-hidden="true"></i>
+        <span class="ds44-btnInnerText--bottom" i18n="Fermer un menu, une page@@global-close">Fermer</span>
+      </button>
 
       <p role="heading" aria-level="1" class="visually-hidden" i18n="@@MenuComp-menu">Menu</p>
 

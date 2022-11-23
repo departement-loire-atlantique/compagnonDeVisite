@@ -245,6 +245,13 @@ export class OeuvreComponent implements OnInit {
   }
 
   /**
+   * getLocation for cartel
+   */
+  public getLocation() {
+    return this.oeuvre?.localisation || '';
+  }
+
+  /**
    * get label bouton
    */
    public getLabelBtn() {

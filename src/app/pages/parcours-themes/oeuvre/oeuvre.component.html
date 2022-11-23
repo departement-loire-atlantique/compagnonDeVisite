@@ -37,13 +37,12 @@
 
 
     <div class="bg-color">
-
-      <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
-
       <div class="audio-oeuvre">
-        <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getTitle()'>
+        <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getTitle()' [location]="getLocation()">
         </app-lecteur-audio>
       </div>
+
+      <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
 
       <button type="button" class="ds44-fullWBtn ds44-btn--invert"
         onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
