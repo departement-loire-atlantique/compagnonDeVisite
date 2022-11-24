@@ -6,11 +6,11 @@
         <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
           <img *ngIf="etape.item.img" [src]="etape.item.img" alt="" class="ds44-imgRatio" />
         </picture>
-        <button [class]="'btn-play ' + etape.state">
+        <div [class]="'btn-play ' + etape.state">
           <i *ngIf="etape.state === 'active'" class="icon icon-play" aria-hidden="true"></i>
           <i *ngIf="etape.state === 'passed'" class="icon icon-replay" aria-hidden="true"></i>
           <i *ngIf="etape.state === 'inactive'" class="icon icon-play-off" aria-hidden="true"></i>
-        </button>
+        </div>
       </div>
       <div class="ds44-card__section--horizontal">
         <div role="heading" aria-level=" 2" class="ds44-card__title">
