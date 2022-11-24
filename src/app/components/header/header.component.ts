@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 export class HeaderComponent {
 
   @Input()
+  urlFavoris: string | undefined;
+
+  @Input()
   customProcess:boolean = false;
 
   @Input()

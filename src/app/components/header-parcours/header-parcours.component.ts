@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 export class HeaderParcoursComponent {
 
   @Input()
+  urlFavoris: string | undefined;
+
+  @Input()
   imagePlan:string | undefined;
 
   @Input()

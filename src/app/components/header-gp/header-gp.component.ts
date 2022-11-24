@@ -10,9 +10,6 @@ import { DesignSystemService } from 'src/app/services/design-system.service';
 export class HeaderGpComponent implements OnInit {
 
   @Input()
-  urlLanguage: string | undefined;
-
-  @Input()
   urlFavoris: string | undefined;
 
   localeList: Map<string,string> = new Map<string,string>([
