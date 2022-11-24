@@ -15,7 +15,7 @@
 </div>
 
 <section class="search-result" *ngIf="result">
-  <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
+  <app-loader *ngIf="researchRun" color="$black"></app-loader>
   <section *ngIf="!researchRun">
       {{ lblNbResult() }}
     <app-tuile-h-explore *ngFor="let item of result" [searchItems]="item.searchItem"></app-tuile-h-explore>
