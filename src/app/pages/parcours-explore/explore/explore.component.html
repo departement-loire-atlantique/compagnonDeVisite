@@ -77,12 +77,10 @@
   </section>
   </div>
 
-  <section class="search-result">
+  <section class="search-result" *ngIf="result">
     <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
     <section *ngIf="!researchRun">
-      <h3 class="search-result-info">
         {{ lblNbResult() }}
-      </h3>
       <app-tuile-h-explore *ngFor="let item of result" [searchItems]="item.searchItem"></app-tuile-h-explore>
       <div class="ds44-posBot">
       <button *ngIf="pager && pager.hasMore()"
