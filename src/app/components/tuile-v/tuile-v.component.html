@@ -4,7 +4,7 @@
     <img [src]="tuile.img" alt="" class="ds44-imgRatio" />
   </picture>
 
-  <div class="ds44-card__section champs">
+  <div class="ds44-card__section champs" *ngIf="tuile.title || tuile.champs">
 
     <div *ngIf="tuile.title">
       <div *ngIf="tuile.titleUrl; else noLink">
