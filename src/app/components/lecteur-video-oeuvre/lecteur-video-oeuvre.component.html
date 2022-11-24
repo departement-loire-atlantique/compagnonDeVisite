@@ -30,3 +30,6 @@
     </div>
   </div>
 </div>
+<div *ngIf="transcription" class="transcription" >
+  <app-collapser [dataTitle]="['Afficher la transcription']" [dataVal]="[transcription]"></app-collapser>
+</div>

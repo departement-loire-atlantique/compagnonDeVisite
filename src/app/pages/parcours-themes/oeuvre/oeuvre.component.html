@@ -9,7 +9,7 @@
         <p>{{ getTextEtape() }}</p>
         <h3>{{ getTitle() }}</h3>
       </div>
-    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()"></app-lecteur-video-oeuvre>
+    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
       <div class="block-indications">
         <div class="desc-oeuvre top-space">
           <p [innerHTML]="getDesc()"></p>
