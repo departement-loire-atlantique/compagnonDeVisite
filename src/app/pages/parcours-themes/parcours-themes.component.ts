@@ -59,7 +59,6 @@ export class ParcoursThemesComponent implements OnInit {
 
       if (cats.length === 1) {
         let url = "/themes/" + cats[0].id;
-        console.log(sessionStorage.getItem("backURL")?.includes("themes"));
         if (sessionStorage.getItem("backURL")?.includes("themes")) {
           url = "/";
           sessionStorage.removeItem("backURL");
