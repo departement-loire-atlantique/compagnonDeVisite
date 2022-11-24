@@ -23,6 +23,7 @@ export class ThematiqueComponent implements OnInit {
   listParcoursNoPMR: Item[] = [];
   isPMR: boolean = false;
   videoLSF: string | undefined;
+  transcription?: string;
 
   mapParcours: ParcoursMap = new ParcoursMap();
 
@@ -44,10 +45,10 @@ export class ThematiqueComponent implements OnInit {
 
 
     let thematiqueId = this._route.snapshot.paramMap.get('id');
-    if(thematiqueId)
+    if (thematiqueId)
       localStorage.setItem(this.idThematique, thematiqueId);
 
-    if(!espaceJcms){
+    if (!espaceJcms) {
       return;
     }
 
@@ -61,9 +62,21 @@ export class ThematiqueComponent implements OnInit {
     }
 
     //get la thématique
-    this._catMng.cat(catThematique).subscribe((cat) => {
-      this.currentCat = cat;
-    });
+    this._catMng.cat(catThematique)
+      .subscribe((cat) => {
+        this.currentCat = cat;
+        this.transcription = cat.videoLsfTranscription;
+        if (cat.videoLsf) {
+
+          this._jcms.get<any>('data/' + cat.videoLsf,)
+            .subscribe((media: Media) => {
+              console.log(media);
+              if (media) {
+                this.videoLSF = buildUrlMedia(media.filename);
+              }
+            });
+        }
+      });
 
     //get les parcours
     this._jcms.get<Parcours>('search', {
@@ -78,20 +91,20 @@ export class ThematiqueComponent implements OnInit {
         rep.dataSet.map((itData: any): Parcours => this.mapParcours.mapToParcours(itData))
       )
     ).subscribe((parcours: Parcours[]) => {
-      parcours.sort((a,b) => a.ordre - b.ordre);
+      parcours.sort((a, b) => a.ordre - b.ordre);
       for (let ind in parcours) {
         let p = parcours[ind];
         if (p.jexplore) {
           sessionStorage.removeItem('jsonExplore');
           sessionStorage.removeItem('jsonExploreAll');
           localStorage.setItem("IdJExplore", p.id);
-          this.listParcours?.splice(-1,0,{
+          this.listParcours?.splice(-1, 0, {
             lbl: p.title,
             url: 'explore/',
             isJExplore: true,
           })
         } else {
-          this.listParcours?.splice(Number(ind),0,{
+          this.listParcours?.splice(Number(ind), 0, {
             lbl: p.title,
             url: 'parcours/' + p.id,
             parcoursPMR: p.parcoursPMR,
@@ -104,44 +117,21 @@ export class ThematiqueComponent implements OnInit {
           this.listParcoursNoPMR.push(currentValue);
           return;
         }
-        if(currentValue.parcoursPMR) {
+        if (currentValue.parcoursPMR) {
           this.listParcoursPMR.push(currentValue);
         } else {
           this.listParcoursNoPMR.push(currentValue);
         }
       });
     });
-
-    //get la video lsf de la catégorie si elle existe
-    let espace = this._jcmsEspace.getJcmsSpace()?.espace;
-    if(espace) {
-      this._jcms.get<Media>('search', {
-        params: {
-          types: 'Media',
-          exactType: true,
-          exactCat: true,
-          cids: catThematique,
-          wrkspc:  espace,
-        }
-      }).pipe(
-        map((res : any) => {
-          return res.dataSet;
-        })
-      )
-      .subscribe((media: Media[]) => {
-        if(media[0]) {
-          this.videoLSF = buildUrlMedia(media[0].filename);
-        }
-      })
-    }
   }
 
   /**
    *
    */
-   public doSearch(isPMR:string) {
+  public doSearch(isPMR: string) {
     this.isPMR = isPMR === 'oui' ? true : false;
-   }
+  }
 
   /**
    * Get la liste des parcours
@@ -163,7 +153,7 @@ export class ThematiqueComponent implements OnInit {
    * Get l'url de retour
    */
   public getURLBack() {
-    sessionStorage.setItem("backURL","themes/id");
+    sessionStorage.setItem("backURL", "themes/id");
     return 'themes/';
   }
 

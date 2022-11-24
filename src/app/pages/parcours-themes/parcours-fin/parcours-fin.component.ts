@@ -15,6 +15,7 @@ export class ParcoursFinComponent implements OnInit {
   tuile:Tuile | undefined;
   map: string | undefined;
   video: string | undefined;
+  transcription?: string;
   idParcours: string = "idParcours";
 
   constructor(
@@ -30,7 +31,8 @@ export class ParcoursFinComponent implements OnInit {
     this._jcms.get<Parcours>('data/' + parcoursId).subscribe((parcours: Parcours) => {
       let p = this.mapParcours.mapToParcours(parcours);
       this.map = p.plan;
-      this.video = p.video;
+      this.video = p.videoFin;
+      this.transcription = p.transcriptionFin;
       this.tuile = {
         img: p.visuel,
         champs: [{lbl: $localize`:@@ParcoursFinComp-fav-text:Ajouter la liste des oeuvres à mes favoris`, icon:"icon-star-empty"}]

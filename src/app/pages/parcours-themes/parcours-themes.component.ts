@@ -21,6 +21,7 @@ export class ParcoursThemesComponent implements OnInit {
   listCat: Item[] | undefined;
   espaceJcms: JcmsEspace | undefined;
   videoLSF: string | undefined;
+  transcription?: string;
 
   constructor(
     private _catMng: CatsMngService,
@@ -31,7 +32,7 @@ export class ParcoursThemesComponent implements OnInit {
 
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
 
-    if (this.espaceJcms){
+    if (this.espaceJcms) {
       this.idCatHome = this.espaceJcms.catHome;
     }
   }
@@ -52,9 +53,9 @@ export class ParcoursThemesComponent implements OnInit {
       }
 
       cats.forEach((currentValue, index) => {
-       if(currentValue.afficheExpo === 'false') {
-        cats.splice(index,1);
-       }
+        if (currentValue.afficheExpo === 'false') {
+          cats.splice(index, 1);
+        }
       });
 
       if (cats.length === 1) {
@@ -77,26 +78,20 @@ export class ParcoursThemesComponent implements OnInit {
       }
     });
 
-    //get la video lsf de la catégorie si elle existe
-    this._jcms.get<Media>('search', {
-      params: {
-        types: 'Media',
-        exactType: true,
-        exactCat: true,
-        cids: this.idCatHome,
-        wrkspc:  this.espaceJcms.espace,
-      }
-    }).pipe(
-      map((res : any) => {
-        return res.dataSet;
-      })
-    )
-    .subscribe((media: Media[]) => {
-      if(media[0]) {
-        this.videoLSF = buildUrlMedia(media[0].filename);
-      }
-    })
+    this._catMng.cat(this.idCatHome)
+      .subscribe((cat) => {
+        this.transcription = cat.videoLsfTranscription;
+        if (cat.videoLsf) {
 
+          this._jcms.get<any>('data/' + cat.videoLsf,)
+            .subscribe((media: Media) => {
+              console.log(media);
+              if (media) {
+                this.videoLSF = buildUrlMedia(media.filename);
+              }
+            });
+        }
+      });
   }
 
   /**
