@@ -164,6 +164,6 @@ export class ThematiqueComponent implements OnInit {
    * get label bouton
    */
   public getLabelBtn() {
-    return $localize`:@@BackComp-accueil:Retour à l\'acceuil`;
+    return $localize`:@@BackComp-accueil:Retour à l\'accueil`;
   }
 }
