@@ -3,7 +3,7 @@
 <main class="border-space top-space">
   <h1 class="underline" i18n="@@ParcoursThemesComp-title">Que souhaitez-vous visiter ?</h1>
   <div *ngIf="videoLSF" class="top-space">
-    <app-lecteur-video [file]="videoLSF"></app-lecteur-video>
+    <app-lecteur-video [file]="videoLSF" [transcription]="transcription"></app-lecteur-video>
   </div>
   <app-tuile-h [items]="getListCat()"></app-tuile-h>
 </main>

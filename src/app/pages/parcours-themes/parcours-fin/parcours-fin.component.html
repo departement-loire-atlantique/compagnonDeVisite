@@ -12,7 +12,7 @@
     <app-tuile-v *ngIf="!video;else lsf" [tuile]="getTuile()"></app-tuile-v>
 
     <ng-template #lsf>
-      <app-lecteur-video [file]="video"></app-lecteur-video>
+      <app-lecteur-video [file]="video" [transcription]="transcription"></app-lecteur-video>
 
 <!--      <p class=" fav-box"><i class="icon icon-star-empty" aria-hidden="true"></i>
         <a [href]="" class="ds44-card__globalLink">

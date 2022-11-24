@@ -6,7 +6,7 @@
   </div>
   <div *ngIf="videoLSF" class="top-page-lsf">
     <h1 class="title big-title">{{ getCurrentCat()?.title }}</h1>
-    <app-lecteur-video [file]="videoLSF"></app-lecteur-video>
+    <app-lecteur-video [file]="videoLSF" [transcription]="transcription"></app-lecteur-video>
   </div>
 
   <div id="form-element-49879" data-name="radio2" class="ds44-form__radio_container ds44-form__container"  data-required="true" *ngIf="!isLSF">

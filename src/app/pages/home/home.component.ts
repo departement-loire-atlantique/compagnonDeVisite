@@ -15,25 +15,29 @@ export class HomeComponent {
     'fr': {
       lbl: 'FR',
       title: 'Version française : consultez la version française du site',
-      url: environment.front + 'fr/' + this._nextPageRoute, img: 'icon-french',
+      url: environment.front + 'fr/' + this._nextPageRoute,
+      img: 'icon-french',
       isPicto: true
     },
     'en': {
       lbl: 'EN',
       title: 'English version : visit the english version of the website',
-      url: environment.front + 'en/' + this._nextPageRoute, img: 'icon-english',
+      url: environment.front + 'en/' + this._nextPageRoute,
+      img: 'icon-english',
       isPicto: true
     },
     'fr-LSF': {
       lbl: 'LSF',
       title: 'Version LSF : consultez la version Langue des signes française du site',
-      url: environment.front + 'fr-LSF/' + this._nextPageRoute, img: 'icon-lsf',
+      url: environment.front + 'fr-LSF/' + this._nextPageRoute,
+      img: 'icon-lsf',
       isPicto: true
     },
     'fr-FALC': {
       lbl: 'FALC',
       title: 'Version FALC : consultez la version Facile à lire et à comprendre',
-      url: environment.front + 'fr-FALC/' + this._nextPageRoute, img: 'icon-etudes',
+      url: environment.front + 'fr-FALC/' + this._nextPageRoute,
+      img: 'icon-falc',
       isPicto: true
     }
   };
