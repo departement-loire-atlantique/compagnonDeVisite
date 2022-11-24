@@ -8,6 +8,7 @@ import { Media } from 'src/app/models/jcms/media';
 import { buildUrlMedia } from 'src/app/models/jcms/content';
 import { CatsMngService } from 'src/app/services/cats-mng.service';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-parcours-themes',
@@ -20,16 +21,18 @@ export class ParcoursThemesComponent implements OnInit {
   listCat: Item[] | undefined;
   espaceJcms: JcmsEspace | undefined;
   videoLSF: string | undefined;
+  transcription?: string;
 
   constructor(
     private _catMng: CatsMngService,
     private _jcms: JAngularService,
     private _jcmsEspace: EspaceByLangService,
+    private _router: Router,
   ) {
 
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
 
-    if (this.espaceJcms){
+    if (this.espaceJcms) {
       this.idCatHome = this.espaceJcms.catHome;
     }
   }
@@ -49,10 +52,23 @@ export class ParcoursThemesComponent implements OnInit {
         this.listCat = [];
       }
 
+      cats.forEach((currentValue, index) => {
+        if (currentValue.afficheExpo === 'false') {
+          cats.splice(index, 1);
+        }
+      });
+
+      if (cats.length === 1) {
+        let url = "/themes/" + cats[0].id;
+        if (sessionStorage.getItem("backURL")?.includes("themes")) {
+          url = "/";
+          sessionStorage.removeItem("backURL");
+        }
+        this._router.navigate([url]);
+      }
+
       for (let ind = 0; ind < cats.length; ind++) {
         let c = cats[ind];
-        if (c.afficheExpo === "false")
-          continue ;
         this.listCat.splice(ind, 0, {
           img: buildUrlMedia(c.image),
           lbl: c.title,
@@ -61,26 +77,20 @@ export class ParcoursThemesComponent implements OnInit {
       }
     });
 
-    //get la video lsf de la catégorie si elle existe
-    this._jcms.get<Media>('search', {
-      params: {
-        types: 'Media',
-        exactType: true,
-        exactCat: true,
-        cids: this.idCatHome,
-        wrkspc:  this.espaceJcms.espace,
-      }
-    }).pipe(
-      map((res : any) => {
-        return res.dataSet;
-      })
-    )
-    .subscribe((media: Media[]) => {
-      if(media[0]) {
-        this.videoLSF = buildUrlMedia(media[0].filename);
-      }
-    })
+    this._catMng.cat(this.idCatHome)
+      .subscribe((cat) => {
+        this.transcription = cat.videoLsfTranscription;
+        if (cat.videoLsf) {
 
+          this._jcms.get<any>('data/' + cat.videoLsf,)
+            .subscribe((media: Media) => {
+              console.log(media);
+              if (media) {
+                this.videoLSF = buildUrlMedia(media.filename);
+              }
+            });
+        }
+      });
   }
 
   /**

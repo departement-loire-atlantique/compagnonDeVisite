@@ -25,6 +25,10 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   resultRetrieve!: Search[];
   id!: string | '';
 
+  //template
+  defaultCSS = "max-lines";
+  defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+
   constructor(
               private _route: ActivatedRoute,
               private _jcms: JAngularService, ) { }
@@ -77,6 +81,13 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   }
 
   /**
+   *
+   */
+  public getDescription() {
+    return this.oeuvre?.description;
+  }
+
+  /**
    * Get le plan du parcours
    * @returns la plan
    */
@@ -91,5 +102,41 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   public getVideo() {
     return this.oeuvre?.video;
   }
+
+   /**
+   * get label bouton
+   */
+  public getLabelBtn() {
+    return $localize`:@@BackComp-liste:Retour à la liste`;
+  }
+
+  /**
+   * getLocation for cartel
+   */
+  public getLocation() {
+    return this.oeuvre?.localisation || '';
+  }
+
+  /* CSS */
+  /**
+   * Change les classes CSS lors d'un click bouton
+   */
+   public showDesc() {
+    if(this.defaultCSS === "max-lines") {
+      this.defaultCSS = "default-lines ";
+      this.defaultText = $localize`:@@ParcoursComp-less:Réduire`;
+    } else {
+      this.defaultCSS = "max-lines";
+      this.defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+    }
+  }
+
+  /**
+   * Retourne la classe css
+   * @returns la classe css
+   */
+     public getCSS() {
+      return this.defaultCSS;
+    }
 
 }

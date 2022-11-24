@@ -17,14 +17,13 @@ picture.ds44-container-imgRatio {
 }
 
 .carrousel-text {
-  padding: 1rem 3rem 3rem 3rem;
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  z-index: 100;
+  .h3 {
+    padding-bottom: 0.5em;
+    margin-bottom: 0;
+  }
 
-  p {
-    font-weight: lighter;
+  span {
+    font: normal normal normal 14px/21px Muli;
   }
 }
 

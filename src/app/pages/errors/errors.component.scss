@@ -1,0 +1,9 @@
+MAIN {
+  text-align: center;
+
+  .btn-actions {
+    > * {
+      margin: 10px;
+    }
+  }
+}

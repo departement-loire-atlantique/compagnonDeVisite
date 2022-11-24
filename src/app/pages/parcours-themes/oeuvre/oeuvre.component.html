@@ -1,4 +1,4 @@
-<app-header-parcours [customProcess]="true" [imagePlan]="getMap()" [returnUrl]="getHomeParcours()">
+<app-header-parcours [customProcess]="true" [imagePlan]="getMap()" [returnUrl]="getHomeParcours()" [labelBtn]="getLabelBtn()">
 </app-header-parcours>
 
 <main>
@@ -14,7 +14,7 @@
         <div class="desc-oeuvre top-space">
           <p [innerHTML]="getDesc()"></p>
         </div>
-        <app-collapser-oeuvre   [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
+        <app-collapser-oeuvre [hasLoaded]="hasLoaded" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
       </div>
     </div>
@@ -28,7 +28,8 @@
 
       <div class="block-indications">
         <div class="desc-oeuvre">
-          <p [innerHTML]="getDesc()"></p>
+          <p id="desc" [innerHTML]="getDesc()" [class]="getCSS()"></p>
+          <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
         </div>
         <app-collapser-oeuvre id="indications" [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
@@ -37,13 +38,12 @@
 
 
     <div class="bg-color">
-
-      <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
-
       <div class="audio-oeuvre">
-        <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getTitle()'>
+        <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getTitle()' [location]="getLocation()">
         </app-lecteur-audio>
       </div>
+
+      <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
 
       <button type="button" class="ds44-fullWBtn ds44-btn--invert"
         onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">

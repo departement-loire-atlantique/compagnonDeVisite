@@ -1,4 +1,4 @@
-<app-header-explore [imagePlan]="getPlan()"></app-header-explore>
+<app-header-explore [imagePlan]="getPlan()" [labelBtn]="getLabelBouton()"></app-header-explore>
 
 <main>
   <h1 class="underline" i18n="@@ExploreComp-titleResult">Découvrir les oeuvres</h1>
@@ -14,12 +14,10 @@
   </div>
 </div>
 
-<section class="search-result">
-  <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
+<section class="search-result" *ngIf="result">
+  <app-loader *ngIf="researchRun" color="$black"></app-loader>
   <section *ngIf="!researchRun">
-    <h3 class="search-result-info">
       {{ lblNbResult() }}
-    </h3>
     <app-tuile-h-explore *ngFor="let item of result" [searchItems]="item.searchItem"></app-tuile-h-explore>
     <div class="ds44-posBot">
     <button *ngIf="pager && pager.hasMore()"

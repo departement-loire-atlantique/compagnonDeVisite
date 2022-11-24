@@ -1,3 +1,20 @@
-.ds44-introduction {
-  text-align: center;
+MAIN {
+
+  H1 {
+    margin-top: 10px;
+  }
+  // background-image: url('assets/bkgd-wave-black.png');
+
+  .ds44-introduction {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  .img-footer {
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    text-align: center;
+    width: 100%;
+  }
 }

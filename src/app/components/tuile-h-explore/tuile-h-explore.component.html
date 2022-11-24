@@ -6,10 +6,10 @@
         <picture class="ds44-container-imgRatio ds44-container-imgRatio--carre">
           <img *ngIf="searchItem.item.img" [src]="searchItem.item.img" alt="" class="ds44-imgRatio" />
         </picture>
-        <button [class]="'btn-play ' + searchItem.state">
+        <div [class]="'btn-play ' + searchItem.state">
           <i *ngIf="searchItem.state !== passed" class="icon icon-play" aria-hidden="true"></i>
           <i *ngIf="searchItem.state === passed" class="icon icon-replay" aria-hidden="true"></i>
-        </button>
+        </div>
       </div>
       <div class="ds44-card__section--horizontal">
         <div role="heading" aria-level=" 2" class="ds44-card__title">

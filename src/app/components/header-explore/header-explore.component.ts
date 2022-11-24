@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header-explore',
@@ -9,10 +9,19 @@ import { Router, RouterLink } from '@angular/router';
 export class HeaderExploreComponent {
 
   @Input()
+  urlFavoris: string | undefined;
+
+  @Input()
   imagePlan:string | undefined;
 
   @Input()
   returnUrl:string | undefined;
+
+  @Input()
+  labelBtn: string = $localize`:@@BackComp-text:Retour` ;
+
+  @Input()
+  hoverBtn!: string | undefined;
 
   @Input()
   customProcess = false;
@@ -23,4 +32,11 @@ export class HeaderExploreComponent {
     this.router.navigate([this.returnUrl]);
   }
 
+  getLabelBtn() {
+    return this.labelBtn;
+  }
+
+  getHoverBtn() {
+    return this.hoverBtn ? this.hoverBtn : this.labelBtn;
+  }
 }

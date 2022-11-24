@@ -18,6 +18,10 @@ export interface Parcours extends Content {
   jexplore: boolean,
   ordre: number,
   video: string | undefined,
+  transcription: string,
+  videoFin: string | undefined,
+  transcriptionFin: string,
+  parcoursPMR: boolean,
 }
 
 export class ParcoursMap {
@@ -37,6 +41,10 @@ export class ParcoursMap {
       jexplore: dataRep.jexplore,
       ordre: dataRep.ordre,
       video: buildUrlMedia(dataRep.video),
+      transcription: dataRep.transcription,
+      videoFin: buildUrlMedia(dataRep.videoFin),
+      transcriptionFin: dataRep.transcriptionFin,
+      parcoursPMR: dataRep.parcoursPMR,
     };
   }
 }

@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
 import { Observable } from 'rxjs';
 import { Oeuvre } from 'src/app/models/jcms/Oeuvre';
-
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-explore-all',
@@ -33,6 +33,7 @@ export class ExploreAllComponent implements OnInit {
     private _ds: DesignSystemService,
     private _jcmsEspace: EspaceByLangService,
     private _jcms: JAngularService,
+    private _location: Location,
   ) { }
 
   /**
@@ -83,6 +84,7 @@ export class ExploreAllComponent implements OnInit {
     if (!this.result)
       this.result = [];
 
+    let itSearchItemSave = this.itSearchItem;
     this.itSearchItem = [];
 
     this.pager = pager;
@@ -105,7 +107,7 @@ export class ExploreAllComponent implements OnInit {
             };
             this.result = [{
               searchField: this.text,
-              searchItem: this.itSearchItem,
+              searchItem: [ ...itSearchItemSave, ...this.itSearchItem ],
             }];
             sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
           });
@@ -177,5 +179,12 @@ export class ExploreAllComponent implements OnInit {
    */
    public returnUrl() {
     return '/themes'
+  }
+
+  /**
+   * Label du bouton de retour
+   */
+  getLabelBouton() {
+    return $localize`:@@BackComp-text:Retour à la recherche`;
   }
 }

@@ -33,9 +33,9 @@
       </svg>
     </div>
   </div>
-  <div class="ds44-facette" *ngIf="!isAllResult">
+  <div class="ds44-facette">
     <div class="ds44-facette-body">
-      <form data-is-ajax="true" data-auto-load="true" (ngSubmit)="research('one')" id="form1">
+      <form data-is-ajax="true" data-auto-load="true" (ngSubmit)="research()" id="form1">
       <div class="ds44-facetteContainer ds44-flex-container ds44-medium-flex-col">
         <div class="ds44-fieldContainer ds44-fg1">
           <div class="ds44-form__container">
@@ -77,12 +77,10 @@
   </section>
   </div>
 
-  <section class="search-result">
-    <app-loader *ngIf="researchRun" color="#0013b1"></app-loader>
+  <section class="search-result" *ngIf="result">
+    <app-loader *ngIf="researchRun" color="$black"></app-loader>
     <section *ngIf="!researchRun">
-      <h3 class="search-result-info">
         {{ lblNbResult() }}
-      </h3>
       <app-tuile-h-explore *ngFor="let item of result" [searchItems]="item.searchItem"></app-tuile-h-explore>
       <div class="ds44-posBot">
       <button *ngIf="pager && pager.hasMore()"

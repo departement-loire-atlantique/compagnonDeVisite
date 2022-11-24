@@ -28,7 +28,6 @@ export class ExploreComponent implements OnInit {
   resultRetrieveKey: string = 'jsonExplore'
   resultRetrieve!: Search[];
   isResultRetrieve: boolean = false;
-  isAllResult: boolean = false;
   pager: JcmsPager<Content> | undefined;
   plan!: string;
   idCatJExplore!: string;
@@ -93,19 +92,11 @@ export class ExploreComponent implements OnInit {
    * Lance la recherche du HTML
    * @returns
    */
-  public research(typeSearch:string): void {
+  public research(): void {
 
-    if (typeSearch === 'one' && !this.text || this.isResultRetrieve) {
+    if (!this.text || this.isResultRetrieve) {
       this.isResultRetrieve = false;
       return;
-    }
-
-    let textSearch = '';
-    if (typeSearch === 'one') {
-      textSearch = this.text + '*';
-    } else {
-      this.text = '';
-      this.isAllResult = true;
     }
 
     this.isFirstArrive = false;
@@ -121,7 +112,7 @@ export class ExploreComponent implements OnInit {
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
-          text: textSearch,
+          text: this.text + '*',
           types: ['Oeuvre'],
           searchedFields: ['title', 'numeroDeLoeuvre'],
           sort: ['title'],
@@ -143,6 +134,8 @@ export class ExploreComponent implements OnInit {
       if (!this.result) {
         this.result = [];
       }
+
+      let itSearchItemSave = this.itSearchItem;
       this.itSearchItem = [];
 
       this.pager = pager;
@@ -165,13 +158,12 @@ export class ExploreComponent implements OnInit {
           };
           this.result = [{
             searchField: this.text,
-            searchItem: this.itSearchItem,
+            searchItem: [ ...itSearchItemSave, ...this.itSearchItem ],
           }];
           sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
         });
       }
 
-      // Sauvegarde des résultats de la recherche
       this.researchRun = false;
     });
   }

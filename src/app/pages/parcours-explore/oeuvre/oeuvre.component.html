@@ -1,18 +1,27 @@
-<app-header-explore [imagePlan]="getPlan()"></app-header-explore>
+<app-header-explore [imagePlan]="getPlan()"  [labelBtn]="getLabelBtn()"></app-header-explore>
 <main>
-  <div class="upper">
-    <!-- <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader> -->
-    <div class="mainVideo" *ngIf="getVideo()">
-      <app-lecteur-video-oeuvre [file]="getVideo()" [name]="oeuvre?.title"></app-lecteur-video-oeuvre>
-    </div>
-
-    <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
-    <div id="indications" class="desc-oeuvre">
-      <p [innerHTML]="oeuvre?.description"></p>
-    </div>
+  <!-- <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader> -->
+  <div class="mainVideo" *ngIf="getVideo()">
+    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="oeuvre?.title"></app-lecteur-video-oeuvre>
   </div>
-  <div class="mainAudio" *ngIf="oeuvre?.fichierSon && !getVideo()">
-    <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" ></app-lecteur-audio>
+
+  <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
+  <div class="desc-oeuvre">
+    <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
+    <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
+</div>
+
+  <app-collapser-oeuvre id="indications" [imagePlan]="getPlan()"></app-collapser-oeuvre>
+
+  <div class="bottomFixed" *ngIf="oeuvre?.fichierSon && !getVideo()">
+    <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" [location]="getLocation()" ></app-lecteur-audio>
+
+    <button type="button"
+            class="ds44-fullWBtn ds44-btn--invert"
+            onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
+      <span class="ds44-btnInnerText" i18n="@@ParcoursOeuvreComp-how-to-go">Comment m’y rendre</span>
+      <i class="icon icon-down" aria-hidden="true"></i>
+    </button>
   </div>
   <div *ngIf="oeuvre?.description" class="visually-hidden">{{ oeuvre?.description }}</div>
 </main>

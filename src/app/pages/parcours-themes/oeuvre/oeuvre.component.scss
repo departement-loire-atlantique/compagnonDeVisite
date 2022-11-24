@@ -6,11 +6,28 @@
   bottom: 0;
   z-index: 200;
   padding-top: 10px;
-  .audio-oeuvre {
-    padding-bottom: 20px;
-  }
 }
 
 .desc-oeuvre {
   padding: 10px;
+}
+
+.plus {
+  text-align: center;
+  display: block;
+  text-decoration: underline 1px;
+  text-underline-offset: 3px;
+}
+
+.max-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.default-lines {
+  display: inline-block; /* or inline-block */
+  word-wrap: break-word;
+  line-height: 1.8em;
 }

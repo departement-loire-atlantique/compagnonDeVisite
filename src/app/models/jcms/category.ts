@@ -42,4 +42,8 @@ export interface Category {
    * Affiche ou cache l'exposition
    */
   afficheExpo: string | false;
+
+  videoLsf: string | undefined;
+
+  videoLsfTranscription: string | undefined;
 }

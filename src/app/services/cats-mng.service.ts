@@ -9,7 +9,7 @@ import { JAngularService } from 'j-angular';
   providedIn: 'root',
 })
 export class CatsMngService {
-  constructor(private _jcms: JAngularService) {}
+  constructor(private _jcms: JAngularService) { }
 
   /**
    *
@@ -70,6 +70,8 @@ export class CatsMngService {
       order: dataRep.order,
       parent: dataRep.parent ? dataRep.parent.id : undefined,
       afficheExpo: dataRep.afficheExpo,
+      videoLsf: dataRep.extraDataMap ? dataRep.extraDataMap['extra.Category.compagnonDeVisite.lsf.video'] : '',
+      videoLsfTranscription: dataRep.extraDataMap ? dataRep.extraDataMap['extra.Category.compagnonDeVisite.lsf.video.text'] : '',
     };
   }
 }
