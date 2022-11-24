@@ -84,6 +84,9 @@ export class ExploreAllComponent implements OnInit {
     if (!this.result)
       this.result = [];
 
+    let itSearchItemSave = this.itSearchItem;
+    this.itSearchItem = [];
+
     this.pager = pager;
     const contents = pager.dataInPage;
 
@@ -104,7 +107,7 @@ export class ExploreAllComponent implements OnInit {
             };
             this.result = [{
               searchField: this.text,
-              searchItem: this.itSearchItem,
+              searchItem: [ ...itSearchItemSave, ...this.itSearchItem ],
             }];
             sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
           });

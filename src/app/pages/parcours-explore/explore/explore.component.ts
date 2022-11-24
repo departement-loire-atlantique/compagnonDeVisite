@@ -135,9 +135,10 @@ export class ExploreComponent implements OnInit {
         this.result = [];
       }
 
+      this.itSearchItem = [];
+
       this.pager = pager;
       const contents = pager.dataInPage;
-      console.log(pager.dataInPage);
 
       for (let i = 0; i < contents.length; i++) {
         const itContent = contents[i];
