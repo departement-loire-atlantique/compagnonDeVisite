@@ -24,6 +24,7 @@ export class ThematiqueComponent implements OnInit {
   isPMR: boolean = false;
   videoLSF: string | undefined;
   transcription?: string;
+  isLSF : boolean = $localize.locale === 'FR';
 
   mapParcours: ParcoursMap = new ParcoursMap();
 
@@ -138,6 +139,8 @@ export class ThematiqueComponent implements OnInit {
    * @returns la liste de parcours
    */
   public getListParcours() {
+    if (this.isLSF)
+    return this.listParcours;
     return this.isPMR ? this.listParcoursPMR : this.listParcoursNoPMR;
   }
 

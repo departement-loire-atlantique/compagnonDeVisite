@@ -6,7 +6,7 @@
   <li *ngFor="let itItem of items" [class.with-separator]="!noSeparator" class="bg-color">
     <ng-template #content>
       <span class="lbl-link-wrapper">
-        <span *ngIf="itItem.isJExplore" class="icon icon-magnifier" aria-hidden="true"></span>
+        <span *ngIf="itItem.parcoursPMR" class="icon icon-handicap-moteur" aria-hidden="true"></span>
         <span *ngIf="itItem.prefix" class="lbl-prefix">{{ itItem.prefix }}</span>
         <img *ngIf="itItem.img" [src]="itItem.img" aria-hidden="true" />
         <span class="lbl-link" [class.is--bold]="isBold">{{ itItem.lbl }}</span>
@@ -17,21 +17,18 @@
       <ng-template #externLink>
         <a *ngIf="itItem.url" [href]="itItem.url" >
           <ng-container *ngIf="false; else content"></ng-container>
-          <span *ngIf="!itItem.isJExplore" class="icon icon-long-arrow-right" aria-hidden="true"></span>
+          <span class="icon icon-long-arrow-right" aria-hidden="true"></span>
         </a>
       </ng-template>
 
       <ng-container *ngIf="isInternLink(itItem.url); else externLink">
         <a *ngIf="itItem.url" [routerLink]="itItem.url">
           <ng-container *ngIf="false; else content"></ng-container>
-          <span *ngIf="!itItem.isJExplore" class="icon icon-long-arrow-right" aria-hidden="true"></span>
+          <span class="icon icon-long-arrow-right" aria-hidden="true"></span>
         </a>
       </ng-container>
     </ng-container>
 
     <ng-container *ngIf="itItem.url; else content"></ng-container>
-
-    <ng-container *ngIf="itItem.isJExplore"><div class="sepa"></div></ng-container>
-
   </li>
 </ul>

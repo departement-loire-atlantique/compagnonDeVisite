@@ -35,7 +35,7 @@ export class ParcoursFinComponent implements OnInit {
       this.transcription = p.transcriptionFin;
       this.tuile = {
         img: p.visuel,
-        champs: [{lbl: $localize`:@@ParcoursFinComp-fav-text:Ajouter la liste des oeuvres à mes favoris`, icon:"icon-star-empty"}]
+//        champs: [{lbl: $localize`:@@ParcoursFinComp-fav-text:Ajouter la liste des oeuvres à mes favoris`, icon:"icon-star-empty"}]
       }
     });
   }
