@@ -19,6 +19,9 @@ export class ThematiqueComponent implements OnInit {
 
   currentCat: Category | undefined;
   listParcours: Item[] | undefined;
+  listParcoursPMR: Item[] = [];
+  listParcoursNoPMR: Item[] = [];
+  isPMR: boolean = false;
   videoLSF: string | undefined;
 
   mapParcours: ParcoursMap = new ParcoursMap();
@@ -91,9 +94,22 @@ export class ThematiqueComponent implements OnInit {
           this.listParcours?.splice(Number(ind),0,{
             lbl: p.title,
             url: 'parcours/' + p.id,
+            parcoursPMR: p.parcoursPMR,
           })
         }
       }
+      this.listParcours?.forEach((currentValue, index) => {
+        if (currentValue.isJExplore) {
+          this.listParcoursPMR.push(currentValue);
+          this.listParcoursNoPMR.push(currentValue);
+          return;
+        }
+        if(currentValue.parcoursPMR) {
+          this.listParcoursPMR.push(currentValue);
+        } else {
+          this.listParcoursNoPMR.push(currentValue);
+        }
+      });
     });
 
     //get la video lsf de la catégorie si elle existe
@@ -121,11 +137,18 @@ export class ThematiqueComponent implements OnInit {
   }
 
   /**
+   *
+   */
+   public doSearch(isPMR:string) {
+    this.isPMR = isPMR === 'oui' ? true : false;
+   }
+
+  /**
    * Get la liste des parcours
    * @returns la liste de parcours
    */
   public getListParcours() {
-    return this.listParcours;
+    return this.isPMR ? this.listParcoursPMR : this.listParcoursNoPMR;
   }
 
   /**
