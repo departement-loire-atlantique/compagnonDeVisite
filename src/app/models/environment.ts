@@ -4,6 +4,7 @@ export interface Environment {
   front: string,
   token: string,
   catJExplore: string,
+  catRoot: string,
   lang: { [key: string]: JcmsEspace },
 }
 

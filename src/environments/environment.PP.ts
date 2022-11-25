@@ -7,6 +7,7 @@ export const environment: Environment = {
   front: 'https://prep-visite-musee-dobree.loire-atlantique.fr/',
   token: '',
   catJExplore: 'c_5036',
+  catRoot: 'c_5023',
   lang: {
     'fr': { espace: 'c_5038', catHome: 'c_5039' },
     'en': { espace: 'c_5044', catHome: 'c_5045' },
