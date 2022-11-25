@@ -60,6 +60,6 @@ export class ParcoursFinComponent implements OnInit {
    * get label bouton
    */
      public getLabelBtn() {
-      return $localize`:@@BackComp-oeuvre:Retour à l'oeuvre`;
+      return $localize`:@@BackComp-oeuvre:Retour à l'œuvre`;
     }
 }

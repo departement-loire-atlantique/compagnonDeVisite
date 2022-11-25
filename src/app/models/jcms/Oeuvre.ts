@@ -35,6 +35,8 @@ import { buildUrlMedia, Content } from "./content";
 
   video: string | undefined,
 
+  transcription: string | undefined,
+
   localisation: string | undefined;
 
  }
@@ -54,6 +56,7 @@ import { buildUrlMedia, Content } from "./content";
       indications: buildUrlMedia(dataRep.indications),
       plan: buildUrlMedia(dataRep.plan),
       video: buildUrlMedia(dataRep.video),
+      transcription: dataRep.transcription,
       categorieDeNavigation: dataRep.categorieDeNavigation,
       miseEnAvant: dataRep.miseEnAvant,
       localisation: dataRep.localisation,

@@ -158,7 +158,7 @@ export class ExploreComponent implements OnInit {
           };
           this.result = [{
             searchField: this.text,
-            searchItem: [ ...itSearchItemSave, ...this.itSearchItem ],
+            searchItem: [...itSearchItemSave, ...this.itSearchItem],
           }];
           sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
         });
@@ -215,6 +215,10 @@ export class ExploreComponent implements OnInit {
  */
   public getVideo() {
     return this.video;
+  }
+
+  public buildClassLabelForm(): string {
+    return "ds44-formLabel " + (this.text ? 'ds44-moveLabel' : '')
   }
 }
 
