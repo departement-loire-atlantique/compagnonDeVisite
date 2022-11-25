@@ -27,7 +27,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
 
   //template
   defaultCSS = "max-lines";
-  defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+  defaultText = $localize`:@@ParcoursComp-more:Voir plus`;
 
   constructor(
               private _route: ActivatedRoute,
@@ -84,6 +84,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    *
    */
   public getDescription() {
+    console.log(this.oeuvre?.description);
     return this.oeuvre?.description;
   }
 
@@ -127,10 +128,10 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    public showDesc() {
     if(this.defaultCSS === "max-lines") {
       this.defaultCSS = "default-lines ";
-      this.defaultText = $localize`:@@ParcoursComp-less:Réduire`;
+      this.defaultText = $localize`:@@ParcoursComp-less:Voir moins`;
     } else {
       this.defaultCSS = "max-lines";
-      this.defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+      this.defaultText = $localize`:@@ParcoursComp-more:Voir plus`;
     }
   }
 

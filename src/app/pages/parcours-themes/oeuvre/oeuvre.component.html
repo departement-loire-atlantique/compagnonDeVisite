@@ -10,7 +10,7 @@
         <h3>{{ getTitle() }}</h3>
       </div>
     <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
-      <div class="block-indications">
+      <div class="block-indications" *ngIf="getDesc()">
         <div class="desc-oeuvre top-space">
           <p [innerHTML]="getDesc()"></p>
         </div>
@@ -27,7 +27,7 @@
       </app-carrousel>
 
       <div class="block-indications">
-        <div class="desc-oeuvre">
+        <div class="desc-oeuvre" *ngIf="getDesc()">
           <p id="desc" [innerHTML]="getDesc()" [class]="getCSS()"></p>
           <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
         </div>

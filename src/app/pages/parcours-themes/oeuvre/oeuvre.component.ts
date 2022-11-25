@@ -20,7 +20,7 @@ export class OeuvreComponent implements OnInit {
 
   //template
   defaultCSS = "max-lines";
-  defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+  defaultText = $localize`:@@ParcoursComp-more:Voir plus`;
 
   // key localStorage
   listEtape: string = "listEtape";
@@ -269,10 +269,10 @@ export class OeuvreComponent implements OnInit {
    public showDesc() {
     if(this.defaultCSS === "max-lines") {
       this.defaultCSS = "default-lines ";
-      this.defaultText = $localize`:@@ParcoursComp-less:Réduire`;
+      this.defaultText = $localize`:@@ParcoursComp-less:Voir moins`;
     } else {
       this.defaultCSS = "max-lines";
-      this.defaultText = $localize`:@@ParcoursComp-more:Lire la suite`;
+      this.defaultText = $localize`:@@ParcoursComp-more:Voir plus`;
     }
   }
 

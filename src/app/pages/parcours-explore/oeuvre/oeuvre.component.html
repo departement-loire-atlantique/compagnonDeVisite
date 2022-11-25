@@ -6,10 +6,10 @@
   </div>
 
   <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
-  <div class="desc-oeuvre">
+  <div class="desc-oeuvre" *ngIf="getDescription()" >
     <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
     <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
-</div>
+  </div>
 
   <app-collapser-oeuvre id="indications" [imagePlan]="getPlan()"></app-collapser-oeuvre>
 
