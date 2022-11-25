@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
@@ -46,6 +46,7 @@ export class ExploreComponent implements OnInit {
     private _ds: DesignSystemService,
     private _route: ActivatedRoute,
     private _jcmsEspace: EspaceByLangService,
+    private router: Router,
   ) { }
 
   /**
@@ -112,9 +113,9 @@ export class ExploreComponent implements OnInit {
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
-          text: this.text + '*',
+          text: Number(this.text) ? this.text :  this.text + '*',
           types: ['Oeuvre'],
-          searchedFields: ['title', 'numeroDeLoeuvre'],
+          searchedFields: Number(this.text) ? ['numeroDeLoeuvre'] : ['title', 'numeroDeLoeuvre', 'description'],
           sort: ['title'],
           exactType: true,
           mode: 'advanced',
@@ -160,7 +161,14 @@ export class ExploreComponent implements OnInit {
             searchField: this.text,
             searchItem: [...itSearchItemSave, ...this.itSearchItem],
           }];
-          sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
+
+          // Si  recherche avec le numéro de l'oeuvre -> route dans l'oeuvre
+          if (this.result.length > 0 && Number(this.text)){
+            this.router.navigate([this.result[0].searchItem[0]?.item.url]);
+          } else {
+            sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
+          }
+
         });
       }
 
