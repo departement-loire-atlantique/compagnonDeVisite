@@ -3,6 +3,9 @@ import { Tuile } from 'src/app/components/tuile-v/tuile-v.component';
 import { JAngularService } from 'j-angular';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { ActivatedRoute } from '@angular/router';
+import { CatsMngService } from 'src/app/services/cats-mng.service';
+import { environment } from 'src/environments/environment';
+import { Category } from 'src/app/models/jcms/category';
 
 @Component({
   selector: 'app-parcours-fin',
@@ -17,12 +20,24 @@ export class ParcoursFinComponent implements OnInit {
   video: string | undefined;
   transcription?: string;
   idParcours: string = "idParcours";
+  idCatRoot: string = '';
+  imageFooter: string = 'assets/Phone.png';
 
   constructor(
     private _route: ActivatedRoute,
-    private _jcms: JAngularService) { }
+    private _jcms: JAngularService,
+    private _catMng: CatsMngService,) { }
 
   ngOnInit(): void {
+
+    this.idCatRoot = environment.catRoot;
+
+    this._catMng.cat(this.idCatRoot).subscribe((cat: Category) => {
+      if (cat.image) {
+        this.imageFooter = cat.image;
+      }
+    });
+
     let parcoursId = this._route.snapshot.paramMap.get('id');
 
     if (!parcoursId) {
