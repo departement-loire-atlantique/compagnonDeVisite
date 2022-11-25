@@ -107,6 +107,9 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    * get label bouton
    */
   public getLabelBtn() {
+    if (sessionStorage.getItem("URLback")?.includes("/explore"))
+      return $localize`:@@BackComp-text:Retour à la recherche`;
+
     return $localize`:@@BackComp-liste:Retour à la liste`;
   }
 
