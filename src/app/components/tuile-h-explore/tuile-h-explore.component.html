@@ -7,8 +7,8 @@
           <img *ngIf="searchItem.item.img" [src]="searchItem.item.img" alt="" class="ds44-imgRatio" />
         </picture>
         <div [class]="'btn-play ' + searchItem.state">
-          <i *ngIf="searchItem.state !== passed" class="icon icon-play" aria-hidden="true"></i>
-          <i *ngIf="searchItem.state === passed" class="icon icon-replay" aria-hidden="true"></i>
+          <i *ngIf="searchItem.state !== passed" class="icon icon--medium icon-play" aria-hidden="true"></i>
+          <i *ngIf="searchItem.state === passed" class="icon icon--large icon-replay" aria-hidden="true"></i>
         </div>
       </div>
       <div class="ds44-card__section--horizontal">

@@ -7,9 +7,9 @@
           <img *ngIf="etape.item.img" [src]="etape.item.img" alt="" class="ds44-imgRatio" />
         </picture>
         <div [class]="'btn-play ' + etape.state">
-          <i *ngIf="etape.state === 'active'" class="icon icon-play" aria-hidden="true"></i>
-          <i *ngIf="etape.state === 'passed'" class="icon icon-replay" aria-hidden="true"></i>
-          <i *ngIf="etape.state === 'inactive'" class="icon icon-play-off" aria-hidden="true"></i>
+          <i *ngIf="etape.state === 'active'" class="icon icon--medium icon-play" aria-hidden="true"></i>
+          <i *ngIf="etape.state === 'passed'" class="icon icon--large icon-replay" aria-hidden="true"></i>
+          <i *ngIf="etape.state === 'inactive'" class="icon icon--large icon-play-off" aria-hidden="true"></i>
         </div>
       </div>
       <div class="ds44-card__section--horizontal">
