@@ -26,4 +26,8 @@ export class ListBGComponent {
   public isInternLink(url: string): boolean {
     return ListBGComponent.regInternLink.test(url);
   }
+
+  public getIsPMR(){
+    return sessionStorage.getItem("isPMR") === 'true' ? true : false;
+  }
 }

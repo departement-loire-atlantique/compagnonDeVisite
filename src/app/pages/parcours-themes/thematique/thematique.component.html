@@ -15,10 +15,10 @@
       Vous êtes une personne à mobilité réduite ?</p>
       <!-- TODO toggle -->
     <div class="ds44-form__container ds44-checkBox-radio_list inbl">
-      <input (click)="doSearch('oui')" type="radio" name="radio2" value="oui" id="name-radio-form-element-49879-m" class="ds44-radio"   required  aria-describedby="mandatory-message-form-element-49879" /><label id="label-radio-form-element-49879-m" for="name-radio-form-element-49879-m" class="ds44-radioLabel" style="padding-left: 2rem;">Oui</label>
+      <input [checked]="isPMR" (click)="doIsPMR('true')" type="radio" name="radio2" value="oui" id="name-radio-form-element-49879-m" class="ds44-radio"   required  aria-describedby="mandatory-message-form-element-49879" /><label id="label-radio-form-element-49879-m" for="name-radio-form-element-49879-m" class="ds44-radioLabel" style="padding-left: 2rem;">Oui</label>
     </div>
     <div class="ds44-form__container ds44-checkBox-radio_list inbl">
-    <input checked (click)="doSearch('non')" type="radio" name="radio2" value="non" id="name-radio-form-element-49879-f" class="ds44-radio"   required  aria-describedby="mandatory-message-form-element-49879" /><label id="label-radio-form-element-49879-f" for="name-radio-form-element-49879-f" class="ds44-radioLabel" style="padding-left: 2rem;">Non</label>
+    <input [checked]="!isPMR" (click)="doIsPMR('false')" type="radio" name="radio2" value="non" id="name-radio-form-element-49879-f" class="ds44-radio"   required  aria-describedby="mandatory-message-form-element-49879" /><label id="label-radio-form-element-49879-f" for="name-radio-form-element-49879-f" class="ds44-radioLabel" style="padding-left: 2rem;">Non</label>
     </div>
   </div>
 

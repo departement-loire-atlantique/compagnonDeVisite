@@ -21,7 +21,7 @@ export class ThematiqueComponent implements OnInit {
   listParcours: Item[] | undefined;
   listParcoursPMR: Item[] = [];
   listParcoursNoPMR: Item[] = [];
-  isPMR: boolean = false;
+  isPMR!: boolean;
   videoLSF: string | undefined;
   transcription?: string;
   isLSF : boolean = $localize.locale === 'FR';
@@ -42,6 +42,9 @@ export class ThematiqueComponent implements OnInit {
    * @returns
    */
   ngOnInit(): void {
+
+    this.isPMR = sessionStorage.getItem("isPMR") === 'true' ? true : false;
+
     const espaceJcms = this._jcmsEspace.getJcmsSpace();
 
 
@@ -112,6 +115,8 @@ export class ThematiqueComponent implements OnInit {
           })
         }
       }
+
+      /** Gestion PMR */
       this.listParcours?.forEach((currentValue, index) => {
         if (currentValue.isJExplore) {
           this.listParcoursPMR.push(currentValue);
@@ -128,10 +133,11 @@ export class ThematiqueComponent implements OnInit {
   }
 
   /**
-   *
+   * Toggle PMR
    */
-  public doSearch(isPMR: string) {
-    this.isPMR = isPMR === 'oui' ? true : false;
+  public doIsPMR(isPMR: string) {
+    sessionStorage.setItem("isPMR", isPMR);
+    this.isPMR = isPMR === 'true' ? true : false;
   }
 
   /**
@@ -140,7 +146,7 @@ export class ThematiqueComponent implements OnInit {
    */
   public getListParcours() {
     if (this.isLSF)
-    return this.listParcours;
+      return this.listParcours;
     return this.isPMR ? this.listParcoursPMR : this.listParcoursNoPMR;
   }
 

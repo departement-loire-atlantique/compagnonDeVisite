@@ -44,7 +44,7 @@ export class ParcoursMap {
       transcription: dataRep.transcription,
       videoFin: buildUrlMedia(dataRep.videoFin),
       transcriptionFin: dataRep.transcriptionFin,
-      parcoursPMR: dataRep.parcoursPMR,
+      parcoursPMR: dataRep.parcoursPMR || false,
     };
   }
 }
