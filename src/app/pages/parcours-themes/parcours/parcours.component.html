@@ -5,7 +5,7 @@
 
   <div class="ds44-container-large">
 
-    <div *ngIf="!getVideo()">
+    <div *ngIf="!getVideo() && getDescription() ">
       <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
       <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
     </div>
