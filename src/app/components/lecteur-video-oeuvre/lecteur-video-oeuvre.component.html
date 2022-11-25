@@ -1,5 +1,4 @@
 <div class="video" id="video-container" #videoContainer>
-  <app-oeuvre-suiv-pred [steps]="steps"></app-oeuvre-suiv-pred>
   <div  class="lecteur-video">
     <div class="control">
       <button (click)="play()" [disabled]="state.error" *ngIf="!state?.playing">
@@ -29,6 +28,7 @@
       </p>
     </div>
   </div>
+  <app-oeuvre-suiv-pred [steps]="steps"></app-oeuvre-suiv-pred>
 </div>
 <div *ngIf="transcription" class="transcription" >
   <app-collapser [dataTitle]="['Afficher la transcription']" [dataVal]="[transcription]"></app-collapser>
