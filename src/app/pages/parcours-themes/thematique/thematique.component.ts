@@ -44,7 +44,7 @@ export class ThematiqueComponent implements OnInit {
    */
   ngOnInit(): void {
 
-    this.isLSF = this.locale === 'fr' ? true : false;
+    this.isLSF = this.locale === 'lsf' ? true : false;
 
     this.isPMR = sessionStorage.getItem("isPMR") === 'true' ? true : false;
 
