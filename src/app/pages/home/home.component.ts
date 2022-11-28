@@ -1,9 +1,7 @@
 import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
-import { JcmsEspace } from 'src/app/models/environment';
 import { Item } from 'src/app/models/item';
 import { Category } from 'src/app/models/jcms/category';
 import { CatsMngService } from 'src/app/services/cats-mng.service';
-import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -16,7 +14,7 @@ export class HomeComponent implements OnInit {
   private _nextPageRoute: string = "themes";
 
   idCatRoot: string = '';
-  imageFooter: string = 'assets/Phone.png';
+  imageFooter: string = 'assets/Groupe_3506.png';
 
   languages: { [key: string]: any } = {
     'fr': {

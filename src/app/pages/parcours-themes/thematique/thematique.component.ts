@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { map } from 'rxjs';
@@ -24,13 +24,14 @@ export class ThematiqueComponent implements OnInit {
   isPMR!: boolean;
   videoLSF: string | undefined;
   transcription?: string;
-  isLSF : boolean = $localize.locale === 'FR';
+  isLSF!: boolean;
 
   mapParcours: ParcoursMap = new ParcoursMap();
 
   idThematique: string = "idThematique";
 
   constructor(
+    @Inject(LOCALE_ID) public locale: string,
     private _catMng: CatsMngService,
     private _route: ActivatedRoute,
     private _jcms: JAngularService,
@@ -42,6 +43,8 @@ export class ThematiqueComponent implements OnInit {
    * @returns
    */
   ngOnInit(): void {
+
+    this.isLSF = this.locale === 'fr' ? true : false;
 
     this.isPMR = sessionStorage.getItem("isPMR") === 'true' ? true : false;
 
