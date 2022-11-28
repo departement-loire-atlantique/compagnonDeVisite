@@ -10,10 +10,18 @@
       <div class="ds44-flex-container ds44-flex-valign-center">
 
         <div class="ds44-colLeft">
-          <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()"></app-back>
+          <div *ngIf="popUp;else next">
+            <app-back-popup [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()" ></app-back-popup>
+          </div>
+          <ng-template #next>
+            <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()" ></app-back>
+          </ng-template>
         </div>
 
         <div class="ds44-colRight">
+          <div *ngIf="imagePlan">
+            <app-overlay-map [image]="imagePlan"></app-overlay-map>
+          </div>
           <app-menu></app-menu>
         </div>
 
