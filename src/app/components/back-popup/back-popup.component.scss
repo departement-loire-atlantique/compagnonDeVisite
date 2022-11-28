@@ -34,7 +34,6 @@ A.back-btn {
 .ds44-btnStd {
   display: flex;
   align-items: center;
-//  margin: 10px;
   padding-right: 0.5rem;
   span {
     width: 80%;
@@ -44,5 +43,10 @@ A.back-btn {
 .btn-popup {
   display: flex;
   justify-content: center;
+
+  .ds44-btnStd {
+    margin: 10px;
+    padding-right: 1.5rem;
+  }
 }
 
