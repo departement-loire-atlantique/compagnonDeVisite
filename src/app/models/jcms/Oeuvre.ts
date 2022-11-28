@@ -6,6 +6,8 @@ import { buildUrlMedia, Content } from "./content";
  */
  export interface Oeuvre extends Content {
 
+  titreCourt: string | undefined,
+
   description: string | undefined,
 
     /**
@@ -60,6 +62,7 @@ import { buildUrlMedia, Content } from "./content";
       categorieDeNavigation: dataRep.categorieDeNavigation,
       miseEnAvant: dataRep.miseEnAvant,
       localisation: dataRep.localisation,
+      titreCourt: dataRep.titreCourt,
     };
   }
 }

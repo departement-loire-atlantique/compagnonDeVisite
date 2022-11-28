@@ -185,6 +185,14 @@ export class OeuvreComponent implements OnInit {
   }
 
   /**
+   * Get le titre court de l'oeuvre
+   * @returns le titre
+   */
+  public getShortTitle() {
+    return this.oeuvre?.titreCourt;
+  }
+
+  /**
    * Get la description de l'oeuvre
    * @returns la description
    */
