@@ -53,7 +53,7 @@ export class ParcoursThemesComponent implements OnInit {
       }
 
       cats.forEach((currentValue, index) => {
-        if (currentValue.afficheExpo === 'false') {
+        if (currentValue.afficheExpo === 'false' ) {
           cats.splice(index, 1);
         }
       });

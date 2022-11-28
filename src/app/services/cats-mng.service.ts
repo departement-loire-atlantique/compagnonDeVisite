@@ -18,13 +18,19 @@ export class CatsMngService {
    */
   public catsChildren(idCat: string): Observable<Category[]> {
     return this._jcms
-      .get<Category[]>('plugins/compagnondevisite/category/children/' + idCat, {
-        params: { pagerAll: 'true' },
+    .get<Category[]>('data/children/' + idCat, {
+        params: { pagerAll: 'true',
+                  related: 'extraDataMap',
+                },
       })
       .pipe(
         // ex rep voir \assets\mock\cats\children\**
         map((rep: any) =>
-          rep.dataSet.map((itData: any): Category => this.mapToCat(itData))
+          rep.dataSet.map((itData: any): Category =>
+          {
+            console.log(itData);
+            return this.mapToCat(itData);
+          } )
         )
       )
       .pipe(
@@ -69,7 +75,7 @@ export class CatsMngService {
       url: dataRep.friendlyURLSet ? dataRep.friendlyURLSet[0] : '',
       order: dataRep.order,
       parent: dataRep.parent ? dataRep.parent.id : undefined,
-      afficheExpo: dataRep.afficheExpo,
+      afficheExpo: dataRep.extraDataMap ? dataRep.extraDataMap['extra.Category.compagnonDeVisite.exposition.display'] : 'false',
       videoLsf: dataRep.extraDataMap ? dataRep.extraDataMap['extra.Category.compagnonDeVisite.lsf.video'] : '',
       videoLsfTranscription: dataRep.extraDataMap ? dataRep.extraDataMap['extra.Category.compagnonDeVisite.lsf.video.text'] : '',
     };
