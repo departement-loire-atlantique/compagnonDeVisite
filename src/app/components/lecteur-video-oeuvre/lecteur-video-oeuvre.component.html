@@ -11,7 +11,6 @@
       </button>
     </div>
     <div class="slider">
-      <p><strong>{{ this.name }}</strong></p>
       <p><input type="range"
                 id="cowbell"
                 name="cowbell"
@@ -28,6 +27,7 @@
       </p>
     </div>
   </div>
+  <p class="titre"><strong>{{ this.name }}</strong></p>
   <app-oeuvre-suiv-pred [steps]="steps"></app-oeuvre-suiv-pred>
 </div>
 <div *ngIf="transcription" class="transcription" >

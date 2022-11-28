@@ -1,16 +1,14 @@
-<app-header [customProcess]="true" [returnUrl]="getHomeParcours()" [labelBtn]="getLabelBtn()" [imagePlan]="getMap()" ></app-header>
+<app-header [customProcess]="true" [imagePlan]="getMap()" [returnUrl]="getHomeParcours()" [labelBtn]="getLabelBtn()"></app-header>
 
 <main>
 
   <div *ngIf="getVideo(); else noVideo">
     <div class="small-border-space">
       <div class="ds44-lightBG">
-        <div class="side-space">
           <p>{{ getTextEtape() }}</p>
           <h3>{{ getTitle() }}</h3>
-        </div>
-        <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
       </div>
+    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getTitle()" [steps]="getSteps()" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
       <div class="block-indications" *ngIf="getDesc()">
         <div class="desc-oeuvre top-space">
           <p [innerHTML]="getDesc()"></p>
