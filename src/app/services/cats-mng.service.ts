@@ -26,11 +26,7 @@ export class CatsMngService {
       .pipe(
         // ex rep voir \assets\mock\cats\children\**
         map((rep: any) =>
-          rep.dataSet.map((itData: any): Category =>
-          {
-            console.log(itData);
-            return this.mapToCat(itData);
-          } )
+          rep.dataSet.map((itData: any): Category => this.mapToCat(itData))
         )
       )
       .pipe(

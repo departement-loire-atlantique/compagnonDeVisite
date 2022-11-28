@@ -84,7 +84,6 @@ export class ParcoursThemesComponent implements OnInit {
 
           this._jcms.get<any>('data/' + cat.videoLsf,)
             .subscribe((media: Media) => {
-              console.log(media);
               if (media) {
                 this.videoLSF = buildUrlMedia(media.filename);
               }

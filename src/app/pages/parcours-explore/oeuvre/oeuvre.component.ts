@@ -84,7 +84,6 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    *
    */
   public getDescription() {
-    console.log(this.oeuvre?.description);
     return this.oeuvre?.description;
   }
 
