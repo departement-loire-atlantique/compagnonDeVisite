@@ -10,17 +10,20 @@
     <app-lecteur-video [file]="videoLSF" [transcription]="transcription"></app-lecteur-video>
   </div>
 
-  <div id="form-element-49879" data-name="radio2" class="ds44-form__radio_container ds44-form__container"  data-required="true" *ngIf="!isLSF">
-    <i class="icon icon-handicap-moteur"></i>
-    <p id="mandatory-message-form-element-49879" class="ds44-mandatory_message" i18n="@@ThemeExpo-PMR-lbl" >
-      Vous êtes une personne à mobilité réduite ?</p>
-      <!-- TODO toggle -->
-    <div class="ds44-form__container ds44-checkBox-radio_list inbl">
-      <input [checked]="isPMR" (click)="doIsPMR('true')" type="radio" name="radio2" value="oui" id="name-radio-form-element-49879-m" class="ds44-radio"   required  aria-describedby="mandatory-message-form-element-49879" /><label id="label-radio-form-element-49879-m" for="name-radio-form-element-49879-m" class="ds44-radioLabel" style="padding-left: 2rem;">Oui</label>
+  <div id="form-element-49879" data-name="radio2" class="ds44-form__radio_container ds44-form__container"  data-required="true" *ngIf="isLSF">
+    <div class="flex">
+      <i class="icon icon-handicap-moteur"></i>
+      <p id="mandatory-message-form-element-49879" class="ds44-mandatory_message" i18n="@@ThemeExpo-PMR-lbl" >
+        Vous êtes une personne à mobilité réduite ?</p>
     </div>
+    <div class="yesNo">
     <div class="ds44-form__container ds44-checkBox-radio_list inbl">
     <input [checked]="!isPMR" (click)="doIsPMR('false')" type="radio" name="radio2" value="non" id="name-radio-form-element-49879-f" class="ds44-radio"   required  aria-describedby="mandatory-message-form-element-49879" /><label id="label-radio-form-element-49879-f" for="name-radio-form-element-49879-f" class="ds44-radioLabel" style="padding-left: 2rem;">Non</label>
     </div>
+    <div class="ds44-form__container ds44-checkBox-radio_list inbl">
+      <input [checked]="isPMR" (click)="doIsPMR('true')" type="radio" name="radio2" value="oui" id="name-radio-form-element-49879-m" class="ds44-radio"   required  aria-describedby="mandatory-message-form-element-49879" /><label id="label-radio-form-element-49879-m" for="name-radio-form-element-49879-m" class="ds44-radioLabel" style="padding-left: 2rem;">Oui</label>
+    </div>
+  </div>
   </div>
 
   <app-list-bg [items]="getListParcours()" [noSeparator]="true"></app-list-bg>

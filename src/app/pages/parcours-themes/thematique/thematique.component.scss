@@ -7,12 +7,24 @@
   }
 }
 
-#form-element-49879 {
+#form-element-49879{
+  margin: 1.9rem 0;
+}
+
+.yesNo {
+  margin-left: 42px;
+
+  .ds44-form__container {
+    margin: 0;
+  }
+}
+
+.flex {
   display: flex;
   margin: 1.2em 1.4em 0;
+}
 
-  #mandatory-message-form-element-49879 {
-    font: normal normal normal 16px/22px Muli;
-    padding: 0 0.6em;
-  }
+#mandatory-message-form-element-49879 {
+  font: normal normal normal 16px/22px Muli;
+  padding: 0 0.6em;
 }
