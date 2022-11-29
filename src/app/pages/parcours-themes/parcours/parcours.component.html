@@ -1,11 +1,10 @@
-<app-header-parcours [customProcess]="true" [returnUrl]="getThemeURL()" [imagePlan]="getPlan()" [popUp]="true" [labelBtn]="getLabelBtn()"></app-header-parcours>
-
+<app-header [customProcess]="true" [returnUrl]="getThemeURL()" [labelBtn]="getLabelBtn()" [imagePlan]="getPlan()" [popUp]="true" ></app-header>
 <main class="border-space">
   <h1 class="underline top-space"> {{ getTitle() }}</h1>
 
   <div class="ds44-container-large">
 
-    <div *ngIf="!getVideo()">
+    <div *ngIf="!getVideo() && getDescription() ">
       <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
       <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
     </div>
@@ -25,7 +24,7 @@
     </div>
   </div>
 
-  <app-etapes [etapes]="getEtapes()"></app-etapes>
+<!--  <app-etapes [etapes]="getEtapes()"></app-etapes> -->
 
   <app-tuile-h-etape [etapes]="getEtapes()"></app-tuile-h-etape>
 

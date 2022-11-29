@@ -53,7 +53,7 @@ export class ParcoursThemesComponent implements OnInit {
       }
 
       cats.forEach((currentValue, index) => {
-        if (currentValue.afficheExpo === 'false') {
+        if (currentValue.afficheExpo === 'false' ) {
           cats.splice(index, 1);
         }
       });
@@ -84,7 +84,6 @@ export class ParcoursThemesComponent implements OnInit {
 
           this._jcms.get<any>('data/' + cat.videoLsf,)
             .subscribe((media: Media) => {
-              console.log(media);
               if (media) {
                 this.videoLSF = buildUrlMedia(media.filename);
               }

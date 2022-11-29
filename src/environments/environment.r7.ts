@@ -11,6 +11,7 @@ export const environment: Environment = {
   front: 'http://localhost:8089/',
   token: 'djI7cmVjXzUwMDc7MTY4NzM1Mzg4ODk3MDtHRVQsOzsyMzskMmEkMDQkWDFvTFlMNDdhRzdTYVhCWkFyQnF0T1Bwamk5UHRXNzZKZXZ2UWVsOWRqckx5V0JLZy9HMG0=',
   catJExplore: 'rec_5058',
+  catRoot: 'rec_5029',
   lang: {
     'fr': { espace: 'rec_5033', catHome: 'rec_5034' },
     'en': { espace: 'rec_5038', catHome: 'rec_5039' },

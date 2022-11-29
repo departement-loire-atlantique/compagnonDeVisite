@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService, JcmsPager } from 'j-angular';
 import { Observable } from 'rxjs';
 import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
@@ -46,6 +46,7 @@ export class ExploreComponent implements OnInit {
     private _ds: DesignSystemService,
     private _route: ActivatedRoute,
     private _jcmsEspace: EspaceByLangService,
+    private router: Router,
   ) { }
 
   /**
@@ -64,6 +65,7 @@ export class ExploreComponent implements OnInit {
 
     this.idJExplore = localStorage.getItem("IdJExplore") || "";
     this.idCatJExplore = environment.catJExplore;
+    sessionStorage.removeItem("URLback");
 
     this._jcms.get<Parcours>('data/' + this.idJExplore).subscribe((parcours: Parcours) => {
       this.title = parcours.title;
@@ -112,9 +114,9 @@ export class ExploreComponent implements OnInit {
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
-          text: this.text + '*',
+          text: Number(this.text) ? this.text :  this.text + '*',
           types: ['Oeuvre'],
-          searchedFields: ['title', 'numeroDeLoeuvre'],
+          searchedFields: Number(this.text) ? ['numeroDeLoeuvre'] : ['title', 'numeroDeLoeuvre', 'description'],
           sort: ['title'],
           exactType: true,
           mode: 'advanced',
@@ -158,9 +160,17 @@ export class ExploreComponent implements OnInit {
           };
           this.result = [{
             searchField: this.text,
-            searchItem: [ ...itSearchItemSave, ...this.itSearchItem ],
+            searchItem: [...itSearchItemSave, ...this.itSearchItem],
           }];
-          sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
+
+          // Si  recherche avec le numéro de l'oeuvre -> route dans l'oeuvre
+          if (this.result.length > 0 && Number(this.text)){
+            sessionStorage.setItem("URLback", "/explore");
+            this.router.navigate([this.result[0].searchItem[0]?.item.url]);
+          } else {
+            sessionStorage.setItem(this.resultRetrieveKey, JSON.stringify(this.result));
+          }
+
         });
       }
 
@@ -215,6 +225,17 @@ export class ExploreComponent implements OnInit {
  */
   public getVideo() {
     return this.video;
+  }
+
+  /**
+   * Label du bouton de retour
+   */
+  getLabelBouton() {
+    return $localize`:@@BackComp-text:Retour aux parcours`;
+  }
+
+  public buildClassLabelForm(): string {
+    return "ds44-formLabel " + (this.text ? 'ds44-moveLabel' : '')
   }
 }
 

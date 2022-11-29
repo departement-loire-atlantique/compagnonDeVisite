@@ -18,6 +18,12 @@ export class HeaderComponent {
   returnUrl:string | undefined;
 
   @Input()
+  popUp:boolean = false;
+
+  @Input()
+  imagePlan:string | undefined;
+
+  @Input()
   labelBtn: string = $localize`:@@BackComp-text:Retour` ;
 
   @Input()

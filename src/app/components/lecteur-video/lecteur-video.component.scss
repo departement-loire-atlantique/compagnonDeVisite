@@ -6,8 +6,7 @@
   background-color: $light-grey;
 
   .lecteur-video {
-    // padding-top: 0.5rem;
-    padding-bottom: 0.7rem;
+    padding-bottom: 0.5rem;
     display: flex;
     align-items: flex-end;
 
@@ -16,7 +15,6 @@
       button {
         margin-left: 10px;
         margin-right: 10px;
-        // margin-bottom: 27px;
         width: 44px;
         height: 44px;
         background-color: $black;

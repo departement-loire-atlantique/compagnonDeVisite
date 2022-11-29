@@ -32,11 +32,21 @@ A.back-btn {
 }
 
 .ds44-btnStd {
-  margin: 10px;
+  display: flex;
+  align-items: center;
+  padding-right: 0.5rem;
+  span {
+    width: 80%;
+  }
 }
 
 .btn-popup {
   display: flex;
   justify-content: center;
+
+  .ds44-btnStd {
+    margin: 10px;
+    padding-right: 1.5rem;
+  }
 }
 

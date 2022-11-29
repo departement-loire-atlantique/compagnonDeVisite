@@ -1,5 +1,7 @@
 import { Component, Inject, LOCALE_ID, OnInit } from '@angular/core';
 import { Item } from 'src/app/models/item';
+import { Category } from 'src/app/models/jcms/category';
+import { CatsMngService } from 'src/app/services/cats-mng.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -7,9 +9,12 @@ import { environment } from 'src/environments/environment';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   private _nextPageRoute: string = "themes";
+
+  idCatRoot: string = '';
+  imageFooter: string = 'assets/Groupe_3506.png';
 
   languages: { [key: string]: any } = {
     'fr': {
@@ -42,7 +47,8 @@ export class HomeComponent {
     }
   };
 
-  constructor(@Inject(LOCALE_ID) public locale: string) {
+  constructor(@Inject(LOCALE_ID) public locale: string,
+              private _catMng: CatsMngService,) {
     if (!environment.production) {
       for (let key in this.languages) {
         this.languages[key].url = this._nextPageRoute;
@@ -50,6 +56,18 @@ export class HomeComponent {
     } else {
       this.languages[locale].url = this._nextPageRoute;
     }
+  }
+
+  ngOnInit(): void {
+
+    this.idCatRoot = environment.catRoot;
+
+    this._catMng.cat(this.idCatRoot).subscribe((cat: Category) => {
+      if (cat.image) {
+        this.imageFooter = cat.image;
+      }
+    });
+
   }
 
   getItem(): Item[] {

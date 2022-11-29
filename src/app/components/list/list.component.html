@@ -11,14 +11,14 @@
 
     <ng-container *ngIf="itItem.url">
       <ng-template #externLink>
-        <a *ngIf="itItem.url" [href]="itItem.url" [title]="itItem.title">
+        <a *ngIf="itItem.url" [href]="itItem.url" [title]="itItem.title" tabindex="1">
           <ng-container *ngIf="false; else content"></ng-container>
           <span class="icon icon-arrow-right" aria-hidden="true"></span>
         </a>
       </ng-template>
 
       <ng-container *ngIf="isInternLink(itItem.url); else externLink">
-        <a *ngIf="itItem.url" [routerLink]="itItem.url" [title]="itItem.title">
+        <a *ngIf="itItem.url" [routerLink]="itItem.url" [title]="itItem.title" tabindex="1">
           <ng-container *ngIf="false; else content"></ng-container>
           <span class="icon icon-arrow-right" aria-hidden="true"></span>
         </a>

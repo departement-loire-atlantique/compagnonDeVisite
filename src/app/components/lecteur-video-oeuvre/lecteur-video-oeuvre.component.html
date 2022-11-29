@@ -1,5 +1,4 @@
 <div class="video" id="video-container" #videoContainer>
-  <app-oeuvre-suiv-pred [steps]="steps"></app-oeuvre-suiv-pred>
   <div  class="lecteur-video">
     <div class="control">
       <button (click)="play()" [disabled]="state.error" *ngIf="!state?.playing">
@@ -12,7 +11,6 @@
       </button>
     </div>
     <div class="slider">
-      <p><strong>{{ this.name }}</strong></p>
       <p><input type="range"
                 id="cowbell"
                 name="cowbell"
@@ -29,4 +27,9 @@
       </p>
     </div>
   </div>
+  <p class="titre"><strong>{{ this.name }}</strong></p>
+  <app-oeuvre-suiv-pred [steps]="steps"></app-oeuvre-suiv-pred>
+</div>
+<div *ngIf="transcription" class="transcription" >
+  <app-collapser [dataTitle]="['Afficher la transcription']" [dataVal]="[transcription]"></app-collapser>
 </div>

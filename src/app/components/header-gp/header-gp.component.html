@@ -11,7 +11,7 @@
         <div class="ds44-colLeft">
           <a href="/" class="ds44-logoContainer">
             <picture class="ds44-logo">
-              <img src="../../../assets/logo_musee.png"
+              <img src="assets/logo_musee.png"
                 i18n-alt="@@HeaderGpComp-back-to-home"
                 alt="Retour à l&apos;accueil du site: Compagnon de visite du Musée Dobrée" />
             </picture>
@@ -21,7 +21,7 @@
         <div class="ds44-colRight">
 
           <a class="ds44-btn--menu ds44-btnIcoText--maxi ds44--xl-padding btn-menu-component"
-          i18n-title="@@HeaderGpComp-change-lang-link-title" title="Changer de langue"  data-target="#langue" data-js="ds44-modal">
+          i18n-title="@@HeaderGpComp-change-lang-link-title" title="Changer de langue"  data-target="#langue" data-js="ds44-modal" tabindex="0">
             <span class="ds44-btnInnerText" i18n="@@HeaderGpComp-change-lang-link">{{ getLanguage() }}
             </span>
             <i class="icon icon-french icon--sizeL" aria-hidden="true"></i>
@@ -42,13 +42,18 @@
 
 <section class="ds44-modal-container" id="langue" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="ds44-modal-box">
-    <h3 id="overlay-map-title" class="title-overlay" i18n-title="@@HeaderGpComp-change-lang-popin-title">Souhaitez-vous retourner au choix de langue ?</h3>
+    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="Fermer" data-js="ds44-modal-action-close">
+      <i class="icon icon-cross" aria-hidden="true"></i>
+      <span class="ds44-btnInnerText--bottom" i18n="@@global-close">Fermer</span>
+    </button>
+    <h3 id="overlay-map-title" class="title-overlay top-space" i18n-title="@@HeaderGpComp-change-lang-popin-title">Souhaitez-vous retourner au choix de langue ?</h3>
     <div class="btn-popup">
-      <a routerLink="/" class="ds44-btnStd" ><span i18n="@@global-yes"></span>Oui</a>
-
-      <a data-js="ds44-modal-action-close" class="ds44-btnStd" tabindex="0">
-        <span i18n="@@global-no">Non</span>
-      </a>
+      <button routerLink="/"  class="ds44-btnOverlay--closeOverlay ds44-btnStd" type="button" title="Oui">
+        <span i18n="@@global-yes">Oui</span>
+      </button>
+      <button class="ds44-btnOverlay--closeOverlay ds44-btnStd" type="button" title="Fermer" data-js="ds44-modal-action-close">
+        <span i18n="@@global-close">Fermer</span>
+      </button>
     </div>
 
   </div>

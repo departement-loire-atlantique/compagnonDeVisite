@@ -41,7 +41,7 @@ export interface Category {
   /**
    * Affiche ou cache l'exposition
    */
-  afficheExpo: string | false;
+  afficheExpo: string | undefined;
 
   videoLsf: string | undefined;
 

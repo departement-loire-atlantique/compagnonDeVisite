@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { map } from 'lodash';
+import { Component, Inject, Input, LOCALE_ID, OnInit } from '@angular/core';
 import { DesignSystemService } from 'src/app/services/design-system.service';
 
 @Component({
@@ -13,13 +12,14 @@ export class HeaderGpComponent implements OnInit {
   urlFavoris: string | undefined;
 
   localeList: Map<string,string> = new Map<string,string>([
-    [ 'EN', $localize`:@@Menulang-fr:English` ],
-    [ 'FR', $localize`:@@Menulang-fr:Français`],
-    [ 'LSF', $localize`:@@Menulang-fr:LSF`],
-    [ 'FALC', $localize`:@@Menulang-fr:FALC`],
+    [ 'en', $localize`:@@Menulang-fr:English` ],
+    [ 'fr', $localize`:@@Menulang-fr:Français`],
+    [ 'lsf', $localize`:@@Menulang-fr:LSF`],
+    [ 'falc', $localize`:@@Menulang-fr:FALC`],
   ]);
 
   constructor(
+    @Inject(LOCALE_ID) public locale: string,
     private _ds: DesignSystemService,
     ) { }
 
@@ -31,10 +31,11 @@ export class HeaderGpComponent implements OnInit {
    * get language
    */
   public getLanguage(){
-    let codeLocale:string = $localize.locale || 'FR';
+
+    let codeLocale:string = this.locale || 'fr';
 
     if (!this.localeList.has(codeLocale))
-      codeLocale = 'FR';
+      codeLocale = 'fr';
 
     return this.localeList.get(codeLocale);
   }

@@ -12,6 +12,7 @@ import { of } from 'rxjs';
 export class LecteurVideoOeuvreComponent implements OnInit, OnDestroy, AfterViewInit {
 
   @Input() file!: string | undefined;
+  @Input() transcription?: string;
   @Input() name!: string | undefined;
   @Input() steps: Steps | undefined;
   @ViewChild('videoContainer') videoContainer!: ElementRef;

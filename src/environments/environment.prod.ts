@@ -6,6 +6,7 @@ export const environment: Environment = {
   front: 'TODO',
   token: 'TODO',
   catJExplore: 'TODO',
+  catRoot: '',
   lang: {
     'fr': { espace: '', catHome: '' },
     'en': { espace: '', catHome: '' },

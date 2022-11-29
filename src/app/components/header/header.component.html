@@ -2,18 +2,26 @@
   <div class="ds44-blocBandeau ds44-header ds44-header--patrimoine" style="position: relative;">
     <div class="ds44-container-large">
       <ul class="ds44-list ds44-skiplinks">
-        <li><a routerLink="/" class="ds44-skiplinks--link">Aller au contenu</a></li>
-        <li><a [routerLink]="this.urlFavoris" class="ds44-skiplinks--link">Aller au menu</a></li>
-        <li><a href="/explore" class="ds44-skiplinks--link">Aller à la recherche</a></li>
-        <li><a href="/" class="ds44-skiplinks--link">Aller à la page d'accessibilité</a></li>
+        <li><a routerLink="/" class="ds44-skiplinks--link"  tabindex="1">Aller au contenu</a></li>
+        <li><a [routerLink]="this.urlFavoris" class="ds44-skiplinks--link"  tabindex="2">Aller au menu</a></li>
+        <li><a href="/explore" class="ds44-skiplinks--link"  tabindex="3">Aller à la recherche</a></li>
+        <li><a href="/" class="ds44-skiplinks--link" tabindex="4">Aller à la page d'accessibilité</a></li>
       </ul>
       <div class="ds44-flex-container ds44-flex-valign-center">
 
         <div class="ds44-colLeft">
-          <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()"></app-back>
+          <div *ngIf="popUp;else next">
+            <app-back-popup [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()" ></app-back-popup>
+          </div>
+          <ng-template #next>
+            <app-back [customProcess]="customProcess" (returnCustom)="returnCustom($event)" [text]="getLabelBtn()" [titleLink]="getHoverBtn()" ></app-back>
+          </ng-template>
         </div>
 
         <div class="ds44-colRight">
+          <div *ngIf="imagePlan">
+            <app-overlay-map [image]="imagePlan"></app-overlay-map>
+          </div>
           <app-menu></app-menu>
         </div>
 
