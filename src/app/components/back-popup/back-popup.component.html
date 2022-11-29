@@ -5,13 +5,18 @@
 
 <section class="ds44-modal-container" [id]="idTarget" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="ds44-modal-box">
+    <button class="ds44-btnOverlay--modale ds44-btnOverlay--closeOverlay" type="button" title="Fermer" data-js="ds44-modal-action-close">
+      <i class="icon icon-cross" aria-hidden="true"></i>
+      <span class="ds44-btnInnerText--bottom" i18n="@@global-close">Fermer</span>
+    </button>
     <h3 id="overlay-map-title" class="title-overlay"> {{ title }} </h3>
     <div class="btn-popup">
-      <a (click)="back()" class="ds44-btnStd" tabindex="0"> Oui </a>
-
-      <a data-js="ds44-modal-action-close" class="ds44-btnStd" tabindex="0">
+      <button (click)="back()" class="ds44-btnOverlay--closeOverlay ds44-btnStd" type="button" title="Oui">
+        <span i18n="@@global-yes">Oui</span>
+      </button>
+      <button class="ds44-btnOverlay--closeOverlay ds44-btnStd" type="button" title="Fermer" data-js="ds44-modal-action-close">
         <span i18n="@@global-close">Fermer</span>
-      </a>
+      </button>
     </div>
 
   </div>
