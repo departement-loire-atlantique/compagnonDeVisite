@@ -10,7 +10,7 @@ install:
 script:
   - ng build -c pre-prod
   - cd dist/compagnon-de-visite
-  - zip -r "${TRAVIS_BUILD_DIR}/compagnon_de_visite_${TRAVIS_TAG}.zip" * 
+  - zip -r "${TRAVIS_BUILD_DIR}/compagnon-de-visite_${TRAVIS_TAG}.zip" * 
   
 deploy:
   provider: releases
