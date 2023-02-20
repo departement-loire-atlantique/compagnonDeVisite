@@ -24,6 +24,12 @@ UL {
       border-top: 1px solid;
       border-top-color: $main-color ;
 
+      SECTION {
+        border-bottom: 1px solid;
+        border-bottom-color: $main-color ;
+        padding: 10px 0;
+      }
+
       .img-collapser {
         padding: 10px;
 

@@ -26,12 +26,12 @@
       </app-carrousel>
 
       <div class="block-indications">
+        <app-collapser-oeuvre id="indications" [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
+          [indications]="getIndications()"></app-collapser-oeuvre>
         <div class="desc-oeuvre" *ngIf="getDesc()">
           <p id="desc" [innerHTML]="getDesc()" [class]="getCSS()"></p>
           <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
         </div>
-        <app-collapser-oeuvre id="indications" [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
-          [indications]="getIndications()"></app-collapser-oeuvre>
       </div>
     </div>
 
@@ -44,11 +44,11 @@
 
       <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
 
-      <button type="button" class="ds44-fullWBtn ds44-btn--invert"
+      <!-- <button type="button" class="ds44-fullWBtn ds44-btn--invert"
         onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
         <span class="ds44-btnInnerText" i18n="@@ParcoursOeuvreComp-how-to-go">Comment m’y rendre</span>
         <i class="icon icon-down" aria-hidden="true"></i>
-      </button>
+      </button> -->
     </div>
   </ng-template>
 </main>

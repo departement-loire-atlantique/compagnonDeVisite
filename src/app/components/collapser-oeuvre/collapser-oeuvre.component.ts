@@ -30,6 +30,10 @@ export class CollapserOeuvreComponent implements AfterViewInit {
     this._ds.initCollapser();
   }
 
+  public hasInformation(): string {
+    return (this.audio || this.imagePlan || this.indications) ? "visible" : "hide";
+  }
+
   public isAudio() {
     return this.audio ? "visible" : "hide";
   }
