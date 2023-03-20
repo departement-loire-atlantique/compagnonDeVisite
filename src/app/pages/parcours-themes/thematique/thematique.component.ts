@@ -153,6 +153,15 @@ export class ThematiqueComponent implements OnInit {
   }
 
   /**
+   *
+   * @returns Présence parcours PMR
+   */
+  public isNotEmptyParcoursPMR() {
+    if(this.listParcoursPMR.length) return true;
+    return false;
+  }
+
+  /**
    * Get la cat de la thématique
    * @returns la current cat
    */
