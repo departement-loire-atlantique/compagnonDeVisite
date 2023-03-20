@@ -1,9 +1,15 @@
 <app-loader *ngIf="carousel && isElementLoading" color="#0013b1"></app-loader>
 <div *ngIf="carousel && !isElementLoading && elements.length > 1" class="c-carousel">
   <div class="swipper-carousel-wrap mod--hidden" data-nb-visible-slides="1" [attr.data-swiper-title]="carousel.titre"> <!-- swipper-carousel-slideshow -->
+    <div class="carrousel-text ds44-lightBG ds44-grid12-offset-1">
+      <h3 *ngIf="text" role="heading" aria-level="1" class="h3">
+        {{ text }}
+      </h3>
+    </div>
       <div class="swiper-container">
         <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
               <li #itemSwiper *ngFor="let item of elements; let isLast = last" class="swiper-slide">
+                <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-grid12-offset-1 ds44-img50">
                   <div *ngIf="true" class="ds44-diaporama-vignette">
                       <figure class="ds44-diaporama-vignette-container" role="figure" aria-label="item?.title">
                           <img class="ds44-diaporama-vignette-image" [src]="item?.imageMobile" [alt]="item?.title" />
@@ -14,6 +20,7 @@
                           </figcaption>
                       </figure>
                   </div>
+                </section>
               </li>
           </ul>
       </div>
