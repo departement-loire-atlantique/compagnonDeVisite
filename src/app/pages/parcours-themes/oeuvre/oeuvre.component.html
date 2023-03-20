@@ -22,7 +22,7 @@
 
   <ng-template #noVideo>
     <div class="small-border-space">
-      <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()">
+      <app-carrousel *ngIf="hasLoaded" [id]="getCarouselId()" [etape]="getTextEtape()" [text]="getTitle()" >
       </app-carrousel>
 
       <div class="block-indications">
@@ -44,11 +44,11 @@
 
       <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
 
-      <!-- <button type="button" class="ds44-fullWBtn ds44-btn--invert"
+       <button type="button" class="ds44-fullWBtn ds44-btn--invert"
         onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
         <span class="ds44-btnInnerText" i18n="@@ParcoursOeuvreComp-how-to-go">Comment m’y rendre</span>
         <i class="icon icon-down" aria-hidden="true"></i>
-      </button> -->
+      </button>
     </div>
   </ng-template>
 </main>
