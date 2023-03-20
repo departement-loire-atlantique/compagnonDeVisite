@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DesignSystemService } from 'src/app/services/design-system.service';
 
 /**
  * This component should be used to go back to the previous page.
@@ -9,7 +10,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './back-popup.component.html',
   styleUrls: ['./back-popup.component.scss'],
 })
-export class BackPopupComponent {
+export class BackPopupComponent implements OnInit  {
   /**
    * Text du lien de retour.
    * Default: Retour
@@ -47,7 +48,12 @@ export class BackPopupComponent {
   @Input()
   title: string = $localize`:@@BackPopUpComp-title-pop-up:Quitter le parcours ?`;
 
-  constructor(private _location: Location) {}
+  constructor(private _location: Location,
+    private _ds: DesignSystemService) {}
+
+  ngOnInit(): void {
+    this._ds.initOverlay();
+  }
 
   /**
    * @ignore

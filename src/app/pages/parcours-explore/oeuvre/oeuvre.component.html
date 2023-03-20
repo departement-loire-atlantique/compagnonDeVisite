@@ -17,12 +17,12 @@
   <div class="bottomFixed" *ngIf="oeuvre?.fichierSon && !getVideo()">
     <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" [location]="getLocation()" ></app-lecteur-audio>
 
-    <button type="button"
+    <!-- <button type="button"
             class="ds44-fullWBtn ds44-btn--invert"
             onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
       <span class="ds44-btnInnerText" i18n="@@ParcoursOeuvreComp-how-to-go">Comment m’y rendre</span>
       <i class="icon icon-down" aria-hidden="true"></i>
-    </button>
+    </button> -->
   </div>
   <div *ngIf="oeuvre?.description" class="visually-hidden">{{ oeuvre?.description }}</div>
 </main>

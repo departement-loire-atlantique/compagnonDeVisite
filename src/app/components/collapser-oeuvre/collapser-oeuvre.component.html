@@ -1,51 +1,39 @@
-<ul class="ds44-collapser">
+<ul [class]="hasInformation()" class="ds44-collapser">
 
-  <li [class]="isAudio() + ' ds44-collapser_element  first-elem'">
+  <li class='ds44-collapser_element first-elem'>
     <p role="heading" aria-level="3">
-      <button type="button" class="ds44-collapser_button" i18n="@@CollapserOeuvreComp-indic-audio" tabindex="1">
-        Réécouter l'indication audio
+      <button type="button" class="ds44-collapser_button" i18n="@@ParcoursOeuvreComp-how-to-go" tabindex="1">
+        Comment m’y rendre
         <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
       </button>
     </p>
     <div class="ds44-collapser_content">
-      <div class="audio-help">
-        <app-lecteur-audio *ngIf="hasLoaded" [file]='audio' [name]='titleAudio'>
-        </app-lecteur-audio>
-      </div>
+      <section [class]="isAudio()">
+        <h4 class="ds44-center" i18n="@@CollapserOeuvreComp-indic-audio">Réécouter l'indication audio</h4>
+        <div class="audio-help">
+          <app-lecteur-audio *ngIf="hasLoaded" [file]='audio' [name]='titleAudio'>
+          </app-lecteur-audio>
+        </div>
+      </section>
+
+      <section [class]="isImagePlan()">
+        <h4 class="ds44-center" i18n="@@CollapserOeuvreComp-map">Me repérer sur le plan</h4>
+        <div class="img-collapser">
+          <picture class="ds44-container-imgRatio">
+            <img [src]="imagePlan" alt="" />
+          </picture>
+        </div>
+      </section>
+
+      <section [class]="isIndications()">
+        <h4 class="ds44-center" i18n="@@CollapserOeuvreComp-suivre-parcours">Suivre le parcours</h4>
+        <div class="img-collapser">
+          <picture class="ds44-container-imgRatio">
+            <img [src]="indications" alt="" />
+          </picture>
+        </div>
+      </section>
+
     </div>
-  </li>
-
-
-  <li [class]="isImagePlan() + ' ds44-collapser_element'">
-    <p role="heading" aria-level="3">
-      <button type="button" class="ds44-collapser_button" i18n="@@CollapserOeuvreComp-map" tabindex="1">
-        Me repérer sur le plan
-        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
-      </button>
-    </p>
-    <div class="ds44-collapser_content">
-      <div class="img-collapser">
-        <picture class="ds44-container-imgRatio">
-          <img [src]="imagePlan" alt="" />
-        </picture>
-      </div>
-    </div>
-  </li>
-
-  <li [class]="isIndications() + ' ds44-collapser_element'">
-    <p role="heading" aria-level="3">
-<button type="button" class="ds44-collapser_button" i18n="@@CollapserOeuvreComp-suivre-parcours" tabindex="1">
-        Suivre le parcours
-        <i class="icon icon-down icon--sizeXL" aria-hidden="true"></i>
-      </button>
-    </p>
-    <div class="ds44-collapser_content">
-      <div class="img-collapser">
-        <picture class="ds44-container-imgRatio">
-          <img [src]="indications" alt="" />
-        </picture>
-      </div>
-    </div>
-
   </li>
 </ul>
