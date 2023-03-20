@@ -18,7 +18,7 @@ picture.ds44-container-imgRatio {
   }
 }
 
-.carrousel-text {
+.titre-text {
   padding-top: 10px;
 
   .h3 {
@@ -60,4 +60,22 @@ picture.ds44-container-imgRatio {
       }
     }
   }
+}
+
+.swipper-carousel-wrap .swiper-pagination {
+  position: relative;
+
+  .copyright {
+    position: absolute;
+    top: -20px;
+    bottom: inherit;
+    font-size: 1.4rem;
+    right: 6%;
+  }
+}
+
+.ds44-imgCaption {
+  clip: unset;
+  width: auto;
+  height: auto;
 }

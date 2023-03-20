@@ -1,71 +1,61 @@
 <app-loader *ngIf="carousel && isElementLoading" color="#0013b1"></app-loader>
+<div class="titre-text ds44-lightBG ds44-grid12-offset-1" *ngIf="etape || text">
+  <span *ngIf="etape" role="heading" aria-level="1">
+    {{ etape }}
+  </span>
+  <h3 *ngIf="text" role="heading" aria-level="1" class="h3">
+    {{ text }}
+  </h3>
+</div>
 <div *ngIf="carousel && !isElementLoading && elements.length > 1" class="c-carousel">
   <div class="swipper-carousel-wrap mod--hidden" data-nb-visible-slides="1" [attr.data-swiper-title]="carousel.titre"> <!-- swipper-carousel-slideshow -->
-    <div class="carrousel-text ds44-lightBG ds44-grid12-offset-1">
-      <h3 *ngIf="text" role="heading" aria-level="1" class="h3">
-        {{ text }}
-      </h3>
-    </div>
-      <div class="swiper-container">
-        <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
-              <li #itemSwiper *ngFor="let item of elements; let isLast = last" class="swiper-slide">
-                <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-grid12-offset-1 ds44-img50">
-                  <div *ngIf="true" class="ds44-diaporama-vignette">
-                      <figure class="ds44-diaporama-vignette-container" role="figure" aria-label="item?.title">
-                          <img class="ds44-diaporama-vignette-image" [src]="item?.imageMobile" [alt]="item?.title" />
-                          <figcaption *ngIf="item?.title" class="ds44-diaporama-vignette-text">
-                            {{ item?.title }}
-                            <br />
-                            {{ item?.imageCopyright }}
-                          </figcaption>
-                      </figure>
-                  </div>
-                </section>
-              </li>
-          </ul>
-      </div>
-      <div class="swiper-pagination"></div>
-      <div class="swiper-thumbs" *ngIf="elements.length > 1">
-          <div class="swiper-thumbs-container">
-              <nav class="swiper-container" aria-label="Navigation au sein des vignettes - Titre du diaporama">
-                  <ul class="swiper-wrapper ds44-list">
-                      <li #itemSwiper *ngFor="let item of elements" class="swiper-slide">
-                          <button class="ds44-diaporama-thumb" [style.background-image]="'url(' + item?.imageMobile + ')'">
-                              <p class="visually-hidden">
-                                {{ item?.title }}
-                                <br />
-                                {{ item?.imageCopyright }}
-                              </p>
-                          </button>
-                      </li>
-                  </ul>
-              </nav>
-          </div>
-      </div>
-  </div>
-</div>
-
-<div *ngIf="carousel && !isElementLoading && elements.length < 2" class="c-carousel">
-  <div class="mod--hidden ds44-list ds44-posRel" data-nb-visible-slides="1" [attr.data-swiper-title]="carousel.titre"><!-- swipper-carousel-wrap -->
-    <div class="carrousel-text ds44-lightBG ds44-grid12-offset-1">
-      <span *ngIf="etape" role="heading" aria-level="1">
-        {{ etape }}
-      </span>
-      <h3 *ngIf="text" role="heading" aria-level="1" class="h3">
-        {{ text }}
-      </h3>
-    </div>
     <div class="swiper-container">
-      <ul class="swiper-wrapper ds44-list grid-1-small-1 has-gutter-l ds44-carousel-swiper">
+      <ul class="swiper-wrapper ds44-list grid-3-small-1 has-gutter-l ds44-carousel-swiper">
         <li #itemSwiper *ngFor="let item of elements" class="swiper-slide">
           <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-grid12-offset-1 ds44-img50">
-            <picture class="ds44-container-imgRatio">
-              <img *ngIf="item" [src]="item.imageMobile" [alt]="item.title + ' ' + item?.imageCopyright" class="ds44-imgRatio" />
-            </picture>
+            <div *ngIf="true" class="ds44-diaporama-vignette">
+              <figure class="ds44-diaporama-vignette-container" role="figure" aria-label="item?.title">
+                <img class="ds44-diaporama-vignette-image" [src]="item?.imageMobile" [alt]="item?.title" />
+                <figcaption class="ds44-diaporama-vignette-text">
+                  <span class="copyright ds44-imgCaption">{{ item?.imageCopyright }}</span>
+                  <span>{{ item?.imageLegend }}</span>
+                </figcaption>
+              </figure>
+            </div>
           </section>
         </li>
       </ul>
     </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-thumbs" *ngIf="elements.length > 1">
+      <div class="swiper-thumbs-container">
+        <nav class="swiper-container" aria-label="Navigation au sein des vignettes - Titre du diaporama">
+          <ul class="swiper-wrapper ds44-list">
+            <li #itemSwiper *ngFor="let item of elements" class="swiper-slide">
+              <button class="ds44-diaporama-thumb" [style.background-image]="'url(' + item?.imageMobile + ')'">
+                <p class="visually-hidden">
+                  {{ item?.imageLegend }}
+                  <br />
+                  {{ item?.imageCopyright }}
+                </p>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- Fix bug carrousel avec 1 image -->
+<div *ngIf="carousel && !isElementLoading && elements.length === 1" class="">
+  <section class="ds44-card ds44-js-card ds44-card--verticalPicture ds44-grid12-offset-1 ds44-img50" >
+    <figure class="ds44-legendeContainer ds44-container-imgRatio" *ngIf="elements[0]">
+      <img [src]="elements[0].imageMobile" [alt]="elements[0].title + ' ' + elements[0].imageCopyright" class="ds44-imgRatio" />
+      <figcaption class="ds44-imgCaption" aria-describedby="image1" *ngIf="elements[0]?.imageLegend || elements[0]?.imageCopyright">
+        {{ elements[0].imageLegend }}&nbsp;
+        {{ elements[0].imageCopyright }}
+      </figcaption>
+    </figure>
+  </section>
+</div>
