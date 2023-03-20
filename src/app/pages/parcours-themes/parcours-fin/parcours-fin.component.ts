@@ -20,6 +20,7 @@ export class ParcoursFinComponent implements OnInit {
   video: string | undefined;
   transcription?: string;
   idParcours: string = "idParcours";
+  idThematique: string = "idThematique";
   idCatRoot: string = '';
   imageFooter: string = 'assets/Phone.png';
 
@@ -60,7 +61,7 @@ export class ParcoursFinComponent implements OnInit {
   }
 
   public getHome() {
-    return 'themes';
+    return '/themes/' + localStorage.getItem(this.idThematique);
   }
 
   public getTuile() {
