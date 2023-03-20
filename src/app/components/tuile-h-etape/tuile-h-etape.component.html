@@ -15,13 +15,20 @@
       <div class="ds44-card__section--horizontal">
         <div role="heading" aria-level=" 2" class="ds44-card__title">
           <div *ngIf="etape.item.url && etape.state !== inactive;else noUrl">
-            <a [routerLink]="etape.item.url"> {{ etape.item.lbl }}</a>
+            <p role="heading" aria-level="2" class="ds44-card__title">
+              <a [routerLink]="etape.item.url" class="ds44-card__globalLink"> {{ etape.item.lbl }}</a>
+            </p>
           </div>
 
           <ng-template #noUrl>
-            <p> {{ etape.item.lbl }} </p>
+            <p role="heading" aria-level="2" class="ds44-card__title"> {{ etape.item.lbl }} </p>
           </ng-template>
         </div>
+
+        <p class="ds44-cardLocalisation" *ngIf="etape.item.localisation" >
+          <i class="icon icon-marker" aria-hidden="true"></i>
+          <span class="ds44-iconInnerText">{{ etape.item.localisation }}</span>
+        </p>
 
       </div>
     </div>

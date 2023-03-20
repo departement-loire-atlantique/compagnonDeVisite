@@ -14,13 +14,20 @@
       <div class="ds44-card__section--horizontal">
         <div role="heading" aria-level=" 2" class="ds44-card__title">
           <div *ngIf="searchItem.item.url && searchItem.state !== inactive;else noUrl">
-            <a [routerLink]="searchItem.item.url"> {{ searchItem.item.lbl }}</a>
+            <p role="heading" aria-level="2" class="ds44-card__title">
+              <a [routerLink]="searchItem.item.url" class="ds44-card__globalLink"> {{ searchItem.item.lbl }}</a>
+            </p>
           </div>
 
           <ng-template #noUrl>
-            <p> {{ searchItem.item.lbl }} </p>
+            <p role="heading" aria-level="2" class="ds44-card__title">{{ searchItem.item.lbl }}</p>
           </ng-template>
         </div>
+
+        <p class="ds44-cardLocalisation" *ngIf="searchItem.item.localisation" >
+          <i class="icon icon-marker" aria-hidden="true"></i>
+          <span class="ds44-iconInnerText">{{ searchItem.item.localisation }}</span>
+        </p>
 
       </div>
     </div>
