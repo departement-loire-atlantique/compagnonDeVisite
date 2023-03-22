@@ -11,6 +11,7 @@ export const environment: Environment = {
     'fr': { espace: '', catHome: '' },
     'en': { espace: '', catHome: '' },
     'fr-LSF': { espace: '', catHome: '' },
-    'fr-FALC': { espace: '', catHome: '' }
+    'fr-FALC': { espace: '', catHome: '' },
+    'fr-Adapt': { espace: '', catHome: '' },
   }
 };

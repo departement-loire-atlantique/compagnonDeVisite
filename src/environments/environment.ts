@@ -7,15 +7,16 @@ import { Environment } from "src/app/models/environment";
 export const environment: Environment = {
   production: false,
   jcms: 'http://localhost:8080/GP/',
-  front: 'http://127.0.0.1:4200/',
-  token: 'djI7ZmRlXzUwNDQ7MTY5NDA3NzY2Nzg0NjtHRVQsOzsyNTskMmEkMDQkOVJBSG5UT1oua0tVd0JGd1Bjb2dxLk1pLkpNYUhuL25hV0hNZ0VwbUZkenVNQzBmMnlQLnE=',
+  front: 'http://127.0.0.1:8089/',
+  token: '',
   catJExplore: 'rec_5058',
   catRoot: 'rec_5029',
   lang: {
     'fr': { espace: 'rec_5033', catHome: 'rec_5034' },
     'en': { espace: 'rec_5038', catHome: 'rec_5039' },
     'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044' },
-    'fr-FALC': { espace: '', catHome: '' }
+    'fr-FALC': { espace: '', catHome: '' },
+    'fr-Adapt': { espace: '', catHome: '' },
   }
 };
 

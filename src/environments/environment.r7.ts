@@ -9,14 +9,15 @@ export const environment: Environment = {
 
   jcms: 'http://10.1.12.88:8080/',
   front: 'http://localhost:8089/',
-  token: 'djI7cmVjXzUwMDc7MTY4NzM1Mzg4ODk3MDtHRVQsOzsyMzskMmEkMDQkWDFvTFlMNDdhRzdTYVhCWkFyQnF0T1Bwamk5UHRXNzZKZXZ2UWVsOWRqckx5V0JLZy9HMG0=',
+  token: '',
   catJExplore: 'rec_5058',
   catRoot: 'rec_5029',
   lang: {
     'fr': { espace: 'rec_5033', catHome: 'rec_5034' },
     'en': { espace: 'rec_5038', catHome: 'rec_5039' },
     'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044' },
-    'fr-FALC': { espace: '', catHome: '' }
+    'fr-FALC': { espace: '', catHome: '' },
+    'fr-Adapt': { espace: '', catHome: '' },
   }
 };
 

@@ -18,31 +18,38 @@ export class HomeComponent implements OnInit {
 
   languages: { [key: string]: any } = {
     'fr': {
-      lbl: 'FR',
+      lbl: 'Français',
       title: 'Version française : consultez la version française du site',
       url: environment.front + 'fr/' + this._nextPageRoute,
       img: 'icon-french',
       isPicto: true
     },
     'en': {
-      lbl: 'EN',
+      lbl: 'English',
       title: 'English version : visit the english version of the website',
       url: environment.front + 'en/' + this._nextPageRoute,
       img: 'icon-english',
       isPicto: true
     },
     'fr-LSF': {
-      lbl: 'LSF',
+      lbl: 'Langue des signes française',
       title: 'Version LSF : consultez la version Langue des signes française du site',
       url: environment.front + 'fr-LSF/' + this._nextPageRoute,
       img: 'icon-lsf',
       isPicto: true
     },
     'fr-FALC': {
-      lbl: 'FALC',
+      lbl: 'Français simplifié',
       title: 'Version FALC : consultez la version Facile à lire et à comprendre',
       url: environment.front + 'fr-FALC/' + this._nextPageRoute,
       img: 'icon-falc',
+      isPicto: true
+    },
+    'fr-Adapt': {
+      lbl: 'Adapté aux personnes malvoyantes',
+      title: 'Version adapté : consultez la version adapté aux personnes malvoyantes',
+      url: environment.front + 'fr-FALC/' + this._nextPageRoute,
+      img: 'icon-handicap-visuel',
       isPicto: true
     }
   };
