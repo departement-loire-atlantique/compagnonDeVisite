@@ -8,8 +8,9 @@
 
   <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
   <div class="desc-oeuvre" *ngIf="getDescription()" >
-    <p id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
-    <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
+    <p #textDesc id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
+    <!-- 154 == 6 ligne -->
+    <span *ngIf="textDesc.scrollHeight>154" tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
   </div>
 
   <app-collapser-oeuvre id="indications" [imagePlan]="getPlan()"></app-collapser-oeuvre>

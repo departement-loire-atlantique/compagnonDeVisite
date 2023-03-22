@@ -29,8 +29,9 @@
         <app-collapser-oeuvre id="indications" [hasLoaded]="hasLoaded" [audio]="getAudioAide()" [imagePlan]="getMap()"
           [indications]="getIndications()"></app-collapser-oeuvre>
         <div class="desc-oeuvre" *ngIf="getDesc()">
-          <p id="desc" [innerHTML]="getDesc()" [class]="getCSS()"></p>
-          <span tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
+          <p #textDesc id="desc" [innerHTML]="getDesc()" [class]="getCSS()"></p>
+          <!-- 154 == 6 ligne -->
+          <span *ngIf="textDesc.scrollHeight>154" tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
         </div>
       </div>
     </div>
