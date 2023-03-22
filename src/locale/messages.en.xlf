@@ -103,10 +103,6 @@
           <context context-type="sourcefile">src/app/components/collapser-oeuvre/collapser-oeuvre.component.html</context>
           <context context-type="linenumber">5,7</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/pages/parcours-themes/oeuvre/oeuvre.component.html</context>
-          <context context-type="linenumber">50</context>
-        </context-group>
       </trans-unit>
       <trans-unit id="CollapserOeuvreComp-indic-audio" datatype="html">
         <source>Réécouter l&apos;indication audio</source>
@@ -595,6 +591,13 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/parcours-themes/parcours/parcours.component.ts</context>
           <context context-type="linenumber">267</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ParcoursOeuvreComp-how-to-go-down" datatype="html">
+        <source>Comment me rendre à cette étape ?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-themes/oeuvre/oeuvre.component.html</context>
+          <context context-type="linenumber">50</context>
         </context-group>
       </trans-unit>
       <trans-unit id="OeuvreComp-step" datatype="html">
