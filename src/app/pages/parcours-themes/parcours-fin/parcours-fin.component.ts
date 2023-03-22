@@ -22,7 +22,7 @@ export class ParcoursFinComponent implements OnInit {
   idParcours: string = "idParcours";
   idThematique: string = "idThematique";
   idCatRoot: string = '';
-  imageFooter: string = 'assets/Phone.png';
+  imageFooter: string = 'assets/phone_only@2x.png';
 
   constructor(
     private _route: ActivatedRoute,
