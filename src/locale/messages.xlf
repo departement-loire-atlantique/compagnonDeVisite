@@ -103,6 +103,10 @@
           <context context-type="sourcefile">src/app/components/collapser-oeuvre/collapser-oeuvre.component.html</context>
           <context context-type="linenumber">5,7</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/pages/parcours-themes/oeuvre/oeuvre.component.html</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="CollapserOeuvreComp-indic-audio" datatype="html">
         <source>Réécouter l&apos;indication audio</source>
@@ -564,7 +568,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/parcours-themes/parcours/parcours.component.ts</context>
-          <context context-type="linenumber">269</context>
+          <context context-type="linenumber">270</context>
         </context-group>
       </trans-unit>
       <trans-unit id="BackComp-liste" datatype="html">
@@ -590,7 +594,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/parcours-themes/parcours/parcours.component.ts</context>
-          <context context-type="linenumber">266</context>
+          <context context-type="linenumber">267</context>
         </context-group>
       </trans-unit>
       <trans-unit id="OeuvreComp-step" datatype="html">
@@ -632,7 +636,7 @@
         <source>Retour à l&apos;œuvre</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ParcoursThemesComp-title" datatype="html">
@@ -653,7 +657,7 @@
         <source>Retour aux parcours</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/parcours-themes/parcours/parcours.component.ts</context>
-          <context context-type="linenumber">285</context>
+          <context context-type="linenumber">286</context>
         </context-group>
       </trans-unit>
       <trans-unit id="ThemeExpo-PMR-lbl" datatype="html">
@@ -667,7 +671,7 @@
         <source>Retour à l&apos;accueil</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/parcours-themes/thematique/thematique.component.ts</context>
-          <context context-type="linenumber">175</context>
+          <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
     </body>

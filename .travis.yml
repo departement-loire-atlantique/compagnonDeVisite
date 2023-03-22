@@ -10,12 +10,12 @@ install:
 script:
   - ng build -c pre-prod
   - cd dist/compagnon-de-visite
-  - zip -r "${TRAVIS_BUILD_DIR}/compagnon_de_visite_${TRAVIS_TAG}.zip" * 
+  - zip -r "${TRAVIS_BUILD_DIR}/compagnon-de-visite_${TRAVIS_TAG}.zip" * 
   
 deploy:
   provider: releases
   api_key:
-    secure: GE6Oz8ujvJmba2p1v75oT+fNDcgf3XHh3RjCzqq33rwXm/q7gFYy8Cs2hmCmLmvM60awvjYwwsb/YHCjxr7FchHmybtmI390wyYjA/4EkezCr4TGW7R3WeWa875tA7j60B73I/+m/fjC9ZEHnRr7glGzMIMU7MfWH5QXwHQ+v4ZW1z/3no+dGOCDM08sk79/TO1bJidnP5XVaO6Txa8fPHNMfmgl31h8oYEUHEErw6ocp2sbxf0sPzPSrW87WyE9zxhMWGzuatMbyAbTjm+Mlcp0FIa2lZ4NBw+QWiOkUQEO34kTFMgk7Wgsp9TnsFI6VBBBqAHnPJrQHxjAOMAy0yViXjI4pRdUJEeNJiGXnbrPF0lUYXIIO8t6P1eSsuwrx+n/PPz79vuteDC/IybuzpyiRl81d5Ekhic652hl44IXotsSNI9L9QeM43PUVOAJbE9XXRw2GFfST6KNzw/iE8iqT6LWLns7YOqbQ6B7FfBiUYixobt3olq7IsAn+GgLx7GYGgc8N4iVV9dPUxqzNH9us0rRWzXMbu7Houy5jkE9gLM6xUokhr2oDI1mH4ww8tiBD2zcSFK0wZp0MXUdjM2nDEuyuiIM7N+yFgZuIloG+vV7PJhObaNB88O7MfeLRz2mC8LRsczNC43OljjLIElZY+PTwljLVHmKz7a4ydo=
+    secure: fCq/sicEjgglsAVohatC2aLNWmyAbZIO62OUnuzRZn9P+gWNSOWpor294/kN0UMKZpoFo+dc66KMVrYFbb4vip3exnTUe4tU8UXuo0OwTQhnJ34Waf2V52GCiA/kJFRcj3TB/OZYyCD8qbSkIHZ2FfG65rbuQKhxfNwXZxTuNQVim3n1ah3EA5ZK7hNpOYg11ETLmtcOyAWhGjO52KuLBjuNGq6N5wKykAdueRfetLcd+jZKLJgEi5jFceeumYXKzoYxarDDeONgpzDUqrCXXnuA49rvlxDMdG1uj1hPswBNtndP9bnELzrraanFS1df8tAuocFa9Pkgt+XhF05FHBT2Dndy/zpJ5TX5h9wTD0RWUufme6+742QRPCSiPAeUIyIWNVpFExST53ejzYWGfnXok2bdJPpJrGTkm1Nz3hGFZVqWJZwQDsZeTqoUBbTciZUU1zd6plbaoDuXOAT4TkoL78A/F6j9SX8upi/eUFPR45umCDctmHh9ep1psK2cLHJghWyKNaz6OBbLeNEZOvX3Z7zhHH5pyrqDcgTmAeZ9lbSmmQFDEw7de3BQxid/evcKHmFGNDI4Dp2uHtm/iqAJkO2fouYFq0ZjJ7TXBhsCIGKMOJfNcdcYHqx7FzzSNxm9GM9YAkOiURTDr5DB2nsbMHiIKmpyfVV2ialiuus=
   file_glob: true
   file: "${TRAVIS_BUILD_DIR}/*.zip"
   skip_cleanup: true
