@@ -89,6 +89,7 @@ export class ParcoursComponent implements OnInit {
           this.items.push({
             lbl: c.title,
             img: environment.jcms + c.vignette,
+            localisation: c.localisation,
             url: "/oeuvre/" + ind + "/" + c.id,
           });
 

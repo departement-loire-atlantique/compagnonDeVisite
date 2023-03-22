@@ -33,7 +33,6 @@ export class ExploreAllComponent implements OnInit {
     private _ds: DesignSystemService,
     private _jcmsEspace: EspaceByLangService,
     private _jcms: JAngularService,
-    private _location: Location,
   ) { }
 
   /**
@@ -101,6 +100,7 @@ export class ExploreAllComponent implements OnInit {
               item: {
                 lbl: itContent.title,
                 img: buildUrlMedia(res.vignette),
+                localisation: res.localisation,
                 url: '/explore/oeuvre/' + itContent.id,
               },
               state: State.active
