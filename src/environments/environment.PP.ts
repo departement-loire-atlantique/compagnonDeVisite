@@ -4,7 +4,7 @@ export const environment: Environment = {
   production: false,
 
   jcms: 'https://admin-prep-visite-musee-dobree.loire-atlantique.fr/',
-  front: 'http://127.0.0.1:4200/',
+  front: 'https://prep-visite-musee-dobree.loire-atlantique.fr/',
   token: '',
   catJExplore: 'c_5036',
   catRoot: 'c_5023',
