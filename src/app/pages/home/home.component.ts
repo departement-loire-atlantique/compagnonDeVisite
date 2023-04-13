@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
     'fr-Adapt': {
       lbl: 'Adapté aux personnes malvoyantes',
       title: 'Version adapté : consultez la version adapté aux personnes malvoyantes',
-      url: environment.front + 'fr-FALC/' + this._nextPageRoute,
+      url: environment.front + 'fr-adapt/' + this._nextPageRoute,
       img: 'icon-handicap-visuel',
       isPicto: true
     }
