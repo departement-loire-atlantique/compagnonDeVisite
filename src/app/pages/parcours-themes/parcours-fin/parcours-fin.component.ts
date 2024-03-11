@@ -61,7 +61,8 @@ export class ParcoursFinComponent implements OnInit {
   }
 
   public getHome() {
-    return '/themes'; // + localStorage.getItem(this.idThematique);
+    sessionStorage.removeItem("backURL");
+    return '/themes';
   }
 
   public getTuile() {
