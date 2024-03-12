@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { DesignSystemService } from 'src/app/services/design-system.service';
 
 import panzoom from "panzoom";
@@ -29,7 +29,6 @@ export class OverlayMapComponent implements OnInit, AfterViewInit {
 
   constructor(
     private _ds: DesignSystemService,
-    private renderer: Renderer2,
     ) { }
 
   ngOnInit(): void {

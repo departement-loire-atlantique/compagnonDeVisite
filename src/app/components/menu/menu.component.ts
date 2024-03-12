@@ -19,11 +19,11 @@ export class MenuComponent implements OnInit {
     let items: Item[] = [];
     items[0] = {
       lbl: $localize`:@@MenuComp-elem1:Que souhaitez-vous visiter ?`,
-      url: "themes"
+      url: "/themes"
     }
     items[1] = {
       lbl: $localize`:@@MenuComp-elem2:Plan (PDF)`,
-      url: ""
+      url: "/planPDF"
     }
     items[2] = {
       lbl: $localize`:@@MenuComp-elem3:Aide`,

@@ -11,6 +11,7 @@ import { ExploreComponent } from './pages/parcours-explore/explore/explore.compo
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './components/shared.module';
 import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explore-all.component';
+import { PlanPDFComponent } from './pages/menu/plan-pdf/plan-pdf.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explor
     OeuvreComponent,
     ExploreComponent,
     ExploreAllComponent,
+    PlanPDFComponent,
   ],
   imports: [
     BrowserModule,
