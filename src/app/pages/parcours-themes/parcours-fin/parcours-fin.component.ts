@@ -61,7 +61,6 @@ export class ParcoursFinComponent implements OnInit {
   }
 
   public getHome() {
-    sessionStorage.removeItem("backURL");
     return '/themes';
   }
 
