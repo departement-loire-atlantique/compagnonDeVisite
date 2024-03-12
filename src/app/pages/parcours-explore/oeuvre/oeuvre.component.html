@@ -1,12 +1,18 @@
 <app-header [imagePlan]="getPlan()"  [labelBtn]="getLabelBtn()" ></app-header>
 
 <main>
-  <!-- <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader> -->
-  <div class="mainVideo" *ngIf="getVideo()">
-    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="this.oeuvre?.titreCourt" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
-  </div>
 
-  <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
+  <div class="small-border-space">
+    <div class="ds44-lightBG">
+      <h3>{{ getTitle() }}</h3>
+    </div>
+    <!-- <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader> -->
+    <div class="mainVideo" *ngIf="getVideo()">
+      <app-lecteur-video-oeuvre [file]="getVideo()" [name]="this.oeuvre?.titreCourt" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
+    </div>
+
+    <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
+  </div>
   <div class="desc-oeuvre" *ngIf="getDescription()" >
     <p #textDesc id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
     <!-- 154 == 6 ligne -->
