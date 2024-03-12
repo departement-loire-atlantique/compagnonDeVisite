@@ -5,10 +5,10 @@
   <div *ngIf="getVideo(); else noVideo">
     <div class="small-border-space">
       <div class="ds44-lightBG">
-          <p>{{ getTextEtape() }}</p>
+          <span>{{ getTextEtape() }}</span>
           <h3>{{ getTitle() }}</h3>
       </div>
-    <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getShortTitle()" [steps]="getSteps()" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
+      <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getShortTitle()" [steps]="getSteps()" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
       <div class="block-indications" *ngIf="getDesc()">
         <div class="desc-oeuvre top-space">
           <p [innerHTML]="getDesc()"></p>
@@ -36,8 +36,13 @@
       </div>
     </div>
 
-
     <div class="bg-color">
+      <button *ngIf="isIndications() && !isIndicationsScrolledIntoView" type="button" class="ds44-fullWBtn ds44-btn--invert"
+        onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
+        <span class="ds44-btnInnerText" i18n="@@ParcoursOeuvreComp-how-to-go-down">Comment me rendre à cette étape ?</span>
+        <i class="icon icon-down" aria-hidden="true"></i>
+      </button>
+
       <div class="audio-oeuvre">
         <app-lecteur-audio *ngIf="hasLoaded" [file]='getAudio()' [name]='getShortTitle()' [location]="getLocation()">
         </app-lecteur-audio>
@@ -45,11 +50,6 @@
 
       <app-oeuvre-suiv-pred [steps]="getSteps()"></app-oeuvre-suiv-pred>
 
-       <button type="button" class="ds44-fullWBtn ds44-btn--invert"
-        onClick="document.getElementById('indications').scrollIntoView({behavior: 'smooth', block: 'start'});">
-        <span class="ds44-btnInnerText" i18n="@@ParcoursOeuvreComp-how-to-go-down">Comment me rendre à cette étape ?</span>
-        <i class="icon icon-down" aria-hidden="true"></i>
-      </button>
     </div>
   </ng-template>
 </main>
