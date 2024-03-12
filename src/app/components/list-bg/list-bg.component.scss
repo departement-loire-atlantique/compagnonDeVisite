@@ -34,6 +34,7 @@ UL {
       align-items: flex-start;
       //font-size: 1.3em;
       line-height: 1.2em;
+      gap: 10px;
 
       .is--bold {
         font-weight: bold;
@@ -88,9 +89,9 @@ UL {
       margin-top: 0.5rem;
       color: black;
     }
-    .icon-handicap-moteur {
+    .icon-handicap-moteur, .icon-magnifier {
       font-size: 1.1em;
-      margin-right: 0.6em;
+      margin: 0;
     }
   }
 }
