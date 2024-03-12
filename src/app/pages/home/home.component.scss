@@ -17,4 +17,10 @@ MAIN {
     text-align: center;
     width: 100%;
   }
+
+  @media (max-height: 700px) {
+    .img-footer {
+      display: none;
+    }
+  }
 }
