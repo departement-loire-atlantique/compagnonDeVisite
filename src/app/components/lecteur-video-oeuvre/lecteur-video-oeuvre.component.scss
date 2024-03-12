@@ -5,96 +5,9 @@
   background-color: $main-color;
 
   .lecteur-video {
-    padding-bottom: 0.5rem;
-    display: flex;
-    align-items: flex-end;
-
-    .control {
-
-      button {
-        margin-left: 10px;
-        margin-right: 10px;
-        width: 44px;
-        height: 44px;
-        background-color: $black;
-        color: $white;
-        border: 1px solid $black;
-        border-radius: 3px;
-        opacity: 1;
-      }
-    }
-
-    .slider {
-      margin-left: 11px;
-      margin-right: 10px;
-      width: 100%;
-      text-align: left;
-
-      p {
-        margin-bottom: 0.2rem;
-      }
-
-      input {
-        width: 100%;
-      }
-
-      .curseur {
-        font-size: 12px;
-      }
-
-      .readableDuration {
-        float: right;
-      }
-
-      .custom-slider {
-        -webkit-appearance: none;
-        appearance: none;
-        background: transparent;
-        cursor: pointer;
-        width: 100%;
-        height: 5px;
-        background: $white;
-        border-radius: 3px;
-
-        &::focus {
-          box-shadow: none;
-          outline: none;
-        }
-
-        /* Chrome */
-        &::-webkit-slider-thumb {
-          -webkit-appearance: none;
-          /* Override default look */
-          appearance: none;
-          width: 20px;
-          /* Set a specific slider handle width */
-          height: 20px;
-          /* Slider handle height */
-          border-radius: 50%;
-          border: 2px solid $black;
-          background: $white;
-        }
-
-        /* Firefox */
-        &::-moz-range-thumb {
-          border: none;
-          width: 20px;
-          /* Set a specific slider handle width */
-          height: 20px;
-          /* Slider handle height */
-          border-radius: 50%;
-          border: 2px solid $black;
-          background: $white;
-        }
-
-        &::-moz-range-progress {
-          background-color: $black;
-          border: 2px solid $black;
-          border-radius: 3px;
-        }
-      }
-    }
+    min-height: 200px;
   }
+
   .titre {
     margin: 0 2rem;
   }
