@@ -73,6 +73,14 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Get le titre de l'oeuvre
+   * @returns le titre
+   */
+  public getTitle() {
+    return this.oeuvre?.title;
+  }
+  
+  /**
    * Détection fin audio
    * @param event
    */
