@@ -5,7 +5,13 @@
   position: sticky;
   bottom: 0;
   z-index: 200;
-  padding-top: 10px;
+  padding-top: 20px;
+  .ds44-fullWBtn {
+    margin-bottom: 20px;
+  }
+  &:has(.ds44-fullWBtn) {
+    padding-top: 0;
+  }
 }
 
 .desc-oeuvre {
@@ -36,4 +42,8 @@
   padding-left: 2rem;
   padding-right: 2rem;
   padding-bottom: 1rem;
+
+  span {
+    font: normal normal normal 14px/21px Muli;
+  }
 }

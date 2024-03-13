@@ -185,6 +185,6 @@ export class ExploreAllComponent implements OnInit {
    * Label du bouton de retour
    */
   getLabelBouton() {
-    return $localize`:@@BackComp-text:Retour à la recherche`;
+    return $localize`:@@BackComp-text-recherche:Retour à la recherche`;
   }
 }

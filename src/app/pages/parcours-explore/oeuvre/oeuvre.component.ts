@@ -73,6 +73,14 @@ export class OeuvreComponent implements OnInit, OnDestroy {
   }
 
   /**
+   * Get le titre de l'oeuvre
+   * @returns le titre
+   */
+  public getTitle() {
+    return this.oeuvre?.title;
+  }
+
+  /**
    * Détection fin audio
    * @param event
    */
@@ -108,7 +116,7 @@ export class OeuvreComponent implements OnInit, OnDestroy {
    */
   public getLabelBtn() {
     if (sessionStorage.getItem("URLback")?.includes("/explore"))
-      return $localize`:@@BackComp-text:Retour à la recherche`;
+      return $localize`:@@BackComp-text-recherche:Retour à la recherche`;
 
     return $localize`:@@BackComp-liste:Retour à la liste`;
   }

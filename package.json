@@ -15,7 +15,7 @@
     "storybook": "npm run docs:json && start-storybook -p 6006",
     "build-storybook": "npm run docs:json && build-storybook",
     "lint": "eslint ./src --fix && tsc --noEmit --project tsconfig.app.json",
-    "i18n": "ng extract-i18n --output-path src/locale"
+    "i18n": "ng extract-i18n --format=xlf2 --output-path src/locale"
   },
   "private": true,
   "dependencies": {
