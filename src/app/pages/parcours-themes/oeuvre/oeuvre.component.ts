@@ -224,7 +224,7 @@ export class OeuvreComponent implements OnInit, AfterViewInit, OnDestroy {
    * @returns le titre
    */
   public getTitle() {
-    return this.oeuvre?.title;
+    return this.oeuvre?.titreAffiche ? this.oeuvre?.titreAffiche : this.oeuvre?.title;
   }
 
   /**

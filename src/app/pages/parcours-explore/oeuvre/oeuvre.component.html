@@ -22,7 +22,7 @@
   <app-collapser-oeuvre id="indications" [imagePlan]="getPlan()"></app-collapser-oeuvre>
 
   <div class="bottomFixed" *ngIf="oeuvre?.fichierSon && !getVideo()">
-    <app-lecteur-audio [name]="oeuvre?.title" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" [location]="getLocation()" ></app-lecteur-audio>
+    <app-lecteur-audio [name]="getTitle()" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" [location]="getLocation()" ></app-lecteur-audio>
 
     <!-- <button type="button"
             class="ds44-fullWBtn ds44-btn--invert"
