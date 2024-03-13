@@ -9,8 +9,8 @@
           <h3>{{ getTitle() }}</h3>
       </div>
       <app-lecteur-video-oeuvre [file]="getVideo()" [name]="getShortTitle()" [steps]="getSteps()" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
-      <div class="block-indications" *ngIf="getDesc()">
-        <div class="desc-oeuvre top-space">
+      <div class="block-indications">
+        <div *ngIf="getDesc()" class="desc-oeuvre top-space">
           <p [innerHTML]="getDesc()"></p>
         </div>
         <app-collapser-oeuvre [hasLoaded]="hasLoaded" [imagePlan]="getMap()"

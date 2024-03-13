@@ -1,26 +1,27 @@
 <app-header [imagePlan]="getPlan()"  [labelBtn]="getLabelBtn()" ></app-header>
 
 <main>
-
   <div class="small-border-space">
-    <div class="ds44-lightBG">
-      <h3>{{ getTitle() }}</h3>
+    <div>
+      <div class="ds44-lightBG">
+        <h3>{{ getTitle() }}</h3>
+      </div>
+      <!-- <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader> -->
+      <div class="mainVideo" *ngIf="getVideo()">
+        <app-lecteur-video-oeuvre [file]="getVideo()" [name]="this.oeuvre?.titreCourt" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
+      </div>
+
+      <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
     </div>
-    <!-- <app-loader *ngIf="!oeuvre?.diaporama" color="#0013b1"></app-loader> -->
-    <div class="mainVideo" *ngIf="getVideo()">
-      <app-lecteur-video-oeuvre [file]="getVideo()" [name]="this.oeuvre?.titreCourt" [transcription]="this.oeuvre?.transcription"></app-lecteur-video-oeuvre>
+    <div class="desc-oeuvre" *ngIf="getDescription()" >
+      <p #textDesc id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
+      <!-- 154 == 6 ligne -->
+      <span *ngIf="textDesc.scrollHeight>154" tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
     </div>
 
-    <app-carrousel *ngIf="oeuvre?.diaporama && !getVideo()" [id]="oeuvre?.diaporama?.id" [text]="oeuvre?.diaporama?.soustitre"></app-carrousel>
-  </div>
-  <div class="desc-oeuvre" *ngIf="getDescription()" >
-    <p #textDesc id="desc" [innerHTML]="getDescription()" [class]="getCSS()"></p>
-    <!-- 154 == 6 ligne -->
-    <span *ngIf="textDesc.scrollHeight>154" tabindex="0" (click)="showDesc()" class="ds44-btnInnerText plus bottom-space"> {{ defaultText }} </span>
-  </div>
+    <app-collapser-oeuvre id="indications" [imagePlan]="getPlan()"></app-collapser-oeuvre>
 
-  <app-collapser-oeuvre id="indications" [imagePlan]="getPlan()"></app-collapser-oeuvre>
-
+  </div>
   <div class="bottomFixed" *ngIf="oeuvre?.fichierSon && !getVideo()">
     <app-lecteur-audio [name]="getTitle()" [file]="oeuvre?.fichierSon" (audioEnded)="changeAudioEnd($event)" [location]="getLocation()" ></app-lecteur-audio>
 
