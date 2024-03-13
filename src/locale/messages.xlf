@@ -622,7 +622,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="ParcoursFinComp-new-visit-desc" datatype="html">
-        <source>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis semper risus sed laoreet. </source>
+        <source>Pour cultivez votre curiosité, d'autres parcours vous attendent !</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html</context>
           <context context-type="linenumber">33</context>

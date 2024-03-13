@@ -4,6 +4,7 @@ import { JAngularService } from 'j-angular';
 import { Parcours, ParcoursMap } from 'src/app/models/jcms/parcours';
 import { ActivatedRoute } from '@angular/router';
 import { CatsMngService } from 'src/app/services/cats-mng.service';
+import { PropsMngService } from 'src/app/services/props-mng.service';
 import { environment } from 'src/environments/environment';
 import { Category } from 'src/app/models/jcms/category';
 
@@ -24,10 +25,13 @@ export class ParcoursFinComponent implements OnInit {
   idCatRoot: string = '';
   imageFooter: string = 'assets/phone_only@2x.png';
 
+  lblFin: String = '';
+
   constructor(
     private _route: ActivatedRoute,
     private _jcms: JAngularService,
-    private _catMng: CatsMngService,) { }
+    private _catMng: CatsMngService,
+    private _propsMng: PropsMngService) { }
 
   ngOnInit(): void {
 
@@ -44,6 +48,11 @@ export class ParcoursFinComponent implements OnInit {
     if (!parcoursId) {
       return;
     }
+
+    this._propsMng.propsLangLbl("jcmsplugin.compagnonDeVisite.fin-visite.lbl").subscribe((res: String) => {
+      this.lblFin = res;
+    });
+
     this._jcms.get<Parcours>('data/' + parcoursId).subscribe((parcours: Parcours) => {
       let p = this.mapParcours.mapToParcours(parcours);
       this.map = p.plan;
@@ -70,6 +79,10 @@ export class ParcoursFinComponent implements OnInit {
 
   public getMap() {
     return this.map;
+  }
+
+  public getLabelFin() {
+    return this.lblFin;
   }
 
     /**
