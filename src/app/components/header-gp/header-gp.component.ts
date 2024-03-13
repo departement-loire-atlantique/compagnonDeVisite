@@ -12,10 +12,10 @@ export class HeaderGpComponent implements OnInit {
   urlFavoris: string | undefined;
 
   localeList: Map<string,string> = new Map<string,string>([
-    [ 'en', $localize`:@@Menulang-fr:English` ],
+    [ 'en', $localize`:@@Menulang-en:English` ],
     [ 'fr', $localize`:@@Menulang-fr:Français`],
-    [ 'lsf', $localize`:@@Menulang-fr:LSF`],
-    [ 'falc', $localize`:@@Menulang-fr:FALC`],
+    [ 'lsf', $localize`:@@Menulang-lsf:LSF`],
+    [ 'falc', $localize`:@@Menulang-falc:FALC`],
   ]);
 
   constructor(
