@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from './components/shared.module';
 import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explore-all.component';
 import { PlanPDFComponent } from './pages/menu/plan-pdf/plan-pdf.component';
+import { AideComponent } from './pages/menu/aide/aide.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PlanPDFComponent } from './pages/menu/plan-pdf/plan-pdf.component';
     ExploreComponent,
     ExploreAllComponent,
     PlanPDFComponent,
+    AideComponent,
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
   @ViewChild('imagePlan', { static: false }) imagePlan!: ElementRef;
   pager: JcmsPager<Content> | undefined;
   espaceJcms: JcmsEspace | undefined;
-  idCatHome: string = '';
+  idCatMenu: string = '';
   planPDF: String = '';
   title: string = $localize`:@@OverlayMapComp-titre:Carte`;
   closeTxt = $localize `:@@OverlayMapComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
@@ -26,7 +26,7 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
   constructor( private _jcms: JAngularService, private _jcmsEspace: EspaceByLangService, ) {
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
     if (this.espaceJcms) {
-      this.idCatHome = this.espaceJcms.catHome;
+      this.idCatMenu = this.espaceJcms.catMenu;
     }
   }
 
@@ -47,13 +47,10 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
    */
   public processResult(obs: Observable<JcmsPager<Content>>) {
     obs.subscribe((pager: JcmsPager<Content>) => {
-
       this.pager = pager;
       const contents = pager.dataInPage;
-
+      if (contents.length < 1 ) return;
       const itContent = contents[0];
-      console.log("resf " + contents);
-
       this._jcms.get<Media>('data/' + itContent.id).subscribe(res => {
         this.planPDF = buildUrlMedia(res.filename)
       });
@@ -73,7 +70,7 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
           exactCat: true,
           mode: 'advanced',
           wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
-          cids: this.idCatHome,
+          cids: this.idCatMenu,
         },
       })
     );

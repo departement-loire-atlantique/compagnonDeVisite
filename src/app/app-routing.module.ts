@@ -4,6 +4,7 @@ import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explor
 import { ExploreComponent } from './pages/parcours-explore/explore/explore.component';
 import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.component';
 import { PlanPDFComponent } from './pages/menu/plan-pdf/plan-pdf.component';
+import { AideComponent } from './pages/menu/aide/aide.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,9 @@ const routes: Routes = [
   },
   {
     path: 'planPDF', component: PlanPDFComponent
+  },
+  {
+    path: 'aide', component: AideComponent
   },
   {
     path: 'explore/oeuvre/:id', component: OeuvreComponent
