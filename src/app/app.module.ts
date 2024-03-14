@@ -13,6 +13,7 @@ import { SharedModule } from './components/shared.module';
 import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explore-all.component';
 import { PlanPDFComponent } from './pages/menu/plan-pdf/plan-pdf.component';
 import { AideComponent } from './pages/menu/aide/aide.component';
+import { CreditsComponent } from './pages/menu/credits/credits.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AideComponent } from './pages/menu/aide/aide.component';
     ExploreAllComponent,
     PlanPDFComponent,
     AideComponent,
+    CreditsComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,11 +7,11 @@ import { Content } from 'src/app/models/jcms/content';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-aide',
-  templateUrl: './aide.component.html',
-  styleUrls: ['./aide.component.scss']
+  selector: 'app-credits',
+  templateUrl: './credits.component.html',
+  styleUrls: ['./credits.component.scss']
 })
-export class AideComponent implements OnInit {
+export class CreditsComponent implements OnInit {
   espaceJcms: JcmsEspace | undefined;
   idCatMenu: string = '';
   pager: JcmsPager<Content> | undefined;
@@ -61,7 +61,7 @@ export class AideComponent implements OnInit {
       this._jcms.getPager<Content>('search', {
         params: {
           types: ['FicheArticle'],
-          text: 'aide',
+          text: 'credit*',
           exactType: true,
           wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
           cids: this.idCatMenu,
