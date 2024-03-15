@@ -10,7 +10,7 @@ export const environment: Environment = {
 //  jcms: 'http://10.1.12.88:8080/',
 //  front: 'http://localhost:8089/',
   jcms: 'https://nantes.trsb.net/compagnon/',
-  front: 'https://nantes.trsb.net/compagnon-de-visite-ext/',
+  front: 'https://nantes.trsb.net/compagnon/compagnon-de-visite-ext/',
   token: '',
   catJExplore: 'rec_5058',
   catRoot: 'rec_5029',
