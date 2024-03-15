@@ -1,10 +1,9 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { JAngularService,JcmsPager } from 'j-angular';
-import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
+import { Content } from 'src/app/models/jcms/content';
 import { Observable } from 'rxjs';
 import { JcmsEspace } from 'src/app/models/environment';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
-import { DesignSystemService } from 'src/app/services/design-system.service';
 import { MenuBurger, MenuBurgerMap } from 'src/app/models/jcms/menuburger';
 import panzoom from "panzoom";
 
@@ -22,8 +21,7 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
   menuBurgerMap: MenuBurgerMap = new MenuBurgerMap();
   menuBurger!: MenuBurger;
 
-  constructor( private _jcms: JAngularService, private _jcmsEspace: EspaceByLangService, private _ds: DesignSystemService ) {
-    this._ds.initOverlay();
+  constructor( private _jcms: JAngularService, private _jcmsEspace: EspaceByLangService, ) {
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
     if (this.espaceJcms) {
       this.idCatMenu = this.espaceJcms.catMenu;
@@ -53,7 +51,7 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
       if (contents.length < 1) return;
 
       const itContent = contents[0];
-      this._jcms.get<MenuBurger>('data/' + itContent.id).subscribe(res => {
+      this._jcms.get<any>('data/' + itContent.id).subscribe(res => {
         this.menuBurger = this.menuBurgerMap.mapToMenuBurger(res);
       });
     });
