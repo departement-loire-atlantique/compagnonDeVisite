@@ -7,4 +7,7 @@
     <app-lecteur-audio *ngIf="menuBurger?.audio" [file]="menuBurger.audio"></app-lecteur-audio>
   </div>
   <p *ngIf="menuBurger?.description" [innerHTML]="menuBurger.description | sanitizeHtml"></p>
+  <div class="reseaux">
+    <a *ngFor="let itItem of listCat" [href]="itItem.url" target="_blank"><i [class]="itItem.img" aria-hidden="true"></i></a>
+  </div>
 </main>

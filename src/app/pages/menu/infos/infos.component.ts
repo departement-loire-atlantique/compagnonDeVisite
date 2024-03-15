@@ -7,11 +7,12 @@ import { Content } from 'src/app/models/jcms/content';
 import { MenuBurger, MenuBurgerMap } from 'src/app/models/jcms/menuburger';
 
 @Component({
-  selector: 'app-aide',
-  templateUrl: './aide.component.html',
-  styleUrls: ['./aide.component.scss']
+  selector: 'app-infos',
+  templateUrl: './infos.component.html',
+  styleUrls: ['./infos.component.scss']
 })
-export class AideComponent implements OnInit {
+
+export class InfosComponent implements OnInit {
   espaceJcms: JcmsEspace | undefined;
   idCatMenu: string = '';
   pager: JcmsPager<Content> | undefined;
@@ -31,7 +32,6 @@ export class AideComponent implements OnInit {
   ngOnInit(): void {
     this.research();
   }
-
   /**
    * Stockage des résultats
    * @param obs
@@ -58,7 +58,7 @@ export class AideComponent implements OnInit {
       this._jcms.getPager<Content>('search', {
         params: {
           types: ['MenuBurger'],
-          text: 'aide*',
+          text: 'info*',
           exactType: true,
           wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
           cids: this.idCatMenu,

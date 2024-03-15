@@ -4,28 +4,43 @@ import { JcmsEspace } from 'src/app/models/environment';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
-import { MenuBurger, MenuBurgerMap } from 'src/app/models/jcms/menuburger';
+import { CatsMngService } from 'src/app/services/cats-mng.service';
+import { Category } from 'src/app/models/jcms/category';
+import { Item } from 'src/app/models/item';
+import { MenuBurger } from 'src/app/models/jcms/menuburger';
 
 @Component({
-  selector: 'app-aide',
-  templateUrl: './aide.component.html',
-  styleUrls: ['./aide.component.scss']
+  selector: 'app-contacts',
+  templateUrl: './contacts.component.html',
+  styleUrls: ['./contacts.component.scss']
 })
-export class AideComponent implements OnInit {
+export class ContactsComponent implements OnInit {
   espaceJcms: JcmsEspace | undefined;
   idCatMenu: string = '';
   pager: JcmsPager<Content> | undefined;
 
-  menuBurgerMap: MenuBurgerMap = new MenuBurgerMap();
   menuBurger!: MenuBurger;
+  listCat: Item[] | undefined;
 
-  constructor(
-    private _jcms: JAngularService,
-    private _jcmsEspace: EspaceByLangService ) {
-      this.espaceJcms = this._jcmsEspace.getJcmsSpace();
-      if (this.espaceJcms) {
-        this.idCatMenu = this.espaceJcms.catMenu;
+  constructor( private _jcms: JAngularService, private _jcmsEspace: EspaceByLangService, private _catMng: CatsMngService, ) {
+    this.espaceJcms = this._jcmsEspace.getJcmsSpace();
+    if (this.espaceJcms) {
+      this.idCatMenu = this.espaceJcms.catMenu;
+    }
+
+    this._catMng.catsChildren(this.idCatMenu).subscribe((cats: Category[]) => {
+      if (!this.listCat) {
+        this.listCat = [];
       }
+
+      cats.forEach((currentValue, index) => {
+        this.listCat?.splice(index, 0, {
+          img: currentValue.icon,
+          lbl: currentValue.title,
+          url: currentValue.subTitle,
+        })
+      });
+    });
   }
 
   ngOnInit(): void {
@@ -44,11 +59,12 @@ export class AideComponent implements OnInit {
       if (contents.length < 1) return;
 
       const itContent = contents[0];
-      this._jcms.get<MenuBurger>('data/' + itContent.id).subscribe(res => {
-        this.menuBurger = this.menuBurgerMap.mapToMenuBurger(res);
+      this._jcms.get<MenuBurger>('data/' + itContent.id).subscribe((res : MenuBurger) => {
+        this.menuBurger = res;
       });
     });
   }
+
   /**
    * Lance la recherche du HTML
    * @returns
@@ -58,7 +74,7 @@ export class AideComponent implements OnInit {
       this._jcms.getPager<Content>('search', {
         params: {
           types: ['MenuBurger'],
-          text: 'aide*',
+          text: 'contact*',
           exactType: true,
           wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
           cids: this.idCatMenu,

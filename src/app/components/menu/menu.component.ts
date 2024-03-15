@@ -18,24 +18,32 @@ export class MenuComponent implements OnInit {
   public getItem() {
     let items: Item[] = [];
     items[0] = {
-      lbl: $localize`:@@MenuComp-elem2:Plan (PDF)`,
-      url: "/planPDF"
-    }
-    items[1] = {
-      lbl: $localize`:@@MenuComp-elem1:Que souhaitez-vous visiter ?`,
+      lbl: $localize`:@@MenuComp-elem1:Parcours`,
       url: "/themes"
     }
-    items[2] = {
-      lbl: $localize`:@@MenuComp-elem3:Changer ma langue`,
+    items[1] = {
+      lbl: $localize`:@@MenuComp-elem2:Langues`,
       url: "/"
     }
+    items[2] = {
+      lbl: $localize`:@@MenuComp-elem3:Infos Pratiques`,
+      url: "/infos"
+    }
     items[3] = {
-      lbl: $localize`:@@MenuComp-elem4:Crédits`,
-      url: "/credits"
+      lbl: $localize`:@@MenuComp-elem4:Plan (PDF)`,
+      url: "/planPDF"
     }
     items[4] = {
-      lbl: $localize`:@@MenuComp-elem3:Aide`,
+      lbl: $localize`:@@MenuComp-elem5:Aide`,
       url: "/aide"
+    }
+    items[5] = {
+      lbl: $localize`:@@MenuComp-elem6:Contacts`,
+      url: "/contacts"
+    }
+    items[6] = {
+      lbl: $localize`:@@MenuComp-elem7:Crédits`,
+      url: "/credits"
     }
     return items;
   }

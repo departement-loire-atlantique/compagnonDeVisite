@@ -6,6 +6,8 @@ import { OeuvreComponent } from './pages/parcours-explore/oeuvre/oeuvre.componen
 import { PlanPDFComponent } from './pages/menu/plan-pdf/plan-pdf.component';
 import { AideComponent } from './pages/menu/aide/aide.component';
 import { CreditsComponent } from './pages/menu/credits/credits.component';
+import { InfosComponent } from './pages/menu/infos/infos.component';
+import { ContactsComponent } from './pages/menu/contacts/contacts.component';
 
 const routes: Routes = [
   {
@@ -44,6 +46,12 @@ const routes: Routes = [
   },
   {
     path: 'credits', component: CreditsComponent
+  },
+  {
+    path: 'infos', component: InfosComponent
+  },
+  {
+    path: 'contacts', component: ContactsComponent
   },
   {
     path: 'explore/oeuvre/:id', component: OeuvreComponent

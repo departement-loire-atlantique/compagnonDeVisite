@@ -4,7 +4,7 @@ import { JcmsEspace } from 'src/app/models/environment';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
 import { Observable } from 'rxjs';
 import { Content } from 'src/app/models/jcms/content';
-import { DomSanitizer } from '@angular/platform-browser';
+import { MenuBurger, MenuBurgerMap } from 'src/app/models/jcms/menuburger';
 
 @Component({
   selector: 'app-credits',
@@ -15,18 +15,17 @@ export class CreditsComponent implements OnInit {
   espaceJcms: JcmsEspace | undefined;
   idCatMenu: string = '';
   pager: JcmsPager<Content> | undefined;
-  title: string = '';
-  contenuParagraphe: string = '';
+
+  menuBurgerMap: MenuBurgerMap = new MenuBurgerMap();
+  menuBurger!: MenuBurger;
 
   constructor(
     private _jcms: JAngularService,
-    private _jcmsEspace: EspaceByLangService,
-    private domSanitizer: DomSanitizer, ) {
+    private _jcmsEspace: EspaceByLangService ) {
       this.espaceJcms = this._jcmsEspace.getJcmsSpace();
       if (this.espaceJcms) {
         this.idCatMenu = this.espaceJcms.catMenu;
       }
-    this.research();
   }
 
   ngOnInit(): void {
@@ -46,9 +45,8 @@ export class CreditsComponent implements OnInit {
 
       const itContent = contents[0];
 
-      this._jcms.get<any>('plugins/compagnondevisite/content/' + itContent.id).subscribe(res => {
-        this.title = res.title;
-        this.contenuParagraphe = res.content;
+      this._jcms.get<MenuBurger>('data/' + itContent.id).subscribe(res => {
+        this.menuBurger = this.menuBurgerMap.mapToMenuBurger(res);
       });
     });
   }
@@ -60,7 +58,7 @@ export class CreditsComponent implements OnInit {
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
-          types: ['FicheArticle'],
+          types: ['MenuBurger'],
           text: 'credit*',
           exactType: true,
           wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
@@ -75,9 +73,5 @@ export class CreditsComponent implements OnInit {
    */
   public getLabelBtn() {
     return $localize`:@@BackComp-text:Retour` ;
-  }
-
-  public getContenu() {
-    return this.domSanitizer.bypassSecurityTrustHtml(this.contenuParagraphe);
   }
 }

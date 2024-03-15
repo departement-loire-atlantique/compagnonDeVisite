@@ -1,8 +1,8 @@
 <app-header [customProcess]="false" [labelBtn]="getLabelBtn()"[popUp]="false" ></app-header>
-<div class="ds44-modal-box">
+<div class="ds44-modal-box main">
     <div class="ds44-modal-gab">
       <picture class="ds44-container-imgRatio" id="myPicture">
-        <img [src]="planPDF" alt="" class="ds44-imgRatio" id="imagePlan" #imagePlan />
+        <img *ngIf="menuBurger?.plan" [src]="menuBurger.plan" alt="" class="ds44-imgRatio" id="imagePlan" #imagePlan />
       </picture>
     </div>
     <div class="zoom">

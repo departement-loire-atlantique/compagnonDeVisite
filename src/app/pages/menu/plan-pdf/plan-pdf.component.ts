@@ -1,11 +1,11 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { JAngularService,JcmsPager } from 'j-angular';
-import { Media } from 'src/app/models/jcms/media';
 import { buildUrlMedia, Content } from 'src/app/models/jcms/content';
 import { Observable } from 'rxjs';
 import { JcmsEspace } from 'src/app/models/environment';
 import { EspaceByLangService } from 'src/app/services/espace-by-lang.service';
-
+import { DesignSystemService } from 'src/app/services/design-system.service';
+import { MenuBurger, MenuBurgerMap } from 'src/app/models/jcms/menuburger';
 import panzoom from "panzoom";
 
 @Component({
@@ -18,12 +18,12 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
   pager: JcmsPager<Content> | undefined;
   espaceJcms: JcmsEspace | undefined;
   idCatMenu: string = '';
-  planPDF: String = '';
-  title: string = $localize`:@@OverlayMapComp-titre:Carte`;
-  closeTxt = $localize `:@@OverlayMapComp-close:Fermer la boîte de dialogue \: ${this.title}:title:`
-  idTarget: string = "overlay-map";
 
-  constructor( private _jcms: JAngularService, private _jcmsEspace: EspaceByLangService, ) {
+  menuBurgerMap: MenuBurgerMap = new MenuBurgerMap();
+  menuBurger!: MenuBurger;
+
+  constructor( private _jcms: JAngularService, private _jcmsEspace: EspaceByLangService, private _ds: DesignSystemService ) {
+    this._ds.initOverlay();
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
     if (this.espaceJcms) {
       this.idCatMenu = this.espaceJcms.catMenu;
@@ -47,12 +47,14 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
    */
   public processResult(obs: Observable<JcmsPager<Content>>) {
     obs.subscribe((pager: JcmsPager<Content>) => {
+
       this.pager = pager;
       const contents = pager.dataInPage;
-      if (contents.length < 1 ) return;
+      if (contents.length < 1) return;
+
       const itContent = contents[0];
-      this._jcms.get<Media>('data/' + itContent.id).subscribe(res => {
-        this.planPDF = buildUrlMedia(res.filename)
+      this._jcms.get<MenuBurger>('data/' + itContent.id).subscribe(res => {
+        this.menuBurger = this.menuBurgerMap.mapToMenuBurger(res);
       });
     });
   }
@@ -65,14 +67,13 @@ export class PlanPDFComponent implements OnInit, AfterViewInit {
     this.processResult(
       this._jcms.getPager<Content>('search', {
         params: {
-          types: ['Media'],
+          types: ['MenuBurger'],
+          text: 'plan*',
           exactType: true,
-          exactCat: true,
-          mode: 'advanced',
           wrkspc: this.espaceJcms ? this.espaceJcms.espace : "",
           cids: this.idCatMenu,
         },
-      })
+     })
     );
   }
 
