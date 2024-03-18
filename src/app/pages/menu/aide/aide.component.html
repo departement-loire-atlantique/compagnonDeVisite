@@ -1,6 +1,7 @@
 <app-header [customProcess]="false" [labelBtn]="getLabelBtn()"[popUp]="false" ></app-header>
 <main>
-  <img *ngIf="menuBurger?.plan" [src]="menuBurger.plan" [alt]="menuBurger.title" />
+  <h1 *ngIf="menuBurger.titreCourt" class="underline top-space">{{ menuBurger.titreCourt }}</h1>
+  <img *ngIf="menuBurger?.plan" [src]="menuBurger.plan" [alt]="menuBurger.titreCourt" />
   <app-carrousel *ngIf="menuBurger?.diaporama" [id]="menuBurger.diaporama.id" [text]="menuBurger.diaporama.soustitre"></app-carrousel>
   <app-lecteur-video *ngIf="menuBurger?.video" [src]="menuBurger.video"></app-lecteur-video>
   <div class="audio">
