@@ -12,11 +12,11 @@ export const environment: Environment = {
   catJExplore: 'rec_5058',
   catRoot: 'rec_5029',
   lang: {
-    'fr': { espace: 'rec_5033', catHome: 'rec_5034' },
-    'en': { espace: 'rec_5038', catHome: 'rec_5039' },
-    'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044' },
-    'fr-FALC': { espace: '', catHome: '' },
-    'fr-Adapt': { espace: '', catHome: '' },
+    'fr': { espace: 'rec_5033', catHome: 'rec_5034', catMenu: '' },
+    'en': { espace: 'rec_5038', catHome: 'rec_5039', catMenu: '' },
+    'fr-LSF': { espace: 'rec_5043', catHome: 'rec_5044', catMenu: '' },
+    'fr-FALC': { espace: '', catHome: '', catMenu: '' },
+    'fr-Adapt': { espace: '', catHome: '', catMenu: '' },
   }
 };
 
