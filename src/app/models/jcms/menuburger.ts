@@ -6,6 +6,7 @@ import { Carousel } from "./carousel";
  */
 export interface MenuBurger extends Content {
   title: string;
+  titreCourt: string;
   description: string;
   video: string;
   audio: string;
@@ -19,6 +20,7 @@ export class MenuBurgerMap {
       id: dataRep.id,
       class: dataRep.class,
       title: dataRep.title,
+      titreCourt: dataRep.titreCourt,
       description: dataRep.description,
       video: buildUrlMedia(dataRep.video),
       audio: buildUrlMedia(dataRep.fichierSon),
