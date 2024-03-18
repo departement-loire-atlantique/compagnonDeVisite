@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
 import { JcmsEspace } from 'src/app/models/environment';
 import { JAngularService } from 'j-angular';
 import { Item } from 'src/app/models/item';
@@ -23,12 +22,16 @@ export class ParcoursThemesComponent implements OnInit {
   videoLSF: string | undefined;
   transcription?: string;
 
+  prevUrl :String | undefined;
+
   constructor(
     private _catMng: CatsMngService,
     private _jcms: JAngularService,
     private _jcmsEspace: EspaceByLangService,
     private _router: Router,
   ) {
+
+    this.prevUrl = this._router.getCurrentNavigation()?.previousNavigation?.finalUrl?.toString()
 
     this.espaceJcms = this._jcmsEspace.getJcmsSpace();
 
@@ -60,9 +63,8 @@ export class ParcoursThemesComponent implements OnInit {
 
       if (cats.length === 1) {
         let url = "/themes/" + cats[0].id;
-        if (sessionStorage.getItem("backURL")?.includes("themes")) {
+        if (this.prevUrl?.includes("themes")) {
           url = "/";
-          sessionStorage.removeItem("backURL");
         }
         this._router.navigate([url]);
       }

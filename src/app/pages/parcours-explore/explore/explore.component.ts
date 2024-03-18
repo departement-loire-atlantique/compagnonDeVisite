@@ -231,7 +231,7 @@ export class ExploreComponent implements OnInit {
    * Label du bouton de retour
    */
   getLabelBouton() {
-    return $localize`:@@BackComp-text:Retour aux parcours`;
+    return $localize`:@@BackComp-text-parcours:Retour aux parcours`;
   }
 
   public buildClassLabelForm(): string {

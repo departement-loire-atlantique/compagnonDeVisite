@@ -1,0 +1,21 @@
+@import '/src/theme/importDep.scss';
+
+.ds44-modal-box {
+  height: 90vh;
+}
+
+img {
+  max-width: none;
+  height: auto;
+}
+
+.zoom {
+  position: fixed;
+  bottom: 3em;
+  right: 1em;
+
+  button {
+    display: block;
+    margin-bottom: 0.2em;
+  }
+}
