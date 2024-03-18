@@ -58,15 +58,28 @@ main {
   .ds44-boxPushPic {
     position: relative;
 
-    span {
+    .languette {
       position: absolute;
       font-size: 2.1rem;
       font-weight: bold;
-      background-color: $white;
+      background-color: $pink2;
       width: 6rem;
-      height: 6rem;
-      border-radius: 3rem;
-      line-height: 6.3rem;
+      height: 9rem;
+      bottom: 0;
+      // border-radius: 3rem;
+      line-height: 3rem;
+      .languette-content {
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        gap: 10px;
+        span {
+          font-size: 3rem;
+        }
+        i {
+          font-size: 16px;
+        }
+      }
     }
   }
 }

@@ -105,13 +105,13 @@ export class ThematiqueComponent implements OnInit {
           sessionStorage.removeItem('jsonExploreAll');
           localStorage.setItem("IdJExplore", p.id);
           this.listParcours?.splice(-1, 0, {
-            lbl: p.title,
+            lbl: this.getTitle(p),
             url: 'explore/',
             isJExplore: true,
           })
         } else {
           this.listParcours?.splice(Number(ind), 0, {
-            lbl: p.title,
+            lbl: this.getTitle(p),
             url: 'parcours/' + p.id,
             parcoursPMR: p.parcoursPMR,
           })
@@ -132,6 +132,13 @@ export class ThematiqueComponent implements OnInit {
         }
       });
     });
+  }
+
+  /**
+   * Get le title du parcours
+   */
+  public getTitle(parcours: Parcours) {
+    return parcours.titreAffiche ? parcours.titreAffiche : parcours.title;
   }
 
   /**

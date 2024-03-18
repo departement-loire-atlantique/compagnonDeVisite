@@ -98,7 +98,7 @@ export class ExploreAllComponent implements OnInit {
       this._jcms.get<Oeuvre>('data/' + itContent.id).subscribe(res => {
         this.itSearchItem[i] = {
               item: {
-                lbl: itContent.title,
+                lbl: res.titreAffiche ? res.titreAffiche : itContent.title,
                 img: buildUrlMedia(res.vignette),
                 localisation: res.localisation,
                 url: '/explore/oeuvre/' + itContent.id,

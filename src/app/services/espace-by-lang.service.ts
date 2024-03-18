@@ -23,4 +23,8 @@ export class EspaceByLangService {
 
     return jcmsEspace;
   }
+
+  getLocal(): string {
+    return this._locale;
+  }
 }

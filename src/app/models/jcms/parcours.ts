@@ -22,6 +22,7 @@ export interface Parcours extends Content {
   videoFin: string | undefined,
   transcriptionFin: string,
   parcoursPMR: boolean,
+  titreAffiche: string | undefined,
 }
 
 export class ParcoursMap {
@@ -45,6 +46,7 @@ export class ParcoursMap {
       videoFin: buildUrlMedia(dataRep.videoFin),
       transcriptionFin: dataRep.transcriptionFin,
       parcoursPMR: dataRep.parcoursPMR || false,
+      titreAffiche: dataRep.titreAffiche,
     };
   }
 }

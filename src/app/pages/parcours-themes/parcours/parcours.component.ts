@@ -87,7 +87,7 @@ export class ParcoursComponent implements OnInit {
 
           //ajoute les items (tuile horizontale)
           this.items.push({
-            lbl: c.title,
+            lbl: c.titreAffiche ? c.titreAffiche : c.title,
             img: environment.jcms + c.vignette,
             localisation: c.localisation,
             url: "/oeuvre/" + ind + "/" + c.id,
@@ -192,7 +192,7 @@ export class ParcoursComponent implements OnInit {
    * @returns le title du parcours
    */
    public getTitle() {
-    return this.leParcours?.title;
+    return this.leParcours?.titreAffiche ? this.leParcours?.titreAffiche : this.leParcours?.title;
   }
 
   /**

@@ -626,7 +626,7 @@
         <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:33</note>
       </notes>
       <segment>
-        <source>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis semper risus sed laoreet. </source>
+        <source>Pour cultivez votre curiosité, d'autres parcours vous attendent !</source>
       </segment>
     </unit>
     <unit id="ParcoursFinComp-new-visit-btn">
