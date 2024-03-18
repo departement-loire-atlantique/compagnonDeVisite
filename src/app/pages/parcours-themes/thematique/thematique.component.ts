@@ -33,7 +33,7 @@ export class ThematiqueComponent implements OnInit {
   constructor(
     @Inject(LOCALE_ID) public locale: string,
     private _catMng: CatsMngService,
-    private _route: ActivatedRoute,
+    private _activatedRoute: ActivatedRoute,
     private _jcms: JAngularService,
     private _jcmsEspace: EspaceByLangService,
   ) { }
@@ -51,7 +51,7 @@ export class ThematiqueComponent implements OnInit {
     const espaceJcms = this._jcmsEspace.getJcmsSpace();
 
 
-    let thematiqueId = this._route.snapshot.paramMap.get('id');
+    let thematiqueId = this._activatedRoute.snapshot.paramMap.get('id');
     if (thematiqueId)
       localStorage.setItem(this.idThematique, thematiqueId);
 
@@ -59,7 +59,7 @@ export class ThematiqueComponent implements OnInit {
       return;
     }
 
-    let catThematique = this._route.snapshot.paramMap.get('id');
+    let catThematique = this._activatedRoute.snapshot.paramMap.get('id');
 
     if (!catThematique) {
       return;
@@ -105,13 +105,13 @@ export class ThematiqueComponent implements OnInit {
           sessionStorage.removeItem('jsonExploreAll');
           localStorage.setItem("IdJExplore", p.id);
           this.listParcours?.splice(-1, 0, {
-            lbl: p.title,
+            lbl: this.getTitle(p),
             url: 'explore/',
             isJExplore: true,
           })
         } else {
           this.listParcours?.splice(Number(ind), 0, {
-            lbl: p.title,
+            lbl: this.getTitle(p),
             url: 'parcours/' + p.id,
             parcoursPMR: p.parcoursPMR,
           })
@@ -132,6 +132,13 @@ export class ThematiqueComponent implements OnInit {
         }
       });
     });
+  }
+
+  /**
+   * Get le title du parcours
+   */
+  public getTitle(parcours: Parcours) {
+    return parcours.titreAffiche ? parcours.titreAffiche : parcours.title;
   }
 
   /**
@@ -173,8 +180,7 @@ export class ThematiqueComponent implements OnInit {
    * Get l'url de retour
    */
   public getURLBack() {
-    sessionStorage.setItem("backURL", "themes/id");
-    return 'themes/';
+    return '/themes';
   }
 
   /**

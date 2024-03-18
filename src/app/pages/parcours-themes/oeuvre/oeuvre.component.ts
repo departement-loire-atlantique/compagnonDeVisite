@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JAngularService } from 'j-angular';
 import { State } from 'src/app/components/etapes/etapes.component';
@@ -10,7 +10,7 @@ import { Steps } from 'src/app/components/oeuvre-suiv-pred/oeuvre-suiv-pred.comp
   templateUrl: './oeuvre.component.html',
   styleUrls: ['./oeuvre.component.scss']
 })
-export class OeuvreComponent implements OnInit {
+export class OeuvreComponent implements OnInit, AfterViewInit, OnDestroy {
 
   mapOeuvre: OeuvreMap = new OeuvreMap();
   oeuvre: Oeuvre | undefined;
@@ -38,6 +38,8 @@ export class OeuvreComponent implements OnInit {
 
   step: string = $localize`:@@OeuvreComp-step:Etape`;
 
+  isIndicationsScrolledIntoView: boolean = true;
+
   constructor(
     private _jcms: JAngularService,
     private _route: ActivatedRoute,
@@ -55,6 +57,35 @@ export class OeuvreComponent implements OnInit {
     this.initEtape();
     this.initOeuvre();
   }
+
+  /**
+   * Permet de detecter si les indications sont visibles ou non
+   * pour afficher le bouton comment m'y rendre
+   */
+  private _observer: IntersectionObserver | undefined;
+  ngAfterViewInit() {
+    const el: HTMLElement | null = document.getElementById('indications');
+    if(el) {
+      this._observer = new IntersectionObserver(this._callback);
+      this._observer.observe(el);
+    }
+  }
+
+  ngOnDestroy() {
+    if(this._observer)
+      this._observer.disconnect();
+  }
+
+  private _callback = (entries:any) => {
+    entries.forEach((entry:any) => {
+      if(entry.isIntersecting) {
+        this.isIndicationsScrolledIntoView = true;
+      } else {
+        this.isIndicationsScrolledIntoView = false;
+      }
+    });
+  };
+
 
   /**
    * Récupère les données qui correspond à l'id de la page
@@ -174,6 +205,18 @@ export class OeuvreComponent implements OnInit {
     }
   }
 
+  /**
+   * @returns true si l'oeuvre à des indications
+   * pour le bouton comment m'y rendre
+   */
+  public isIndications() {
+    if(this.getAudioAide() || this.getMap() || this.getIndications()) {
+      return true;
+    }
+    return false;
+  }
+
+
 
   /* GETTER OEUVRE */
   /**
@@ -181,7 +224,7 @@ export class OeuvreComponent implements OnInit {
    * @returns le titre
    */
   public getTitle() {
-    return this.oeuvre?.title;
+    return this.oeuvre?.titreAffiche ? this.oeuvre?.titreAffiche : this.oeuvre?.title;
   }
 
   /**

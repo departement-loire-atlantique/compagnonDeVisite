@@ -6,14 +6,13 @@
 
   <div class="fav">
     <div class="spacer"></div>
-    <h2 class="page-title" i18n="@@ParcoursFinComp-thanks-msg">Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée
-      !</h2>
+    <h2 class="page-title">{{ getLabelFin() }}</h2>
     <div class="spacer"></div>
 
     <app-tuile-v *ngIf="!video;else lsf" [tuile]="getTuile()"></app-tuile-v>
 
     <ng-template #lsf>
-      <app-lecteur-video [file]="video" [transcription]="transcription"></app-lecteur-video>
+      <app-lecteur-video [src]="video" [transcription]="transcription"></app-lecteur-video>
 
 <!--      <p class=" fav-box"><i class="icon icon-star-empty" aria-hidden="true"></i>
         <a [href]="" class="ds44-card__globalLink">
@@ -26,11 +25,11 @@
 
 <app-page-utile></app-page-utile>
 
-<app-partage-rs></app-partage-rs>
+<!-- <app-partage-rs></app-partage-rs> -->
 
 <div class="bg-block ds44-box ds44-theme ds44-bgTriangle-left">
   <h2 i18n="@@ParcoursFinComp-new-visit">Nouvelle visite ?</h2>
-  <p i18n="@@ParcoursFinComp-new-visit-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis semper risus sed laoreet. </p>
+  <p i18n="@@ParcoursFinComp-new-visit-desc">Pour cultivez votre curiosité, d'autres parcours vous attendent !</p>
   <a class="ds44-btnStd" [routerLink]="getHome()">
     <span class="ds44-btnInnerText" i18n="@@ParcoursFinComp-new-visit-btn"> Que souhaitez-vous visiter ?</span>
   </a>

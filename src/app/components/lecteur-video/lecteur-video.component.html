@@ -1,32 +1,5 @@
 <div class="video" id="video-container" #videoContainer>
-  <div  class="lecteur-video">
-    <div class="control">
-      <button (click)="play()" [disabled]="state.error" *ngIf="!state?.playing">
-        <i class="icon icon-play" aria-hidden="true"></i>
-        <span class="i-name visually-hidden">icon-play</span>
-      </button>
-      <button (click)="pause()" *ngIf="state?.playing">
-        <i class="icon icon-pause" aria-hidden="true"></i>
-        <span class="i-name visually-hidden">icon-pause</span>
-      </button>
-    </div>
-    <div class="slider">
-      <p><input type="range"
-                id="cowbell"
-                name="cowbell"
-                min="0"
-                class="custom-slider"
-                [max]="state.duration"
-                [value]="state.currentTime"
-                (oninput) ="onSliderChangeEnd($event)"
-                (change)="onSliderChangeEnd($event)"
-                [disabled]="state.error || currentFile.index === undefined">
-        </p>
-      <p class="curseur">{{ state.readableCurrentTime | date:"mm:ss" }}
-        <span class="readableDuration">{{ state.readableDuration | date:"mm:ss" }}</span>
-      </p>
-    </div>
-  </div>
+  <iframe class="lecteur-video" frameBorder="0" width="100%" [src]="getVideo()"></iframe>
 </div>
 <div *ngIf="transcription" class="transcription" >
   <app-collapser [dataTitle]="['Afficher la transcription']" [dataVal]="[transcription]"></app-collapser>

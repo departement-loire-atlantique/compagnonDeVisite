@@ -68,7 +68,7 @@ export class ExploreComponent implements OnInit {
     sessionStorage.removeItem("URLback");
 
     this._jcms.get<Parcours>('data/' + this.idJExplore).subscribe((parcours: Parcours) => {
-      this.title = parcours.title;
+      this.title = parcours.titreAffiche ? parcours.titreAffiche : parcours.title;
       this.video = parcours.video || undefined;
     });
 
@@ -152,7 +152,7 @@ export class ExploreComponent implements OnInit {
         this._jcms.get<Oeuvre>('data/' + itContent.id).subscribe(res => {
           this.itSearchItem[i] = {
             item: {
-              lbl: itContent.title,
+              lbl: res.titreAffiche ? res.titreAffiche : itContent.title,
               img: buildUrlMedia(res.vignette),
               url: '/explore/oeuvre/' + itContent.id,
             },
@@ -231,7 +231,7 @@ export class ExploreComponent implements OnInit {
    * Label du bouton de retour
    */
   getLabelBouton() {
-    return $localize`:@@BackComp-text:Retour aux parcours`;
+    return $localize`:@@BackComp-text-parcours:Retour aux parcours`;
   }
 
   public buildClassLabelForm(): string {

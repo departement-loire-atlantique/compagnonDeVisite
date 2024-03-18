@@ -11,6 +11,12 @@ import { ExploreComponent } from './pages/parcours-explore/explore/explore.compo
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from './components/shared.module';
 import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explore-all.component';
+import { PlanPDFComponent } from './pages/menu/plan-pdf/plan-pdf.component';
+import { AideComponent } from './pages/menu/aide/aide.component';
+import { CreditsComponent } from './pages/menu/credits/credits.component';
+import { InfosComponent } from './pages/menu/infos/infos.component';
+import { ContactsComponent } from './pages/menu/contacts/contacts.component';
+import { SanitizeHtmlPipe } from './services/SanitizeHtmlPipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +24,12 @@ import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explor
     OeuvreComponent,
     ExploreComponent,
     ExploreAllComponent,
+    PlanPDFComponent,
+    AideComponent,
+    CreditsComponent,
+    InfosComponent,
+    ContactsComponent,
+    SanitizeHtmlPipe,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +43,9 @@ import { ExploreAllComponent } from './pages/parcours-explore/explore-all/explor
     }),
     FormsModule,
     SharedModule,
+  ],
+  exports: [
+    SanitizeHtmlPipe
   ],
   providers: [
     JcmsInterceptor,

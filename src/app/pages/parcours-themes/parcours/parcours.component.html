@@ -20,7 +20,7 @@
     </div>
 
     <div *ngIf="getVideo()" class="top-space">
-      <app-lecteur-video [file]="getVideo()" [transcription]="this.leParcours?.transcription"></app-lecteur-video>
+      <app-lecteur-video [src]="getVideo()" [transcription]="this.leParcours?.transcription"></app-lecteur-video>
     </div>
   </div>
 

@@ -8,6 +8,8 @@ import { buildUrlMedia, Content } from "./content";
 
   titreCourt: string | undefined,
 
+  titreAffiche: string | undefined,
+
   description: string | undefined,
 
     /**
@@ -63,6 +65,7 @@ import { buildUrlMedia, Content } from "./content";
       miseEnAvant: dataRep.miseEnAvant,
       localisation: dataRep.localisation,
       titreCourt: dataRep.titreCourt,
+      titreAffiche: dataRep.titreAffiche,
     };
   }
 }
