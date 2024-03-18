@@ -31,7 +31,11 @@
         <note category="location">src/app/components/header-explore/header-explore.component.ts:21</note>
         <note category="location">src/app/components/header-parcours/header-parcours.component.ts:27</note>
         <note category="location">src/app/components/header/header.component.ts:27</note>
-        <note category="location">src/app/pages/menu/plan-pdf/plan-pdf.component.ts:43</note>
+        <note category="location">src/app/pages/menu/aide/aide.component.ts:74</note>
+        <note category="location">src/app/pages/menu/contacts/contacts.component.ts:90</note>
+        <note category="location">src/app/pages/menu/credits/credits.component.ts:75</note>
+        <note category="location">src/app/pages/menu/infos/infos.component.ts:74</note>
+        <note category="location">src/app/pages/menu/plan-pdf/plan-pdf.component.ts:82</note>
       </notes>
       <segment>
         <source>Retour</source>
@@ -173,7 +177,7 @@
         <note category="location">src/app/components/menu/menu.component.ts:21</note>
       </notes>
       <segment>
-        <source>Que souhaitez-vous visiter ?</source>
+        <source>Parcours</source>
       </segment>
     </unit>
     <unit id="MenuComp-elem2">
@@ -181,7 +185,7 @@
         <note category="location">src/app/components/menu/menu.component.ts:25</note>
       </notes>
       <segment>
-        <source>Plan (PDF)</source>
+        <source>Langues</source>
       </segment>
     </unit>
     <unit id="MenuComp-elem3">
@@ -189,7 +193,7 @@
         <note category="location">src/app/components/menu/menu.component.ts:29</note>
       </notes>
       <segment>
-        <source>Aide</source>
+        <source>Infos Pratiques</source>
       </segment>
     </unit>
     <unit id="MenuComp-elem4">
@@ -197,7 +201,7 @@
         <note category="location">src/app/components/menu/menu.component.ts:33</note>
       </notes>
       <segment>
-        <source>Crédits</source>
+        <source>Plan (PDF)</source>
       </segment>
     </unit>
     <unit id="MenuComp-elem5">
@@ -205,7 +209,7 @@
         <note category="location">src/app/components/menu/menu.component.ts:37</note>
       </notes>
       <segment>
-        <source>Contacts</source>
+        <source>Aide</source>
       </segment>
     </unit>
     <unit id="MenuComp-elem6">
@@ -213,7 +217,15 @@
         <note category="location">src/app/components/menu/menu.component.ts:41</note>
       </notes>
       <segment>
-        <source>Autre services</source>
+        <source>Contacts</source>
+      </segment>
+    </unit>
+    <unit id="MenuComp-elem7">
+      <notes>
+        <note category="location">src/app/components/menu/menu.component.ts:45</note>
+      </notes>
+      <segment>
+        <source>Crédits</source>
       </segment>
     </unit>
     <unit id="OeuvreSuivPredComp-previous">
@@ -243,7 +255,6 @@
     <unit id="OverlayMapComp-titre">
       <notes>
         <note category="location">src/app/components/overlay-map/overlay-map.component.ts:24</note>
-        <note category="location">src/app/pages/menu/plan-pdf/plan-pdf.component.ts:17</note>
       </notes>
       <segment>
         <source>Carte</source>
@@ -252,7 +263,6 @@
     <unit id="OverlayMapComp-close">
       <notes>
         <note category="location">src/app/components/overlay-map/overlay-map.component.ts:28</note>
-        <note category="location">src/app/pages/menu/plan-pdf/plan-pdf.component.ts:18</note>
       </notes>
       <segment>
         <source>Fermer la boîte de dialogue : <ph id="0" equiv="title" disp="this.title"/></source>
@@ -452,7 +462,7 @@
     <unit id="ExploreComp-recherche-more-title">
       <notes>
         <note category="location">src/app/pages/parcours-explore/explore-all/explore-all.component.html:30</note>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:92</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:97</note>
       </notes>
       <segment>
         <source>Afficher plus de résultat</source>
@@ -461,7 +471,7 @@
     <unit id="ExploreComp-recherche-more">
       <notes>
         <note category="location">src/app/pages/parcours-explore/explore-all/explore-all.component.html:31</note>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:93</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:98</note>
       </notes>
       <segment>
         <source>Plus de résultat</source>
@@ -495,7 +505,7 @@
     </unit>
     <unit id="ExploreComp-encart-title">
       <notes>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:20</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:25</note>
       </notes>
       <segment>
         <source>Soyez curieux !</source>
@@ -503,7 +513,7 @@
     </unit>
     <unit id="ExploreComp-encart-contenu">
       <notes>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:21</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:26</note>
       </notes>
       <segment>
         <source>Repérez les numéros sur les oeuvres et tapez-les dans la barre de recherche.</source>
@@ -511,7 +521,7 @@
     </unit>
     <unit id="ExploreComp-recherche-placeHolder">
       <notes>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:45</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:50</note>
       </notes>
       <segment>
         <source>Numéro de l&apos;œuvre, mots-clefs...</source>
@@ -519,7 +529,7 @@
     </unit>
     <unit id="ExploreComp-input-title">
       <notes>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:53</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:58</note>
       </notes>
       <segment>
         <source>Numéro de l&apos;œuvre, mots clefs...</source>
@@ -527,7 +537,7 @@
     </unit>
     <unit id="ExploreComp-input-clear">
       <notes>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:58</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:63</note>
       </notes>
       <segment>
         <source>Effacer le contenu saisi dans le champ : Votre recherche</source>
@@ -535,7 +545,7 @@
     </unit>
     <unit id="ExploreComp-recherche-btn">
       <notes>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:65</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:70</note>
       </notes>
       <segment>
         <source>Rechercher</source>
@@ -543,7 +553,7 @@
     </unit>
     <unit id="ExploreComp-recherche-identify">
       <notes>
-        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:74</note>
+        <note category="location">src/app/pages/parcours-explore/explore/explore.component.html:79</note>
       </notes>
       <segment>
         <source>Identifiez toutes les œuvres</source>
@@ -605,17 +615,9 @@
         <source>Etape</source>
       </segment>
     </unit>
-    <unit id="ParcoursFinComp-thanks-msg">
-      <notes>
-        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:9,10</note>
-      </notes>
-      <segment>
-        <source>Merci pour votre visite, nous espérons que vous avez passé un agréable moment au musée Dobrée !</source>
-      </segment>
-    </unit>
     <unit id="ParcoursFinComp-new-visit">
       <notes>
-        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:32</note>
+        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:31</note>
       </notes>
       <segment>
         <source>Nouvelle visite ?</source>
@@ -623,15 +625,15 @@
     </unit>
     <unit id="ParcoursFinComp-new-visit-desc">
       <notes>
-        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:33</note>
+        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:32</note>
       </notes>
       <segment>
-        <source>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sagittis semper risus sed laoreet. </source>
+        <source>Pour cultivez votre curiosité, d&apos;autres parcours vous attendent !</source>
       </segment>
     </unit>
     <unit id="ParcoursFinComp-new-visit-btn">
       <notes>
-        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:35</note>
+        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.html:34</note>
       </notes>
       <segment>
         <source> Que souhaitez-vous visiter ?</source>
@@ -639,7 +641,7 @@
     </unit>
     <unit id="BackComp-oeuvre">
       <notes>
-        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.ts:79</note>
+        <note category="location">src/app/pages/parcours-themes/parcours-fin/parcours-fin.component.ts:92</note>
       </notes>
       <segment>
         <source>Retour à l&apos;œuvre</source>
@@ -679,7 +681,7 @@
     </unit>
     <unit id="BackComp-accueil">
       <notes>
-        <note category="location">src/app/pages/parcours-themes/thematique/thematique.component.ts:183</note>
+        <note category="location">src/app/pages/parcours-themes/thematique/thematique.component.ts:190</note>
       </notes>
       <segment>
         <source>Retour à l&apos;accueil</source>
