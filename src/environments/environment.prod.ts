@@ -8,10 +8,10 @@ export const environment: Environment = {
   catJExplore: 'TODO',
   catRoot: '',
   lang: {
-    'fr': { espace: '', catHome: '' },
-    'en': { espace: '', catHome: '' },
-    'fr-LSF': { espace: '', catHome: '' },
-    'fr-FALC': { espace: '', catHome: '' },
-    'fr-Adapt': { espace: '', catHome: '' },
+    'fr': { espace: '', catHome: '', catMenu: '' },
+    'en': { espace: '', catHome: '', catMenu: '' },
+    'fr-LSF': { espace: '', catHome: '', catMenu: '' },
+    'fr-FALC': { espace: '', catHome: '', catMenu: '' },
+    'fr-Adapt': { espace: '', catHome: '', catMenu: '' },
   }
 };
